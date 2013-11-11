@@ -3,12 +3,12 @@ TaKo.Aside = do (TK = TaKo) ->
   bck = $ "#background"
 
   show = ->
-    bck.css "z-index", "109"
+    bck.addClass "show"
     aside.addClass "show"
 
   hide = ->
     aside.removeClass "show"
-    bck.css "z-index", "0"
+    bck.removeClass "show"
 
   toggle = ->
     if aside.hasClass "show" then hide() else show()

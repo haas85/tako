@@ -52,12 +52,12 @@
     aside = $("aside");
     bck = $("#background");
     show = function() {
-      bck.css("z-index", "109");
+      bck.addClass("show");
       return aside.addClass("show");
     };
     hide = function() {
       aside.removeClass("show");
-      return bck.css("z-index", "0");
+      return bck.removeClass("show");
     };
     toggle = function() {
       if (aside.hasClass("show")) {

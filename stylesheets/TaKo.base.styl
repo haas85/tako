@@ -33,14 +33,31 @@ header
     font-weight bold
     display inline-block
     position absolute
-    left 2em
-    right 2em
+    left 4em
+    right 4em
 
-  & > nav.right
-    float: right
+  & > nav
 
-  & > nav.left
-    float: left
+    &.right
+      margin-right 5px
+      float: right
+
+    &.left
+      margin-left 5px
+      float: left
+
+    & > button.button
+      margin-top 5px
+      text-indent 0
+      border 1px solid #808184
+      border-radius(5px)
+      display inline-block
+      font-weight bold
+      font-style normal
+      line-height 30px
+      text-decoration none
+      text-align center
+      box-shadow 1px 1px rgba(255, 255, 255, .25)
 
 footer
   position fixed
@@ -80,5 +97,11 @@ aside
   bottom 0
   left 0
   right 0
-  background-color rgba(0,0,0,0.5)
+  transition(opacity 1s ease-out)
+  z-index 0
+
+  &.show
+    background-color rgba(0,0,0,0.6)
+    z-index 109
+
 
