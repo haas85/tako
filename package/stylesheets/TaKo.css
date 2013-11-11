@@ -1,4 +1,4 @@
-body{width:100%;height:100%;background-color:#000}
+body{width:100%;height:100%;background-color:#000;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 section{height:inherit;width:inherit;display:none;position:fixed;z-index:100;top:0;left:0;}
 section.active{display:block}
 header{position:fixed;top:0;left:0;height:50px;width:100%;text-align:center;}
@@ -12,8 +12,13 @@ aside{display:block;width:256px;padding:6px;z-index:110;position:fixed;top:50px;
 aside.show{-webkit-transform:translate(270px);-moz-transform:translate(270px);-ms-transform:translate(270px);-o-transform:translate(270px);transform:translate(270px)}
 #background{position:fixed;top:50px;bottom:0;left:0;right:0;background-color:rgba(0,0,0,0.5)}
 
+button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:40px;text-decoration:none;text-align:center}
+
 body{font:12.8px "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
-header{background-color:#6c3;color:#f4f4f4}
+header{background-color:#06f;color:#f4f4f4}
 footer{background-color:#2f2f2f;color:#f4f4f4}
 article{background-color:#e7e7e7;color:#000}
 aside{background-color:#2f2f2f;color:#f4f4f4}
+button{font-size:12.8px;background-color:#06f;color:#f4f4f4}
+button.accept{background-color:#2ecc71;color:#f4f4f4}
+button.cancel{background-color:#e74c3c;color:#f4f4f4}

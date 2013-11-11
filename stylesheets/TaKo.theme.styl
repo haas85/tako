@@ -1,5 +1,5 @@
 TEXT                = #000
-THEME               = #66CC33
+THEME               = #0066FF
 COLOR               = #F4F4F4
 ASIDE               = #2f2f2f
 ALERT               = #e74c3c
@@ -8,6 +8,7 @@ WARNING             = #edba22
 DISABLED            = #acb8b9
 BACKGROUND          = lighten(#DFDFDF, 25%)
 FONT                = 16px/1.25  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
+FONT_SIZE           = 16px/1.25
 
 /* -------------------------- VARIATIONS -------------------------- */
 LIST_border         = darken(COLOR, 15%)
@@ -44,3 +45,15 @@ aside
   background-color ASIDE
   color COLOR
 
+button
+  font-size FONT_SIZE
+  background-color THEME
+  color COLOR
+
+button.accept
+  background-color SUCCESS
+  color COLOR
+
+button.cancel
+  background-color ALERT
+  color COLOR
