@@ -22,12 +22,13 @@ module.exports = (grunt) ->
           ]
 
       stylus:[
-        "stylesheets/TaKo.base.stylus"
+        "stylesheets/TaKo.base.styl",
+        "stylesheets/TaKo.theme.styl"
       ]
 
       components: [
-        "components/zepto/zepto.js",
-        "components/iscroll4/iscroll4.js"
+        "components/zepto/zepto.js"
+        # "components/iscroll4/iscroll4.js"
       ]
 
 
@@ -36,8 +37,13 @@ module.exports = (grunt) ->
       core: files: '<%=meta.temp%>/<%=meta.file%>.debug.js': '<%= source.coffee %>'
       core_debug: files: '<%=meta.package%>/js/<%=meta.file%>.debug.js': '<%= source.coffee %>'
 
+    concat:
+      components:
+        src: "<%= source.components %>",  dest: "<%=meta.temp%>/js/<%=meta.file%>.components.js"
+
     uglify:
       options: compress: false, banner: "<%= meta.banner %>"
+      components: files: '<%=meta.package%>/js/<%=meta.file%>.components.js': '<%=meta.temp%>/js/<%=meta.file%>.components.js'
       engine: files: '<%=meta.package%>/js/<%=meta.file%>.js': '<%=meta.temp%>/<%=meta.file%>.debug.js'
 
     stylus:
@@ -64,4 +70,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
 
-  grunt.registerTask "default", [ "coffee", "uglify", "stylus",  "concat"]
+  grunt.registerTask "default", [ "coffee", "concat", "uglify", "stylus",  "concat"]

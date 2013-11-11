@@ -1,0 +1,63 @@
+body
+  width 100%
+  height 100%
+section
+  height inherit
+  width inherit
+  display block
+  position fixed
+  z-index 100
+  top 0
+  left 0
+
+header
+  position fixed
+  top 0
+  left 0
+  height HEADER_HEIGHT
+  width 100%
+
+footer
+  position fixed
+  bottom 0
+  left 0
+  width 100%
+  height FOOTER_HEIGHT
+
+article
+  position fixed
+  top HEADER_HEIGHT
+  left 0
+  height inherit
+  width 100%
+  display block
+
+aside
+  display block
+  width ASIDE_WIDTH
+  padding ASIDE_PADDING
+  z-index 110
+  position fixed
+  top 50px
+  bottom 0
+  left - ASIDE_TRANSITION
+  -webkit-transition all ASIDE_TRANSITION_TIME linear
+  -moz-transition all ASIDE_TRANSITION_TIME linear
+  -ms-transition all ASIDE_TRANSITION_TIME linear
+  -o-transition all ASIDE_TRANSITION_TIME linear
+  transition all ASIDE_TRANSITION_TIME linear
+  &.show
+    transform translate(ASIDE_TRANSITION)
+    -ms-transform translate(ASIDE_TRANSITION)
+    -webkit-transform translate(ASIDE_TRANSITION)
+    -moz-transform translate(ASIDE_TRANSITION)
+    -o-transform translate(ASIDE_TRANSITION)
+
+#background
+  position fixed
+  top HEADER_HEIGHT
+  bottom 0
+  left 0
+  right 0
+  background-color rgba(0,0,0,0.5)
+

@@ -1,0 +1,1 @@
+window.TaKo = TaKo = {}
