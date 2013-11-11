@@ -1,6 +1,7 @@
 body
   width 100%
   height 100%
+  background-color black
 section
   height inherit
   width inherit
@@ -10,8 +11,8 @@ section
   top 0
   left 0
 
-section.active
-  display block
+  &.active
+    display block
 
 header
   position fixed
@@ -35,8 +36,8 @@ article
   width 100%
   display none
 
-article.active
-  display block
+  &.active
+    display block
 
 aside
   display block
@@ -47,17 +48,10 @@ aside
   top 50px
   bottom 0
   left - ASIDE_TRANSITION
-  -webkit-transition all ASIDE_TRANSITION_TIME linear
-  -moz-transition all ASIDE_TRANSITION_TIME linear
-  -ms-transition all ASIDE_TRANSITION_TIME linear
-  -o-transition all ASIDE_TRANSITION_TIME linear
-  transition all ASIDE_TRANSITION_TIME linear
+  transition(all ASIDE_TRANSITION_TIME linear)
+
   &.show
-    transform translate(ASIDE_TRANSITION)
-    -ms-transform translate(ASIDE_TRANSITION)
-    -webkit-transform translate(ASIDE_TRANSITION)
-    -moz-transform translate(ASIDE_TRANSITION)
-    -o-transform translate(ASIDE_TRANSITION)
+    transform(translate(ASIDE_TRANSITION))
 
 #background
   position fixed

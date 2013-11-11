@@ -1,15 +1,14 @@
-body{width:100%;height:100%}
-section{height:inherit;width:inherit;display:none;position:fixed;z-index:100;top:0;left:0}
+body{width:100%;height:100%;background-color:#000}
+section{height:inherit;width:inherit;display:none;position:fixed;z-index:100;top:0;left:0;}
 section.active{display:block}
 header{position:fixed;top:0;left:0;height:50px;width:100%}
 footer{position:fixed;bottom:0;left:0;width:100%;height:80px}
-article{position:fixed;top:50px;left:0;height:inherit;width:100%;display:none}
+article{position:fixed;top:50px;left:0;height:inherit;width:100%;display:none;}
 article.active{display:block}
 aside{display:block;width:256px;padding:6px;z-index:110;position:fixed;top:50px;bottom:0;left:-270px;-webkit-transition:all 150ms linear;-moz-transition:all 150ms linear;-ms-transition:all 150ms linear;-o-transition:all 150ms linear;transition:all 150ms linear;}
-aside.show{transform:translate(270px);-ms-transform:translate(270px);-webkit-transform:translate(270px);-moz-transform:translate(270px);-o-transform:translate(270px)}
+aside.show{-webkit-transform:translate(270px);-moz-transform:translate(270px);-ms-transform:translate(270px);-o-transform:translate(270px);transform:translate(270px)}
 #background{position:fixed;top:50px;bottom:0;left:0;right:0;background-color:rgba(0,0,0,0.5)}
 
-section{background-color:#000}
 header{background-color:#00f}
 footer{background-color:#008000}
 article{background-color:#f00}
