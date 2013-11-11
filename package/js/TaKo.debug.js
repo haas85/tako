@@ -38,3 +38,21 @@
   })(TaKo);
 
 }).call(this);
+
+(function() {
+  TaKo.Section = (function(TK) {
+    var active, goTo;
+    active = $("section.active");
+    if (active.length === 0) {
+      $("section").first().addClass("active");
+    }
+    goTo = function(section_id) {
+      $("section.active").removeClass("active");
+      return $("section#" + section_id).addClass("active");
+    };
+    return {
+      goTo: goTo
+    };
+  })(TaKo);
+
+}).call(this);
