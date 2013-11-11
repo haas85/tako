@@ -1,12 +1,13 @@
 TEXT                = #000
-THEME               = #00AFE3
+THEME               = #66CC33
 COLOR               = #F4F4F4
 ASIDE               = #2f2f2f
-DANGER              = #e74c3c
+ALERT               = #e74c3c
 SUCCESS             = #2ecc71
 WARNING             = #edba22
 DISABLED            = #acb8b9
 BACKGROUND          = lighten(#DFDFDF, 25%)
+FONT                = 16px/1.25  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
 
 /* -------------------------- VARIATIONS -------------------------- */
 LIST_border         = darken(COLOR, 15%)
@@ -24,16 +25,22 @@ FORM_border_radius  = (BORDER_radius * FORM_border)
 /* -------------------------- BUTTON -------------------------- */
 SHADOW              = rgba(0,0,0,0.1)
 
+body
+  font FONT
 
 header
-  background-color blue
+  background-color THEME
+  color COLOR
 
 footer
-  background-color green
+  background-color ASIDE
+  color COLOR
 
 article
-  background-color red
+  background-color BACKGROUND
+  color TEXT
 
 aside
-  background-color grey
+  background-color ASIDE
+  color COLOR
 
