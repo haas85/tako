@@ -85,7 +85,7 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, hide, notification, notification_window, show, timeout;
+    var active, callback, hide, notification, notification_window, show, timeout, _hide;
     active = false;
     $("body").append("<div data-element=\"notification\">\n  <div class=\"window\">\n    <span class=\"title\"></span>\n    <div class=\"content\"></div>\n    </div>\n</div>");
     notification = $("div[data-element=notification]");
@@ -98,6 +98,9 @@
         notification_window.children(".title").html(title);
         notification_window.children(".content").html(content);
         notification.addClass("show");
+        setTimeout((function() {
+          return notification_window.addClass("show");
+        }), 1);
         if (cb != null) {
           callback = cb;
         }
@@ -110,6 +113,10 @@
       active = false;
       clearTimeout(timeout);
       timeout = null;
+      notification_window.removeClass("show");
+      return setTimeout(_hide, 500);
+    };
+    _hide = function() {
       notification.removeClass("show");
       if (callback != null) {
         callback.call(callback);

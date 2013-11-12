@@ -21,6 +21,7 @@ TaKo.Notification = do (TK = TaKo) ->
       notification_window.children(".title").html title
       notification_window.children(".content").html content
       notification.addClass "show"
+      setTimeout (-> notification_window.addClass("show")), 1
       callback = cb if cb?
       if time_out?
         timeout = setTimeout hide, time_out*1000
@@ -30,6 +31,10 @@ TaKo.Notification = do (TK = TaKo) ->
     active = false
     clearTimeout timeout
     timeout = null
+    notification_window.removeClass "show"
+    setTimeout _hide, 500
+
+  _hide = ->
     notification.removeClass "show"
     callback.call callback if callback?
     callback = null

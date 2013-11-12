@@ -26,16 +26,42 @@ div[data-element="notification"]
     display -moz-box
     display box
 
+    -webkit-box-align center
+    -ms-box-align center
+    -moz-box-align center
+    box-align center
+
+    -webkit-box-pack center
+    -ms-box-pack center
+    -moz-box-pack center
+    box-pack center
+
   & > div.window
+    margin-top 100%
     background-color rgba(0,0,0,0.8)
     color rgba(250, 250, 250, 0.8)
     text-align center
     padding INDENT
-
     -webkit-box-flex 1
     -moz-ms-flex 1
     -moz-box-flex 1
     box-flex 1
+    opacity 0
+
+    -webkit-transition-duration NOTIFICATION_TRANSITION_TIME
+    -moz-transition-duration NOTIFICATION_TRANSITION_TIME
+    -ms-transition-duration NOTIFICATION_TRANSITION_TIME
+    -o-transition-duration NOTIFICATION_TRANSITION_TIME
+    transition-duration NOTIFICATION_TRANSITION_TIME
+    -webkit-transition-timing-function cubic-bezier(.645,.045,.355,1)
+    -moz-transition-timing-function cubic-bezier(.645,.045,.355,1)
+    -ms-transition-timing-function cubic-bezier(.645,.045,.355,1)
+    -o-transition-timing-function cubic-bezier(.645,.045,.355,1)
+    transition-timing-function cubic-bezier(.645,.045,.355,1)
+
+    &.show
+      margin-top 0%
+      opacity 1
 
     & > *
       display block
