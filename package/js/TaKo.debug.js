@@ -25,12 +25,12 @@
       current_section = current_article.parent();
       new_article = $("article#" + article_id);
       new_section = new_article.parent();
-      if (current_section[0].id !== new_section[0].id) {
-        TaKo.Section.goTo(new_section[0].id);
-      }
       if (current_article[0].id !== new_article[0].id) {
         new_section.children().removeClass("active");
-        return new_article.addClass("active");
+        new_article.addClass("active");
+      }
+      if (current_section[0].id !== new_section[0].id) {
+        return TaKo.Section.goTo(new_section[0].id);
       }
     };
     $("[data-article]").each(function(element) {
