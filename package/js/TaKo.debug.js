@@ -84,6 +84,48 @@
 }).call(this);
 
 (function() {
+  TaKo.Notification = (function(TK) {
+    var active, callback, hide, notification, notification_window, show, timeout;
+    active = false;
+    $("body").append("<div data-element=\"notification\">\n  <div class=\"window\">\n    <span class=\"title\"></span>\n    <div class=\"content\"></div>\n    </div>\n</div>");
+    notification = $("div[data-element=notification]");
+    notification_window = notification.children(".window");
+    timeout = null;
+    callback = null;
+    show = function(title, content, time_out, cb) {
+      if (!active) {
+        active = true;
+        notification_window.children(".title").html(title);
+        notification_window.children(".content").html(content);
+        notification.addClass("show");
+        if (cb != null) {
+          callback = cb;
+        }
+        if (time_out != null) {
+          return timeout = setTimeout(hide, time_out * 1000);
+        }
+      }
+    };
+    hide = function() {
+      active = false;
+      clearTimeout(timeout);
+      timeout = null;
+      notification.removeClass("show");
+      if (callback != null) {
+        callback.call(callback);
+      }
+      return callback = null;
+    };
+    notification.bind("click", hide);
+    return {
+      show: show,
+      hide: hide
+    };
+  })(TaKo);
+
+}).call(this);
+
+(function() {
   TaKo.Section = (function(TK) {
     var goTo;
     goTo = function(section_id) {

@@ -24,6 +24,7 @@ module.exports = (grunt) ->
       stylus:[
         "stylesheets/TaKo.base.styl",
         "stylesheets/TaKo.forms.styl",
+        "stylesheets/TaKo.notifications.styl",
         "stylesheets/TaKo.theme.styl"
       ]
 

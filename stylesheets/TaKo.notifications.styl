@@ -1,0 +1,46 @@
+div[data-element="notification"]
+  position fixed
+  top 0
+  bottom 0
+  left 0
+  right 0
+  display none
+  background-color rgba(0,0,0,0.6)
+  z-index NOTIFICATION_INDEX
+  padding-left NOTIFICATION_INDENT
+  padding-right NOTIFICATION_INDENT
+
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+
+  &.show
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+
+  & > div.window
+    background-color rgba(0,0,0,0.8)
+    color rgba(250, 250, 250, 0.8)
+    text-align center
+    padding INDENT
+
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+
+    & > *
+      display block
+      text-align center
+      width 100%
+
+    & > .title
+      padding-bottom 0.5em
+      border-bottom 2px solid rgba(250, 250, 250, 0.8)
+
+    & > .content
+      padding-top 0.5em
