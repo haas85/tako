@@ -1,5 +1,7 @@
 TaKo.Aside = do (TK = TaKo) ->
   aside = $ "aside"
+  if aside.length > 0
+    $("body").append '<div id="background"></div>'
   bck = $ "#background"
 
   show = ->

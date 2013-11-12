@@ -50,6 +50,9 @@
   TaKo.Aside = (function(TK) {
     var aside, bck, hide, show, toggle;
     aside = $("aside");
+    if (aside.length > 0) {
+      $("body").append('<div id="background"></div>');
+    }
     bck = $("#background");
     show = function() {
       bck.addClass("show");
