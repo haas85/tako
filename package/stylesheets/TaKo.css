@@ -28,8 +28,8 @@ article{position:fixed;top:50px;left:0;height:inherit;width:100%;display:none;}
 article.active{display:block}
 aside{display:block;width:256px;padding:6px;z-index:201;position:fixed;top:50px;bottom:0;left:-270px;-webkit-transition:all 150ms linear;-moz-transition:all 150ms linear;-ms-transition:all 150ms linear;-o-transition:all 150ms linear;transition:all 150ms linear;}
 aside.show{-webkit-transform:translate(270px);-moz-transform:translate(270px);-ms-transform:translate(270px);-o-transform:translate(270px);transform:translate(270px)}
-div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;right:0;-webkit-transition:opacity 1s ease-out;-moz-transition:opacity 1s ease-out;-ms-transition:opacity 1s ease-out;-o-transition:opacity 1s ease-out;transition:opacity 1s ease-out;z-index:0;}
-div[data-element="aside_background"].show{background-color:rgba(0,0,0,0.6);z-index:200}
+div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;right:0;-webkit-transition:opacity 150ms ease-out;-moz-transition:opacity 150ms ease-out;-ms-transition:opacity 150ms ease-out;-o-transition:opacity 150ms ease-out;transition:opacity 150ms ease-out;z-index:0;opacity:0;}
+div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-index:200}
 .indented{padding:.8em}
 
 button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:40px;text-decoration:none;text-align:center}

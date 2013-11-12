@@ -174,11 +174,13 @@ div[data-element="aside_background"]
   bottom 0
   left 0
   right 0
-  transition(opacity 1s ease-out)
+  transition(opacity ASIDE_TRANSITION_TIME ease-out)
   z-index 0
+  opacity 0
 
   &.show
-    background-color rgba(0,0,0,0.6)
+    background-color black
+    opacity 0.6
     z-index ASIDE_BCK_INDEX
 
 .indented
