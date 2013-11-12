@@ -74,6 +74,9 @@
         return toggle();
       });
     });
+    bck.bind("click", function() {
+      return hide();
+    });
     return {
       show: show,
       hide: hide,

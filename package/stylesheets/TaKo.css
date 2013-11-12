@@ -37,6 +37,9 @@ article ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 article ul > li{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:11px 60px 11px 10px;}
 article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 60px 1px 10px}
 article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
+aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
+aside ul > li{position:relative;font-size:1.2em;padding:11px 60px 11px 10px;}
+aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 60px 1px 10px}
 
 button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:40px;text-decoration:none;text-align:center}
 
