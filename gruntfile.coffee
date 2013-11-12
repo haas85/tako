@@ -31,8 +31,8 @@ module.exports = (grunt) ->
       ]
 
       components: [
+        "components/iscroll4/iscroll4.js",
         "components/zepto/zepto.js"
-        # "components/iscroll4/iscroll4.js"
       ]
 
 
