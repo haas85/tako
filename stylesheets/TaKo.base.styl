@@ -128,13 +128,20 @@ footer
         -moz-box-flex: 9
         box-flex: 9
 
+      &.active
+        background-color rgba(250,250,250,0.15)
+
     & > div
       display block
       height FOOTER_HEIGHT
+      text-align center
 
       & > button
         width 100%
         height 100%
+
+        &.active
+          background-color rgba(250,250,250,0.15)
 
 article
   position fixed
@@ -174,4 +181,6 @@ div[data-element="aside_background"]
     background-color rgba(0,0,0,0.6)
     z-index ASIDE_BCK_INDEX
 
+.indented
+  padding INDENT
 
