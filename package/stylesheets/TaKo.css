@@ -8,6 +8,7 @@ header > nav.right{right:0;}
 header > nav.right > button{margin-right:5px}
 header > nav.left{left:0;}
 header > nav.left > button{margin-left:5px}
+header > nav > button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;line-height:30px;text-decoration:none;text-align:center}
 header > nav > button.button{text-indent:0;border:1px solid #737476;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:30px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25);background-color:rgba(180,180,180,0.15)}
 footer{position:fixed;bottom:0;left:0;width:100%;height:65px;}
 footer > nav{display:-webkit-box;display:-moz-box;display:box;-webkit-box-pack:center;-moz-box-pack:center;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;}
