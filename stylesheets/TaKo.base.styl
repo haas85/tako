@@ -12,14 +12,21 @@ body
 section
   height inherit
   width inherit
-  display none
   position fixed
-  z-index SECTION_INDEX
+  z-index 0
   top 0
   left 0
+  opacity 0
+
+  -webkit-transition-duration SECTION_TRANSITION_TIME
+  -moz-transition-duration SECTION_TRANSITION_TIME
+  -ms-transition-duration SECTION_TRANSITION_TIME
+  -o-transition-duration SECTION_TRANSITION_TIME
+  transition-duration SECTION_TRANSITION_TIME
 
   &.active
-    display block
+    opacity 1
+    z-index SECTION_INDEX
 
 header
   position fixed
