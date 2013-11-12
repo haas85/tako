@@ -14,7 +14,7 @@ section
   width inherit
   display none
   position fixed
-  z-index 100
+  z-index SECTION_INDEX
   top 0
   left 0
 
@@ -27,27 +27,34 @@ header
   left 0
   height HEADER_HEIGHT
   width 100%
-  text-align center
 
   & > h1
     font-weight bold
     display inline-block
     position absolute
-    left 4em
-    right 4em
+    text-align center
+    width 100%
+    left 0
+    z-index HEADER_H1_INDEX
 
   & > nav
+    margin-top 5px
+    position absolute
+    z-index HEADER_NAV_INDEX
 
     &.right
-      margin-right 5px
-      float: right
+      right 0
+
+      & > button
+        margin-right 5px
 
     &.left
-      margin-left 5px
-      float: left
+      left 0
+
+      & > button
+        margin-left 5px
 
     & > button.button
-      margin-top 5px
       text-indent 0
       border 1px solid #737476
       border-radius(5px)
@@ -82,7 +89,7 @@ aside
   display block
   width ASIDE_WIDTH
   padding ASIDE_PADDING
-  z-index 110
+  z-index ASIDE_INDEX
   position fixed
   top 50px
   bottom 0
@@ -92,7 +99,7 @@ aside
   &.show
     transform(translate(ASIDE_TRANSITION))
 
-#background
+div[data-element="aside_background"]
   position fixed
   top HEADER_HEIGHT
   bottom 0
@@ -103,6 +110,6 @@ aside
 
   &.show
     background-color rgba(0,0,0,0.6)
-    z-index 109
+    z-index ASIDE_BCK_INDEX
 
 

@@ -51,9 +51,9 @@
     var aside, bck, hide, show, toggle;
     aside = $("aside");
     if (aside.length > 0) {
-      $("body").append('<div id="background"></div>');
+      $("body").append('<div data-element="aside_background"></div>');
     }
-    bck = $("#background");
+    bck = $("[data-element=aside_background]");
     show = function() {
       bck.addClass("show");
       return aside.addClass("show");
