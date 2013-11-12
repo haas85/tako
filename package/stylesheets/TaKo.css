@@ -31,10 +31,10 @@ aside{display:block;width:256px;padding:6px;z-index:201;position:fixed;top:50px;
 aside.show{-webkit-transform:translate(270px);-moz-transform:translate(270px);-ms-transform:translate(270px);-o-transform:translate(270px);transform:translate(270px)}
 div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;right:0;-webkit-transition:opacity 150ms ease-out;-moz-transition:opacity 150ms ease-out;-ms-transition:opacity 150ms ease-out;-o-transition:opacity 150ms ease-out;transition:opacity 150ms ease-out;z-index:0;opacity:0;}
 div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-index:200}
-.indented{padding:.8em}
+.indented > div{padding:.8em}
 
 article ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
-article ul > li{position:relative;width:100%;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:11px 60px 11px 10px;}
+article ul > li{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:11px 60px 11px 10px;}
 article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 60px 1px 10px}
 article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
 
