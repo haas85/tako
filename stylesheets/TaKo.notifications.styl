@@ -10,18 +10,21 @@ div[data-element="notification"]
   padding-left NOTIFICATION_INDENT
   padding-right NOTIFICATION_INDENT
 
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  box-align: center;
+  -webkit-box-align center
+  -ms-box-align center
+  -moz-box-align center
+  box-align center
 
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  box-pack: center;
+  -webkit-box-pack center
+  -ms-box-pack center
+  -moz-box-pack center
+  box-pack center
 
   &.show
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
+    display -webkit-box
+    display -ms-box
+    display -moz-box
+    display box
 
   & > div.window
     background-color rgba(0,0,0,0.8)
@@ -29,9 +32,10 @@ div[data-element="notification"]
     text-align center
     padding INDENT
 
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
+    -webkit-box-flex 1
+    -moz-ms-flex 1
+    -moz-box-flex 1
+    box-flex 1
 
     & > *
       display block
