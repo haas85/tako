@@ -23,8 +23,10 @@ module.exports = (grunt) ->
 
       stylus:[
         "stylesheets/TaKo.base.styl",
+        "stylesheets/TaKo.lists.styl",
         "stylesheets/TaKo.forms.styl",
         "stylesheets/TaKo.notifications.styl",
+        "stylesheets/TaKo.colors.styl",
         "stylesheets/TaKo.theme.styl"
       ]
 

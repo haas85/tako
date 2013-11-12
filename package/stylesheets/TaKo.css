@@ -33,6 +33,11 @@ div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;rig
 div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-index:200}
 .indented{padding:.8em}
 
+article ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
+article ul > li{position:relative;width:100%;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:11px 60px 11px 10px;}
+article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 60px 1px 10px}
+article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
+
 button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:40px;text-decoration:none;text-align:center}
 
 div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-left:2em;padding-right:2em;-webkit-box-align:center;-ms-box-align:center;-moz-box-align:center;-webkit-box-align:center;-moz-box-align:center;-ms-box-align:center;-o-box-align:center;box-align:center;-webkit-box-pack:center;-ms-box-pack:center;-moz-box-pack:center;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;}
@@ -42,6 +47,17 @@ div[data-element="notification"] > div.window.show{margin-top:0%;opacity:1}
 div[data-element="notification"] > div.window > *{display:block;text-align:center;width:100%}
 div[data-element="notification"] > div.window > .title{padding-bottom:.5em;border-bottom:2px solid rgba(250,250,250,0.8)}
 div[data-element="notification"] > div.window > .content{padding-top:.5em}
+
+.blue{background-color:#00f !important}
+.red{background-color:#f00 !important}
+.yellow{background-color:#ff0 !important}
+.black{background-color:#000 !important}
+.white{background-color:#fff !important}
+.grey{background-color:#808080 !important}
+.green{background-color:#008000 !important}
+.pink{background-color:#ffc0cb !important}
+.purple{background-color:#800080 !important}
+.brown{background-color:#a52a2a !important}
 
 body{font:12.8px "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
 header{background-color:#06f;color:#f4f4f4}
