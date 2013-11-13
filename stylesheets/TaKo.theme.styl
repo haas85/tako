@@ -33,6 +33,12 @@ header
   background-color THEME
   color COLOR
 
+  & .counter
+    background-color lighten(THEME, 30%)
+
+  & .button .counter
+    background-color darken(THEME, 10%)
+
 footer
   background-color ASIDE
   color COLOR
@@ -41,7 +47,7 @@ footer
     background-color ASIDE
 
   & .counter
-    border 1px solid COLOR
+    background-color lighten(ASIDE, 15%)
 
 article
   background-color BACKGROUND

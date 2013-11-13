@@ -42,10 +42,12 @@ aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;}
 aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
 
 button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:40px;text-decoration:none;text-align:center}
-header button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;line-height:30px;text-decoration:none;text-align:center}
-header button.button{text-indent:0;border:1px solid #737476;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:30px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25)}
+header button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;line-height:30px;text-decoration:none;text-align:center;}
+header button .counter{position:relative;top:-.55em;margin-left:.5em;margin-right:.5em;line-height:15px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.1em .2em .1em .2em;font-size:11px}
+header button.button{text-indent:0;border:1px solid #737476;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:30px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25);}
+header button.button .counter{margin-left:.05em;margin-right:.05em}
 footer div button{width:100%;height:100%;}
-footer div button .counter{position:relative;top:-1.2000000000000002em;margin-left:.8em;margin-top:.8em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
+footer div button .counter{position:relative;top:-1.2000000000000002em;margin-left:.8em;margin-right:.8em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
 
 div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-left:2em;padding-right:2em;padding-top:4em;-webkit-box-align:start;-ms-box-align:start;-moz-box-align:start;-webkit-box-align:start;-moz-box-align:start;-ms-box-align:start;-o-box-align:start;box-align:start;-webkit-box-pack:center;-ms-box-pack:center;-moz-box-pack:center;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;}
 div[data-element="notification"].show{display:-webkit-box;display:-ms-box;display:-moz-box;display:box}
@@ -67,10 +69,12 @@ div[data-element="notification"] > div.window > .content{padding-top:.5em}
 .brown{background-color:#a52a2a !important}
 
 body{font:12.8px "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
-header{background-color:#06f;color:#f4f4f4}
+header{background-color:#06f;color:#f4f4f4;}
+header .counter{background-color:#4d94ff}
+header .button .counter{background-color:#005ce6}
 footer{background-color:#2f2f2f;color:#f4f4f4;}
 footer nav > div > button{background-color:#2f2f2f}
-footer .counter{border:1px solid #f4f4f4}
+footer .counter{background-color:#4e4e4e}
 article{background-color:#e7e7e7;color:#000}
 aside{background-color:#2f2f2f;color:#f4f4f4;}
 aside .counter{background-color:#6d6d6d}
