@@ -19,21 +19,9 @@ aside
   bottom 0
   left - ASIDE_TRANSITION
   transition(all ASIDE_TRANSITION_TIME ease)
-  // -webkit-transition-duration ASIDE_TRANSITION_TIME
-  // -moz-transition-duration ASIDE_TRANSITION_TIME
-  // -ms-transition-duration ASIDE_TRANSITION_TIME
-  // -o-transition-duration ASIDE_TRANSITION_TIME
-  // transition-duration ASIDE_TRANSITION_TIME
-
-  // -webkit-transition-timing-function cubic-bezier(.73, .25, .4, .97)
-  // -moz-transition-timing-function cubic-bezier(.73, .25, .4, .97)
-  // -ms-transition-timing-function cubic-bezier(.73, .25, .4, .97)
-  // -o-transition-timing-function cubic-bezier(.73, .25, .4, .97)
-  // transition-timing-function cubic-bezier(.73, .25, .4, .97)
 
   &.show
     transform(translate(ASIDE_TRANSITION))
-    // left 0
 
   & .counter
     margin-top -3px
@@ -63,4 +51,16 @@ div[data-element="aside_background"]
 
 .anchor
   width 100%
+
+.tiny
+  font-size FONT_SIZE_TINY
+
+.small
+  font-size FONT_SIZE_SMALL
+
+.tiny
+  font-size FONT_SIZE_BIG
+
+.tiny
+  font-size FONT_SIZE_LARGE
 
