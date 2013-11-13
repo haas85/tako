@@ -140,7 +140,9 @@
     var goTo;
     goTo = function(section_id) {
       $("section.active").removeClass("active");
-      return $("section#" + section_id).addClass("active");
+      $("section#" + section_id).addClass("active");
+      $(".current[data-section]").removeClass("current");
+      return $("[data-section=" + section_id + "]").addClass("current");
     };
     $("[data-section]").each(function(element) {
       var _this = this;

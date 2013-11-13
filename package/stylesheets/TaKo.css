@@ -32,11 +32,13 @@ aside.show{-webkit-transform:translate(270px);-moz-transform:translate(270px);-m
 div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;right:0;-webkit-transition:opacity 150ms ease-out;-moz-transition:opacity 150ms ease-out;-ms-transition:opacity 150ms ease-out;-o-transition:opacity 150ms ease-out;transition:opacity 150ms ease-out;z-index:0;opacity:0;}
 div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-index:200}
 .indented > div{padding:.8em}
+.anchor{width:100%}
 
 article ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 article ul > li{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:11px 60px 11px 10px;}
 article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 60px 1px 10px}
 article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
+article ul.indented > li{margin:.8em}
 aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 60px 11px 10px;}
 aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 60px 1px 10px}
@@ -72,3 +74,4 @@ header button.button{background-color:#267dff}
 button{font-size:12.8px;background-color:#06f;color:#f4f4f4}
 button.accept{background-color:#2ecc71;color:#f4f4f4}
 button.cancel{background-color:#e74c3c;color:#f4f4f4}
+aside .current,footer .current{background-color:#4e4e4e}
