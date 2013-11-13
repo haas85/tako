@@ -74,6 +74,11 @@
         return toggle();
       });
     });
+    $("aside > *").each(function(element) {
+      return $(this).bind("click", function() {
+        return hide();
+      });
+    });
     bck.bind("click", function() {
       return hide();
     });

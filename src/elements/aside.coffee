@@ -18,6 +18,9 @@ TaKo.Aside = do (TK = TaKo) ->
   $("[data-action=aside]").each (element) ->
     $(@).bind "click", -> do toggle
 
+  $("aside > *").each (element) ->
+    $(@).bind "click", -> do hide
+
   bck.bind "click", -> do hide
 
   show: show
