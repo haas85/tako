@@ -1,5 +1,5 @@
 TEXT                = #000
-THEME               = #0066FF
+THEME               = #FF6600
 COLOR               = #F4F4F4
 ASIDE               = #2f2f2f
 ALERT               = #e74c3c
@@ -36,7 +36,10 @@ header
   & .counter
     background-color lighten(THEME, 30%)
 
-  & .button .counter
+  & .button
+    border 1px solid darken(THEME, 30%)
+
+  & .counter
     background-color darken(THEME, 10%)
 
 footer
