@@ -18,19 +18,27 @@
 
 (function() {
   TaKo.Article = (function(TK) {
-    var goTo;
+    var current, goTo, _current;
     goTo = function(article_id) {
-      var current_article, current_section, new_article, new_section;
-      current_article = $("section.active article.active");
-      current_section = current_article.parent();
-      new_article = $("article#" + article_id);
-      new_section = new_article.parent();
-      if (current_article[0].id !== new_article[0].id) {
+      var new_section, _current, _current_article, _current_section;
+      _current_article = $("section.active article.active");
+      _current_section = _current_article.parent();
+      _current = $("article#" + article_id);
+      new_section = _current.parent();
+      if (_current_article[0].id !== _current[0].id) {
         new_section.children().removeClass("active");
-        new_article.addClass("active");
+        _current.addClass("active");
       }
-      if (current_section[0].id !== new_section[0].id) {
+      if (_current_section[0].id !== new_section[0].id) {
         return TaKo.Section.goTo(new_section[0].id);
+      }
+    };
+    current = function() {
+      var _current;
+      if (typeof _current !== "undefined" && _current !== null) {
+        return _current;
+      } else {
+        return _current = $("section.active article.active");
       }
     };
     $("[data-article]").each(function(element) {
@@ -39,8 +47,10 @@
         return goTo($(_this).attr("data-article"));
       });
     });
+    _current = null;
     return {
-      goTo: goTo
+      goTo: goTo,
+      current: current
     };
   })(TaKo);
 
@@ -142,12 +152,21 @@
 
 (function() {
   TaKo.Section = (function(TK) {
-    var goTo;
+    var current, goTo, _current;
     goTo = function(section_id) {
+      var _current;
       $("section.active").removeClass("active");
-      $("section#" + section_id).addClass("active");
+      _current = $("section#" + section_id).addClass("active");
       $(".current[data-section]").removeClass("current");
       return $("[data-section=" + section_id + "]").addClass("current");
+    };
+    current = function() {
+      var _current;
+      if (typeof _current !== "undefined" && _current !== null) {
+        return _current;
+      } else {
+        return _current = $("section.active");
+      }
     };
     $("[data-section]").each(function(element) {
       var _this = this;
@@ -155,8 +174,10 @@
         return goTo($(_this).attr("data-section"));
       });
     });
+    _current = null;
     return {
-      goTo: goTo
+      goTo: goTo,
+      current: current
     };
   })(TaKo);
 
