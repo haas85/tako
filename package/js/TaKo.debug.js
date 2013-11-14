@@ -4,14 +4,20 @@
   window.TaKo = TaKo = {};
 
   TaKo.init = function() {
+    var loaded, myScroll;
     if ($("section.active").length === 0) {
       $("section").first().addClass("active");
     }
-    return $("section").each(function() {
+    $("section").each(function() {
       if ($(this).children("article.active").length === 0) {
         return $(this).children("article").first().addClass("active");
       }
     });
+    myScroll = new iScroll('a11');
+    loaded = function() {
+      return setTimeout(TaKo.Scroll.init, 100);
+    };
+    return window.addEventListener('load', loaded, false);
   };
 
 }).call(this);
@@ -202,6 +208,38 @@
       goTo: goTo,
       title: title,
       current: current
+    };
+  })(TaKo);
+
+}).call(this);
+
+(function() {
+  TaKo.Scroll = (function(TK) {
+    var init;
+    init = function(options) {
+      if (options == null) {
+        options = {};
+      }
+      return $(".scroll").each(function(element) {
+        var config, el;
+        el = $(this);
+        config = {
+          hScroll: el.hasClass("horizontal"),
+          vScroll: el.hasClass("vertical"),
+          hScrollbar: options.scrollbar != null ? options.scrollbar : false,
+          vScrollbar: options.scrollbar != null ? options.scrollbar : false,
+          fadeScrollbar: options.fade != null ? options.fade : false,
+          hideScrollbar: options.hide_scrollbar != null ? options.hide_scrollbar : true,
+          bounce: options.bounce != null ? options.bounce : true,
+          momentum: options.momentum != null ? options.momentum : false,
+          lockDirection: options.lock_direction != null ? options.lock_direction : false
+        };
+        console.log(config);
+        return new iScroll(this.id, config);
+      });
+    };
+    return {
+      init: init
     };
   })(TaKo);
 

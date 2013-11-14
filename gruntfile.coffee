@@ -18,7 +18,8 @@ module.exports = (grunt) ->
     source:
       coffee: [
             "src/**.coffee",
-            "src/elements/**.coffee"
+            "src/elements/**.coffee",
+            "src/modules/**.coffee"
           ]
 
       stylus:[
