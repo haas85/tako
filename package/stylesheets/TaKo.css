@@ -72,7 +72,7 @@ aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 
 .box_8{-webkit-box-flex:8;-moz-box-flex:8;-ms-box-flex:8;-o-box-flex:8;box-flex:8}
 .box_9{-webkit-box-flex:9;-moz-box-flex:9;-ms-box-flex:9;-o-box-flex:9;box-flex:9}
 
-button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:2.5em;text-decoration:none;text-align:center;}
+button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:2.5em;text-decoration:none;text-align:center;padding-left:1em;padding-right:1em;}
 button.smallest{line-height:2em;padding:0 .6em}
 button.small{line-height:2.25em}
 button.big{line-height:2.75em}
