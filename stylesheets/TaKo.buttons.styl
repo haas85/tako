@@ -4,9 +4,22 @@ button
   display inline-block
   font-weight bold
   font-style normal
-  line-height 40px
+  line-height 2.50em
   text-decoration none
   text-align center
+
+  &.smallest
+    line-height 2em
+    padding 0 .6em
+
+  &.small
+    line-height 2.25em
+
+  &.big
+    line-height 2.75em
+
+  &.biggest
+    line-height 3em
 
 header
   & button
@@ -28,7 +41,7 @@ header
       -moz-border-radius 2px
       border-radius 4px
       padding 0.1em 0.2em 0.1em 0.2em
-      font-size FONT_SIZE_TINY
+      font-size FONT_SIZE_SMALLEST
 
   & button.button
     text-indent 0

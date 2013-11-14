@@ -6,10 +6,10 @@ div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;rig
 div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-index:200}
 .indented > div{padding:.8em}
 .anchor{width:100%}
-.tiny{font-size:11px}
+.smallest{font-size:11px}
 .small{font-size:.9em}
-.tiny{font-size:1.2em}
-.tiny{font-size:1.4em}
+.big{font-size:1.2em}
+.biggest{font-size:1.4em}
 
 section{height:inherit;width:inherit;position:fixed;z-index:0;top:0;left:0;opacity:0;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
 section.active{opacity:1;z-index:100}
@@ -72,7 +72,11 @@ aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 
 .box_8{-webkit-box-flex:8;-moz-box-flex:8;-ms-box-flex:8;-o-box-flex:8;box-flex:8}
 .box_9{-webkit-box-flex:9;-moz-box-flex:9;-ms-box-flex:9;-o-box-flex:9;box-flex:9}
 
-button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:40px;text-decoration:none;text-align:center}
+button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:2.5em;text-decoration:none;text-align:center;}
+button.smallest{line-height:2em;padding:0 .6em}
+button.small{line-height:2.25em}
+button.big{line-height:2.75em}
+button.biggest{line-height:3em}
 header button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;height:100%;text-decoration:none;text-align:center;}
 header button .counter{position:relative;top:-.55em;margin-left:.5em;margin-right:.5em;line-height:15px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.1em .2em .1em .2em;font-size:11px}
 header button.button{text-indent:0;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:35px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25);}
