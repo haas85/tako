@@ -45,6 +45,29 @@ aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;}
 aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
 
+.line{width:100%;display:block;}
+.line > *{float:left;display:inline;text-align:center}
+.line > .one_column{width:10%}
+.line > .one_gap{margin-left:10%}
+.line > .two_column{width:20%}
+.line > .two_gap{margin-left:20%}
+.line > .three_column{width:30%}
+.line > .three_gap{margin-left:30%}
+.line > .four_column{width:40%}
+.line > .four_gap{margin-left:40%}
+.line > .five_column{width:50%}
+.line > .five_gap{margin-left:50%}
+.line > .six_column{width:60%}
+.line > .six_gap{margin-left:60%}
+.line > .seven_column{width:70%}
+.line > .seven_gap{margin-left:70%}
+.line > .eight_column{width:80%}
+.line > .eight_gap{margin-left:80%}
+.line > .nine_column{width:90%}
+.line > .nine_gap{margin-left:90%}
+.line > .ten_column{width:100%}
+.line > .ten_gap{margin-left:100%}
+
 button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:40px;text-decoration:none;text-align:center}
 header button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;height:100%;text-decoration:none;text-align:center;}
 header button .counter{position:relative;top:-.55em;margin-left:.5em;margin-right:.5em;line-height:15px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.1em .2em .1em .2em;font-size:11px}
