@@ -1,5 +1,12 @@
 TaKo.Section = do (TK = TaKo) ->
 
+  title = (html, section_id) ->
+    unless section_id?
+      el = current().children("header").children("h1")
+    else
+      el = $("section##{section_id}").children("header").children("h1")
+    if el.length is 1
+      if html? then el.html html else el.html()
 
   goTo = (section_id)->
     $("section.active").removeClass "active"
@@ -16,4 +23,5 @@ TaKo.Section = do (TK = TaKo) ->
   _current = null
 
   goTo: goTo
+  title: title
   current: current

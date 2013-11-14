@@ -152,7 +152,22 @@
 
 (function() {
   TaKo.Section = (function(TK) {
-    var current, goTo, _current;
+    var current, goTo, title, _current;
+    title = function(html, section_id) {
+      var el;
+      if (section_id == null) {
+        el = current().children("header").children("h1");
+      } else {
+        el = $("section#" + section_id).children("header").children("h1");
+      }
+      if (el.length === 1) {
+        if (html != null) {
+          return el.html(html);
+        } else {
+          return el.html();
+        }
+      }
+    };
     goTo = function(section_id) {
       var _current;
       $("section.active").removeClass("active");
@@ -177,6 +192,7 @@
     _current = null;
     return {
       goTo: goTo,
+      title: title,
       current: current
     };
   })(TaKo);
