@@ -14,7 +14,6 @@ TaKo.Article = do (TK = TaKo) ->
     if _current_section[0].id isnt new_section[0].id
       TaKo.Section.goTo new_section[0].id
     else
-      console.log "LANZA A"
       _current_article.trigger "unload"
       _current = new_article.trigger "load"
 

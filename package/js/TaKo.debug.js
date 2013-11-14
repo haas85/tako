@@ -32,7 +32,6 @@
       if (_current_section[0].id !== new_section[0].id) {
         return TaKo.Section.goTo(new_section[0].id);
       } else {
-        console.log("LANZA A");
         _current_article.trigger("unload");
         return _current = new_article.trigger("load");
       }
