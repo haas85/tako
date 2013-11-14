@@ -20,17 +20,21 @@
   TaKo.Article = (function(TK) {
     var current, goTo, _current;
     goTo = function(article_id) {
-      var new_section, _current, _current_article, _current_section;
-      _current_article = $("section.active article.active");
+      var new_article, new_section, _current, _current_article, _current_section;
+      _current_article = current();
       _current_section = _current_article.parent();
-      _current = $("article#" + article_id);
-      new_section = _current.parent();
-      if (_current_article[0].id !== _current[0].id) {
+      new_article = $("article#" + article_id);
+      new_section = new_article.parent();
+      if (_current_article[0].id !== new_article[0].id) {
         new_section.children().removeClass("active");
-        _current.addClass("active");
+        _current = new_article.addClass("active");
       }
       if (_current_section[0].id !== new_section[0].id) {
         return TaKo.Section.goTo(new_section[0].id);
+      } else {
+        console.log("LANZA A");
+        _current_article.trigger("unload");
+        return _current = new_article.trigger("load");
       }
     };
     current = function() {
@@ -169,11 +173,16 @@
       }
     };
     goTo = function(section_id) {
-      var _current;
-      $("section.active").removeClass("active");
-      _current = $("section#" + section_id).addClass("active");
-      $(".current[data-section]").removeClass("current");
-      return $("[data-section=" + section_id + "]").addClass("current");
+      var el, _current;
+      el = current();
+      if (el[0].id !== section_id) {
+        el.removeClass("active");
+        el.children("article.active").trigger("unload");
+        _current = $("section#" + section_id).addClass("active");
+        _current.children("article.active").trigger("load");
+        $(".current[data-section]").removeClass("current");
+        return $("[data-section=" + section_id + "]").addClass("current");
+      }
     };
     current = function() {
       var _current;

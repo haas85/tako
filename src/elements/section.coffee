@@ -9,10 +9,14 @@ TaKo.Section = do (TK = TaKo) ->
       if html? then el.html html else el.html()
 
   goTo = (section_id)->
-    $("section.active").removeClass "active"
-    _current = $("section##{section_id}").addClass "active"
-    $(".current[data-section]").removeClass "current"
-    $("[data-section=#{section_id}]").addClass "current"
+    el = current()
+    if el[0].id isnt section_id
+      el.removeClass("active")
+      el.children("article.active").trigger "unload"
+      _current = $("section##{section_id}").addClass "active"
+      _current.children("article.active").trigger "load"
+      $(".current[data-section]").removeClass "current"
+      $("[data-section=#{section_id}]").addClass "current"
 
   current = ->
     if _current? then _current else _current = $ "section.active"
