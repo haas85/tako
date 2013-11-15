@@ -4,7 +4,7 @@
   window.TaKo = TaKo = {};
 
   TaKo.init = function() {
-    var loaded, myScroll;
+    var loaded;
     if ($("section.active").length === 0) {
       $("section").first().addClass("active");
     }
@@ -13,7 +13,6 @@
         return $(this).children("article").first().addClass("active");
       }
     });
-    myScroll = new iScroll('a11');
     loaded = function() {
       return setTimeout(TaKo.Scroll.init, 100);
     };
@@ -220,7 +219,7 @@
       if (options == null) {
         options = {};
       }
-      return $(".scroll").each(function(element) {
+      $(".scroll").each(function(element) {
         var config, el;
         el = $(this);
         config = {
@@ -234,8 +233,22 @@
           momentum: options.momentum != null ? options.momentum : false,
           lockDirection: options.lock_direction != null ? options.lock_direction : false
         };
-        console.log(config);
         return new iScroll(this.id, config);
+      });
+      $("input").each(function(e) {
+        return $(this).bind("mousedown touchstart", function(e) {
+          return e.stopPropagation();
+        });
+      });
+      $("select").each(function(e) {
+        return $(this).bind("mousedown touchstart", function(e) {
+          return e.stopPropagation();
+        });
+      });
+      return $("textarea").each(function(e) {
+        return $(this).bind("mousedown touchstart", function(e) {
+          return e.stopPropagation();
+        });
       });
     };
     return {

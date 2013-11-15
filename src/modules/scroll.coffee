@@ -12,7 +12,10 @@ TaKo.Scroll = do (TK = TaKo) ->
         bounce: if options.bounce? then options.bounce else true
         momentum: if options.momentum? then options.momentum else false
         lockDirection: if options.lock_direction? then options.lock_direction else false
-      console.log config
       new iScroll(@id, config)
+
+    $("input").each (e) -> $(@).bind "mousedown touchstart", (e) -> e.stopPropagation()
+    $("select").each (e) -> $(@).bind "mousedown touchstart", (e) -> do e.stopPropagation
+    $("textarea").each (e) -> $(@).bind "mousedown touchstart", (e) -> do e.stopPropagation
 
   init: init
