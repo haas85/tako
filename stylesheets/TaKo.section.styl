@@ -6,12 +6,6 @@ section
   top 0
   left 0
   opacity 0
-  display -webkit-box
-  display -ms-box
-  display -moz-box
-  display -o-box
-  display box
-  box-orient vertical
 
   -webkit-transition-duration SECTION_TRANSITION_TIME
   -moz-transition-duration SECTION_TRANSITION_TIME
@@ -23,10 +17,20 @@ section
     opacity 1
     z-index SECTION_INDEX
 
+  &:not(.active) > article
+    display none
+
+  &.footer > article
+    padding-bottom FOOTER_HEIGHT
+
 header
+  position fixed
+  top 0
+  left 0
+  right 0
   height HEADER_HEIGHT
   width 100%
-  box-flex 0
+  z-index HEADER_INDEX
 
   & > h1
     font-weight bold
@@ -55,7 +59,10 @@ header
         margin-left 5px
 
 footer
-  box-flex 0
+  position fixed
+  bottom 0
+  left 0
+  right 0
   width 100%
   height FOOTER_HEIGHT
   line-height FOOTER_HEIGHT
@@ -82,10 +89,11 @@ footer
       text-align center
 
 article
-  box-flex 1
   width 100%
   display none
   padding-top 5px
+  position absolute
+  top HEADER_HEIGHT
 
   &.active
     display block

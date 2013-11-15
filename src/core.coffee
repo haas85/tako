@@ -7,7 +7,3 @@ TaKo.init = ->
     if $(@).children("article.active").length is 0
       $(@).children("article").first().addClass "active"
 
-  loaded = -> setTimeout TaKo.Scroll.init, 100
-
-  window.addEventListener 'load', loaded, false
-
