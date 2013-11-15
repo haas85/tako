@@ -109,7 +109,7 @@ div[data-element="notification"] > div.window > .content{padding-top:.5em}
 .firefox{background-color:#f60 !important}
 
 body{font:12.8px "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;background-color:#e7e7e7}
-header{background-image:-webkit-linear-gradient(#ffa366,#f60);background-image:-moz-linear-gradient(#ffa366,#f60);background-image:-ms-linear-gradient(#ffa366,#f60);background-image:-o-linear-gradient(#ffa366,#f60);background-image:linear-gradient(#ffa366,#f60);color:#f4f4f4;}
+header{background-image:-webkit-linear-gradient(#ff9c59,#f60);background-image:-moz-linear-gradient(#ff9c59,#f60);background-image:-ms-linear-gradient(#ff9c59,#f60);background-image:-o-linear-gradient(#ff9c59,#f60);background-image:linear-gradient(#ff9c59,#f60);color:#f4f4f4;}
 header .counter{background-color:#ff944d}
 header .button{border:1px solid #b34700}
 header .counter{background-color:#e65c00}
