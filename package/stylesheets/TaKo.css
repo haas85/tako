@@ -29,7 +29,7 @@ footer > nav{width:100%;display:-webkit-box;display:-ms-box;display:-moz-box;dis
 footer > nav > *{-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1;width:100%;}
 footer > nav > *.active{background-color:rgba(250,250,250,0.15)}
 footer > nav > div{display:block;height:65px;text-align:center}
-article{width:100%;display:none;padding-top:5px;position:absolute;top:50px;}
+article{min-width:100%;width:auto;display:none;padding-top:5px;position:absolute;top:50px;}
 article.active{display:block}
 
 article ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
@@ -76,17 +76,17 @@ aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 
 .box_8{-webkit-box-flex:8;-moz-box-flex:8;-ms-box-flex:8;-o-box-flex:8;box-flex:8}
 .box_9{-webkit-box-flex:9;-moz-box-flex:9;-ms-box-flex:9;-o-box-flex:9;box-flex:9}
 
-button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:2.5em;text-decoration:none;text-align:center;padding-left:1em;padding-right:1em;}
-button.smallest{line-height:2em;padding:0 .6em}
-button.small{line-height:2.25em}
-button.big{line-height:2.75em}
-button.biggest{line-height:3em}
+button,.button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:2.5em;text-decoration:none;text-align:center;padding-left:1em;padding-right:1em;}
+button.smallest,.button.smallest{line-height:2em;padding:0 .6em}
+button.small,.button.small{line-height:2.25em}
+button.big,.button.big{line-height:2.75em}
+button.biggest,.button.biggest{line-height:3em}
 header button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;height:100%;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);}
 header button .counter{position:relative;top:-.55em;margin-left:.5em;margin-right:.5em;line-height:15px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.1em .2em .1em .2em;font-size:11px}
 header button.button{text-indent:0;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:35px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25);}
 header button.button .counter{margin-left:.05em;margin-right:.05em}
 footer div button{width:100%;height:inherit;}
-footer div button .counter{position:relative;top:-1.2000000000000002em;margin-left:.8em;margin-right:.8em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
+footer div button .counter{position:relative;top:-1.2000000000000002em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
 
 div[data-element="notification"]{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-left:2em;padding-right:2em;padding-top:4em;-webkit-box-align:start;-ms-box-align:start;-moz-box-align:start;-webkit-box-align:start;-moz-box-align:start;-ms-box-align:start;-o-box-align:start;box-align:start;-webkit-box-pack:center;-ms-box-pack:center;-moz-box-pack:center;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;}
 div[data-element="notification"].show{display:-webkit-box;display:-ms-box;display:-moz-box;display:box}
