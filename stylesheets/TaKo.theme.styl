@@ -68,12 +68,14 @@ aside
   & .counter
     background-color lighten(ASIDE, 30%)
 
-header button.button
-  background-color lighten(THEME, 15%)
-
 button
   font-size FONT_SIZE
-  background-color THEME
+  // background-color THEME
+  background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
+  background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
+  background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
+  background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
+  background-image linear-gradient(lighten(THEME, 35%), THEME)
   color COLOR
 
 button.accept
