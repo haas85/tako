@@ -119,8 +119,8 @@ footer .counter{background-color:#4e4e4e}
 article{background-color:#e7e7e7;color:#000}
 aside{background-color:#2f2f2f;color:#f4f4f4;}
 aside .counter{background-color:#6d6d6d}
-button{font-size:12.8px;background-image:-webkit-linear-gradient(#ff9c59,#f60);background-image:-moz-linear-gradient(#ff9c59,#f60);background-image:-ms-linear-gradient(#ff9c59,#f60);background-image:-o-linear-gradient(#ff9c59,#f60);background-image:linear-gradient(#ff9c59,#f60);color:#f4f4f4}
-button.accept{background-color:#2ecc71;color:#f4f4f4}
-button.cancel{background-color:#e74c3c;color:#f4f4f4}
+button,.button{font-size:12.8px;background-color:#f60;background-image:-webkit-linear-gradient(#ff9c59,#f60);background-image:-moz-linear-gradient(#ff9c59,#f60);background-image:-ms-linear-gradient(#ff9c59,#f60);background-image:-o-linear-gradient(#ff9c59,#f60);background-image:linear-gradient(#ff9c59,#f60);color:#f4f4f4}
+button.accept,.button.accept{background-color:#1eb815;background-image:-webkit-linear-gradient(#3ce832,#1eb815);background-image:-moz-linear-gradient(#3ce832,#1eb815);background-image:-ms-linear-gradient(#3ce832,#1eb815);background-image:-o-linear-gradient(#3ce832,#1eb815);background-image:linear-gradient(#3ce832,#1eb815);color:#f4f4f4}
+button.cancel,.button.cancel{background-color:#ed1c13;background-image:-webkit-linear-gradient(#f1554e,#ed1c13);background-image:-moz-linear-gradient(#f1554e,#ed1c13);background-image:-ms-linear-gradient(#f1554e,#ed1c13);background-image:-o-linear-gradient(#f1554e,#ed1c13);background-image:linear-gradient(#f1554e,#ed1c13);color:#f4f4f4}
 aside .current,footer .current{background-color:#4e4e4e}
 div[data-element="notification"] > div.window{background-color:#ededed}

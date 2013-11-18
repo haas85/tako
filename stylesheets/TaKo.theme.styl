@@ -2,8 +2,8 @@ TEXT                = #000
 THEME               = #FF6600
 COLOR               = #F4F4F4
 ASIDE               = #2f2f2f
-ALERT               = #e74c3c
-SUCCESS             = #2ecc71
+ALERT               = #ed1c13
+SUCCESS             = #1eb815
 WARNING             = #edba22
 DISABLED            = #acb8b9
 BACKGROUND          = lighten(#DFDFDF, 25%)
@@ -68,9 +68,9 @@ aside
   & .counter
     background-color lighten(ASIDE, 30%)
 
-button
+button, .button
   font-size FONT_SIZE
-  // background-color THEME
+  background-color THEME
   background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
@@ -78,13 +78,25 @@ button
   background-image linear-gradient(lighten(THEME, 35%), THEME)
   color COLOR
 
-button.accept
-  background-color SUCCESS
-  color COLOR
+button, .button
+  &.accept
+    background-color SUCCESS
+    background-image -webkit-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
+    background-image -moz-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
+    background-image -ms-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
+    background-image -o-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
+    background-image linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
+    color COLOR
 
-button.cancel
-  background-color ALERT
-  color COLOR
+button, .button
+  &.cancel
+    background-color ALERT
+    background-image -webkit-linear-gradient(lighten(ALERT, 25%), ALERT)
+    background-image -moz-linear-gradient(lighten(ALERT, 25%), ALERT)
+    background-image -ms-linear-gradient(lighten(ALERT, 25%), ALERT)
+    background-image -o-linear-gradient(lighten(ALERT, 25%), ALERT)
+    background-image linear-gradient(lighten(ALERT, 25%), ALERT)
+    color COLOR
 
 aside .current, footer .current
   background-color lighten(ASIDE, 15%)
