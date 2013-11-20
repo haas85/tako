@@ -2,7 +2,7 @@ TEXT                = #000
 THEME               = #FF6600
 COLOR               = #F4F4F4
 ASIDE               = #2f2f2f
-ALERT               = #ed1c13
+FAIL                = #ed1c13
 SUCCESS             = #1eb815
 WARNING             = #edba22
 DISABLED            = #acb8b9
@@ -90,12 +90,12 @@ button, .button
 
 button, .button
   &.cancel
-    background-color ALERT
-    background-image -webkit-linear-gradient(lighten(ALERT, 25%), ALERT)
-    background-image -moz-linear-gradient(lighten(ALERT, 25%), ALERT)
-    background-image -ms-linear-gradient(lighten(ALERT, 25%), ALERT)
-    background-image -o-linear-gradient(lighten(ALERT, 25%), ALERT)
-    background-image linear-gradient(lighten(ALERT, 25%), ALERT)
+    background-color FAIL
+    background-image -webkit-linear-gradient(lighten(FAIL, 25%), FAIL)
+    background-image -moz-linear-gradient(lighten(FAIL, 25%), FAIL)
+    background-image -ms-linear-gradient(lighten(FAIL, 25%), FAIL)
+    background-image -o-linear-gradient(lighten(FAIL, 25%), FAIL)
+    background-image linear-gradient(lighten(FAIL, 25%), FAIL)
     color COLOR
 
 aside .current, footer .current
@@ -104,7 +104,7 @@ aside .current, footer .current
 div[data-element="notification"] > div.window
   background-color lighten(BACKGROUND, 25%)
 
-  &.success
+  &.success, &.error
     background-color rgba(0,0,0,0.8)
 
     & *
@@ -114,8 +114,13 @@ div[data-element="notification"] > div.window
       color rgba(255,255,255,0.9)
 
     & .icon
-      color SUCCESS
       font-weight bold
+
+  &.success .icon
+    color SUCCESS
+
+  &.error .icon
+    color FAIL
 
 
 

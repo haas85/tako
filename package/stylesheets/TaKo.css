@@ -95,6 +95,7 @@ div[data-element="notification"].show{display:-webkit-box;display:-ms-box;displa
 div[data-element="notification"] > div.window{margin-top:200%;color:rgba(0,0,0,0.8);padding:.8em;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;opacity:0;max-width:450px;width:80%;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
 div[data-element="notification"] > div.window > *{float:left}
 div[data-element="notification"] > div.window.show{margin-top:0%;opacity:1}
+div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{padding-top:.3em}
 div[data-element="notification"] > div.window *{display:block;text-align:left}
 div[data-element="notification"] > div.window .icon{text-align:center;height:100%;line-height:80px;width:80px;font-size:3em}
 div[data-element="notification"] > div.window .title{line-height:40px;font-size:1.2em}
@@ -128,7 +129,9 @@ button.accept,.button.accept{background-color:#1eb815;background-image:-webkit-l
 button.cancel,.button.cancel{background-color:#ed1c13;background-image:-webkit-linear-gradient(#f1554e,#ed1c13);background-image:-moz-linear-gradient(#f1554e,#ed1c13);background-image:-ms-linear-gradient(#f1554e,#ed1c13);background-image:-o-linear-gradient(#f1554e,#ed1c13);background-image:linear-gradient(#f1554e,#ed1c13);color:#f4f4f4}
 aside .current,footer .current{background-color:#4e4e4e}
 div[data-element="notification"] > div.window{background-color:#ededed;}
-div[data-element="notification"] > div.window.success{background-color:rgba(0,0,0,0.8);}
-div[data-element="notification"] > div.window.success *{color:rgba(250,250,250,0.6)}
-div[data-element="notification"] > div.window.success .title{color:rgba(255,255,255,0.9)}
-div[data-element="notification"] > div.window.success .icon{color:#1eb815;font-weight:bold}
+div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error{background-color:rgba(0,0,0,0.8);}
+div[data-element="notification"] > div.window.success *,div[data-element="notification"] > div.window.error *{color:rgba(250,250,250,0.6)}
+div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{color:rgba(255,255,255,0.9)}
+div[data-element="notification"] > div.window.success .icon,div[data-element="notification"] > div.window.error .icon{font-weight:bold}
+div[data-element="notification"] > div.window.success .icon{color:#1eb815}
+div[data-element="notification"] > div.window.error .icon{color:#ed1c13}

@@ -106,22 +106,40 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, hide, notification, notification_window, success, timeout, _hide, _show;
+    var active, callback, error, hide, notification, success, timeout, _hide, _iconHtml, _show;
     active = false;
-    $("body").append("<div data-element=\"notification\">\n  <div class=\"window\">\n    <span class=\"icon\">V</span>\n    <div>\n      <span class=\"title\"></span>\n      <div class=\"content\">\n    </div></div>\n    </div>\n</div>");
+    $("body").append("<div data-element=\"notification\"></div>");
     notification = $("div[data-element=notification]");
-    notification_window = notification.children(".window");
     timeout = null;
     callback = null;
-    _show = function(type, title, content, time_out, cb) {
+    success = function(icon, title, content, time_out, cb) {
+      var html;
+      html = _iconHtml(icon, "success", title, content);
+      return _show(html, time_out, cb);
+    };
+    error = function(icon, title, content, time_out, cb) {
+      var html;
+      html = _iconHtml(icon, "error", title, content);
+      return _show(html, time_out, cb);
+    };
+    hide = function() {
+      active = false;
+      clearTimeout(timeout);
+      timeout = null;
+      notification.children(".window").removeClass("show");
+      return setTimeout(_hide, 500);
+    };
+    _iconHtml = function(icon, type, title, content) {
+      var html;
+      return html = "<div class=\"window " + type + "\">\n  <span class=\"icon\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
+    };
+    _show = function(html, time_out, cb) {
       if (!active) {
         active = true;
-        notification_window.addClass(type);
-        notification_window.children("div").children(".title").html(title);
-        notification_window.children("div").children(".content").html(content);
+        notification.html(html);
         notification.addClass("show");
         setTimeout((function() {
-          return notification_window.addClass("show");
+          return notification.children(".window").addClass("show");
         }), 1);
         if (cb != null) {
           callback = cb;
@@ -130,16 +148,6 @@
           return timeout = setTimeout(hide, time_out * 1000);
         }
       }
-    };
-    success = function(title, content, time_out, cb) {
-      return _show("success", title, content, time_out, cb);
-    };
-    hide = function() {
-      active = false;
-      clearTimeout(timeout);
-      timeout = null;
-      notification_window.removeClass("show");
-      return setTimeout(_hide, 500);
     };
     _hide = function() {
       notification.removeClass("show");
@@ -151,6 +159,7 @@
     notification.bind("click", hide);
     return {
       success: success,
+      error: error,
       hide: hide
     };
   })(TaKo);
