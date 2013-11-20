@@ -83,6 +83,15 @@ TaKo.Notification = do (TK = TaKo) ->
         _show html, timeout, cb
       do hide
 
+  _onclick = ->
+    element = notification.children(".window")
+    unless element.hasClass "loader"
+      active = false
+      clearTimeout timeout
+      timeout = null
+      element.removeClass "show"
+      setTimeout _hide, 500
+
   _hide = ->
     notification.removeClass "show"
     cb = callback
@@ -90,7 +99,7 @@ TaKo.Notification = do (TK = TaKo) ->
     cb.call cb if cb?
 
 
-  notification.bind "click", hide
+  notification.bind "click", _onclick
 
   success: success
   error: error

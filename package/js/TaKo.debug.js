@@ -160,7 +160,7 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, error, hide, loading, notification, progress, success, timeout, _hide, _iconHtml, _show;
+    var active, callback, error, hide, loading, notification, progress, success, timeout, _hide, _iconHtml, _onclick, _show;
     active = false;
     $("body").append("<div data-element=\"notification\"></div>");
     notification = $("div[data-element=notification]");
@@ -221,6 +221,17 @@
         return hide();
       }
     };
+    _onclick = function() {
+      var element;
+      element = notification.children(".window");
+      if (!element.hasClass("loader")) {
+        active = false;
+        clearTimeout(timeout);
+        timeout = null;
+        element.removeClass("show");
+        return setTimeout(_hide, 500);
+      }
+    };
     _hide = function() {
       var cb;
       notification.removeClass("show");
@@ -230,7 +241,7 @@
         return cb.call(cb);
       }
     };
-    notification.bind("click", hide);
+    notification.bind("click", _onclick);
     return {
       success: success,
       error: error,
