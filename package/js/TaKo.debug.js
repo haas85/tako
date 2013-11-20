@@ -105,6 +105,60 @@
 }).call(this);
 
 (function() {
+  TaKo.Section = (function(TK) {
+    var current, goTo, title, _current;
+    title = function(html, section_id) {
+      var el;
+      if (section_id == null) {
+        el = current().children("header").children("h1");
+      } else {
+        el = $("section#" + section_id).children("header").children("h1");
+      }
+      if (el.length === 1) {
+        if (html != null) {
+          return el.html(html);
+        } else {
+          return el.html();
+        }
+      }
+    };
+    goTo = function(section_id) {
+      var el, _current;
+      el = current();
+      if (el[0].id !== section_id) {
+        el.removeClass("active");
+        el.children("article.active").trigger("unload");
+        _current = $("section#" + section_id).addClass("active");
+        _current.children("article.active").trigger("load");
+        $(".current[data-section]").removeClass("current");
+        return $("[data-section=" + section_id + "]").addClass("current");
+      }
+    };
+    current = function() {
+      var _current;
+      if (typeof _current !== "undefined" && _current !== null) {
+        return _current;
+      } else {
+        return _current = $("section.active");
+      }
+    };
+    $("[data-section]").each(function(element) {
+      var _this = this;
+      return $(this).bind("click", function() {
+        return goTo($(_this).attr("data-section"));
+      });
+    });
+    _current = null;
+    return {
+      goTo: goTo,
+      title: title,
+      current: current
+    };
+  })(TaKo);
+
+}).call(this);
+
+(function() {
   TaKo.Notification = (function(TK) {
     var active, callback, error, hide, notification, success, timeout, _hide, _iconHtml, _show;
     active = false;
@@ -171,60 +225,6 @@
       success: success,
       error: error,
       hide: hide
-    };
-  })(TaKo);
-
-}).call(this);
-
-(function() {
-  TaKo.Section = (function(TK) {
-    var current, goTo, title, _current;
-    title = function(html, section_id) {
-      var el;
-      if (section_id == null) {
-        el = current().children("header").children("h1");
-      } else {
-        el = $("section#" + section_id).children("header").children("h1");
-      }
-      if (el.length === 1) {
-        if (html != null) {
-          return el.html(html);
-        } else {
-          return el.html();
-        }
-      }
-    };
-    goTo = function(section_id) {
-      var el, _current;
-      el = current();
-      if (el[0].id !== section_id) {
-        el.removeClass("active");
-        el.children("article.active").trigger("unload");
-        _current = $("section#" + section_id).addClass("active");
-        _current.children("article.active").trigger("load");
-        $(".current[data-section]").removeClass("current");
-        return $("[data-section=" + section_id + "]").addClass("current");
-      }
-    };
-    current = function() {
-      var _current;
-      if (typeof _current !== "undefined" && _current !== null) {
-        return _current;
-      } else {
-        return _current = $("section.active");
-      }
-    };
-    $("[data-section]").each(function(element) {
-      var _this = this;
-      return $(this).bind("click", function() {
-        return goTo($(_this).attr("data-section"));
-      });
-    });
-    _current = null;
-    return {
-      goTo: goTo,
-      title: title,
-      current: current
     };
   })(TaKo);
 
