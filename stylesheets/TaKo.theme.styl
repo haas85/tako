@@ -104,7 +104,7 @@ aside .current, footer .current
 div[data-element="notification"] > div.window
   background-color lighten(BACKGROUND, 25%)
 
-  &.success, &.error
+  &.success, &.error, &.loader
     background-color rgba(0,0,0,0.8)
 
     & *
@@ -121,6 +121,9 @@ div[data-element="notification"] > div.window
 
   &.error .icon
     color FAIL
+
+#circular3dG > div
+  background-color THEME
 
 .progress_bar
   background-color lighten(ASIDE, 30%)

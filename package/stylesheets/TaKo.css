@@ -80,26 +80,26 @@ aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 
 .box_8{-webkit-box-flex:8;-moz-box-flex:8;-ms-box-flex:8;-o-box-flex:8;box-flex:8}
 .box_9{-webkit-box-flex:9;-moz-box-flex:9;-ms-box-flex:9;-o-box-flex:9;box-flex:9}
 
-#circular3dG{position:relative;width:128px;height:128px}
-.circular3dG{position:absolute;background-color:#000;width:35.55555555555556px;height:35.55555555555556px;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;border-radius:50%;-webkit-animation-name:bounce_circular3dG;-moz-animation-name:bounce_circular3dG;-ms-animation-name:bounce_circular3dG;-o-animation-name:bounce_circular3dG;animation-name:bounce_circular3dG;-webkit-animation-duration:1.28s;-moz-animation-duration:1.28s;-ms-animation-duration:1.28s;-o-animation-duration:1.28s;animation-duration:1.28s;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-ms-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-direction:linear;-moz-animation-direction:linear;-ms-animation-direction:linear;-o-animation-direction:linear;animation-direction:linear}
-#circular3d_1G{left:52px;top:8px;-webkit-animation-delay:.4800000000000001s;-moz-animation-delay:.4800000000000001s;-ms-animation-delay:.4800000000000001s;-o-animation-delay:.4800000000000001s;animation-delay:.4800000000000001s}
-#circular3d_2G{left:78px;top:30px;-webkit-animation-delay:.64s;-moz-animation-delay:.64s;-ms-animation-delay:.64s;-o-animation-delay:.64s;animation-delay:.64s}
-#circular3d_3G{left:94px;top:58px;-webkit-animation-delay:.8s;-moz-animation-delay:.8s;-ms-animation-delay:.8s;-o-animation-delay:.8s;animation-delay:.8s}
-#circular3d_4G{left:88px;top:86px;-webkit-animation-delay:.9600000000000002s;-moz-animation-delay:.9600000000000002s;-ms-animation-delay:.9600000000000002s;-o-animation-delay:.9600000000000002s;animation-delay:.9600000000000002s}
-#circular3d_5G{left:54px;top:94px;-webkit-animation-delay:1.12s;-moz-animation-delay:1.12s;-ms-animation-delay:1.12s;-o-animation-delay:1.12s;animation-delay:1.12s}
-#circular3d_6G{left:10px;top:62px;-webkit-animation-delay:1.28s;-moz-animation-delay:1.28s;-ms-animation-delay:1.28s;-o-animation-delay:1.28s;animation-delay:1.28s}
-#circular3d_7G{left:0;top:18px;-webkit-animation-delay:1.44s;-moz-animation-delay:1.44s;-ms-animation-delay:1.44s;-o-animation-delay:1.44s;animation-delay:1.44s}
-#circular3d_8G{left:22px;top:0;-webkit-animation-delay:1.6s;-moz-animation-delay:1.6s;-ms-animation-delay:1.6s;-o-animation-delay:1.6s;animation-delay:1.6s}
-@-moz-keyframes bounce_circular3dG{0%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
-100%{-webkit-transform:scale(.3);-moz-transform:scale(.3);-ms-transform:scale(.3);-o-transform:scale(.3);transform:scale(.3)}
-}@-webkit-keyframes bounce_circular3dG{0%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
-100%{-webkit-transform:scale(.3);-moz-transform:scale(.3);-ms-transform:scale(.3);-o-transform:scale(.3);transform:scale(.3)}
-}@-o-keyframes bounce_circular3dG{0%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
-100%{-webkit-transform:scale(.3);-moz-transform:scale(.3);-ms-transform:scale(.3);-o-transform:scale(.3);transform:scale(.3)}
-}@-ms-keyframes bounce_circular3dG{0%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
-100%{-webkit-transform:scale(.3);-moz-transform:scale(.3);-ms-transform:scale(.3);-o-transform:scale(.3);transform:scale(.3)}
-}@keyframes bounce_circular3dG{0%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
-100%{-webkit-transform:scale(.3);-moz-transform:scale(.3);-ms-transform:scale(.3);-o-transform:scale(.3);transform:scale(.3)}
+#circular3dG{position:relative;height:64px}
+.circular3dG{position:absolute;background-color:#000;width:6.4px;height:6.4px;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;border-radius:50%;-webkit-animation-name:bounce_circular3dG;-moz-animation-name:bounce_circular3dG;-ms-animation-name:bounce_circular3dG;-o-animation-name:bounce_circular3dG;animation-name:bounce_circular3dG;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-ms-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-direction:linear;-moz-animation-direction:linear;-ms-animation-direction:linear;-o-animation-direction:linear;animation-direction:linear}
+#circular3d_1G{left:36px;top:4px;-webkit-animation-delay:.3s;-moz-animation-delay:.3s;-ms-animation-delay:.3s;-o-animation-delay:.3s;animation-delay:.3s}
+#circular3d_2G{left:49px;top:15px;-webkit-animation-delay:.39999999999999997s;-moz-animation-delay:.39999999999999997s;-ms-animation-delay:.39999999999999997s;-o-animation-delay:.39999999999999997s;animation-delay:.39999999999999997s}
+#circular3d_3G{left:57px;top:29px;-webkit-animation-delay:.5s;-moz-animation-delay:.5s;-ms-animation-delay:.5s;-o-animation-delay:.5s;animation-delay:.5s}
+#circular3d_4G{left:54px;top:43px;-webkit-animation-delay:.6s;-moz-animation-delay:.6s;-ms-animation-delay:.6s;-o-animation-delay:.6s;animation-delay:.6s}
+#circular3d_5G{left:37px;top:47px;-webkit-animation-delay:.7s;-moz-animation-delay:.7s;-ms-animation-delay:.7s;-o-animation-delay:.7s;animation-delay:.7s}
+#circular3d_6G{left:15px;top:31px;-webkit-animation-delay:.7999999999999999s;-moz-animation-delay:.7999999999999999s;-ms-animation-delay:.7999999999999999s;-o-animation-delay:.7999999999999999s;animation-delay:.7999999999999999s}
+#circular3d_7G{left:10px;top:9px;-webkit-animation-delay:.8999999999999999s;-moz-animation-delay:.8999999999999999s;-ms-animation-delay:.8999999999999999s;-o-animation-delay:.8999999999999999s;animation-delay:.8999999999999999s}
+#circular3d_8G{left:21px;top:0;-webkit-animation-delay:1s;-moz-animation-delay:1s;-ms-animation-delay:1s;-o-animation-delay:1s;animation-delay:1s}
+@-moz-keyframes bounce_circular3dG{0%{-webkit-transform:scale(2.6);-moz-transform:scale(2.6);-ms-transform:scale(2.6);-o-transform:scale(2.6);transform:scale(2.6)}
+100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
+}@-webkit-keyframes bounce_circular3dG{0%{-webkit-transform:scale(2.6);-moz-transform:scale(2.6);-ms-transform:scale(2.6);-o-transform:scale(2.6);transform:scale(2.6)}
+100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
+}@-o-keyframes bounce_circular3dG{0%{-webkit-transform:scale(2.6);-moz-transform:scale(2.6);-ms-transform:scale(2.6);-o-transform:scale(2.6);transform:scale(2.6)}
+100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
+}@-ms-keyframes bounce_circular3dG{0%{-webkit-transform:scale(2.6);-moz-transform:scale(2.6);-ms-transform:scale(2.6);-o-transform:scale(2.6);transform:scale(2.6)}
+100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
+}@keyframes bounce_circular3dG{0%{-webkit-transform:scale(2.6);-moz-transform:scale(2.6);-ms-transform:scale(2.6);-o-transform:scale(2.6);transform:scale(2.6)}
+100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
 }
 button,.button{text-indent:0;border:0;display:inline-block;font-weight:bold;font-style:normal;line-height:2.5em;text-decoration:none;text-align:center;padding-left:1em;padding-right:1em;}
 button.smallest,.button.smallest{line-height:2em;padding:0 .6em}
@@ -115,12 +115,15 @@ footer div button .counter{position:relative;top:-1.2000000000000002em;line-heig
 
 div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-top:4em;padding-left:2em;padding-right:2em;-webkit-box-align:start;-moz-box-align:start;-ms-box-align:start;-o-box-align:start;box-align:start;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;}
 div[data-element="notification"].show{display:-webkit-box;display:-ms-box;display:-moz-box;display:box}
-div[data-element="notification"] > div.window{margin-top:200%;color:rgba(0,0,0,0.8);padding:.8em;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;opacity:0;max-width:450px;width:80%;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
-div[data-element="notification"] > div.window > *{float:left}
+div[data-element="notification"] > div.window{margin-top:200%;color:rgba(0,0,0,0.8);padding:.8em;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;opacity:0;max-width:450px;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
+div[data-element="notification"] > div.window:not(.loader){width:80%;}
+div[data-element="notification"] > div.window:not(.loader) *{display:block;text-align:left}
+div[data-element="notification"] > div.window:not(.loader) .icon{text-align:center;height:100%;line-height:80px;width:80px;font-size:3em}
+div[data-element="notification"] > div.window:not(.loader) > *{float:left}
 div[data-element="notification"] > div.window.show{margin-top:0%;opacity:1}
 div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{padding-top:.3em}
-div[data-element="notification"] > div.window *{display:block;text-align:left}
-div[data-element="notification"] > div.window .icon{text-align:center;height:100%;line-height:80px;width:80px;font-size:3em}
+div[data-element="notification"] > div.window.loader{text-align:center;}
+div[data-element="notification"] > div.window.loader > div{width:64px;margin:0 auto 0 auto}
 div[data-element="notification"] > div.window .title{line-height:40px;font-size:1.2em}
 div[data-element="notification"] > div.window .content{padding-top:.5em}
 
@@ -152,11 +155,12 @@ button.accept,.button.accept{background-color:#1eb815;background-image:-webkit-l
 button.cancel,.button.cancel{background-color:#ed1c13;background-image:-webkit-linear-gradient(#f1554e,#ed1c13);background-image:-moz-linear-gradient(#f1554e,#ed1c13);background-image:-ms-linear-gradient(#f1554e,#ed1c13);background-image:-o-linear-gradient(#f1554e,#ed1c13);background-image:linear-gradient(#f1554e,#ed1c13);color:#f4f4f4}
 aside .current,footer .current{background-color:#4e4e4e}
 div[data-element="notification"] > div.window{background-color:#ededed;}
-div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error{background-color:rgba(0,0,0,0.8);}
-div[data-element="notification"] > div.window.success *,div[data-element="notification"] > div.window.error *{color:rgba(250,250,250,0.6)}
-div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{color:rgba(255,255,255,0.9)}
-div[data-element="notification"] > div.window.success .icon,div[data-element="notification"] > div.window.error .icon{font-weight:bold}
+div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error,div[data-element="notification"] > div.window.loader{background-color:rgba(0,0,0,0.8);}
+div[data-element="notification"] > div.window.success *,div[data-element="notification"] > div.window.error *,div[data-element="notification"] > div.window.loader *{color:rgba(250,250,250,0.6)}
+div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title,div[data-element="notification"] > div.window.loader .title{color:rgba(255,255,255,0.9)}
+div[data-element="notification"] > div.window.success .icon,div[data-element="notification"] > div.window.error .icon,div[data-element="notification"] > div.window.loader .icon{font-weight:bold}
 div[data-element="notification"] > div.window.success .icon{color:#1eb815}
 div[data-element="notification"] > div.window.error .icon{color:#ed1c13}
+#circular3dG > div{background-color:#f60}
 .progress_bar{background-color:#6d6d6d;}
 .progress_bar .percent{background-color:#f60}

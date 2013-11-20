@@ -159,47 +159,8 @@
 }).call(this);
 
 (function() {
-  TaKo.ProgressBar = function(container, value) {
-    var Progress;
-    Progress = (function() {
-      var el, fill;
-
-      el = null;
-
-      fill = null;
-
-      function Progress(container, value) {
-        var PROGRESS;
-        this.value = value != null ? value : 0;
-        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
-        el = $(PROGRESS);
-        $("#" + container).append(el);
-        fill = el.children(".percent");
-      }
-
-      Progress.prototype.percent = function(value) {
-        if (value != null) {
-          this.value = value;
-          fill.css("width", "" + this.value + "%");
-        }
-        return this.value;
-      };
-
-      Progress.prototype.remove = function() {
-        return el.remove();
-      };
-
-      return Progress;
-
-    })();
-    return new Progress(container, value);
-  };
-
-}).call(this);
-
-(function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, error, hide, loading, notification, success, timeout, _hide, _iconHtml, _show;
+    var active, callback, error, hide, loading, notification, progress, success, timeout, _hide, _iconHtml, _show;
     active = false;
     $("body").append("<div data-element=\"notification\"></div>");
     notification = $("div[data-element=notification]");
@@ -215,9 +176,14 @@
       html = _iconHtml(icon, "error", title, content);
       return _show(html, time_out, cb);
     };
-    loading = function(title, content, time_out, cb) {
+    loading = function(title, time_out, cb) {
       var html;
-      html = "<div class=\"window\">\n  <div id=\"circular3dG\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
+      html = "<div class=\"window loader\">\n  <div>\n    <div id=\"circular3dG\">\n      <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n    </div>\n  </div>\n  <span class=\"title\">" + (title || '') + "</span>\n</div>";
+      return _show(html, time_out, cb);
+    };
+    progress = function(title, time_out, cb) {
+      var html;
+      html = "<div class=\"window line\">\n  <div id=\"circular3dG\" class=\"two_column four_gap\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
       return _show(html, time_out, cb);
     };
     hide = function() {
@@ -269,8 +235,48 @@
       success: success,
       error: error,
       loading: loading,
+      progress: progress,
       hide: hide
     };
   })(TaKo);
+
+}).call(this);
+
+(function() {
+  TaKo.ProgressBar = function(container, value) {
+    var Progress;
+    Progress = (function() {
+      var el, fill;
+
+      el = null;
+
+      fill = null;
+
+      function Progress(container, value) {
+        var PROGRESS;
+        this.value = value != null ? value : 0;
+        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
+        el = $(PROGRESS);
+        $("#" + container).append(el);
+        fill = el.children(".percent");
+      }
+
+      Progress.prototype.percent = function(value) {
+        if (value != null) {
+          this.value = value;
+          fill.css("width", "" + this.value + "%");
+        }
+        return this.value;
+      };
+
+      Progress.prototype.remove = function() {
+        return el.remove();
+      };
+
+      return Progress;
+
+    })();
+    return new Progress(container, value);
+  };
 
 }).call(this);

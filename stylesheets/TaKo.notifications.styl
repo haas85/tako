@@ -29,12 +29,25 @@ div[data-element="notification"]
     box-flex 0
     opacity 0
     max-width 450px
-    width 80%
 
     transition-duration NOTIFICATION_TRANSITION_TIME
 
-    & > *
-      float left
+    &:not(.loader)
+      width 80%
+
+      & *
+        display block
+        text-align left
+
+      & .icon
+        text-align center
+        height 100%
+        line-height 80px
+        width 80px
+        font-size 3em
+
+      & > *
+        float left
 
     &.show
       margin-top 0%
@@ -45,16 +58,12 @@ div[data-element="notification"]
       & .title
         padding-top 0.3em
 
-    & *
-      display block
-      text-align left
-
-    & .icon
+    &.loader
       text-align center
-      height 100%
-      line-height 80px
-      width 80px
-      font-size 3em
+
+      & > div
+        width LOADER_SIZE
+        margin 0 auto 0 auto
 
     & .title
       line-height 40px

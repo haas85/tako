@@ -1,6 +1,5 @@
 #circular3dG
   position relative
-  width LOADER_SIZE
   height LOADER_SIZE
 
 .circular3dG
@@ -10,53 +9,53 @@
   height LOADER_BALL
   border-radius(50%)
   animation-name(bounce_circular3dG)
-  animation-duration(1.28s)
+  animation-duration(INIT_DELAY + DELAY_SUM * 7)
   animation-iteration-count(infinite)
   animation-direction(linear)
 
 #circular3d_1G
-  left 52px
-  top 8px
-  animation-delay(0.4800000000000001s)
+  left 36px
+  top 4px
+  animation-delay(INIT_DELAY)
 
 #circular3d_2G
-  left 78px
-  top 30px
-  animation-delay(0.64s)
+  left 49px
+  top 15px
+  animation-delay(INIT_DELAY + DELAY_SUM)
 
 #circular3d_3G
-  left 94px
-  top 58px
-  animation-delay(0.8s)
+  left 57px
+  top 29px
+  animation-delay(INIT_DELAY + DELAY_SUM * 2)
 
 #circular3d_4G
-  left 88px
-  top 86px
-  animation-delay(0.9600000000000002s)
+  left 54px
+  top 43px
+  animation-delay(INIT_DELAY + DELAY_SUM * 3)
 
 #circular3d_5G
-  left 54px
-  top 94px
-  animation-delay(1.12s)
+  left 37px
+  top 47px
+  animation-delay(INIT_DELAY + DELAY_SUM * 4)
 
 #circular3d_6G
-  left 10px
-  top 62px
-  animation-delay(1.28s)
+  left 15px
+  top 31px
+  animation-delay(INIT_DELAY + DELAY_SUM * 5)
 
 #circular3d_7G
-  left 0px
-  top 18px
-  animation-delay(1.44s)
+  left 10px
+  top 9px
+  animation-delay(INIT_DELAY + DELAY_SUM * 6)
 
 #circular3d_8G
-  left 22px
+  left 21px
   top 0px
-  animation-delay(1.6s)
+  animation-delay(INIT_DELAY + DELAY_SUM * 7)
 
 @keyframes bounce_circular3dG
     0%
-      transform scale(1)
+      transform scale(2.6)
     100%
-      transform scale(.3)
+      transform scale(1)
 
