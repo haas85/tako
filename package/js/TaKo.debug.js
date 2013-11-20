@@ -178,12 +178,16 @@
     };
     loading = function(title, time_out, cb) {
       var html;
-      html = "<div class=\"window loader\">\n  <div>\n    <div id=\"circular3dG\">\n      <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n      <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n    </div>\n  </div>\n  <span class=\"title\">" + (title || '') + "</span>\n</div>";
-      return _show(html, time_out, cb);
+      html = "<div class=\"window loader\">\n<div>\n  <div id=\"circular3dG\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
+      if (title != null) {
+        html += "<span class=\"title\">" + title + "</span>";
+      }
+      html += "</div>";
+      return _show(html, time_out, cb, "center");
     };
-    progress = function(title, time_out, cb) {
+    progress = function(title, content, time_out, cb) {
       var html;
-      html = "<div class=\"window line\">\n  <div id=\"circular3dG\" class=\"two_column four_gap\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
+      html = "<div class=\"window\">\n\n</div>";
       return _show(html, time_out, cb);
     };
     hide = function() {
@@ -197,12 +201,15 @@
       var html;
       return html = "<div class=\"window " + type + "\">\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
     };
-    _show = function(html, time_out, cb) {
+    _show = function(html, time_out, cb, position) {
       var original_cb;
+      if (position == null) {
+        position = "start";
+      }
       if (!active) {
         active = true;
         notification.html(html);
-        notification.addClass("show");
+        notification.removeClass("center").removeClass("start").addClass(position).addClass("show");
         setTimeout((function() {
           return notification.children(".window").addClass("show");
         }), 1);
@@ -215,7 +222,9 @@
       } else {
         original_cb = callback;
         callback = function() {
-          original_cb();
+          if (original_cb != null) {
+            original_cb();
+          }
           return _show(html, timeout, cb);
         };
         return hide();

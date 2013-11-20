@@ -30,24 +30,14 @@ TaKo.Notification = do (TK = TaKo) ->
                     <div id="circular3d_7G" class="circular3dG"></div>
                     <div id="circular3d_8G" class="circular3dG"></div>
                   </div>
-                </div>
-                <span class="title">#{title or ''}</span>
-              </div>
-              """
-    _show html, time_out, cb
+                </div>"""
+    html += """<span class="title">#{title}</span>""" if title?
+    html += "</div>"
+    _show html, time_out, cb, "center"
 
-  progress = (title, time_out, cb) ->
-    html = """<div class="window line">
-                <div id="circular3dG" class="two_column four_gap">
-                  <div id="circular3d_1G" class="circular3dG"></div>
-                  <div id="circular3d_2G" class="circular3dG"></div>
-                  <div id="circular3d_3G" class="circular3dG"></div>
-                  <div id="circular3d_4G" class="circular3dG"></div>
-                  <div id="circular3d_5G" class="circular3dG"></div>
-                  <div id="circular3d_6G" class="circular3dG"></div>
-                  <div id="circular3d_7G" class="circular3dG"></div>
-                  <div id="circular3d_8G" class="circular3dG"></div>
-                </div>
+  progress = (title, content, time_out, cb) ->
+    html = """<div class="window">
+
               </div>"""
     _show html, time_out, cb
 
@@ -67,11 +57,12 @@ TaKo.Notification = do (TK = TaKo) ->
                 </div>
               </div>"""
 
-  _show = (html, time_out, cb) ->
+  _show = (html, time_out, cb, position="start") ->
     if not active
       active = true
       notification.html html
-      notification.addClass "show"
+      notification.removeClass("center")
+      .removeClass("start").addClass(position).addClass "show"
       setTimeout (-> notification.children(".window").addClass("show")), 1
       callback = cb if cb?
       if time_out?
@@ -79,7 +70,7 @@ TaKo.Notification = do (TK = TaKo) ->
     else
       original_cb = callback
       callback = ->
-        do original_cb
+        do original_cb if original_cb?
         _show html, timeout, cb
       do hide
 

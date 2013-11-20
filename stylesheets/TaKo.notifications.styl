@@ -11,9 +11,13 @@ div[data-element="notification"]
   padding-left NOTIFICATION_INDENT
   padding-right NOTIFICATION_INDENT
 
-  box-align start
-
   box-pack center
+
+  &.center
+    box-align center
+
+  &.start
+    box-align start
 
   &.show
     display -webkit-box
@@ -60,6 +64,7 @@ div[data-element="notification"]
 
     &.loader
       text-align center
+      padding 1.8em
 
       & > div
         width LOADER_SIZE
