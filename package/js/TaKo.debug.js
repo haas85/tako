@@ -106,18 +106,19 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, hide, notification, notification_window, show, timeout, _hide;
+    var active, callback, hide, notification, notification_window, success, timeout, _hide, _show;
     active = false;
-    $("body").append("<div data-element=\"notification\">\n  <div class=\"window\">\n    <span class=\"title\"></span>\n    <div class=\"content\"></div>\n    </div>\n</div>");
+    $("body").append("<div data-element=\"notification\">\n  <div class=\"window\">\n    <span class=\"icon\">V</span>\n    <div>\n      <span class=\"title\"></span>\n      <div class=\"content\">\n    </div></div>\n    </div>\n</div>");
     notification = $("div[data-element=notification]");
     notification_window = notification.children(".window");
     timeout = null;
     callback = null;
-    show = function(title, content, time_out, cb) {
+    _show = function(type, title, content, time_out, cb) {
       if (!active) {
         active = true;
-        notification_window.children(".title").html(title);
-        notification_window.children(".content").html(content);
+        notification_window.addClass(type);
+        notification_window.children("div").children(".title").html(title);
+        notification_window.children("div").children(".content").html(content);
         notification.addClass("show");
         setTimeout((function() {
           return notification_window.addClass("show");
@@ -129,6 +130,9 @@
           return timeout = setTimeout(hide, time_out * 1000);
         }
       }
+    };
+    success = function(title, content, time_out, cb) {
+      return _show("success", title, content, time_out, cb);
     };
     hide = function() {
       active = false;
@@ -146,7 +150,7 @@
     };
     notification.bind("click", hide);
     return {
-      show: show,
+      success: success,
       hide: hide
     };
   })(TaKo);

@@ -7,18 +7,12 @@ div[data-element="notification"]
   display none
   background-color rgba(0,0,0,0.6)
   z-index NOTIFICATION_INDEX
+  padding-top NOTIFICATION_INDENT*2
   padding-left NOTIFICATION_INDENT
   padding-right NOTIFICATION_INDENT
-  padding-top NOTIFICATION_INDENT*2
 
-  -webkit-box-align start
-  -ms-box-align start
-  -moz-box-align start
   box-align start
 
-  -webkit-box-pack center
-  -ms-box-pack center
-  -moz-box-pack center
   box-pack center
 
   &.show
@@ -30,39 +24,36 @@ div[data-element="notification"]
 
   & > div.window
     margin-top 200%
-    text-align center
     color rgba(0, 0, 0, 0.8)
     padding INDENT
-    -webkit-box-flex 1
-    -moz-ms-flex 1
-    -moz-box-flex 1
-    box-flex 1
+    box-flex 0
     opacity 0
+    max-width 450px
+    width 80%
 
-    -webkit-transition-duration NOTIFICATION_TRANSITION_TIME
-    -moz-transition-duration NOTIFICATION_TRANSITION_TIME
-    -ms-transition-duration NOTIFICATION_TRANSITION_TIME
-    -o-transition-duration NOTIFICATION_TRANSITION_TIME
     transition-duration NOTIFICATION_TRANSITION_TIME
 
-    -webkit-transition-timing-function cubic-bezier(.645,.045,.355,1)
-    -moz-transition-timing-function cubic-bezier(.645,.045,.355,1)
-    -ms-transition-timing-function cubic-bezier(.645,.045,.355,1)
-    -o-transition-timing-function cubic-bezier(.645,.045,.355,1)
-    transition-timing-function cubic-bezier(.645,.045,.355,1)
+    & > *
+      float left
 
     &.show
       margin-top 0%
       opacity 1
 
-    & > *
+    & *
       display block
+      text-align left
+
+    & .icon
       text-align center
-      width 100%
+      height 100%
+      line-height 80px
+      width 80px
+      font-size 3em
 
-    & > .title
-      padding-bottom 0.5em
-      border-bottom 2px solid rgba(0, 0, 0, 0.2)
+    & .title
+      line-height 40px
+      font-size FONT_SIZE_BIG
 
-    & > .content
+    & .content
       padding-top 0.5em

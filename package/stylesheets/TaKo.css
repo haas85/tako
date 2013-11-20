@@ -10,6 +10,8 @@ div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-ind
 .small{font-size:.9em}
 .big{font-size:1.2em}
 .biggest{font-size:1.4em}
+.onleft{float:left}
+.onright{float:right}
 .scroll.vertical{overflow-y:scroll}
 .scroll.horizontal{overflow-x:scroll}
 
@@ -88,13 +90,15 @@ header button.button .counter{margin-left:.05em;margin-right:.05em}
 footer div button{width:100%;height:inherit;background-image:none;}
 footer div button .counter{position:relative;top:-1.2000000000000002em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
 
-div[data-element="notification"]{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-left:2em;padding-right:2em;padding-top:4em;-webkit-box-align:start;-ms-box-align:start;-moz-box-align:start;-webkit-box-align:start;-moz-box-align:start;-ms-box-align:start;-o-box-align:start;box-align:start;-webkit-box-pack:center;-ms-box-pack:center;-moz-box-pack:center;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;}
+div[data-element="notification"]{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-top:4em;padding-left:2em;padding-right:2em;-webkit-box-align:start;-moz-box-align:start;-ms-box-align:start;-o-box-align:start;box-align:start;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;}
 div[data-element="notification"].show{display:-webkit-box;display:-ms-box;display:-moz-box;display:box}
-div[data-element="notification"] > div.window{margin-top:200%;text-align:center;color:rgba(0,0,0,0.8);padding:.8em;-webkit-box-flex:1;-moz-ms-flex:1;-moz-box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1;opacity:0;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;-webkit-transition-timing-function:cubic-bezier(.645,.045,.355,1);-moz-transition-timing-function:cubic-bezier(.645,.045,.355,1);-ms-transition-timing-function:cubic-bezier(.645,.045,.355,1);-o-transition-timing-function:cubic-bezier(.645,.045,.355,1);-webkit-transition-timing-function:cubic-bezier(.645,.045,.355,1);-moz-transition-timing-function:cubic-bezier(.645,.045,.355,1);-ms-transition-timing-function:cubic-bezier(.645,.045,.355,1);-o-transition-timing-function:cubic-bezier(.645,.045,.355,1);transition-timing-function:cubic-bezier(.645,.045,.355,1);}
+div[data-element="notification"] > div.window{margin-top:200%;color:rgba(0,0,0,0.8);padding:.8em;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;opacity:0;max-width:450px;width:80%;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
+div[data-element="notification"] > div.window > *{float:left}
 div[data-element="notification"] > div.window.show{margin-top:0%;opacity:1}
-div[data-element="notification"] > div.window > *{display:block;text-align:center;width:100%}
-div[data-element="notification"] > div.window > .title{padding-bottom:.5em;border-bottom:2px solid rgba(0,0,0,0.2)}
-div[data-element="notification"] > div.window > .content{padding-top:.5em}
+div[data-element="notification"] > div.window *{display:block;text-align:left}
+div[data-element="notification"] > div.window .icon{text-align:center;height:100%;line-height:80px;width:80px;font-size:3em}
+div[data-element="notification"] > div.window .title{line-height:40px;font-size:1.2em}
+div[data-element="notification"] > div.window .content{padding-top:.5em}
 
 .blue{background-color:#00f !important}
 .red{background-color:#f00 !important}
@@ -123,4 +127,8 @@ button,.button{font-size:12.8px;background-color:#f60;background-image:-webkit-l
 button.accept,.button.accept{background-color:#1eb815;background-image:-webkit-linear-gradient(#3ce832,#1eb815);background-image:-moz-linear-gradient(#3ce832,#1eb815);background-image:-ms-linear-gradient(#3ce832,#1eb815);background-image:-o-linear-gradient(#3ce832,#1eb815);background-image:linear-gradient(#3ce832,#1eb815);color:#f4f4f4}
 button.cancel,.button.cancel{background-color:#ed1c13;background-image:-webkit-linear-gradient(#f1554e,#ed1c13);background-image:-moz-linear-gradient(#f1554e,#ed1c13);background-image:-ms-linear-gradient(#f1554e,#ed1c13);background-image:-o-linear-gradient(#f1554e,#ed1c13);background-image:linear-gradient(#f1554e,#ed1c13);color:#f4f4f4}
 aside .current,footer .current{background-color:#4e4e4e}
-div[data-element="notification"] > div.window{background-color:#ededed}
+div[data-element="notification"] > div.window{background-color:#ededed;}
+div[data-element="notification"] > div.window.success{background-color:rgba(0,0,0,0.8);}
+div[data-element="notification"] > div.window.success *{color:rgba(250,250,250,0.6)}
+div[data-element="notification"] > div.window.success .title{color:rgba(255,255,255,0.9)}
+div[data-element="notification"] > div.window.success .icon{color:#1eb815;font-weight:bold}
