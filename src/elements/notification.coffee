@@ -17,8 +17,6 @@ TaKo.Notification = do (TK = TaKo) ->
     html = _iconHtml icon, "error", title, content
     _show html, time_out, cb
 
-
-
   hide = ->
     active = false
     clearTimeout timeout
@@ -28,7 +26,7 @@ TaKo.Notification = do (TK = TaKo) ->
 
   _iconHtml = (icon, type, title, content) ->
     html = """<div class="window #{type}">
-                <span class="icon">#{icon}</span>
+                <span class="icon #{icon}"></span>
                 <div>
                   <span class="title">#{title}</span>
                   <div class="content">#{content}</div>
@@ -44,11 +42,18 @@ TaKo.Notification = do (TK = TaKo) ->
       callback = cb if cb?
       if time_out?
         timeout = setTimeout hide, time_out*1000
+    else
+      original_cb = callback
+      callback = ->
+        do original_cb
+        _show html, timeout, cb
+      do hide
 
   _hide = ->
     notification.removeClass "show"
-    callback.call callback if callback?
+    cb = callback
     callback = null
+    cb.call cb if cb?
 
 
   notification.bind "click", hide

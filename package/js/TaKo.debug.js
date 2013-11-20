@@ -131,9 +131,10 @@
     };
     _iconHtml = function(icon, type, title, content) {
       var html;
-      return html = "<div class=\"window " + type + "\">\n  <span class=\"icon\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
+      return html = "<div class=\"window " + type + "\">\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
     };
     _show = function(html, time_out, cb) {
+      var original_cb;
       if (!active) {
         active = true;
         notification.html(html);
@@ -147,14 +148,23 @@
         if (time_out != null) {
           return timeout = setTimeout(hide, time_out * 1000);
         }
+      } else {
+        original_cb = callback;
+        callback = function() {
+          original_cb();
+          return _show(html, timeout, cb);
+        };
+        return hide();
       }
     };
     _hide = function() {
+      var cb;
       notification.removeClass("show");
-      if (callback != null) {
-        callback.call(callback);
+      cb = callback;
+      callback = null;
+      if (cb != null) {
+        return cb.call(cb);
       }
-      return callback = null;
     };
     notification.bind("click", hide);
     return {
