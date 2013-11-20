@@ -159,6 +159,45 @@
 }).call(this);
 
 (function() {
+  TaKo.ProgressBar = function(container, value) {
+    var Progress;
+    Progress = (function() {
+      var el, fill;
+
+      el = null;
+
+      fill = null;
+
+      function Progress(container, value) {
+        var PROGRESS;
+        this.value = value != null ? value : 0;
+        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
+        el = $(PROGRESS);
+        $("#" + container).append(el);
+        fill = el.children(".percent");
+      }
+
+      Progress.prototype.percent = function(value) {
+        if (value != null) {
+          this.value = value;
+          fill.css("width", "" + this.value + "%");
+        }
+        return this.value;
+      };
+
+      Progress.prototype.remove = function() {
+        return el.remove();
+      };
+
+      return Progress;
+
+    })();
+    return new Progress(container, value);
+  };
+
+}).call(this);
+
+(function() {
   TaKo.Notification = (function(TK) {
     var active, callback, error, hide, notification, success, timeout, _hide, _iconHtml, _show;
     active = false;
