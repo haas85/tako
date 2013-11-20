@@ -71,7 +71,7 @@ TaKo.Notification = do (TK = TaKo) ->
       original_cb = callback
       callback = ->
         do original_cb if original_cb?
-        _show html, timeout, cb
+        _show html, timeout, cb, position
       do hide
 
   _onclick = ->

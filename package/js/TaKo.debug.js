@@ -225,7 +225,7 @@
           if (original_cb != null) {
             original_cb();
           }
-          return _show(html, timeout, cb);
+          return _show(html, timeout, cb, position);
         };
         return hide();
       }
