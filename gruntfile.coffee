@@ -27,6 +27,7 @@ module.exports = (grunt) ->
         "stylesheets/TaKo.section.styl",
         "stylesheets/TaKo.lists.styl",
         "stylesheets/TaKo.layouts.styl",
+        "stylesheets/TaKo.loader.styl",
         "stylesheets/TaKo.buttons.styl",
         "stylesheets/TaKo.notifications.styl",
         "stylesheets/TaKo.colors.styl",

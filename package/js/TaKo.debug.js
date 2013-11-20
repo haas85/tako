@@ -199,7 +199,7 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, error, hide, notification, success, timeout, _hide, _iconHtml, _show;
+    var active, callback, error, hide, loading, notification, success, timeout, _hide, _iconHtml, _show;
     active = false;
     $("body").append("<div data-element=\"notification\"></div>");
     notification = $("div[data-element=notification]");
@@ -213,6 +213,11 @@
     error = function(icon, title, content, time_out, cb) {
       var html;
       html = _iconHtml(icon, "error", title, content);
+      return _show(html, time_out, cb);
+    };
+    loading = function(title, content, time_out, cb) {
+      var html;
+      html = "<div class=\"window\">\n  <div id=\"circular3dG\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
       return _show(html, time_out, cb);
     };
     hide = function() {
@@ -263,6 +268,7 @@
     return {
       success: success,
       error: error,
+      loading: loading,
       hide: hide
     };
   })(TaKo);
