@@ -178,17 +178,30 @@
     };
     loading = function(title, time_out, cb) {
       var html;
-      html = "<div class=\"window loader\">\n<div>\n  <div id=\"circular3dG\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
+      html = "<div class=\"window center not_clickable\">\n<div id=\"circular_container\">\n  <div id=\"circular3dG\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
       if (title != null) {
         html += "<span class=\"title\">" + title + "</span>";
       }
       html += "</div>";
       return _show(html, time_out, cb, "center");
     };
-    progress = function(title, content, time_out, cb) {
+    progress = function(icon, title, content, time_out, cb) {
       var html;
-      html = "<div class=\"window\">\n\n</div>";
-      return _show(html, time_out, cb);
+      html = "<div class=\"window center progress padding top not_clickable\">\n  <span class=\"icon " + icon + "\"></span>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content padding bottom\">" + content + "</div>\n  <div id=\"notification_progress\"></div>\n</div>";
+      _show(html, time_out, cb, "center");
+      progress = TK.ProgressBar("notification_progress", 0);
+      return {
+        percent: function(value) {
+          var val;
+          val = progress.percent(value);
+          if (val === 100) {
+            setTimeout((function() {
+              return hide();
+            }), 150);
+          }
+          return val;
+        }
+      };
     };
     hide = function() {
       active = false;
@@ -233,7 +246,7 @@
     _onclick = function() {
       var element;
       element = notification.children(".window");
-      if (!element.hasClass("loader")) {
+      if (!element.hasClass("not_clickable")) {
         active = false;
         clearTimeout(timeout);
         timeout = null;
@@ -283,6 +296,9 @@
 
       Progress.prototype.percent = function(value) {
         if (value != null) {
+          if (value < 0 || value > 100) {
+            throw "Invalid value";
+          }
           this.value = value;
           fill.css("width", "" + this.value + "%");
         }

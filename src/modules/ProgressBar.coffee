@@ -16,6 +16,8 @@ TaKo.ProgressBar = (container, value) ->
 
     percent: (value) ->
       if value?
+        if value < 0 or value > 100
+          throw "Invalid value"
         @value = value
         fill.css "width", "#{@value}%"
       @value

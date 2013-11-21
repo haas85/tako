@@ -18,8 +18,8 @@ TaKo.Notification = do (TK = TaKo) ->
     _show html, time_out, cb
 
   loading = (title, time_out, cb) ->
-    html = """<div class="window loader">
-                <div>
+    html = """<div class="window center not_clickable">
+                <div id="circular_container">
                   <div id="circular3dG">
                     <div id="circular3d_1G" class="circular3dG"></div>
                     <div id="circular3d_2G" class="circular3dG"></div>
@@ -35,11 +35,19 @@ TaKo.Notification = do (TK = TaKo) ->
     html += "</div>"
     _show html, time_out, cb, "center"
 
-  progress = (title, content, time_out, cb) ->
-    html = """<div class="window">
-
+  progress = (icon, title, content, time_out, cb) ->
+    html = """<div class="window center progress padding top not_clickable">
+                <span class="icon #{icon}"></span>
+                <span class="title">#{title}</span>
+                <div class="content padding bottom">#{content}</div>
+                <div id="notification_progress"></div>
               </div>"""
-    _show html, time_out, cb
+    _show html, time_out, cb, "center"
+    progress = TK.ProgressBar "notification_progress", 0
+    percent: (value) ->
+      val = progress.percent value
+      setTimeout (-> do hide), 150 if val is 100
+      val
 
   hide = ->
     active = false
@@ -76,7 +84,7 @@ TaKo.Notification = do (TK = TaKo) ->
 
   _onclick = ->
     element = notification.children(".window")
-    unless element.hasClass "loader"
+    unless element.hasClass "not_clickable"
       active = false
       clearTimeout timeout
       timeout = null

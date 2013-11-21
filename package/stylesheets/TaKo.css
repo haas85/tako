@@ -12,6 +12,14 @@ div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-ind
 .biggest{font-size:1.4em}
 .onleft{float:left}
 .onright{float:right}
+.padding.top{padding-top:.8em !important}
+.padding.bottom{padding-bottom:.8em !important}
+.padding.left{padding-left:.8em !important}
+.padding.right{padding-right:.8em !important}
+.margin.top{margin-top:.8em !important}
+.margin.bottom{margin-bottom:.8em !important}
+.margin.left{margin-left:.8em !important}
+.margin.right{margin-right:.8em !important}
 .scroll.vertical{overflow-y:scroll}
 .scroll.horizontal{overflow-x:scroll}
 .progress_bar{width:100%;height:10px;display:block;}
@@ -23,7 +31,7 @@ section:not(.active) > article{display:none}
 section.footer > article{padding-bottom:65px}
 header{position:fixed;top:0;left:0;right:0;height:50px;width:100%;z-index:101;}
 header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;z-index:102}
-header > nav{margin-top:5px;position:absolute;z-index:103;}
+header > nav{margin-top:5px;position:fixed;z-index:103;}
 header > nav.right{right:0;}
 header > nav.right > button{margin-right:5px}
 header > nav.left{left:0;}
@@ -118,14 +126,16 @@ div[data-element="notification"].center{-webkit-box-align:center;-moz-box-align:
 div[data-element="notification"].start{-webkit-box-align:start;-moz-box-align:start;-ms-box-align:start;-o-box-align:start;box-align:start}
 div[data-element="notification"].show{display:-webkit-box;display:-ms-box;display:-moz-box;display:box}
 div[data-element="notification"] > div.window{margin-top:200%;color:rgba(0,0,0,0.8);padding:.8em;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;opacity:0;max-width:450px;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
-div[data-element="notification"] > div.window:not(.loader){width:80%;}
-div[data-element="notification"] > div.window:not(.loader) *{display:block;text-align:left}
-div[data-element="notification"] > div.window:not(.loader) .icon{text-align:center;height:100%;line-height:80px;width:80px;font-size:3em}
-div[data-element="notification"] > div.window:not(.loader) > *{float:left}
+div[data-element="notification"] > div.window:not(.center){width:80%;}
+div[data-element="notification"] > div.window:not(.center) *{display:block;text-align:left}
+div[data-element="notification"] > div.window:not(.center) > *{float:left}
+div[data-element="notification"] > div.window .icon{display:block;text-align:center;height:100%;line-height:80px;width:80px;font-size:3em}
 div[data-element="notification"] > div.window.show{margin-top:0%;opacity:1}
 div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{padding-top:.3em}
-div[data-element="notification"] > div.window.loader{text-align:center;padding:1.8em;}
-div[data-element="notification"] > div.window.loader > div{width:64px;margin:0 auto 0 auto}
+div[data-element="notification"] > div.window.progress{width:80%;}
+div[data-element="notification"] > div.window.progress .icon{width:100%}
+div[data-element="notification"] > div.window.center{text-align:center;padding:1.8em;}
+div[data-element="notification"] > div.window.center > #circular_container{width:64px;margin:0 auto 0 auto}
 div[data-element="notification"] > div.window .title{line-height:40px;font-size:1.2em}
 div[data-element="notification"] > div.window .content{padding-top:.5em}
 
@@ -156,11 +166,10 @@ button,.button{font-size:12.8px;background-color:#f60;background-image:-webkit-l
 button.accept,.button.accept{background-color:#1eb815;background-image:-webkit-linear-gradient(#3ce832,#1eb815);background-image:-moz-linear-gradient(#3ce832,#1eb815);background-image:-ms-linear-gradient(#3ce832,#1eb815);background-image:-o-linear-gradient(#3ce832,#1eb815);background-image:linear-gradient(#3ce832,#1eb815);color:#f4f4f4}
 button.cancel,.button.cancel{background-color:#ed1c13;background-image:-webkit-linear-gradient(#f1554e,#ed1c13);background-image:-moz-linear-gradient(#f1554e,#ed1c13);background-image:-ms-linear-gradient(#f1554e,#ed1c13);background-image:-o-linear-gradient(#f1554e,#ed1c13);background-image:linear-gradient(#f1554e,#ed1c13);color:#f4f4f4}
 aside .current,footer .current{background-color:#4e4e4e}
-div[data-element="notification"] > div.window{background-color:#ededed;}
-div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error,div[data-element="notification"] > div.window.loader{background-color:rgba(0,0,0,0.8);}
-div[data-element="notification"] > div.window.success *,div[data-element="notification"] > div.window.error *,div[data-element="notification"] > div.window.loader *{color:rgba(250,250,250,0.6)}
-div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title,div[data-element="notification"] > div.window.loader .title{color:rgba(255,255,255,0.9)}
-div[data-element="notification"] > div.window.success .icon,div[data-element="notification"] > div.window.error .icon,div[data-element="notification"] > div.window.loader .icon{font-weight:bold}
+div[data-element="notification"] > div.window{background-color:rgba(0,0,0,0.8);}
+div[data-element="notification"] > div.window *{color:rgba(250,250,250,0.6)}
+div[data-element="notification"] > div.window .title{color:rgba(255,255,255,0.9)}
+div[data-element="notification"] > div.window .icon{font-weight:bold}
 div[data-element="notification"] > div.window.success .icon{color:#1eb815}
 div[data-element="notification"] > div.window.error .icon{color:#ed1c13}
 #circular3dG > div{background-color:#f60}

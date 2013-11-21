@@ -36,22 +36,23 @@ div[data-element="notification"]
 
     transition-duration NOTIFICATION_TRANSITION_TIME
 
-    &:not(.loader)
+    &:not(.center)
       width 80%
 
       & *
         display block
         text-align left
 
-      & .icon
-        text-align center
-        height 100%
-        line-height 80px
-        width 80px
-        font-size 3em
-
       & > *
         float left
+
+    & .icon
+      display block
+      text-align center
+      height 100%
+      line-height 80px
+      width 80px
+      font-size 3em
 
     &.show
       margin-top 0%
@@ -62,11 +63,17 @@ div[data-element="notification"]
       & .title
         padding-top 0.3em
 
-    &.loader
+    &.progress
+      width 80%
+
+      & .icon
+        width 100%
+
+    &.center
       text-align center
       padding 1.8em
 
-      & > div
+      & > #circular_container
         width LOADER_SIZE
         margin 0 auto 0 auto
 
