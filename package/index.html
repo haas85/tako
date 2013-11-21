@@ -116,10 +116,10 @@
         <footer>
             <nav>
               <div>
-                  <button>Hola<span class="counter">5</span></button>
+                  <button id="show_success">Success<span class="counter">5</span></button>
               </div>
               <div>
-                  <button>Adios<span class="counter">84</span></button>
+                  <button id="show_progress">Progress<span class="counter">84</span></button>
               </div>
             </nav>
         </footer>
@@ -162,6 +162,15 @@
     <script src="js/TaKo.debug.js"></script>
     <script>
         TaKo.init();
+        $("#show_success").bind("click", function(){
+            TaKo.Notification.success("V", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
+        });
+        $("#show_progress").bind("click", function(){
+            var progress = TaKo.Notification.progress("V", "Descarga", "CONTENT");
+            setTimeout(function(){progress.percent(20)},1000);
+            setTimeout(function(){progress.percent(60)},2500);
+            setTimeout(function(){progress.percent(100)},4500);
+        });
     </script>
 </body>
 </html>
