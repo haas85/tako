@@ -25,7 +25,7 @@ div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-ind
 .progress_bar{width:100%;height:10px;display:block;}
 .progress_bar .percent{height:inherit;display:block;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms}
 
-section{height:inherit;width:inherit;position:absolute;z-index:0;top:0;left:0;opacity:0;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
+section{height:inherit;width:inherit;position:absolute;z-index:0;top:0;left:0;opacity:0;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
 section.active{opacity:1;z-index:100}
 section:not(.active) > article{display:none}
 section.footer > article{padding-bottom:65px}
