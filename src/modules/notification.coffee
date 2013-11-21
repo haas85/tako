@@ -71,7 +71,7 @@ TaKo.Notification = do (TK = TaKo) ->
       notification.html html
       notification.removeClass("center")
       .removeClass("start").addClass(position).addClass "show"
-      setTimeout (-> notification.children(".window").addClass("show")), 1
+      setTimeout (-> notification.children(".window").addClass("show")), 100
       callback = cb if cb?
       if time_out?
         timeout = setTimeout hide, time_out*1000

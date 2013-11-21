@@ -225,7 +225,7 @@
         notification.removeClass("center").removeClass("start").addClass(position).addClass("show");
         setTimeout((function() {
           return notification.children(".window").addClass("show");
-        }), 1);
+        }), 100);
         if (cb != null) {
           callback = cb;
         }
