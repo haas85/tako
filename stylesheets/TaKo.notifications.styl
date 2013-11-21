@@ -7,34 +7,34 @@ div[data-element="notification"]
   display none
   background-color rgba(0,0,0,0.6)
   z-index NOTIFICATION_INDEX
-  padding-top NOTIFICATION_INDENT*2
+  padding-top HEADER_HEIGHT
   padding-left NOTIFICATION_INDENT
   padding-right NOTIFICATION_INDENT
 
-  box-pack center
-
   &.center
-    box-align center
+    padding-top 0
 
-  &.start
-    box-align start
+    & > div.window.show
+      margin-top 50%
 
   &.show
-    display -webkit-box
-    display -ms-box
-    display -moz-box
-    display box
-
+    display block
 
   & > div.window
     margin-top 200%
     color rgba(0, 0, 0, 0.8)
     padding INDENT
-    box-flex 0
+    margin-left auto
+    margin-right auto
     opacity 0
     max-width 450px
 
     transition-duration NOTIFICATION_TRANSITION_TIME
+
+    &:after
+      display block
+      content ""
+      clear both
 
     &:not(.center)
       width 80%
@@ -44,7 +44,7 @@ div[data-element="notification"]
         text-align left
 
       & > *
-        float left
+        display inline-block
 
     & .icon
       display block
@@ -53,9 +53,10 @@ div[data-element="notification"]
       line-height 80px
       width 80px
       font-size 3em
+      float left
 
     &.show
-      margin-top 0%
+      margin-top 0
       opacity 1
 
     &.success, &.error

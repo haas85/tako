@@ -58,7 +58,7 @@ TaKo.Notification = do (TK = TaKo) ->
 
   _iconHtml = (icon, type, title, content) ->
     html = """<div class="window #{type}">
-                <span class="icon #{icon}"></span>
+                <span class="icon #{icon}">#{icon}</span>
                 <div>
                   <span class="title">#{title}</span>
                   <div class="content">#{content}</div>

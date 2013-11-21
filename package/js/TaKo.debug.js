@@ -212,7 +212,7 @@
     };
     _iconHtml = function(icon, type, title, content) {
       var html;
-      return html = "<div class=\"window " + type + "\">\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
+      return html = "<div class=\"window " + type + "\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
     };
     _show = function(html, time_out, cb, position) {
       var original_cb;
