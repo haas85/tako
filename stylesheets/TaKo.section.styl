@@ -65,48 +65,33 @@ footer
 
   & nav
     height FOOTER_HEIGHT
-    position fixed
-    bottom 0
-    left 0
-    right 0
+    line-height FOOTER_HEIGHT
+    padding 0
+    display -webkit-box
+    display -ms-box
+    display -moz-box
+    display -o-box
+    display box
+    width 100%
 
-    & > ul
-      margin 0
-      padding 0
-      line-height FOOTER_HEIGHT
+    box-orient horizontal
+    box-direction normal
+    box-pack justify
+    box-align stretch
+
+    & > *
+      box-flex 1
+      text-align center
+      width 100%
+      display block
       height FOOTER_HEIGHT
-      list-style none
-      position fixed
-      bottom 0
-      left 0
-      right 0
-      display -webkit-box
-      display -ms-box
-      display -moz-box
-      display -o-box
-      display box
 
-      box-orient horizontal
-      box-direction normal
-      box-pack justify
-      box-align stretch
-
-      & > li
-        box-flex 1
-        width 100%
-
-        & > *
-          width 100%
-          line-height FOOTER_HEIGHT
-          height FOOTER_HEIGHT
+      & > *
+        line-height FOOTER_HEIGHT
+        height FOOTER_HEIGHT
 
       &.active
         background-color rgba(250,250,250,0.15)
-
-    & > div
-      display block
-      height FOOTER_HEIGHT
-      text-align center
 
 article
   min-width 100%

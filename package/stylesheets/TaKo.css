@@ -37,12 +37,10 @@ header > nav.right > button{margin-right:5px}
 header > nav.left{left:0;}
 header > nav.left > button{margin-left:5px}
 footer{position:fixed;bottom:0;left:0;right:0;width:100%;height:65px;line-height:65px;}
-footer nav{height:65px;position:fixed;bottom:0;left:0;right:0;}
-footer nav > ul{margin:0;padding:0;line-height:65px;height:65px;list-style:none;position:fixed;bottom:0;left:0;right:0;display:-webkit-box;display:-ms-box;display:-moz-box;display:-o-box;display:box;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;-o-box-orient:horizontal;box-orient:horizontal;-webkit-box-direction:normal;-moz-box-direction:normal;-ms-box-direction:normal;-o-box-direction:normal;box-direction:normal;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-box-pack:justify;-o-box-pack:justify;box-pack:justify;-webkit-box-align:stretch;-moz-box-align:stretch;-ms-box-align:stretch;-o-box-align:stretch;box-align:stretch;}
-footer nav > ul > li{-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1;width:100%;}
-footer nav > ul > li > *{width:100%;line-height:65px;height:65px}
-footer nav > ul.active{background-color:rgba(250,250,250,0.15)}
-footer nav > div{display:block;height:65px;text-align:center}
+footer nav{height:65px;line-height:65px;padding:0;display:-webkit-box;display:-ms-box;display:-moz-box;display:-o-box;display:box;width:100%;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;-o-box-orient:horizontal;box-orient:horizontal;-webkit-box-direction:normal;-moz-box-direction:normal;-ms-box-direction:normal;-o-box-direction:normal;box-direction:normal;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-box-pack:justify;-o-box-pack:justify;box-pack:justify;-webkit-box-align:stretch;-moz-box-align:stretch;-ms-box-align:stretch;-o-box-align:stretch;box-align:stretch;}
+footer nav > *{-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1;text-align:center;width:100%;display:block;height:65px;}
+footer nav > * > *{line-height:65px;height:65px}
+footer nav > *.active{background-color:rgba(250,250,250,0.15)}
 article{min-width:100%;width:auto;display:none;padding-top:5px;position:absolute;top:50px;}
 article.active{display:block}
 
@@ -121,8 +119,8 @@ header button{text-indent:0;display:inline-block;font-weight:bold;font-style:nor
 header button .counter{position:relative;top:-.55em;margin-left:.5em;margin-right:.5em;line-height:15px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.1em .2em .1em .2em;font-size:11px}
 header button.button{text-indent:0;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:35px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25);}
 header button.button .counter{margin-left:.05em;margin-right:.05em}
-footer li button{width:100%;height:inherit;background-image:none;}
-footer li button .counter{position:relative;top:-1.2000000000000002em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
+footer button{height:inherit;width:100%;background-image:none;background-color:rgba(0,0,0,0);}
+footer button .counter{position:relative;top:-1.2000000000000002em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
 
 div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-top:50px;padding-left:2em;padding-right:2em;}
 div[data-element="notification"].center{padding-top:0;}
