@@ -113,11 +113,17 @@ div[data-element="notification"] > div.window
   & .icon
     font-weight bold
 
-  &.success .icon
-    color SUCCESS
+  &.success
+    border-color SUCCESS
 
-  &.error .icon
-    color FAIL
+    & .icon
+      color SUCCESS
+
+  &.error
+    border-color FAIL
+
+    & .icon
+      color FAIL
 
 #circular3dG > div
   background-color THEME

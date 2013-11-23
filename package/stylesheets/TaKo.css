@@ -134,6 +134,7 @@ div[data-element="notification"] > div.window:not(.center) *{display:block;text-
 div[data-element="notification"] > div.window:not(.center) > *{display:inline-block}
 div[data-element="notification"] > div.window .icon{display:block;text-align:center;height:100%;line-height:80px;width:80px;font-size:3em;float:left}
 div[data-element="notification"] > div.window.show{opacity:1}
+div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error{border-style:solid;border-width:0 0 0 4px;}
 div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{padding-top:.3em}
 div[data-element="notification"] > div.window.progress{width:80%;}
 div[data-element="notification"] > div.window.progress .icon{width:100%}
@@ -173,7 +174,9 @@ div[data-element="notification"] > div.window{background-color:rgba(0,0,0,0.8);}
 div[data-element="notification"] > div.window *{color:rgba(250,250,250,0.6)}
 div[data-element="notification"] > div.window .title{color:rgba(255,255,255,0.9)}
 div[data-element="notification"] > div.window .icon{font-weight:bold}
+div[data-element="notification"] > div.window.success{border-color:#1eb815;}
 div[data-element="notification"] > div.window.success .icon{color:#1eb815}
+div[data-element="notification"] > div.window.error{border-color:#ed1c13;}
 div[data-element="notification"] > div.window.error .icon{color:#ed1c13}
 #circular3dG > div{background-color:#f60}
 .progress_bar{background-color:#6d6d6d;}
