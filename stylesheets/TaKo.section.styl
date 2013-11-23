@@ -63,7 +63,19 @@ footer
   height FOOTER_HEIGHT
   line-height FOOTER_HEIGHT
 
+  display -webkit-box
+  display -ms-box
+  display -moz-box
+  display -o-box
+  display box
+
+  box-orient horizontal
+  box-direction normal
+  box-pack justify
+  box-align stretch
+
   & nav
+    box-flex 1
     height FOOTER_HEIGHT
     line-height FOOTER_HEIGHT
     padding 0
