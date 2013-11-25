@@ -57,7 +57,7 @@ TaKo.Notification = do (TK = TaKo) ->
     setTimeout _hide, 500
 
   _iconHtml = (icon, type, title, content) ->
-    html = """<div class="window #{type}">
+    html = """<div class="window #{type} bottom2top">
                 <span class="icon #{icon}">#{icon}</span>
                 <div>
                   <span class="title">#{title}</span>

@@ -21,7 +21,6 @@ div[data-element="notification"]
     display block
 
   & > div.window
-    margin-top NOTIFICATION_TRANSITION
     color rgba(0, 0, 0, 0.8)
     padding INDENT
     margin-left auto
@@ -38,6 +37,9 @@ div[data-element="notification"]
 
     &:not(.center)
       width 80%
+
+    &.bottom2top
+      margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT
 
       &.show
         transform(translate(0,- NOTIFICATION_TRANSITION))
