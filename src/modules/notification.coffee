@@ -49,6 +49,16 @@ TaKo.Notification = do (TK = TaKo) ->
       setTimeout (-> do hide), 150 if val is 100
       val
 
+  confirm = (title, content, accept, cancel, cb) ->
+    html = """<div class="window top-position downwards not_clickable">
+                <span class="title">#{title}</span>
+                <div class="content padding bottom">#{content}</div>
+                <button class="button accept">#{accept.text}</button>
+                <button class="button cancel">#{cancel.text}</button>
+              </div>
+            """
+    _show html, null, cb, "center"
+
   hide = ->
     active = false
     clearTimeout timeout
@@ -57,7 +67,7 @@ TaKo.Notification = do (TK = TaKo) ->
     setTimeout _hide, 500
 
   _iconHtml = (icon, type, title, content) ->
-    html = """<div class="window #{type} bottom2top">
+    html = """<div class="window #{type} top-position upwards margin">
                 <span class="icon #{icon}">#{icon}</span>
                 <div>
                   <span class="title">#{title}</span>
@@ -102,7 +112,7 @@ TaKo.Notification = do (TK = TaKo) ->
 
   success: success
   error: error
-  # confirm: confirm
+  confirm: confirm
   loading: loading
   progress: progress
   # custom: custom

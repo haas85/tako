@@ -27,6 +27,7 @@ div[data-element="notification"]
     margin-right auto
     opacity 0
     max-width 450px
+    width 80%
 
     transition-duration NOTIFICATION_TRANSITION_TIME
 
@@ -35,21 +36,30 @@ div[data-element="notification"]
       content ""
       clear both
 
-    &:not(.center)
-      width 80%
+    &.top-position
+      margin-top NOTIFICATION_TRANSITION !important
 
-    &.bottom2top
-      margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT
+      &.margin
+        margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT !important
 
+    &.upwards
       &.show
         transform(translate(0,- NOTIFICATION_TRANSITION))
 
+    &.downwards
+      &.show
+        transform(translate(0, NOTIFICATION_TRANSITION))
+
+    &.top2top
+      margin-top - NOTIFICATION_TRANSITION !important
+
+    &.left
       & *
         display block
         text-align left
 
       & > *
-        display inline-block
+        display block
 
     & .icon
       display block
@@ -59,6 +69,7 @@ div[data-element="notification"]
       width 80px
       font-size 3em
       float left
+      margin-right 0.2em
 
     &.show
       opacity 1

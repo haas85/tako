@@ -160,7 +160,7 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, error, hide, loading, notification, progress, success, timeout, _hide, _iconHtml, _onclick, _show;
+    var active, callback, confirm, error, hide, loading, notification, progress, success, timeout, _hide, _iconHtml, _onclick, _show;
     active = false;
     $("body").append("<div data-element=\"notification\"></div>");
     notification = $("div[data-element=notification]");
@@ -203,6 +203,11 @@
         }
       };
     };
+    confirm = function(title, content, accept, cancel, cb) {
+      var html;
+      html = "<div class=\"window top-position downwards not_clickable\">\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content padding bottom\">" + content + "</div>\n  <button class=\"button accept\">" + accept.text + "</button>\n  <button class=\"button cancel\">" + cancel.text + "</button>\n</div>";
+      return _show(html, null, cb, "center");
+    };
     hide = function() {
       active = false;
       clearTimeout(timeout);
@@ -212,7 +217,7 @@
     };
     _iconHtml = function(icon, type, title, content) {
       var html;
-      return html = "<div class=\"window " + type + " bottom2top\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
+      return html = "<div class=\"window " + type + " top-position upwards margin\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
     };
     _show = function(html, time_out, cb, position) {
       var original_cb;
@@ -267,6 +272,7 @@
     return {
       success: success,
       error: error,
+      confirm: confirm,
       loading: loading,
       progress: progress,
       hide: hide
