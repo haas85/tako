@@ -139,7 +139,8 @@ div[data-element="notification"] > div.window.center{text-align:center;padding:1
 div[data-element="notification"] > div.window.confirm{max-width:800px;}
 div[data-element="notification"] > div.window.confirm .accept{float:left;width:48.5%}
 div[data-element="notification"] > div.window.confirm .cancel{float:right;width:48.5%}
-div[data-element="notification"] > div.window .icon{display:block;text-align:center;height:100%;line-height:80px;width:80px;font-size:3em;float:left;margin-right:.2em}
+div[data-element="notification"] > div.window .icon{display:block;text-align:center;height:100%;width:80px;font-size:3em;float:left;margin-right:.2em}
+div[data-element="notification"] > div.window:not(.progress) .icon{line-height:80px}
 div[data-element="notification"] > div.window.show{opacity:1}
 div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error{border-style:solid;border-width:0 0 0 4px;}
 div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{padding-top:.3em}
