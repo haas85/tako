@@ -183,12 +183,12 @@
         html += "<span class=\"title\">" + title + "</span>";
       }
       html += "</div>";
-      return _show(html, time_out, cb, "center");
+      return _show(html, time_out, cb);
     };
     progress = function(icon, title, content, time_out, cb) {
       var html;
       html = "<div class=\"window center progress padding top not_clickable\">\n  <span class=\"icon " + icon + "\"></span>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content padding bottom\">" + content + "</div>\n  <div id=\"notification_progress\"></div>\n</div>";
-      _show(html, time_out, cb, "center");
+      _show(html, time_out, cb);
       progress = TK.ProgressBar("notification_progress", 0);
       return {
         percent: function(value) {
@@ -203,10 +203,10 @@
         }
       };
     };
-    confirm = function(title, content, accept, cancel, cb) {
+    confirm = function(icon, title, content, accept, cancel, cb) {
       var html;
-      html = "<div class=\"window top-position downwards not_clickable\">\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content padding bottom\">" + content + "</div>\n  <button class=\"button accept\">" + accept.text + "</button>\n  <button class=\"button cancel\">" + cancel.text + "</button>\n</div>";
-      return _show(html, null, cb, "center");
+      html = "<div class=\"window confirm top_position downwards not_clickable\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content padding bottom clear\">" + content + "</div>\n  <button class=\"button accept\">" + accept.text + "</button>\n  <button class=\"button cancel\">" + cancel.text + "</button>\n</div>";
+      return _show(html, null, cb);
     };
     hide = function() {
       active = false;
@@ -217,17 +217,14 @@
     };
     _iconHtml = function(icon, type, title, content) {
       var html;
-      return html = "<div class=\"window " + type + " top-position upwards margin\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
+      return html = "<div class=\"window " + type + " top_position upwards margin\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
     };
-    _show = function(html, time_out, cb, position) {
+    _show = function(html, time_out, cb) {
       var original_cb;
-      if (position == null) {
-        position = "start";
-      }
       if (!active) {
         active = true;
         notification.html(html);
-        notification.removeClass("center").removeClass("start").addClass(position).addClass("show");
+        notification.addClass("show");
         setTimeout((function() {
           return notification.children(".window").addClass("show");
         }), 100);
@@ -243,7 +240,7 @@
           if (original_cb != null) {
             original_cb();
           }
-          return _show(html, timeout, cb, position);
+          return _show(html, timeout, cb);
         };
         return hide();
       }

@@ -1,18 +1,17 @@
-TEXT                = #000
 THEME               = #FF6600
-COLOR               = #F4F4F4
-ASIDE               = #2f2f2f
+SECONDARY           = #2f2f2f
+TEXT                = #000
+SECONDARY_TEXT      = #F4F4F4
 FAIL                = #ed1c13
-SUCCESS             = #1eb815
-WARNING             = #edba22
+SUCCESS             = #199c12
 DISABLED            = #acb8b9
 BACKGROUND          = lighten(#DFDFDF, 25%)
 FONT                = 16px/1.25  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
 FONT_SIZE           = 16px/1.25
 
 /* -------------------------- VARIATIONS -------------------------- */
-LIST_border         = darken(COLOR, 15%)
-NAV_LINK            = lighten(ASIDE, 20%)
+LIST_border         = darken(SECONDARY_TEXT, 15%)
+NAV_LINK            = lighten(SECONDARY, 20%)
 NAV_LINK_ACTIVE     = #fff
 /* ------------------------- TRANSITION ------------------------- */
 TRANSITION_time     = 400ms
@@ -36,7 +35,7 @@ header
   background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
   background-image linear-gradient(lighten(THEME, 35%), THEME)
-  color COLOR
+  color SECONDARY_TEXT !important
 
   & .counter
     background-color lighten(THEME, 30%)
@@ -48,25 +47,25 @@ header
     background-color darken(THEME, 10%)
 
 footer
-  background-color ASIDE
-  color COLOR
+  background-color SECONDARY
+  color SECONDARY_TEXT !important
 
   & nav > ul button
-    background-color ASIDE
+    background-color SECONDARY
 
   & .counter
-    background-color lighten(ASIDE, 15%)
+    background-color lighten(SECONDARY, 15%)
 
 article
   background-color BACKGROUND
   color TEXT
 
 aside
-  background-color ASIDE
-  color COLOR
+  background-color SECONDARY
+  color SECONDARY_TEXT !important
 
   & .counter
-    background-color lighten(ASIDE, 30%)
+    background-color lighten(SECONDARY, 30%)
 
 button, .button
   font-size FONT_SIZE
@@ -76,30 +75,28 @@ button, .button
   background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
   background-image linear-gradient(lighten(THEME, 35%), THEME)
-  color COLOR
+  color SECONDARY_TEXT !important
 
-button, .button
   &.accept
     background-color SUCCESS
-    background-image -webkit-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
-    background-image -moz-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
-    background-image -ms-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
-    background-image -o-linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
-    background-image linear-gradient(lighten(SUCCESS, 25%), SUCCESS)
-    color COLOR
+    background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    color SECONDARY_TEXT !important
 
-button, .button
   &.cancel
     background-color FAIL
-    background-image -webkit-linear-gradient(lighten(FAIL, 25%), FAIL)
-    background-image -moz-linear-gradient(lighten(FAIL, 25%), FAIL)
-    background-image -ms-linear-gradient(lighten(FAIL, 25%), FAIL)
-    background-image -o-linear-gradient(lighten(FAIL, 25%), FAIL)
-    background-image linear-gradient(lighten(FAIL, 25%), FAIL)
-    color COLOR
+    background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image linear-gradient(lighten(FAIL, 15%), FAIL)
+    color SECONDARY_TEXT !important
 
 aside .current, footer .current
-  background-color lighten(ASIDE, 15%)
+  background-color lighten(SECONDARY, 15%)
 
 div[data-element="notification"] > div.window
   background-color rgba(0,0,0,0.8)
@@ -129,7 +126,7 @@ div[data-element="notification"] > div.window
   background-color THEME
 
 .progress_bar
-  background-color lighten(ASIDE, 30%)
+  background-color lighten(SECONDARY, 30%)
 
   & .percent
     background-color THEME

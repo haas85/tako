@@ -33,7 +33,7 @@ TaKo.Notification = do (TK = TaKo) ->
                 </div>"""
     html += """<span class="title">#{title}</span>""" if title?
     html += "</div>"
-    _show html, time_out, cb, "center"
+    _show html, time_out, cb
 
   progress = (icon, title, content, time_out, cb) ->
     html = """<div class="window center progress padding top not_clickable">
@@ -42,22 +42,23 @@ TaKo.Notification = do (TK = TaKo) ->
                 <div class="content padding bottom">#{content}</div>
                 <div id="notification_progress"></div>
               </div>"""
-    _show html, time_out, cb, "center"
+    _show html, time_out, cb
     progress = TK.ProgressBar "notification_progress", 0
     percent: (value) ->
       val = progress.percent value
       setTimeout (-> do hide), 150 if val is 100
       val
 
-  confirm = (title, content, accept, cancel, cb) ->
-    html = """<div class="window top-position downwards not_clickable">
+  confirm = (icon, title, content, accept, cancel, cb) ->
+    html = """<div class="window confirm top_position downwards not_clickable">
+                <span class="icon #{icon}">#{icon}</span>
                 <span class="title">#{title}</span>
-                <div class="content padding bottom">#{content}</div>
+                <div class="content padding bottom clear">#{content}</div>
                 <button class="button accept">#{accept.text}</button>
                 <button class="button cancel">#{cancel.text}</button>
               </div>
             """
-    _show html, null, cb, "center"
+    _show html, null, cb
 
   hide = ->
     active = false
@@ -67,7 +68,7 @@ TaKo.Notification = do (TK = TaKo) ->
     setTimeout _hide, 500
 
   _iconHtml = (icon, type, title, content) ->
-    html = """<div class="window #{type} top-position upwards margin">
+    html = """<div class="window #{type} top_position upwards margin">
                 <span class="icon #{icon}">#{icon}</span>
                 <div>
                   <span class="title">#{title}</span>
@@ -75,12 +76,11 @@ TaKo.Notification = do (TK = TaKo) ->
                 </div>
               </div>"""
 
-  _show = (html, time_out, cb, position="start") ->
+  _show = (html, time_out, cb) ->
     if not active
       active = true
       notification.html html
-      notification.removeClass("center")
-      .removeClass("start").addClass(position).addClass "show"
+      notification.addClass "show"
       setTimeout (-> notification.children(".window").addClass("show")), 100
       callback = cb if cb?
       if time_out?
@@ -89,7 +89,7 @@ TaKo.Notification = do (TK = TaKo) ->
       original_cb = callback
       callback = ->
         do original_cb if original_cb?
-        _show html, timeout, cb, position
+        _show html, timeout, cb
       do hide
 
   _onclick = ->

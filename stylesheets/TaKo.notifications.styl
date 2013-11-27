@@ -7,15 +7,9 @@ div[data-element="notification"]
   display none
   background-color rgba(0,0,0,0.6)
   z-index NOTIFICATION_INDEX
-  padding-top HEADER_HEIGHT
+  padding-top 0
   padding-left NOTIFICATION_INDENT
   padding-right NOTIFICATION_INDENT
-
-  &.center
-    padding-top 0
-
-    & > div.window
-      margin-top 50%
 
   &.show
     display block
@@ -28,7 +22,6 @@ div[data-element="notification"]
     opacity 0
     max-width 450px
     width 80%
-
     transition-duration NOTIFICATION_TRANSITION_TIME
 
     &:after
@@ -36,11 +29,17 @@ div[data-element="notification"]
       content ""
       clear both
 
-    &.top-position
-      margin-top NOTIFICATION_TRANSITION !important
+    &.top_position
+      margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT
+
+      &.downwards
+        margin-top - NOTIFICATION_TRANSITION
 
       &.margin
-        margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT !important
+        margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT * 2
+
+      &.no_margin
+        margin-top NOTIFICATION_TRANSITION
 
     &.upwards
       &.show
@@ -50,9 +49,6 @@ div[data-element="notification"]
       &.show
         transform(translate(0, NOTIFICATION_TRANSITION))
 
-    &.top2top
-      margin-top - NOTIFICATION_TRANSITION !important
-
     &.left
       & *
         display block
@@ -60,6 +56,22 @@ div[data-element="notification"]
 
       & > *
         display block
+
+    &.center
+      text-align center
+      padding 1.8em
+      margin-top 50%
+
+    &.confirm
+      max-width 800px
+
+      & .accept
+        float left
+        width 48.5%
+
+      & .cancel
+        float right
+        width 48.5%
 
     & .icon
       display block
@@ -87,17 +99,13 @@ div[data-element="notification"]
       & .icon
         width 100%
 
-    &.center
-      text-align center
-      padding 1.8em
-
-      & > #circular_container
-        width LOADER_SIZE
-        margin 0 auto 0 auto
-
     & .title
       line-height 40px
       font-size FONT_SIZE_BIG
 
     & .content
       padding-top 0.5em
+
+    & #circular_container
+      width LOADER_SIZE
+      margin 0 auto 0 auto
