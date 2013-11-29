@@ -160,35 +160,37 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, confirm, error, hide, loading, notification, progress, success, timeout, _hide, _iconHtml, _onclick, _show;
+    var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _onclick, _show;
     active = false;
-    $("body").append("<div data-element=\"notification\"></div>");
-    notification = $("div[data-element=notification]");
+    notification = $("<div data-element=\"notification\"></div>");
+    notification_window = $("<div class=\"window\"></div>");
+    notification.append(notification_window);
+    $("body").append(notification);
     timeout = null;
     callback = null;
     success = function(icon, title, content, time_out, cb) {
       var html;
-      html = _iconHtml(icon, "success", title, content);
-      return _show(html, time_out, cb);
+      html = _iconHtml(icon, title, content);
+      return _show(html, "success top_position upwards margin", time_out, cb);
     };
     error = function(icon, title, content, time_out, cb) {
       var html;
-      html = _iconHtml(icon, "error", title, content);
-      return _show(html, time_out, cb);
+      html = _iconHtml(icon, title, content);
+      return _show(html, "error top_position upwards margin", time_out, cb);
     };
     loading = function(title, time_out, cb) {
       var html;
-      html = "<div class=\"window center not_clickable\">\n<div id=\"circular_container\">\n  <div id=\"circular3dG\">\n    <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n    <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n  </div>\n</div>";
+      html = "<div id=\"circular_container\">\n<div id=\"circular3dG\">\n  <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n</div>";
       if (title != null) {
         html += "<span class=\"title\">" + title + "</span>";
       }
       html += "</div>";
-      return _show(html, time_out, cb);
+      return _show(html, "center not_clickable", time_out, cb);
     };
     progress = function(icon, title, content, time_out, cb) {
       var html;
-      html = "<div class=\"window center progress padding top not_clickable\">\n  <span class=\"icon " + icon + "\"></span>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content padding bottom\">" + content + "</div>\n  <div id=\"notification_progress\"></div>\n</div>";
-      _show(html, time_out, cb);
+      html = "<span class=\"icon " + icon + "\"></span>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom\">" + content + "</div>\n<div id=\"notification_progress\"></div>";
+      _show(html, "center progress padding top not_clickable", time_out, cb);
       progress = TK.ProgressBar("notification_progress", 0);
       return {
         percent: function(value) {
@@ -205,28 +207,30 @@
     };
     confirm = function(icon, title, content, accept, cancel, cb) {
       var html;
-      html = "<div class=\"window confirm top_position downwards not_clickable\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content padding bottom clear\">" + content + "</div>\n  <button class=\"button accept\">" + accept.text + "</button>\n  <button class=\"button cancel\">" + cancel.text + "</button>\n</div>";
-      return _show(html, null, cb);
+      html = "<span class=\"icon " + icon + "\">" + icon + "</span>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom clear\">" + content + "</div>\n<button class=\"button accept\">" + accept.text + "</button>\n<button class=\"button cancel\">" + cancel.text + "</button>";
+      return _show(html, "confirm top_position downwards not_clickable", null, cb);
     };
     hide = function() {
       active = false;
       clearTimeout(timeout);
       timeout = null;
-      notification.children(".window").removeClass("show");
+      notification_window.removeClass("show");
       return setTimeout(_hide, 500);
     };
     _iconHtml = function(icon, type, title, content) {
       var html;
-      return html = "<div class=\"window " + type + " top_position upwards margin\">\n  <span class=\"icon " + icon + "\">" + icon + "</span>\n  <div>\n    <span class=\"title\">" + title + "</span>\n    <div class=\"content\">" + content + "</div>\n  </div>\n</div>";
+      return html = "<span class=\"icon " + icon + "\">" + icon + "</span>\n<div>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content\">" + content + "</div>\n</div>";
     };
-    _show = function(html, time_out, cb) {
+    _show = function(html, classes, time_out, cb) {
       var original_cb;
       if (!active) {
         active = true;
-        notification.html(html);
+        notification_window.removeClass();
+        notification_window.addClass("window " + classes);
+        notification_window.html(html);
         notification.addClass("show");
         setTimeout((function() {
-          return notification.children(".window").addClass("show");
+          return notification_window.addClass("show");
         }), 100);
         if (cb != null) {
           callback = cb;
@@ -246,13 +250,11 @@
       }
     };
     _onclick = function() {
-      var element;
-      element = notification.children(".window");
-      if (!element.hasClass("not_clickable")) {
+      if (!notification_window.hasClass("not_clickable")) {
         active = false;
         clearTimeout(timeout);
         timeout = null;
-        element.removeClass("show");
+        notification_window.removeClass("show");
         return setTimeout(_hide, 500);
       }
     };
