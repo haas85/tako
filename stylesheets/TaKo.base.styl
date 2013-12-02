@@ -17,10 +17,12 @@ aside
   top 50px
   bottom 0
   left - ASIDE_TRANSITION
-  transition(all ASIDE_TRANSITION_TIME ease)
+  transition-duration ASIDE_TRANSITION_TIME
+  // transition(all ASIDE_TRANSITION_TIME ease)
 
   &.show
-    transform(translate(ASIDE_TRANSITION))
+    transform(translateX(0))
+    left 0
 
   & .counter
     margin-top -3px
