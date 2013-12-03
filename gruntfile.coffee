@@ -36,7 +36,9 @@ module.exports = (grunt) ->
       ]
 
       components: [
-        "components/zepto/zepto.js"
+        "components/zepto/zepto.js",
+        "components/hammer/hammer.js",
+        "components/hammer/jquery.hammer.js"
       ]
 
 

@@ -92,7 +92,9 @@ TaKo.Notification = do (TK = TaKo) ->
         _show html, timeout, cb
       do hide
 
-  _onclick = ->
+  _ontouch = (ev) ->
+    do ev.preventDefault
+    do ev.stopPropagation
     unless notification_window.hasClass "not_clickable"
       active = false
       clearTimeout timeout
@@ -107,7 +109,7 @@ TaKo.Notification = do (TK = TaKo) ->
     cb.call cb if cb?
 
 
-  notification.bind "click", _onclick
+  notification.on "touch", _ontouch
 
   success: success
   error: error

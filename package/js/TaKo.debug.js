@@ -7,6 +7,7 @@
     if ($("section.active").length === 0) {
       $("section").first().addClass("active");
     }
+    $("body").hammer();
     return $("section").each(function() {
       if ($(this).children("article.active").length === 0) {
         return $(this).children("article").first().addClass("active");
@@ -46,7 +47,9 @@
     };
     $("[data-article]").each(function(element) {
       var _this = this;
-      return $(this).bind("click", function() {
+      return $(this).bind("touch", function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
         return goTo($(_this).attr("data-article"));
       });
     });
@@ -83,16 +86,22 @@
       }
     };
     $("[data-action=aside]").each(function(element) {
-      return $(this).bind("click", function() {
+      return $(this).on("touch", function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
         return toggle();
       });
     });
     $("aside > *").each(function(element) {
-      return $(this).bind("click", function() {
+      return $(this).on("touch", function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
         return hide();
       });
     });
-    bck.bind("click", function() {
+    bck.on("touch", function(ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
       return hide();
     });
     return {
@@ -144,7 +153,9 @@
     };
     $("[data-section]").each(function(element) {
       var _this = this;
-      return $(this).bind("click", function() {
+      return $(this).bind("touch", function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
         return goTo($(_this).attr("data-section"));
       });
     });
@@ -160,7 +171,7 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _onclick, _show;
+    var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontouch, _show;
     active = false;
     notification = $("<div data-element=\"notification\"></div>");
     notification_window = $("<div class=\"window\"></div>");
@@ -249,7 +260,9 @@
         return hide();
       }
     };
-    _onclick = function() {
+    _ontouch = function(ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
       if (!notification_window.hasClass("not_clickable")) {
         active = false;
         clearTimeout(timeout);
@@ -267,7 +280,7 @@
         return cb.call(cb);
       }
     };
-    notification.bind("click", _onclick);
+    notification.on("touch", _ontouch);
     return {
       success: success,
       error: error,

@@ -21,7 +21,10 @@ TaKo.Article = do (TK = TaKo) ->
     if _current? then _current else _current = $ "section.active article.active"
 
   $("[data-article]").each (element) ->
-    $(@).bind "click", => goTo $(@).attr "data-article"
+    $(@).bind "touch", (ev) =>
+      do ev.preventDefault
+      do ev.stopPropagation
+      goTo $(@).attr "data-article"
 
   _current = null
 
