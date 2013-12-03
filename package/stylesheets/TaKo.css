@@ -125,9 +125,9 @@ header button.button .counter{margin-left:.05em;margin-right:.05em}
 footer button{height:inherit;width:100%;background-image:none;background-color:rgba(0,0,0,0);}
 footer button .counter{position:relative;top:-1.2000000000000002em;line-height:15px;-webkit-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.2em .5em .2em .5em;font-size:.9em}
 
-div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-top:0;padding-left:2em;padding-right:2em;}
+div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-top:0;}
 div[data-element="notification"].show{display:block}
-div[data-element="notification"] > div.window{color:rgba(0,0,0,0.8);padding:.8em;margin-left:auto;margin-right:auto;opacity:0;max-width:450px;width:80%;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
+div[data-element="notification"] > div.window{color:rgba(0,0,0,0.8);margin-left:auto;margin-right:auto;opacity:0;max-width:450px;width:90%;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
 div[data-element="notification"] > div.window:after{display:block;content:"";clear:both}
 div[data-element="notification"] > div.window.top_position{margin-top:620px;}
 div[data-element="notification"] > div.window.top_position.downwards{margin-top:-570px}
@@ -144,7 +144,7 @@ div[data-element="notification"] > div.window.confirm .cancel{float:right;width:
 div[data-element="notification"] > div.window .icon{display:block;text-align:center;height:100%;width:80px;font-size:3em;float:left;margin-right:.2em}
 div[data-element="notification"] > div.window:not(.progress) .icon{line-height:80px}
 div[data-element="notification"] > div.window.show{opacity:1}
-div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error{border-style:solid;border-width:0 0 0 4px;}
+div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error{border-style:solid;border-width:0 0 0 4px;min-width:280px;}
 div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{padding-top:.3em}
 div[data-element="notification"] > div.window.progress{width:80%;}
 div[data-element="notification"] > div.window.progress .icon{width:100%}
