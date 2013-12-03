@@ -1,6 +1,6 @@
 section
-  height inherit
-  width inherit
+  height 100%
+  width 100%
   position absolute
   margin 0
   padding 0
@@ -67,6 +67,7 @@ footer
   width 100%
   height FOOTER_HEIGHT
   line-height FOOTER_HEIGHT
+  z-index FOOTER_INDEX
 
   display -webkit-box
   display -ms-box
@@ -119,6 +120,8 @@ article
   margin 0
   position absolute
   top HEADER_HEIGHT
+  overflow visible
+  z-index ARTICLE_INDEX
 
   &.active
     display block

@@ -217,7 +217,7 @@
       notification_window.removeClass("show");
       return setTimeout(_hide, 500);
     };
-    _iconHtml = function(icon, type, title, content) {
+    _iconHtml = function(icon, title, content) {
       var html;
       return html = "<span class=\"icon " + icon + "\">" + icon + "</span>\n<div>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content\">" + content + "</div>\n</div>";
     };
