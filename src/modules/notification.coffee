@@ -67,7 +67,7 @@ TaKo.Notification = do (TK = TaKo) ->
     notification_window.removeClass "show"
     setTimeout _hide, 500
 
-  _iconHtml = (icon, type, title, content) ->
+  _iconHtml = (icon, title, content) ->
     html = """<span class="icon #{icon}">#{icon}</span>
               <div>
                 <span class="title">#{title}</span>
