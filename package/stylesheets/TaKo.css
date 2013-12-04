@@ -12,6 +12,11 @@ div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-ind
 .biggest{font-size:1.4em}
 .onleft{float:left}
 .onright{float:right}
+.clear:after{display:block;content:"";clear:both}
+.middle{vertical-align:middle}
+.block{display:block !important}
+.inline{display:inline !important}
+.inline-block{display:inline-block !important}
 .padding.top{padding-top:.8em !important}
 .padding.bottom{padding-bottom:.8em !important}
 .padding.left{padding-left:.8em !important}
@@ -20,11 +25,18 @@ div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-ind
 .margin.bottom{margin-bottom:.8em !important}
 .margin.left{margin-left:.8em !important}
 .margin.right{margin-right:.8em !important}
+.max-height{height:100%}
+.max-line-height{line-height:100%}
+.align-left{text-align:left}
+.align-center{text-align:center}
+.align-right{text-align:right}
 .scroll.vertical{overflow-y:scroll}
 .scroll.horizontal{overflow-x:scroll}
 .progress_bar{width:100%;height:10px;display:block;}
 .progress_bar .percent{height:inherit;display:block;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms}
 .clear:after{display:block;content:"";clear:both}
+strong{font-weight:bold;font-size:1.1em}
+small{opacity:.6;font-size:1.1em}
 
 section{height:100%;width:100%;position:absolute;margin:0;padding:0;z-index:0;top:0;left:0;bottom:0;opacity:0;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
 section.active{opacity:1;z-index:100}
@@ -49,6 +61,7 @@ article ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 article ul > li{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:11px 10px 11px 10px;}
 article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
 article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
+article ul > li h1,article ul > li h2,article ul > li h3,article ul > li h4,article ul > li h5,article ul > li h6,article ul > li strong,article ul > li small{overflow:hidden;white-space:nowrap;display:block}
 article ul.indented > li{margin:.8em}
 aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;}
