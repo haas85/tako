@@ -1,6 +1,5 @@
 input
   outline none
-  // -webkit-appearance none
   -webkit-user-select text
   -khtml-user-select text
   -moz-user-select text
@@ -9,30 +8,17 @@ input
 
 .circle, .square
 
-  & input[type="radio"], & input[type="checkbox"]
-    display none
-
-  & label
+  & input
+    -webkit-appearance none
     cursor pointer
-    position relative
-    padding-left 25px
+    border-width 3px
+    border-style solid
+    width 20px
+    height 20px
+    box-shadow inset 0px 2px 3px 0px rgba(0, 0, 0, .1), 0px 1px 0px 0px rgba(255, 255, 255, .8)
 
-    &:before
-      content ""
-      display inline-block
-      border-width 3px
-      border-style solid
-      width 14px
-      height 14px
-
-      margin-right 10px
-      position absolute
-      left 0
-      top 0
-      box-shadow inset 0px 2px 3px 0px rgba(0, 0, 0, .1), 0px 1px 0px 0px rgba(255, 255, 255, .8)
-
-.circle label:before
+.circle input
   border-radius 50%
 
-.square label:before
+.square input
   border-radius 1px
