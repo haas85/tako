@@ -54,7 +54,12 @@ aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;}
 aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
 
-input{outline:none;-webkit-appearance:none;-webkit-user-select:text;-khtml-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+input{outline:none;-webkit-user-select:text;-khtml-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+.circle input[type="radio"],.square input[type="radio"],.circle input[type="checkbox"],.square input[type="checkbox"]{display:none}
+.circle label,.square label{cursor:pointer;position:relative;padding-left:25px;}
+.circle label:before,.square label:before{content:"";display:inline-block;border-width:3px;border-style:solid;width:14px;height:14px;margin-right:10px;position:absolute;left:0;top:0;-webkit-box-shadow:inset 0 2px 3px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(255,255,255,0.8);-moz-box-shadow:inset 0 2px 3px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(255,255,255,0.8);-ms-box-shadow:inset 0 2px 3px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(255,255,255,0.8);-o-box-shadow:inset 0 2px 3px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(255,255,255,0.8);box-shadow:inset 0 2px 3px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(255,255,255,0.8)}
+.circle label:before{-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;border-radius:50%}
+.square label:before{-webkit-border-radius:1px;-moz-border-radius:1px;-ms-border-radius:1px;-o-border-radius:1px;border-radius:1px}
 
 .line{width:100%;display:block;}
 .line:after{display:block;content:"";clear:both}
@@ -190,3 +195,5 @@ div[data-element="notification"] > div.window.error .icon{color:#ed1c13}
 #circular3dG > div{background-color:#f60}
 .progress_bar{background-color:#6d6d6d;}
 .progress_bar .percent{background-color:#f60}
+.circle label:before,.square label:before{border-color:#8b8b8b;background-color:#dbdbdb}
+.circle input[type="radio"]:checked + label:before,.square input[type="radio"]:checked + label:before,.circle input[type="checkbox"]:checked + label:before,.square input[type="checkbox"]:checked + label:before{background-color:#ff944d}
