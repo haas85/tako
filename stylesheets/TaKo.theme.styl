@@ -132,12 +132,12 @@ div[data-element="notification"] > div.window
   & .percent
     background-color THEME
 
-.circle, .square
-  & input
+input[type="radio"], input[type="checkbox"]
+  &.circle, &.square
     border-color darken(BACKGROUND, 40%)
     background-color darken(BACKGROUND, 5%)
 
-  & input[type="radio"], & input[type="checkbox"]
+  &[type="radio"], &[type="checkbox"]
     &:checked
       background-color lighten(THEME, 30%)
 

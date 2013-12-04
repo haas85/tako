@@ -6,19 +6,18 @@ input
   -ms-user-select text
   user-select text
 
-.circle, .square
+  &[type="radio"], &[type="checkbox"]
+    &.circle, &.square
+      -webkit-appearance none
+      cursor pointer
+      border-width 3px
+      border-style solid
+      width 20px
+      height 20px
+      box-shadow inset 0px 2px 3px 0px rgba(0, 0, 0, .1), 0px 1px 0px 0px rgba(255, 255, 255, .8)
 
-  & input
-    -webkit-appearance none
-    cursor pointer
-    border-width 3px
-    border-style solid
-    width 20px
-    height 20px
-    box-shadow inset 0px 2px 3px 0px rgba(0, 0, 0, .1), 0px 1px 0px 0px rgba(255, 255, 255, .8)
+    &.circle
+      border-radius 50%
 
-.circle input
-  border-radius 50%
-
-.square input
-  border-radius 1px
+    &.square
+      border-radius 1px
