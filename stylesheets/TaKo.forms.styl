@@ -7,17 +7,60 @@ input
   user-select text
 
   &[type="radio"], &[type="checkbox"]
-    &.circle, &.square
+    &:not(.switch)
+      &.circle, &.square
+        -webkit-appearance none
+        cursor pointer
+        border-width 1px
+        border-style solid
+        width 20px
+        height 20px
+        // box-shadow inset 0px 2px 3px 0px rgba(0, 0, 0, .1), 0px 1px 0px 0px rgba(255, 255, 255, .8)
+
+      &.circle
+        border-radius(50%)
+
+      &.square
+        border-radius(1px)
+
+    &.switch
+      appearance none
       -webkit-appearance none
+      -webkit-user-select text
       cursor pointer
-      border-width 3px
-      border-style solid
-      width 20px
-      height 20px
-      box-shadow inset 0px 2px 3px 0px rgba(0, 0, 0, .1), 0px 1px 0px 0px rgba(255, 255, 255, .8)
+      height 24px
+      position relative
+      transition border .25s .15s,
+                  box-shadow .25s .3s,
+                  padding .25s
+      width 44px
+      vertical-align top
 
-    &.circle
-      border-radius 50%
+      &:after
+        content ''
+        display block
+        height 22px
+        width 22px
+        position absolute
+        transition border .25s .15s,
+                    left .25s .1s,
+                    right .25s .25s
 
-    &.square
-      border-radius 1px
+      &:checked
+        padding-left 18px
+        transition border .25s,
+                    box-shadow .25s,
+                    padding .25s .15s
+
+        &:after
+          left 20px
+          transition border .25s,
+                      left .15s .25s,
+                      right .25s .25s
+
+      &.circle
+        border-radius(20px)
+
+        &:after
+          border-radius(26px)
+

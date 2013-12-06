@@ -25,6 +25,13 @@ article ul
       overflow hidden
       white-space nowrap
       display block
+    & input
+      &[type="radio"], &[type="checkbox"]
+        &.onright
+          margin-top -0.1em
+
+          &.switch
+            margin-top -0.3em
 
   &.indented > li
     margin INDENT
@@ -40,14 +47,9 @@ aside ul
   & > li
     position relative
     font-size 1.2em
-    // border-bottom 1px solid rgba(255, 255, 255, 0.1)
     padding 11px 10px 11px 10px
 
     &.separator
       background-color rgba(0, 0, 0, 0.1)
       color white
       padding 1px 10px 1px 10px
-
-
-    &:first-child
-      // border-top 1px solid rgba(255, 255, 255, 0.1)
