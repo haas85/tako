@@ -47,7 +47,7 @@
     };
     $("[data-article]").each(function(element) {
       var _this = this;
-      return $(this).bind("touch", function(ev) {
+      return $(this).bind("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return goTo($(_this).attr("data-article"));
@@ -86,20 +86,20 @@
       }
     };
     $("[data-action=aside]").each(function(element) {
-      return $(this).on("touch", function(ev) {
+      return $(this).on("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return toggle();
       });
     });
-    $("aside > *").each(function(element) {
-      return $(this).on("touch", function(ev) {
+    $("aside *").each(function(element) {
+      return $(this).on("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return hide();
       });
     });
-    bck.on("touch", function(ev) {
+    bck.on("tap", function(ev) {
       ev.preventDefault();
       ev.stopPropagation();
       return hide();
@@ -153,7 +153,7 @@
     };
     $("[data-section]").each(function(element) {
       var _this = this;
-      return $(this).bind("touch", function(ev) {
+      return $(this).bind("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return goTo($(_this).attr("data-section"));
@@ -171,7 +171,7 @@
 
 (function() {
   TaKo.Notification = (function(TK) {
-    var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontouch, _show;
+    var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
     active = false;
     notification = $("<div data-element=\"notification\"></div>");
     notification_window = $("<div class=\"window\"></div>");
@@ -260,7 +260,7 @@
         return hide();
       }
     };
-    _ontouch = function(ev) {
+    _ontap = function(ev) {
       ev.preventDefault();
       ev.stopPropagation();
       if (!notification_window.hasClass("not_clickable")) {
@@ -280,7 +280,7 @@
         return cb.call(cb);
       }
     };
-    notification.on("touch", _ontouch);
+    notification.on("tap", _ontap);
     return {
       success: success,
       error: error,

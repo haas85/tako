@@ -16,18 +16,18 @@ TaKo.Aside = do (TK = TaKo) ->
     if aside.hasClass "show" then hide() else show()
 
   $("[data-action=aside]").each (element) ->
-    $(@).on "touch", (ev)->
+    $(@).on "tap", (ev)->
       do ev.preventDefault
       do ev.stopPropagation
       do toggle
 
-  $("aside > *").each (element) ->
-    $(@).on "touch", (ev)->
+  $("aside *").each (element) ->
+    $(@).on "tap", (ev)->
       do ev.preventDefault
       do ev.stopPropagation
       do hide
 
-  bck.on "touch", (ev)->
+  bck.on "tap", (ev)->
     do ev.preventDefault
     do ev.stopPropagation
     do hide
