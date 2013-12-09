@@ -70,13 +70,16 @@
       $("body").append('<div data-element="aside_background"></div>');
     }
     bck = $("[data-element=aside_background]");
+    bck.append(aside);
     show = function() {
       bck.addClass("show");
       return aside.addClass("show");
     };
     hide = function() {
       aside.removeClass("show");
-      return bck.removeClass("show");
+      return setTimeout((function() {
+        return bck.removeClass("show");
+      }), 150);
     };
     toggle = function() {
       if (aside.hasClass("show")) {

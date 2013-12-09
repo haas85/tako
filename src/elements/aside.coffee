@@ -3,6 +3,7 @@ TaKo.Aside = do (TK = TaKo) ->
   if aside.length > 0
     $("body").append '<div data-element="aside_background"></div>'
   bck = $ "[data-element=aside_background]"
+  bck.append aside
 
   show = ->
     bck.addClass "show"
@@ -10,7 +11,7 @@ TaKo.Aside = do (TK = TaKo) ->
 
   hide = ->
     aside.removeClass "show"
-    bck.removeClass "show"
+    setTimeout ( -> bck.removeClass "show"), 150
 
   toggle = ->
     if aside.hasClass "show" then hide() else show()

@@ -1,10 +1,10 @@
 body{padding:0;margin:0;width:100%;height:100%;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;oveflow:hidden;-webkit-backface-visibility:hidden;}
 body *{-webkit-tap-highlight-color:rgba(0,0,0,0)}
-aside{display:block;width:256px;padding:6px;z-index:201;position:fixed;top:50px;bottom:0;left:-276px;-webkit-transition-duration:150ms;-moz-transition-duration:150ms;-ms-transition-duration:150ms;-o-transition-duration:150ms;transition-duration:150ms;}
+aside{display:block;width:256px;padding:6px;z-index:201;position:absolute;top:0;bottom:0;left:-276px;-webkit-transition-duration:150ms;-moz-transition-duration:150ms;-ms-transition-duration:150ms;-o-transition-duration:150ms;transition-duration:150ms;}
 aside.show{-webkit-transform:translateX(268px);-moz-transform:translateX(268px);-ms-transform:translateX(268px);-o-transform:translateX(268px);transform:translateX(268px)}
 aside .counter{margin-top:-3px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:2px;padding:.2em .4em .2em .4em;float:right}
-div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;right:0;-webkit-transition:opacity 150ms ease-out;-moz-transition:opacity 150ms ease-out;-ms-transition:opacity 150ms ease-out;-o-transition:opacity 150ms ease-out;transition:opacity 150ms ease-out;z-index:0;opacity:0;}
-div[data-element="aside_background"].show{background-color:#000;opacity:.6;z-index:200}
+div[data-element="aside_background"]{position:fixed;top:50px;bottom:0;left:0;right:0;-webkit-transition:opacity 150ms ease-out;-moz-transition:opacity 150ms ease-out;-ms-transition:opacity 150ms ease-out;-o-transition:opacity 150ms ease-out;transition:opacity 150ms ease-out;z-index:0;background-color:rgba(0,0,0,0);}
+div[data-element="aside_background"].show{background-color:#000;background-color:rgba(0,0,0,0.6);z-index:200}
 .indented > div{padding:.8em}
 .anchor{width:100%}
 .smallest{font-size:11px}

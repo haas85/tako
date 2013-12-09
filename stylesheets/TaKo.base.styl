@@ -21,8 +21,8 @@ aside
   width ASIDE_WIDTH
   padding ASIDE_PADDING
   z-index ASIDE_INDEX
-  position fixed
-  top 50px
+  position absolute
+  top 0
   bottom 0
   left - ASIDE_TRANSITION
   transition-duration ASIDE_TRANSITION_TIME
@@ -46,11 +46,11 @@ div[data-element="aside_background"]
   right 0
   transition(opacity ASIDE_TRANSITION_TIME ease-out)
   z-index 0
-  opacity 0
+  background-color rgba(0, 0, 0, 0)
 
   &.show
     background-color black
-    opacity 0.6
+    background-color rgba(0, 0, 0, .6)
     z-index ASIDE_BCK_INDEX
 
 .indented > div
