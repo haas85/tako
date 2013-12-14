@@ -44,14 +44,16 @@ div[data-element="aside_background"]
   bottom 0
   left 0
   right 0
-  transition(opacity ASIDE_TRANSITION_TIME ease-out)
+  transition(background-color ASIDE_TRANSITION_TIME ease-out)
   z-index 0
   background-color rgba(0, 0, 0, 0)
 
   &.show
-    background-color black
     background-color rgba(0, 0, 0, .6)
     z-index ASIDE_BCK_INDEX
+
+  &.hide
+    background-color rgba(0, 0, 0, 0)
 
 .indented > div
   padding INDENT

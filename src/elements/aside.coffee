@@ -6,11 +6,12 @@ TaKo.Aside = do (TK = TaKo) ->
   bck.append aside
 
   show = ->
-    bck.addClass "show"
+    bck.removeClass("hide").addClass "show"
     aside.addClass "show"
 
   hide = ->
     aside.removeClass "show"
+    bck.addClass "hide"
     setTimeout ( -> bck.removeClass "show"), 150
 
   toggle = ->

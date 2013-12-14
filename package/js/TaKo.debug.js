@@ -72,11 +72,12 @@
     bck = $("[data-element=aside_background]");
     bck.append(aside);
     show = function() {
-      bck.addClass("show");
+      bck.removeClass("hide").addClass("show");
       return aside.addClass("show");
     };
     hide = function() {
       aside.removeClass("show");
+      bck.addClass("hide");
       return setTimeout((function() {
         return bck.removeClass("show");
       }), 150);
