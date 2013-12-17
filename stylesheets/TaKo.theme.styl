@@ -157,6 +157,13 @@ input[type="range"]
   background-color darken(BACKGROUND, 3%)
   border-color darken(BACKGROUND, 20%)
 
+  &::-moz-range-track
+    background-color darken(BACKGROUND, 3%)
+    border-color darken(BACKGROUND, 20%)
+
+    &:active
+      background-color lighten(THEME, 30%)
+
   &:active
     background-color lighten(THEME, 30%)
 
