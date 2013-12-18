@@ -120,4 +120,36 @@ input
     &.line
       border none
 
+li
+  & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea, & label
+    margin-top 0
+    margin-bottom 0
+
+  & fieldset
+    margin-top -8px
+    margin-bottom -8px
+
+fieldset
+  border none
+  width 100%
+  display block
+  box-sizing border-box
+
+  & label
+    line-height 32px
+    height 32px
+    width 20%
+    float left
+
+  & input
+    float left
+
+  & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea
+    width 80%
+
+  &:after
+    display block
+    content ""
+    clear both
+
 

@@ -61,12 +61,12 @@ article{min-width:100%;width:auto;display:none;padding-top:5px;margin:0;position
 article.active{display:block}
 
 article ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
-article ul > li{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:11px 10px 11px 10px;}
+article ul > li{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:8px 10px 8px 10px;}
 article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
 article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
 article ul > li h1,article ul > li h2,article ul > li h3,article ul > li h4,article ul > li h5,article ul > li h6,article ul > li strong,article ul > li small{overflow:hidden;white-space:nowrap;display:block}
 article ul > li input[type="radio"].onright,article ul > li input[type="checkbox"].onright{margin-top:-.1em;}
-article ul > li input[type="radio"].onright.switch,article ul > li input[type="checkbox"].onright.switch{margin-top:-.3em}
+article ul > li input[type="radio"].onright.switch,article ul > li input[type="checkbox"].onright.switch{margin-top:-.4em}
 article ul.indented > li{margin:.8em}
 aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;}
@@ -90,6 +90,13 @@ input[type="text"],input[type="password"],input[type="date"],input[type="datetim
 input[type="text"].no_border,input[type="password"].no_border,input[type="date"].no_border,input[type="datetime"].no_border,input[type="email"].no_border,input[type="number"].no_border,input[type="search"].no_border,input[type="tel"].no_border,input[type="time"].no_border,input[type="url"].no_border,input select.no_border,input textarea.no_border,input label.no_border{border:none}
 input[type="text"].no_background,input[type="password"].no_background,input[type="date"].no_background,input[type="datetime"].no_background,input[type="email"].no_background,input[type="number"].no_background,input[type="search"].no_background,input[type="tel"].no_background,input[type="time"].no_background,input[type="url"].no_background,input select.no_background,input textarea.no_background,input label.no_background{background-color:rgba(0,0,0,0)}
 input[type="text"].line,input[type="password"].line,input[type="date"].line,input[type="datetime"].line,input[type="email"].line,input[type="number"].line,input[type="search"].line,input[type="tel"].line,input[type="time"].line,input[type="url"].line,input select.line,input textarea.line,input label.line{border:none}
+li [type="text"],li [type="password"],li [type="date"],li [type="datetime"],li [type="email"],li [type="number"],li [type="search"],li [type="tel"],li [type="time"],li [type="url"],li select,li textarea,li label{margin-top:0;margin-bottom:0}
+li fieldset{margin-top:-8px;margin-bottom:-8px}
+fieldset{border:none;width:100%;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+fieldset label{line-height:32px;height:32px;width:20%;float:left}
+fieldset input{float:left}
+fieldset [type="text"],fieldset [type="password"],fieldset [type="date"],fieldset [type="datetime"],fieldset [type="email"],fieldset [type="number"],fieldset [type="search"],fieldset [type="tel"],fieldset [type="time"],fieldset [type="url"],fieldset select,fieldset textarea{width:80%}
+fieldset:after{display:block;content:"";clear:both}
 
 .line{width:100%;display:block;}
 .line:after{display:block;content:"";clear:both}
@@ -118,6 +125,7 @@ input[type="text"].line,input[type="password"].line,input[type="date"].line,inpu
 .grid.vertical{height:inherit;-webkit-box-orient:vertical;-moz-box-orient:vertical;-ms-box-orient:vertical;-o-box-orient:vertical;box-orient:vertical;-webkit-box-align:stretch;-moz-box-align:stretch;-ms-box-align:stretch;-o-box-align:stretch;box-align:stretch}
 .grid.horizontal{-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;-o-box-orient:horizontal;box-orient:horizontal}
 .grid > *{-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1}
+.box_0{-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0}
 .box_2{-webkit-box-flex:2;-moz-box-flex:2;-ms-box-flex:2;-o-box-flex:2;box-flex:2}
 .box_3{-webkit-box-flex:3;-moz-box-flex:3;-ms-box-flex:3;-o-box-flex:3;box-flex:3}
 .box_4{-webkit-box-flex:4;-moz-box-flex:4;-ms-box-flex:4;-o-box-flex:4;box-flex:4}
