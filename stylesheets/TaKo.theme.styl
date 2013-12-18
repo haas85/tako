@@ -34,7 +34,7 @@ body
   background-color BACKGROUND
 
 header
-  background-color THEME
+  background-color lighten(THEME, 15%)
   background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
@@ -74,7 +74,7 @@ aside
 
 button, .button
   font-size FONT_SIZE
-  background-color THEME
+  background-color lighten(THEME, 15%)
   background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
   background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
@@ -83,7 +83,7 @@ button, .button
   color SECONDARY_TEXT !important
 
   &.accept
-    background-color SUCCESS
+    background-color lighten(SUCCESS, 15%)
     background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
     background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
     background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
@@ -92,7 +92,7 @@ button, .button
     color SECONDARY_TEXT !important
 
   &.cancel
-    background-color FAIL
+    background-color lighten(FAIL, 15%)
     background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)
     background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)
     background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)
