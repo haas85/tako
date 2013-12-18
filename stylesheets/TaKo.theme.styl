@@ -22,6 +22,10 @@ BORDER_radius       = 1px
 FORM_color          = darken(#e5e5e5, 5%)
 FORM_border         = 2px
 FORM_border_radius  = (BORDER_radius * FORM_border)
+
+LINE_COLOR          = darken(BACKGROUND, 30%)
+LINE_COLOR_FOCUS    = lighten(THEME, 35%)
+
 /* -------------------------- BUTTON -------------------------- */
 SHADOW              = rgba(0,0,0,0.1)
 
@@ -179,12 +183,22 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   color TEXT
   border-color darken(BACKGROUND, 20%)
 
+  &:focus
+    border-color LINE_COLOR_FOCUS
+
   &.line
-    background bottom left -webkit-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat, bottom center -webkit-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) repeat-x, bottom right -webkit-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat
-    background bottom left -moz-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat, bottom center -moz-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) repeat-x, bottom right -moz-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat
-    background bottom left -o-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat, bottom center -o-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) repeat-x, bottom right -o-linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat
-    background bottom left linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat, bottom center linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) repeat-x, bottom right linear-gradient(darken(BACKGROUND, 30%), darken(BACKGROUND, 30%)) no-repeat
+    background bottom left -webkit-linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat, bottom center -webkit-linear-gradient(LINE_COLOR, LINE_COLOR) repeat-x, bottom right -webkit-linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat
+    background bottom left -moz-linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat, bottom center -moz-linear-gradient(LINE_COLOR, LINE_COLOR) repeat-x, bottom right -moz-linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat
+    background bottom left -o-linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat, bottom center -o-linear-gradient(LINE_COLOR, LINE_COLOR) repeat-x, bottom right -o-linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat
+    background bottom left linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat, bottom center linear-gradient(LINE_COLOR, LINE_COLOR) repeat-x, bottom right linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat
     background-size 2px 8px, 2px 2px, 2px 8px
+
+    &:focus
+      background bottom left -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
+      background bottom left -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
+      background bottom left -o-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -o-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -o-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
+      background bottom left linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
+      background-size 2px 8px, 2px 2px, 2px 8px
 
 
 
