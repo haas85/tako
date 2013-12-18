@@ -210,6 +210,7 @@ button,.button{font-size:12.8px;background-color:#f60;background-image:-webkit-l
 button.accept,.button.accept{background-color:#199c12;background-image:-webkit-linear-gradient(#20c917,#199c12);background-image:-moz-linear-gradient(#20c917,#199c12);background-image:-ms-linear-gradient(#20c917,#199c12);background-image:-o-linear-gradient(#20c917,#199c12);background-image:linear-gradient(#20c917,#199c12);color:#f4f4f4 !important}
 button.cancel,.button.cancel{background-color:#ed1c13;background-image:-webkit-linear-gradient(#f03e36,#ed1c13);background-image:-moz-linear-gradient(#f03e36,#ed1c13);background-image:-ms-linear-gradient(#f03e36,#ed1c13);background-image:-o-linear-gradient(#f03e36,#ed1c13);background-image:linear-gradient(#f03e36,#ed1c13);color:#f4f4f4 !important}
 aside .current,footer .current{background-color:#4e4e4e}
+aside li:hover,footer button:hover{background-color:#4e4e4e}
 div[data-element="notification"] > div.window{background-color:rgba(0,0,0,0.8);}
 div[data-element="notification"] > div.window *{color:rgba(250,250,250,0.6)}
 div[data-element="notification"] > div.window .title{color:rgba(255,255,255,0.9)}
