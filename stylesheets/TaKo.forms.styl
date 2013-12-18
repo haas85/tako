@@ -119,7 +119,11 @@ input
       background-color rgba(0,0,0,0)
 
     &.line
+      background transparent
       border none
+      -webkit-box-sizing border-box
+      -moz-box-sizing border-box
+      box-sizing border-box
 
 li
   & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea, & label
