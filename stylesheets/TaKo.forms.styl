@@ -96,37 +96,40 @@ input
       width 26px
       border-radius 13px
 
-  &[type="text"], &[type="password"], &[type="date"], &[type="datetime"], &[type="email"], &[type="number"], &[type="search"], &[type="tel"], &[type="time"], &[type="url"], select, textarea, label
-    -webkit-appearance none
-    -moz-appearance none
-    appearance none
-    display inline-block
+select
+  width 100%
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+  -webkit-appearance none
+  -moz-appearance none
+  appearance none
+  display inline-block
+  box-sizing border-box
+  width 100%
+  padding 5px
+  font-size FONT_SIZE_BIG
+  box-shadow(none)
+  border-style solid
+  border-width 0.15em
+  margin-top 2.5px
+  margin-bottom 2.5px
+  border-radius 0
+
+  &.no_border
+    border none
+
+  &.no_background
+    background-color rgba(0,0,0,0)
+
+  &.line
+    background transparent
+    border none
+    -webkit-box-sizing border-box
+    -moz-box-sizing border-box
     box-sizing border-box
-    width 100%
-    padding 5px
-    font-size FONT_SIZE_BIG
-    box-shadow(none)
-    border-style solid
-    border-width 0.15em
-    margin-top 2.5px
-    margin-bottom 2.5px
-    border-radius 0
-
-    &.no_border
-      border none
-
-    &.no_background
-      background-color rgba(0,0,0,0)
-
-    &.line
-      background transparent
-      border none
-      -webkit-box-sizing border-box
-      -moz-box-sizing border-box
-      box-sizing border-box
 
 li
-  & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea, & label
+  & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"]
     margin-top 0
     margin-bottom 0
 
@@ -159,4 +162,40 @@ fieldset
     content ""
     clear both
 
+label.select
+  margin-top 2.5px
+  margin-bottom 2.5px
+  position relative
+  display inline-block
+  width 100%
 
+  &:before
+    content ''
+    right 2px
+    top 0px
+    width 20px
+    margin 2px 0
+    height 28px
+    background white
+    position absolute
+    pointer-events none
+    display block
+
+  &:after
+    content "⏏"
+    // font 1.8em "Consolas", monospace
+    transform rotate(180deg)
+    position absolute
+    font-size 2em
+    top 0
+    right 0
+    bottom 0
+    line-height 32px
+    padding 0 7px
+    background rgba(0,0,0,0)
+    pointer-events none
+
+  & > select
+    border-radius 0
+    margin 0
+    height 32px
