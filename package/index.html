@@ -22,10 +22,11 @@
             <li data-article="forms">Forms <span class="counter">125</span></li>
             <li data-article="lists">Lists</li>
             <li data-article="buttons">Buttons</li>
+            <li data-article="layouts">Layouts</li>
         </ul>
     </aside>
 
-    <section id="section_1" class="footer">
+    <section id="section_1">
         <header>
             <nav class="left">
                 <button class="button" data-action="aside">ASIDE!! <span class="counter">5</span></button>
@@ -33,7 +34,7 @@
             <h1>TaKo!!</h1>
         </header>
         <article id="main">
-            <button class="anchor" data-article="buttons">Buttons</button>
+            <button class="anchor" data-article="notifications">Action</button>
         </article>
         <article id="buttons" class="indented">
             <div>
@@ -125,46 +126,49 @@
                 </ul>
             </div>
         </article>
-        <article id="a12">
-            Article12
-            <input type="text">
-            <button data-article="a22">Second section article 2</button>
-             <div class="line">
-                    <div class="one_column" style="background-color:red;">a</div>
-                    <div class="one_column" style="background-color:green;">b</div>
-                    <div class="one_column two_gap" style="background-color:red;">a</div>
-                    <div class="one_column" style="background-color:green;">b</div>
-                    <div class="three_column" style="background-color:red;">a</div>
-                </div>
-                <br><br>
+        <article id="layouts" class="big indented">
+            <div>
+                <p>Columns per line</p>
+                <div class="line">
+                    <div class="one_column grey">1</div>
+                    <div class="one_column theme">1</div>
+                    <div class="one_column two_gap grey">1+2</div>
+                    <div class="one_column theme">1</div>
+                    <div class="three_column grey">3</div>
+                </div> <br>
+                <p>Vertical grid</p>
                 <div style="height:300px;">
                     <div class="vertical grid">
-                        <div class="box_2" style="background-color:red;">a</div>
-                        <div  style="background-color:green;">b</div>
-                        <div  style="background-color:red;">a</div>
-                        <div class="box_4" style="background-color:green;">b</div>
-                        <div  style="background-color:red;">a</div>
+                        <div class="box_2 theme">box_2</div>
+                        <div class="grey">none</div>
+                        <div class="theme">none</div>
+                        <div class="box_4 grey">box_4</div>
+                        <div class="theme">a</div>
                     </div>
                 </div>
                 <br>
+                <p>Horizontal grid</p>
                 <div class="horizontal grid">
-                    <div class="box_2" style="background-color:red;">a</div>
-                    <div  style="background-color:green;">b</div>
-                    <div  style="background-color:red;">a</div>
-                    <div class="box_4" style="background-color:green;">b</div>
-                    <div  style="background-color:red;">a</div>
+                    <div class="box_2 theme">box_2</div>
+                    <div class="grey">none</div>
+                    <div class="theme">none</div>
+                    <div class="box_5 grey">box_5</div>
+                    <div class="theme">none</div>
                 </div>
             </div>
         </article>
-        <footer>
-            <nav>
-                <div><button id="show_success">Success<span class="counter">5</span></button></div>
-                <div><button id="show_progress">Progress<span class="counter">84</span></button></div>
-            </nav>
-        </footer>
+        <article id="notifications" class="indented">
+            <div>
+                <button class="anchor" id="show_success">Success</button>
+                <button class="anchor" id="show_error">Error</button>
+                <button class="anchor" id="show_confirm">Confirm</button>
+                <button class="anchor" id="show_loading">Loading</button>
+                <button class="anchor" id="show_progress">Progress</button>
+            </div>
+        </article>
     </section>
 
-    <section id="section_2">
+    <section id="section_2" class="footer">
         <header>
             <nav class="right">
                 <button data-action="aside">ASIDE!!<span class="counter">5</span></button>
@@ -195,17 +199,38 @@
             Article22
             <button data-article="a11" class="accept">First Section</button>
         </article>
+        <footer>
+            <nav>
+                <div><button id="show_success2">Success<span class="counter">5</span></button></div>
+                <div><button id="show_progress2">Progress<span class="counter">84</span></button></div>
+            </nav>
+        </footer>
     </section>
 
     <script src="js/TaKo.components.js"></script>
     <script src="js/TaKo.debug.js"></script>
     <script>
         TaKo.init();
-        $("#show_success").bind("click", function(){
+        $("#show_success").bind("tap", function(){
             TaKo.Notification.success("V", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
         });
-        $("#show_progress").bind("click", function(){
-            var progress = TaKo.Notification.progress("V", "Descarga", "CONTENT");
+        $("#show_error").bind("tap", function(){
+            TaKo.Notification.error("X", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
+        });
+        $("#show_confirm").bind("tap", function(){
+            TaKo.Notification.confirm("V", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
+                if(result){
+                    alert("I know you like them!!");
+                }else{
+                    alert("Well, I hope at least you like our TaKo");
+                }
+            })
+        });
+        $("#show_loading").bind("tap", function(){
+            TaKo.Notification.loading("Loading Data", 5, function(){console.log("LOADING CB");})
+        });
+        $("#show_progress").bind("tap", function(){
+            var progress = TaKo.Notification.progress("V", "Downloading", "Please wait until your download is completed");
             setTimeout(function(){progress.percent(20)},1000);
             setTimeout(function(){progress.percent(60)},2500);
             setTimeout(function(){progress.percent(100)},4500);

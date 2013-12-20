@@ -198,10 +198,10 @@
     loading = function(title, time_out, cb) {
       var html;
       html = "<div id=\"circular_container\">\n<div id=\"circular3dG\">\n  <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n</div>";
+      html += "</div>";
       if (title != null) {
         html += "<span class=\"title\">" + title + "</span>";
       }
-      html += "</div>";
       return _show(html, "center not_clickable", time_out, cb);
     };
     progress = function(icon, title, content, time_out, cb) {
@@ -223,9 +223,19 @@
       };
     };
     confirm = function(icon, title, content, accept, cancel, cb) {
-      var html;
-      html = "<span class=\"icon " + icon + "\">" + icon + "</span>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom clear\">" + content + "</div>\n<button class=\"button accept\">" + accept.text + "</button>\n<button class=\"button cancel\">" + cancel.text + "</button>";
-      return _show(html, "confirm top_position downwards not_clickable", null, cb);
+      var buttons, html;
+      html = "<span class=\"icon " + icon + "\">" + icon + "</span>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom clear\">" + content + "</div>\n<button class=\"button accept\">" + accept + "</button>\n<button class=\"button cancel\">" + cancel + "</button>";
+      _show(html, "confirm top_position downwards not_clickable", null, null);
+      buttons = notification_window.children("button");
+      return buttons.bind("tap", function(element) {
+        buttons.unbind("tap");
+        hide();
+        if ($(this).hasClass("accept")) {
+          return cb.call(cb, true);
+        } else {
+          return cb.call(cb, false);
+        }
+      });
     };
     hide = function() {
       active = false;

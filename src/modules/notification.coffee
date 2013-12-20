@@ -34,8 +34,8 @@ TaKo.Notification = do (TK = TaKo) ->
                   <div id="circular3d_7G" class="circular3dG"></div>
                   <div id="circular3d_8G" class="circular3dG"></div>
                 </div>"""
-    html += """<span class="title">#{title}</span>""" if title?
     html += "</div>"
+    html += """<span class="title">#{title}</span>""" if title?
     _show html, "center not_clickable", time_out, cb
 
   progress = (icon, title, content, time_out, cb) ->
@@ -55,10 +55,19 @@ TaKo.Notification = do (TK = TaKo) ->
     html = """<span class="icon #{icon}">#{icon}</span>
               <span class="title">#{title}</span>
               <div class="content padding bottom clear">#{content}</div>
-              <button class="button accept">#{accept.text}</button>
-              <button class="button cancel">#{cancel.text}</button>
+              <button class="button accept">#{accept}</button>
+              <button class="button cancel">#{cancel}</button>
             """
-    _show html, "confirm top_position downwards not_clickable", null, cb
+    _show html, "confirm top_position downwards not_clickable", null, null
+
+    buttons = notification_window.children("button")
+    buttons.bind "tap", (element) ->
+      buttons.unbind "tap"
+      do hide
+      if $(@).hasClass("accept")
+        cb.call cb, true
+      else
+        cb.call cb, false
 
   hide = ->
     active = false
