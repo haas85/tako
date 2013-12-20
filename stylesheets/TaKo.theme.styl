@@ -184,7 +184,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   color TEXT
   border-color #b9b9b9
 
-  &:focus
+  &:focus, &:hover
     outline: none !important;
     border-color LINE_COLOR_FOCUS
 
@@ -196,7 +196,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     background bottom left linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat, bottom center linear-gradient(LINE_COLOR, LINE_COLOR) repeat-x, bottom right linear-gradient(LINE_COLOR, LINE_COLOR) no-repeat
     background-size 1px 6px, 1px 1px, 1px 6px
 
-    &:focus
+    &:focus, &:hover
       background bottom left -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, LINE_COLOR_FOCUS), color-stop(100%, LINE_COLOR_FOCUS)) no-repeat, bottom center -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, LINE_COLOR_FOCUS), color-stop(100%, LINE_COLOR_FOCUS)) repeat-x, bottom right -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, LINE_COLOR_FOCUS), color-stop(100%, LINE_COLOR_FOCUS)) no-repeat
       background bottom left -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
       background bottom left -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
