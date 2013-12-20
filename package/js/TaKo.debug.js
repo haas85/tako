@@ -202,7 +202,7 @@
       if (title != null) {
         html += "<span class=\"title\">" + title + "</span>";
       }
-      return _show(html, "center not_clickable", time_out, cb);
+      return _show(html, "loading center not_clickable", time_out, cb);
     };
     progress = function(icon, title, content, time_out, cb) {
       var html;

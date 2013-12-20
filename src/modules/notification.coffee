@@ -36,7 +36,7 @@ TaKo.Notification = do (TK = TaKo) ->
                 </div>"""
     html += "</div>"
     html += """<span class="title">#{title}</span>""" if title?
-    _show html, "center not_clickable", time_out, cb
+    _show html, "loading center not_clickable", time_out, cb
 
   progress = (icon, title, content, time_out, cb) ->
     html = """<span class="icon #{icon}"></span>

@@ -149,7 +149,7 @@ form.indented > fieldset,.form.indented > fieldset{margin:.8em}
 .box_9{-webkit-box-flex:9;-moz-box-flex:9;-ms-box-flex:9;-o-box-flex:9;box-flex:9}
 
 #circular3dG{position:relative;height:64px}
-.circular3dG{position:absolute;background-color:#000;width:6.4px;height:6.4px;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;border-radius:50%;-webkit-animation-name:bounce_circular3dG;-moz-animation-name:bounce_circular3dG;-ms-animation-name:bounce_circular3dG;-o-animation-name:bounce_circular3dG;animation-name:bounce_circular3dG;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-ms-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-direction:linear;-moz-animation-direction:linear;-ms-animation-direction:linear;-o-animation-direction:linear;animation-direction:linear}
+.circular3dG{position:absolute;background-color:#000;width:6.4px;height:6.4px;-webkit-border-radius:3.2px;-moz-border-radius:3.2px;-ms-border-radius:3.2px;-o-border-radius:3.2px;border-radius:3.2px;-webkit-animation-name:bounce_circular3dG;-moz-animation-name:bounce_circular3dG;-ms-animation-name:bounce_circular3dG;-o-animation-name:bounce_circular3dG;animation-name:bounce_circular3dG;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-ms-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-direction:linear;-moz-animation-direction:linear;-ms-animation-direction:linear;-o-animation-direction:linear;animation-direction:linear}
 #circular3d_1G{left:33px;top:4px;-webkit-animation-delay:.3s;-moz-animation-delay:.3s;-ms-animation-delay:.3s;-o-animation-delay:.3s;animation-delay:.3s}
 #circular3d_2G{left:46px;top:15px;-webkit-animation-delay:.39999999999999997s;-moz-animation-delay:.39999999999999997s;-ms-animation-delay:.39999999999999997s;-o-animation-delay:.39999999999999997s;animation-delay:.39999999999999997s}
 #circular3d_3G{left:54px;top:29px;-webkit-animation-delay:.5s;-moz-animation-delay:.5s;-ms-animation-delay:.5s;-o-animation-delay:.5s;animation-delay:.5s}
@@ -203,8 +203,8 @@ div[data-element="notification"] > div.window:not(.progress) .icon{line-height:8
 div[data-element="notification"] > div.window.show{opacity:1}
 div[data-element="notification"] > div.window.success,div[data-element="notification"] > div.window.error{border-style:solid;border-width:0 0 0 4px;min-width:280px;}
 div[data-element="notification"] > div.window.success .title,div[data-element="notification"] > div.window.error .title{padding-top:.3em}
-div[data-element="notification"] > div.window.progress{width:80%;}
-div[data-element="notification"] > div.window.progress .icon{width:100%}
+div[data-element="notification"] > div.window.progress,div[data-element="notification"] > div.window.loading{width:80%;}
+div[data-element="notification"] > div.window.progress .icon,div[data-element="notification"] > div.window.loading .icon{width:100%}
 div[data-element="notification"] > div.window .title{line-height:40px;font-size:1.2em}
 div[data-element="notification"] > div.window .content{padding-top:.5em}
 div[data-element="notification"] > div.window #circular_container{width:64px;margin:0 auto 0 auto}
