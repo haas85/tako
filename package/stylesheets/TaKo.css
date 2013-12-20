@@ -45,6 +45,7 @@ section{height:100%;width:100%;position:absolute;margin:0;padding:0;z-index:0;to
 section.active{opacity:1;z-index:100}
 section:not(.active) > article{display:none}
 section.footer > article{padding-bottom:65px}
+section.no_header > article{top:0}
 header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;}
 header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102}
 header > nav{position:fixed;z-index:103;}
@@ -103,6 +104,9 @@ label.select:before{content:'';right:2px;top:0;width:20px;margin:2px 0;height:28
 label.select:after{content:"▼";position:absolute;font-size:18px;top:0;right:0;bottom:0;line-height:32px;padding:0 7px;background:rgba(0,0,0,0);pointer-events:none}
 label.select > select{-webkit-border-radius:0;-moz-border-radius:0;-ms-border-radius:0;-o-border-radius:0;border-radius:0;margin:0;height:32px}
 textarea{line-height:1.2em;min-height:3em;height:3.5em}
+form fieldset{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:8px 10px 8px 10px;}
+form fieldset:first-child{border-top:1px solid rgba(0,0,0,0.1)}
+form.indented > fieldset{margin:.8em}
 
 .line{width:100%;display:block;}
 .line:after{display:block;content:"";clear:both}
