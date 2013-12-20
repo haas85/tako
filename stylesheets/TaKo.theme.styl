@@ -6,7 +6,7 @@ SECONDARY_TEXT      = #F4F4F4
 FAIL                = #ed1c13
 SUCCESS             = #199c12
 DISABLED            = #acb8b9
-BACKGROUND          = lighten(#DFDFDF, 25%)
+BACKGROUND          = #e7e7e7
 FONT                = 16px/1.25  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
 FONT_SIZE           = 16px/1.25
 
@@ -33,6 +33,9 @@ SHADOW              = rgba(0,0,0,0.1)
 body
   font FONT
   background-color BACKGROUND
+
+.theme
+  background-color lighten(THEME, 15%)!important
 
 header
   background-color lighten(THEME, 15%)

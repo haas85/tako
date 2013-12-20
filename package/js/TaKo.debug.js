@@ -31,11 +31,13 @@
         _current = new_article.addClass("active");
       }
       if (_current_section[0].id !== new_section[0].id) {
-        return TaKo.Section.goTo(new_section[0].id);
+        TaKo.Section.goTo(new_section[0].id);
       } else {
         _current_article.trigger("unload");
-        return _current = new_article.trigger("load");
+        _current = new_article.trigger("load");
       }
+      $(".current[data-article]").removeClass("current");
+      return $("[data-article=" + article_id + "]").addClass("current");
     };
     current = function() {
       var _current;

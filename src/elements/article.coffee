@@ -17,6 +17,9 @@ TaKo.Article = do (TK = TaKo) ->
       _current_article.trigger "unload"
       _current = new_article.trigger "load"
 
+    $(".current[data-article]").removeClass "current"
+    $("[data-article=#{article_id}]").addClass "current"
+
   current = ->
     if _current? then _current else _current = $ "section.active article.active"
 

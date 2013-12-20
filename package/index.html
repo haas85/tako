@@ -19,11 +19,9 @@
 <body>
     <aside>
         <ul>
-            <li data-section="section_2">To section 2 <span class="counter">125</span></li>
-            <li>Elem 2</li>
-            <li>Elem 3</li>
-            <li>Elem 4</li>
-            <li>Elem 5</li>
+            <li data-article="forms">Forms <span class="counter">125</span></li>
+            <li data-article="lists">Lists</li>
+            <li data-article="buttons">Buttons</li>
         </ul>
     </aside>
 
@@ -34,113 +32,97 @@
             </nav>
             <h1>TaKo!!</h1>
         </header>
-        <article id="a11" class="indented">
+        <article id="main">
+            <button class="anchor" data-article="buttons">Buttons</button>
+        </article>
+        <article id="buttons" class="indented">
             <div>
-                Article11
-                <form action="">
-                    <fieldset><label for="">Hola</label><input type="text"></fieldset>
-                    <fieldset><label for="">Hola</label><input type="text"></fieldset>
-                    <fieldset><label for="">Hola</label><input type="text"></fieldset>
-                    <fieldset><label for="">Hola</label><input type="text"></fieldset>
-                    <fieldset><label for="">Hola</label><input type="text"></fieldset>
-
-                </form>
-                <button class="anchor" data-section="section_2">Second Section</button>
-                <ul>
-                    <li>
-                        <label for="radiotest"></label>
-                        <input id="radiotest" name="radiotest" class="circle onright" type="radio">
-                        <strong>Elem 1</strong><small>eeee</small>
-                    </li>
-                    <li>
-                        <input name="radiotest" class="circle onright" type="radio">
-                        <strong>Elem 2</strong>
-                    </li>
-                    <li class="separator">Elem3</li>
-                    <li>
-                        Elem 4
-                        <input class="square onright" type="checkbox">
-                    </li>
-                    <li>
-                        <input class="switch onright" type="checkbox">
-                        Elem 5
-                    </li>
-                    <li>
-                        <input class="switch circle onright" type="checkbox">
-                        Elem 1 <br> eeee
-                    </li>
-                    <li><input type="range"></li>
-                    <li class="separator">Elem3</li>
-                    <li>
-                        <input type="text" placeholder="Default">
-                    </li>
-                    <li>
-                        <input type="text" placeholder="No border" class="no_border">
-                    </li>
-                    <li>
-                        <input type="search" class="line" placeholder="Line">
-                    </li>
-                    <li>
-                        <fieldset>
-                            <label for="fieldset">Fieldset</label>
-                            <input id="fieldset" name="fieldset" type="text">
-                        </fieldset>
-                    </li>
-                    <li>
-                        <label class="select">
-                            <select name="" id="">
-                                <option value="elem1">Elem1</option>
-                                <option value="elem2">Elem2</option>
-                                <option value="elem3">Elem3</option>
-                                <option value="elem4">Elem4</option>
-                                <option value="elem5">Elem5</option>
-                                <option value="elem6">Elem6</option>
-                            </select>
-                        </label>
-                        <select name="" id="">
-                                <option value="elem1">Elem1</option>
-                                <option value="elem2">Elem2</option>
-                                <option value="elem3">Elem3</option>
-                                <option value="elem4">Elem4</option>
-                                <option value="elem5">Elem5</option>
-                                <option value="elem6">Elem6</option>
-                            </select>
-                    </li>
-                    <li>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-                    </li>
-                    <li>Elem 1 <br> eeee</li>
-                    <li>Elem 2</li>
-                    <li class="separator">Elem3</li>
-                    <li>Elem 4</li>
-                    <li>Elem 5</li>
-                    <li>Elem 1 <br> eeee</li>
-                    <li>Elem 2</li>
-                    <li class="separator">Elem3</li>
-                    <li>Elem 4</li>
-                    <li>Elem 5</li>
-                    <li>Elem 1 <br> eeee</li>
-                    <li>Elem 2</li>
-                    <li class="separator">Elem3</li>
-                    <li>Elem 4</li>
-                    <li>Elem 5</li>
-                    <li>Elem 1 <br> eeee</li>
-                    <li>Elem 2</li>
-                    <li class="separator">Elem3</li>
-                    <li>Elem 4</li>
-                    <li>Elem 5</li>
-                    <li>Elem 1 <br> eeee</li>
-                    <li>Elem 2</li>
-                    <li class="separator">Elem3</li>
-                    <li>Elem 4</li>
-                    <li>Elem 5</li>
-                </ul>
-                <input type="text">
+                <button class="anchor">Anchor</button>
+                <button class="anchor accept">Accept</button>
+                <button class="anchor cancel">Cancel</button>
                 <button class="smallest">Smallest</button>
                 <button class="small">Small</button>
                 <button >Normal</button>
                 <button class="big">Big</button>
-                <button class="biggest">Biggest</button>
+                <button class="biggest">Biggest</button> <br>
+            </div>
+        </article>
+        <article id="forms" class="indented">
+            <div>
+                <form>
+                    <fieldset class="grey"><label class="anchor">Text</label></fieldset>
+                    <fieldset>
+                        <label for="input">Default</label>
+                        <input type="text" id="input">
+                    </fieldset>
+                    <fieldset>
+                        <label for="line">Line</label>
+                        <input type="text" id="line" class="line">
+                    </fieldset>
+                    <fieldset class="theme">
+                        <label for="background">No background</label>
+                        <input type="text" id="background" class="no_background">
+                    </fieldset>
+                    <fieldset>
+                        <label for="border">No border</label>
+                        <input type="text" id="border" class="no_border">
+                    </fieldset>
+                    <fieldset>
+                        <label for="border">Textarea</label>
+                        <textarea placeholder="The textarea can have the input texts' styles"></textarea>
+                    </fieldset>
+                    <br>
+                    <fieldset class="grey"><label class="anchor">Checkboxes & Radiobuttons</label></fieldset>
+                    <fieldset>
+                        <label for="square">Square</label>
+                        <input type="checkbox" id="square" class="square">
+                        <input type="radio" id="square_r" name="radio" class="square">
+                    </fieldset>
+                    <fieldset>
+                        <label for="circle">Circle</label>
+                        <input type="checkbox" id="circle" class="circle">
+                        <input type="radio" id="circle_r" name="radio" class="circle">
+                    </fieldset>
+                    <fieldset>
+                        <label for="switch">Switch</label>
+                        <input type="checkbox" id="switch" class="switch">
+                        <input type="radio" id="switch_r" name="radio" class="switch">
+                    </fieldset>
+                    <fieldset>
+                        <label for="switch_c">Circle Switch</label>
+                        <input type="checkbox" id="switch_c" class="switch circle">
+                        <input type="radio" id="switch_c_r" name="radio" class="switch circle">
+                    </fieldset>
+                    <br>
+                    <fieldset class="grey"><label class="anchor">Others</label></fieldset>
+                    <fieldset>
+                        <label for="select_box">Select</label>
+                        <label class="select">
+                            <select name="" id="select_box">
+                                <option value="elem1">Elem1</option>
+                                <option value="elem2">Elem2</option>
+                                <option value="elem3">Elem3</option>
+                                <option value="elem4">Elem4</option>
+                                <option value="elem5">Elem5</option>
+                            </select>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="range">Range</label>
+                        <input type="range" id="range">
+                    </fieldset>
+                </form>
+            </div>
+        </article>
+        <article id="lists" class="indented">
+            <div>
+                <ul>
+                    <li><strong>Elem 1</strong><small>small elem</small></li>
+                    <li><strong>Elem 2</strong></li>
+                    <li class="separator">Elem3</li>
+                    <li>Elem 4</li>
+                    <li>Elem 5</li>
+                </ul>
             </div>
         </article>
         <article id="a12">
