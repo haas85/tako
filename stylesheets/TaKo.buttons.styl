@@ -65,18 +65,23 @@ header
       margin-left 0.05em
       margin-right 0.05em
 
-footer button
-  height inherit
-  width 100%
-  background-image none
-  background-color rgba(0, 0, 0, 0)
+footer
 
-  & .counter
-    position relative
-    top - INDENT * 1.5
-    line-height 15px
-    -webkit-border-radius 4px
-    -moz-border-radius 4px
-    border-radius 4px
-    padding .2em .5em .2em .5em
-    font-size FONT_SIZE_SMALL
+  & .icon:before
+    font-size 1.4em
+
+  & button
+    height inherit
+    width 100%
+    background-image none
+    background-color rgba(0, 0, 0, 0)
+
+    & .counter
+      position relative
+      top - INDENT * 1.5
+      line-height 15px
+      -webkit-border-radius 4px
+      -moz-border-radius 4px
+      border-radius 4px
+      padding .2em .5em .2em .5em
+      font-size FONT_SIZE_SMALL
