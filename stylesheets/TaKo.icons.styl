@@ -917,13 +917,34 @@
     &:before
       content '\e818'
 
-  &.animated:before
-    -moz-animation animated-spin 2s infinite linear
-    -o-animation animated-spin 2s infinite linear
-    -webkit-animation animated-spin 2s infinite linear
-    animation animated-spin 2s infinite linear
+  &[class*="spin"].animated:before
+    animation(animated-spin 2s infinite linear)
     display inline-block
 
+  &.animated:not([class*="spin"]):before
+    animation(blink 2.5s linear infinite)
+
+
+@keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.3 }
+  100% { opacity 1 }
+@-webkit-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.3 }
+  100% { opacity 1 }
+@-moz-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.3 }
+  100% { opacity 1 }
+@-o-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.3 }
+  100% { opacity 1 }
+@-ms-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.3 }
+  100% { opacity 1 }
 
 @-moz-keyframes animated-spin
   0% {
