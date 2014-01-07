@@ -528,18 +528,18 @@ div[data-element="notification"] > div.window #circular_container{width:64px;mar
 .icon.gmail:before{content:'\e929'}
 .icon.to-end-alt:before{content:'\e818'}
 .icon[class*="spin"].animated:before{-webkit-animation:animated-spin 2s infinite linear;-moz-animation:animated-spin 2s infinite linear;-ms-animation:animated-spin 2s infinite linear;-o-animation:animated-spin 2s infinite linear;animation:animated-spin 2s infinite linear;display:inline-block}
-.icon.animated:not([class*="spin"]):before{-webkit-animation:blink 2.5s linear infinite;-moz-animation:blink 2.5s linear infinite;-ms-animation:blink 2.5s linear infinite;-o-animation:blink 2.5s linear infinite;animation:blink 2.5s linear infinite}
+.icon.animated:not([class*="spin"]):before{-webkit-animation:blink 2s linear infinite;-moz-animation:blink 2s linear infinite;-ms-animation:blink 2s linear infinite;-o-animation:blink 2s linear infinite;animation:blink 2s linear infinite}
 @-webkit-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-moz-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-o-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-ms-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-moz-keyframes animated-spin{0%{-moz-transform:rotate(0);-o-transform:rotate(0);-webkit-transform:rotate(0);-webkit-transform:rotate(0);-moz-transform:rotate(0);-ms-transform:rotate(0);-o-transform:rotate(0);transform:rotate(0)}
 100%{-moz-transform:rotate(359deg);-o-transform:rotate(359deg);-webkit-transform:rotate(359deg);-webkit-transform:rotate(359deg);-moz-transform:rotate(359deg);-ms-transform:rotate(359deg);-o-transform:rotate(359deg);transform:rotate(359deg)}
@@ -550,19 +550,19 @@ div[data-element="notification"] > div.window #circular_container{width:64px;mar
 }@-ms-keyframes animated-spin{0%{-moz-transform:rotate(0);-o-transform:rotate(0);-webkit-transform:rotate(0);-webkit-transform:rotate(0);-moz-transform:rotate(0);-ms-transform:rotate(0);-o-transform:rotate(0);transform:rotate(0)}
 100%{-moz-transform:rotate(359deg);-o-transform:rotate(359deg);-webkit-transform:rotate(359deg);-webkit-transform:rotate(359deg);-moz-transform:rotate(359deg);-ms-transform:rotate(359deg);-o-transform:rotate(359deg);transform:rotate(359deg)}
 }@-moz-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-webkit-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-o-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-ms-keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@keyframes blink{0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }@-moz-keyframes animated-spin{0%{-moz-transform:rotate(0);-o-transform:rotate(0);-webkit-transform:rotate(0);-webkit-transform:rotate(0);-moz-transform:rotate(0);-ms-transform:rotate(0);-o-transform:rotate(0);transform:rotate(0)}
 100%{-moz-transform:rotate(359deg);-o-transform:rotate(359deg);-webkit-transform:rotate(359deg);-webkit-transform:rotate(359deg);-moz-transform:rotate(359deg);-ms-transform:rotate(359deg);-o-transform:rotate(359deg);transform:rotate(359deg)}
