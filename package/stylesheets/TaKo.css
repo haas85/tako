@@ -47,6 +47,7 @@ section:not(.active) > article{display:none}
 section.footer > article{padding-bottom:65px}
 section.no_header > article{top:0}
 header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;}
+header .icon{font-size:1.5em}
 header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102}
 header > nav{position:fixed;z-index:103;}
 header > nav.right{right:0;}
@@ -68,6 +69,7 @@ article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
 article ul > li h1,article ul > li h2,article ul > li h3,article ul > li h4,article ul > li h5,article ul > li h6,article ul > li strong,article ul > li small{overflow:hidden;white-space:nowrap;display:block}
 article ul > li input[type="radio"].onright,article ul > li input[type="checkbox"].onright{margin-top:-.1em;}
 article ul > li input[type="radio"].onright.switch,article ul > li input[type="checkbox"].onright.switch{margin-top:-.4em}
+article ul > li .icon{display:inline-block;float:left;margin-right:.4em;line-height:1em;width:24px;height:24px;font-size:1.4em}
 article ul.indented > li{margin:.8em}
 aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;margin-bottom:2px;}
@@ -174,6 +176,7 @@ button.smallest,.button.smallest{line-height:2em;padding:0 .6em}
 button.small,.button.small{line-height:2.25em}
 button.big,.button.big{line-height:2.75em}
 button.biggest,.button.biggest{line-height:3em}
+button.icon:before,.button.icon:before{font-size:1.2em;margin-right:.4em}
 header button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;height:100%;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);}
 header button .counter{position:relative;top:-.55em;margin-left:.5em;margin-right:.5em;line-height:15px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.1em .2em .1em .2em;font-size:11px}
 header button.button{text-indent:0;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:35px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25);}
