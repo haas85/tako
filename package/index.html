@@ -200,13 +200,13 @@
     <script>
         TaKo.init();
         $("#show_success").bind("tap", function(){
-            TaKo.Notification.success("V", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
+            TaKo.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
         });
         $("#show_error").bind("tap", function(){
-            TaKo.Notification.error("X", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
+            TaKo.Notification.error("cancel", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
         });
         $("#show_confirm").bind("tap", function(){
-            TaKo.Notification.confirm("V", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
+            TaKo.Notification.confirm("help", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
                 if(result){
                     alert("I know you like them!!");
                 }else{

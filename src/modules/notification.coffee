@@ -52,7 +52,7 @@ TaKo.Notification = do (TK = TaKo) ->
       val
 
   confirm = (icon, title, content, accept, cancel, cb) ->
-    html = """<span class="icon #{icon}">#{icon}</span>
+    html = """<span class="icon #{icon}"></span>
               <span class="title">#{title}</span>
               <div class="content padding bottom clear">#{content}</div>
               <button class="button accept">#{accept}</button>
@@ -77,7 +77,7 @@ TaKo.Notification = do (TK = TaKo) ->
     setTimeout _hide, 500
 
   _iconHtml = (icon, title, content) ->
-    html = """<span class="icon #{icon}">#{icon}</span>
+    html = """<span class="icon #{icon}"></span>
               <div>
                 <span class="title">#{title}</span>
                 <div class="content">#{content}</div>

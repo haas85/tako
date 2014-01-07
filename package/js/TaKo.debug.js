@@ -224,7 +224,7 @@
     };
     confirm = function(icon, title, content, accept, cancel, cb) {
       var buttons, html;
-      html = "<span class=\"icon " + icon + "\">" + icon + "</span>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom clear\">" + content + "</div>\n<button class=\"button accept\">" + accept + "</button>\n<button class=\"button cancel\">" + cancel + "</button>";
+      html = "<span class=\"icon " + icon + "\"></span>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom clear\">" + content + "</div>\n<button class=\"button accept\">" + accept + "</button>\n<button class=\"button cancel\">" + cancel + "</button>";
       _show(html, "confirm top_position downwards not_clickable", null, null);
       buttons = notification_window.children("button");
       return buttons.bind("tap", function(element) {
@@ -246,7 +246,7 @@
     };
     _iconHtml = function(icon, title, content) {
       var html;
-      return html = "<span class=\"icon " + icon + "\">" + icon + "</span>\n<div>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content\">" + content + "</div>\n</div>";
+      return html = "<span class=\"icon " + icon + "\"></span>\n<div>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content\">" + content + "</div>\n</div>";
     };
     _show = function(html, classes, time_out, cb) {
       var original_cb;
