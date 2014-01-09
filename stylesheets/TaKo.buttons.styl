@@ -24,7 +24,7 @@ button, .button
     line-height 3em
 
   &.icon:before
-    font-size 1.2em
+    font-size 1.5em
     margin-right 0.4em
 
 header
@@ -33,10 +33,17 @@ header
     display inline-block
     font-weight bold
     font-style normal
-    height 100%
     text-decoration none
     text-align center
     background-color rgba(0, 0, 0, 0)
+    height HEADER_HEIGHT - 4
+    margin-top 2px
+    margin-bottom 2px
+    line-height HEADER_HEIGHT - 4
+    font-size 1.8em!important
+
+    &.icon:before
+      font-size 1em!important
 
     & .counter
       position relative
