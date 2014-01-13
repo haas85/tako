@@ -26,6 +26,12 @@ button, .button
   &.icon:before, & .icon
     font-size 1.5em
 
+  &.icon
+    &:before
+      margin-right .5em
+    &:empty:before
+      margin-right 0
+
   & span:nth-child(2)
     margin-left .5em
 
@@ -42,7 +48,7 @@ header
     margin-top 2px
     margin-bottom 2px
     line-height HEADER_HEIGHT - 4
-    font-size 1.4em!important
+    font-size 1.6em!important
     padding-top 6px
     padding-left 0.6em!important
     padding-right 0.6em!important
