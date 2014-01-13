@@ -48,7 +48,6 @@ section.footer > article{padding-bottom:65px}
 section.no_header > article{top:0}
 section.extended_header > article{top:100px}
 header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;}
-header .icon{font-size:1.5em}
 header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102}
 header > nav.right{position:fixed;z-index:103;right:0;}
 header > nav.right > button{margin-right:5px}
@@ -180,10 +179,10 @@ button.small,.button.small{line-height:2.25em}
 button.big,.button.big{line-height:2.75em}
 button.biggest,.button.biggest{line-height:3em}
 button.icon:before,.button.icon:before{font-size:1.5em;margin-right:.4em}
-header button,header.button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);height:46px;margin-top:2px;margin-bottom:2px;line-height:46px;font-size:1.8em !important;padding-left:.6em !important;padding-right:.6em !important;}
+header button,header.button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);height:46px;margin-top:2px;margin-bottom:2px;line-height:46px;font-size:1.8em !important;padding-top:6px;padding-left:.6em !important;padding-right:.6em !important;}
 header button.icon:before,header.button.icon:before{font-size:1em !important}
 header button .counter,header.button .counter{position:relative;top:-.55em;margin-left:.5em;margin-right:.5em;line-height:15px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;padding:.1em .2em .1em .2em;font-size:11px}
-header button >span.icon,header.button >span.icon{display:inline;vertical-align:middle;margin-right:.4em}
+header button >span.icon,header.button >span.icon{margin-right:.4em}
 header button.button{text-indent:0;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;display:inline-block;font-weight:bold;font-style:normal;line-height:35px;text-decoration:none;text-align:center;-webkit-box-shadow:1px 1px rgba(255,255,255,0.25);-moz-box-shadow:1px 1px rgba(255,255,255,0.25);-ms-box-shadow:1px 1px rgba(255,255,255,0.25);-o-box-shadow:1px 1px rgba(255,255,255,0.25);box-shadow:1px 1px rgba(255,255,255,0.25);}
 header button.button .counter{margin-left:.05em;margin-right:.05em}
 footer .icon:before{font-size:1.4em}
