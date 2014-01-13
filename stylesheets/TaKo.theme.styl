@@ -55,6 +55,17 @@ header
   & .counter
     background-color darken(THEME, 10%)
 
+  & > nav
+    &:not(.right)
+      &:not(.left)
+        color SECONDARY_TEXT
+        background-color SECONDARY
+
+        & .current
+          background-color SECONDARY_ACTIVE
+          border-bottom 4px solid THEME
+          box-sizing(border-box)
+
 footer
   background-color SECONDARY
   color SECONDARY_TEXT !important
