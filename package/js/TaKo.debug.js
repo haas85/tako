@@ -1,19 +1,76 @@
 (function() {
   var TaKo;
 
-  window.TaKo = TaKo = {};
-
-  TaKo.init = function() {
-    if ($("section.active").length === 0) {
-      $("section").first().addClass("active");
-    }
-    $("body").hammer();
-    return $("section").each(function() {
-      if ($(this).children("article.active").length === 0) {
-        return $(this).children("article").first().addClass("active");
+  window.TaKo = TaKo = (function() {
+    var callbacks, init, onReady, remaining, _loaded, _onError, _onReceive, _setup;
+    remaining = 0;
+    callbacks = [];
+    init = function(options) {
+      var section, _i, _len, _ref, _results;
+      if (options == null) {
+        options = {};
       }
-    });
-  };
+      if (options.sections != null) {
+        remaining = options.sections.length;
+        _ref = options.sections;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          section = _ref[_i];
+          _results.push($.ajax({
+            url: section,
+            crossDomain: true,
+            success: _onReceive,
+            error: _onError
+          }));
+        }
+        return _results;
+      } else {
+        return _setup();
+      }
+    };
+    onReady = function(callback) {
+      return callbacks.push(callback);
+    };
+    _setup = function() {
+      if ($("section.active").length === 0) {
+        $("section").first().addClass("active");
+      }
+      $("body").hammer();
+      $("section").each(function() {
+        if ($(this).children("article.active").length === 0) {
+          return $(this).children("article").first().addClass("active");
+        }
+      });
+      return _loaded();
+    };
+    _onReceive = function(data) {
+      remaining--;
+      $("body").append(data);
+      if (remaining === 0) {
+        return _setup();
+      }
+    };
+    _onError = function(data) {
+      remaining--;
+      console.error("Section not downloaded");
+      if (remaining === 0) {
+        return _setup();
+      }
+    };
+    _loaded = function() {
+      var cb, _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = callbacks.length; _i < _len; _i++) {
+        cb = callbacks[_i];
+        _results.push(cb.call(cb));
+      }
+      return _results;
+    };
+    return {
+      init: init,
+      onReady: onReady
+    };
+  })();
 
 }).call(this);
 
