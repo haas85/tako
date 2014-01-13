@@ -23,9 +23,11 @@ button, .button
   &.biggest
     line-height 3em
 
-  &.icon:before
+  &.icon:before, & .icon
     font-size 1.5em
-    margin-right 0.4em
+
+  & span:nth-child(2)
+    margin-left .4em
 
 header
   & button, &.button
@@ -60,8 +62,9 @@ header
       padding 0.1em 0.2em 0.1em 0.2em
       font-size FONT_SIZE_SMALLEST
 
-    & >span.icon
+    &>span.icon
       margin-right 0.4em
+      font-size 1em!important
 
   & button.button
     text-indent 0

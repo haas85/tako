@@ -917,11 +917,11 @@
     &:before
       content '\e818'
 
-  &[class*="spin"].animated:before
+  &[class*="spin"].animated
     animation(animated-spin 2s infinite linear)
     display inline-block
 
-  &.animated:not([class*="spin"]):before
+  &.animated:not([class*="spin"])
     animation(blink 2s linear infinite)
 
 
