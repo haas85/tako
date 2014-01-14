@@ -233,6 +233,42 @@
 }).call(this);
 
 (function() {
+  TaKo.Connection = (function() {
+    var callbacks, state, stateChange;
+    state = navigator.onLine;
+    callbacks = [];
+    stateChange = function(online) {
+      var cb, _i, _len, _results;
+      alert("HOLA");
+      if (state !== online) {
+        state = online;
+        _results = [];
+        for (_i = 0, _len = callbacks.length; _i < _len; _i++) {
+          cb = callbacks[_i];
+          _results.push(cb.call(cb, online));
+        }
+        return _results;
+      }
+    };
+    $(window).on("online", function() {
+      return stateChange(true);
+    });
+    $(window).on("offline", function() {
+      return stateChange(false);
+    });
+    return {
+      isOnline: function() {
+        return navigator.onLine;
+      },
+      onChange: function(cb) {
+        return callbacks.push(cb);
+      }
+    };
+  })();
+
+}).call(this);
+
+(function() {
   TaKo.Notification = (function(TK) {
     var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
     active = false;
