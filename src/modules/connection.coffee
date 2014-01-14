@@ -1,16 +1,15 @@
 TaKo.Connection = do ->
-    state       = navigator.onLine
-    callbacks   = []
+    _state       = navigator.onLine
+    _callbacks   = []
 
-    stateChange = (online) ->
-      alert "HOLA"
-      if state isnt online
-        state = online
-        for cb in callbacks
+    _stateChange = (online) ->
+      if _state isnt online
+        _state = online
+        for cb in _callbacks
           cb.call cb, online
 
-    $(window).on "online", -> stateChange true
-    $(window).on "offline", -> stateChange false
+    $(window).on "online", -> _stateChange true
+    $(window).on "offline", -> _stateChange false
 
     isOnline    : -> navigator.onLine
-    onChange    : (cb) -> callbacks.push cb
+    onChange    : (cb) -> _callbacks.push cb

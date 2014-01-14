@@ -234,34 +234,33 @@
 
 (function() {
   TaKo.Connection = (function() {
-    var callbacks, state, stateChange;
-    state = navigator.onLine;
-    callbacks = [];
-    stateChange = function(online) {
+    var _callbacks, _state, _stateChange;
+    _state = navigator.onLine;
+    _callbacks = [];
+    _stateChange = function(online) {
       var cb, _i, _len, _results;
-      alert("HOLA");
-      if (state !== online) {
-        state = online;
+      if (_state !== online) {
+        _state = online;
         _results = [];
-        for (_i = 0, _len = callbacks.length; _i < _len; _i++) {
-          cb = callbacks[_i];
+        for (_i = 0, _len = _callbacks.length; _i < _len; _i++) {
+          cb = _callbacks[_i];
           _results.push(cb.call(cb, online));
         }
         return _results;
       }
     };
     $(window).on("online", function() {
-      return stateChange(true);
+      return _stateChange(true);
     });
     $(window).on("offline", function() {
-      return stateChange(false);
+      return _stateChange(false);
     });
     return {
       isOnline: function() {
         return navigator.onLine;
       },
       onChange: function(cb) {
-        return callbacks.push(cb);
+        return _callbacks.push(cb);
       }
     };
   })();
@@ -441,5 +440,60 @@
     })();
     return new Progress(container, value);
   };
+
+}).call(this);
+
+(function() {
+  (function() {
+    var _clear, _get, _remove, _set;
+    _get = function(type, key) {
+      return JSON.parse(window[type].getItem(key));
+    };
+    _set = function(type, key, value) {
+      return window[type].setItem(key, JSON.stringify(value));
+    };
+    _remove = function(type, key) {
+      return window[type].removeItem(key);
+    };
+    _clear = function(type) {
+      return window[type].clear();
+    };
+    TaKo.Session = (function() {
+      var _name;
+      _name = "sessionStorage";
+      return {
+        get: function(key) {
+          return _get(_name, key);
+        },
+        set: function(key, value) {
+          return _set(_name, key, value);
+        },
+        remove: function(key) {
+          return _remove(_name, key);
+        },
+        clear: function() {
+          return _clear(_name);
+        }
+      };
+    })();
+    return TaKo.Storage = (function() {
+      var _name;
+      _name = "localStorage";
+      return {
+        get: function(key) {
+          return _get(_name, key);
+        },
+        set: function(key, value) {
+          return _set(_name, key, value);
+        },
+        remove: function(key) {
+          return _remove(_name, key);
+        },
+        clear: function() {
+          return _clear(_name);
+        }
+      };
+    })();
+  })();
 
 }).call(this);
