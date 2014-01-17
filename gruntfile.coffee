@@ -32,9 +32,11 @@ module.exports = (grunt) ->
         "stylesheets/TaKo.buttons.styl",
         "stylesheets/TaKo.notifications.styl",
         "stylesheets/TaKo.colors.styl",
-        "stylesheets/TaKo.icons.styl",
-        "stylesheets/TaKo.theme.styl"
+        "stylesheets/TaKo.icons.styl"
       ]
+      theme: [
+        "stylesheets/TaKo.theme.styl"
+      ],
 
       components: [
         "components/zepto/zepto.js",
@@ -61,11 +63,9 @@ module.exports = (grunt) ->
       core:
         options: compress: true, import: [ 'TaKo.constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.css': '<%=source.stylus%>'
-      # theme:
-      #   options: compress: false, import: [ '__init']
-      #   files: '<%=meta.endpoint%>/<%=meta.file%><%=meta.version%>/<%=meta.file%>.theme.css': '<%=source.theme%>'
-      # icons:
-      #   files: '<%=meta.package%>/<%=meta.file%>.icon/<%=meta.file%>.icon.css': '<%=source.icons%>'
+      theme:
+        options: compress: true, import: [ 'TaKo.constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
 
     watch:
       coffee:
@@ -74,6 +74,9 @@ module.exports = (grunt) ->
       stylus:
         files: ["<%= source.stylus %>"]
         tasks: ["stylus:core"]
+      theme:
+        files: ["<%= source.theme %>"]
+        tasks: ["stylus:theme"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"
@@ -81,4 +84,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
 
-  grunt.registerTask "default", [ "coffee", "concat", "uglify", "stylus",  "concat"]
+  grunt.registerTask "default", [ "coffee", "concat", "uglify", "stylus", "concat"]
