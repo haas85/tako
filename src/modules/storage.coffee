@@ -8,7 +8,7 @@ do ->
   _clear    = (type) ->
     do window[type].clear
 
-  TaKo.Session = do ->
+  Tako.Session = do ->
     _name   = "sessionStorage"
 
     get     : (key) -> _get _name, key
@@ -16,7 +16,7 @@ do ->
     remove  : (key) -> _remove _name, key
     clear   : -> _clear _name
 
-  TaKo.Storage = do ->
+  Tako.Storage = do ->
     _name = "localStorage"
 
     get     : (key) -> _get _name, key

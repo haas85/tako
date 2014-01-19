@@ -1,4 +1,4 @@
-TaKo.Article = do (TK = TaKo) ->
+Tako.Article = do (TK = Tako) ->
 
   goTo = (article_id)->
     _current_article = current()
@@ -12,7 +12,7 @@ TaKo.Article = do (TK = TaKo) ->
       _current = new_article.addClass "active"
 
     if _current_section[0].id isnt new_section[0].id
-      TaKo.Section.goTo new_section[0].id
+      Tako.Section.goTo new_section[0].id
     else
       _current_article.trigger "unload"
       _current = new_article.trigger "load"

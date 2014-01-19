@@ -12,8 +12,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="cleartype" content="on">
 
-    <link rel="stylesheet" href="stylesheets/TaKo.css">
-    <link rel="stylesheet" href="stylesheets/TaKo.theme.css">
+    <link rel="stylesheet" href="stylesheets/tako.css">
+    <link rel="stylesheet" href="stylesheets/tako.theme.css">
 </head>
 
 <body>
@@ -203,28 +203,29 @@
         </footer>
     </section>
 
-    <script src="js/TaKo.components.js"></script>
-    <script src="js/TaKo.debug.js"></script>
+    <script src="js/tako.components.js"></script>
+    <script src="js/tako.debug.js"></script>
     <script>
-        TaKo.onReady(function(){
+        Tako.onReady(function(){
             console.log("LOADED");
         });
-        // TaKo.Connection.onChange(function(online){
+        // Tako.Connection.onChange(function(online){
         //     if(online){
         //         alert("Connected")
         //     }else{
         //         alert("Disconnected");
         //     }
         // });
-        TaKo.init({"sections": ["section2.html"]});
+        Tako.init({"sections": ["section2.html"]});
+        console.log("HOLA");
         $("#show_success").bind("tap", function(){
-            TaKo.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
+            Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
         });
         $("#show_error").bind("tap", function(){
-            TaKo.Notification.error("cancel", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
+            Tako.Notification.error("cancel", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
         });
         $("#show_confirm").bind("tap", function(){
-            TaKo.Notification.confirm("help", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
+            Tako.Notification.confirm("help", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
                 if(result){
                     alert("I know you like them!!");
                 }else{
@@ -233,10 +234,10 @@
             })
         });
         $("#show_loading").bind("tap", function(){
-            TaKo.Notification.loading("Loading Data", 5, function(){console.log("LOADING CB");})
+            Tako.Notification.loading("Loading Data", 5, function(){console.log("LOADING CB");})
         });
         $("#show_progress").bind("tap", function(){
-            var progress = TaKo.Notification.progress("V", "Downloading", "Please wait until your download is completed");
+            var progress = Tako.Notification.progress("V", "Downloading", "Please wait until your download is completed");
             setTimeout(function(){progress.percent(20)},1000);
             setTimeout(function(){progress.percent(60)},2500);
             setTimeout(function(){progress.percent(100)},4500);

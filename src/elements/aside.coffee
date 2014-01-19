@@ -1,4 +1,4 @@
-TaKo.Aside = do (TK = TaKo) ->
+Tako.Aside = do (TK = Tako) ->
   aside = $ "aside"
   if aside.length > 0
     $("body").append '<div data-element="aside_background"></div>'

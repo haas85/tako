@@ -1,4 +1,4 @@
-TaKo.Connection = do ->
+Tako.Connection = do ->
     _state       = navigator.onLine
     _callbacks   = []
 

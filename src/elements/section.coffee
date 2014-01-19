@@ -1,4 +1,4 @@
-TaKo.Section = do (TK = TaKo) ->
+Tako.Section = do (TK = Tako) ->
 
   title = (html, section_id) ->
     unless section_id?

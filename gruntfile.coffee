@@ -4,7 +4,7 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON "package.json"
 
     meta:
-      file   : 'Tako'
+      file   : 'tako'
       assets : "assets",
       package : "package",
       temp   : "build",

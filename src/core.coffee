@@ -1,19 +1,22 @@
-window.TaKo = TaKo = do ->
+window.Tako = Tako = do ->
 
   remaining = 0
   callbacks = []
 
   init = (options={})->
-    if options.sections?
-      remaining = options.sections.length
-      for section in options.sections
-        $.ajax
-          url           : section
-          crossDomain   : true
-          success       : _onReceive
-          error         : _onError
-    else
-      do _setup
+    try
+      if options.sections?
+        remaining = options.sections.length
+        for section in options.sections
+          $.ajax
+            url           : section
+            crossDomain   : true
+            success       : _onReceive
+            error         : _onError
+      else
+        do _setup
+    catch exception
+      console.error exception
 
   onReady = (callback) -> callbacks.push callback
 

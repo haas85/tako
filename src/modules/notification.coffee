@@ -1,4 +1,4 @@
-TaKo.Notification = do (TK = TaKo) ->
+Tako.Notification = do (TK = Tako) ->
   active = false
 
 

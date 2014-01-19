@@ -1,4 +1,4 @@
-TaKo.ProgressBar = (container, value) ->
+Tako.ProgressBar = (container, value) ->
   class Progress
 
     el = null
