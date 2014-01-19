@@ -14,14 +14,42 @@ button, .button
     line-height 2em
     padding 0 .6em
 
+    &>img
+      height 1.3em
+      top 3px
+
+      &+span
+        font-size FONT_SIZE_SMALLEST
+
   &.small
     line-height 2.25em
+
+    &>img
+      height 1.55em
+      top 4px
+
+      &+span
+        font-size FONT_SIZE_SMALL
 
   &.big
     line-height 2.75em
 
+    &>img
+      height 2.05em
+      top 7px
+
+      &+span
+        font-size FONT_SIZE_BIG
+
   &.biggest
     line-height 3em
+
+    &>img
+      height 2.30em
+      top 8px
+
+      &+span
+        font-size FONT_SIZE_BIGGEST
 
   &.icon:before, & .icon
     font-size 1.5em
@@ -32,8 +60,20 @@ button, .button
     &:empty:before
       margin-right 0
 
-  & span:nth-child(2)
+  & *:nth-child(2)
     margin-left .5em
+
+  &>img
+      width auto
+      height 1.8em
+      margin-right .4em
+      position relative
+      top 6px
+
+      &+span
+        position relative
+        top 0
+        margin-left 0!important
 
 header
   & button, &.button
@@ -71,6 +111,17 @@ header
     &>span.icon
       margin-right .4em
       font-size 1em!important
+
+    &>img
+      position initial!important
+      width auto!important
+      height HEADER_HEIGHT - 16!important
+      margin-right .4em!important
+
+      &+span
+        position relative!important
+        top -10px!important
+        margin-left 0!important
 
   & button.button
     text-indent 0
