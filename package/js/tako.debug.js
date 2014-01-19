@@ -273,6 +273,55 @@
 }).call(this);
 
 (function() {
+  Tako.DB = (function() {
+    return {
+      manager: null,
+      create: function(name, schema, version, size, callback) {
+        this.manager = new WebDB(name, schema, version, size, callback);
+        return this.db = this.manager.db;
+      },
+      select: function() {
+        if (this.manager == null) {
+          throw "Database not initializated";
+        }
+        return this.manager.select.apply(this.manager, arguments);
+      },
+      insert: function() {
+        if (this.manager == null) {
+          throw "Database not initializated";
+        }
+        return this.manager.insert.apply(this.manager, arguments);
+      },
+      update: function() {
+        if (this.manager == null) {
+          throw "Database not initializated";
+        }
+        return this.manager.update.apply(this.manager, arguments);
+      },
+      "delete": function() {
+        if (this.manager == null) {
+          throw "Database not initializated";
+        }
+        return this.manager["delete"].apply(this.manager, arguments);
+      },
+      drop: function() {
+        if (this.manager == null) {
+          throw "Database not initializated";
+        }
+        return this.manager.drop.apply(this.manager, arguments);
+      },
+      execute: function() {
+        if (this.manager == null) {
+          throw "Database not initializated";
+        }
+        return this.manager.execute.apply(this.manager, arguments);
+      }
+    };
+  })();
+
+}).call(this);
+
+(function() {
   Tako.Notification = (function(TK) {
     var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
     active = false;
