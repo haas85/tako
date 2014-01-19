@@ -4,7 +4,7 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON "package.json"
 
     meta:
-      file   : 'TaKo'
+      file   : 'Tako'
       assets : "assets",
       package : "package",
       temp   : "build",
@@ -23,25 +23,26 @@ module.exports = (grunt) ->
           ]
 
       stylus:[
-        "stylesheets/TaKo.base.styl",
-        "stylesheets/TaKo.section.styl",
-        "stylesheets/TaKo.lists.styl",
-        "stylesheets/TaKo.forms.styl",
-        "stylesheets/TaKo.layouts.styl",
-        "stylesheets/TaKo.loader.styl",
-        "stylesheets/TaKo.buttons.styl",
-        "stylesheets/TaKo.notifications.styl",
-        "stylesheets/TaKo.colors.styl",
-        "stylesheets/TaKo.icons.styl"
+        "stylesheets/Tako.base.styl",
+        "stylesheets/Tako.section.styl",
+        "stylesheets/Tako.lists.styl",
+        "stylesheets/Tako.forms.styl",
+        "stylesheets/Tako.layouts.styl",
+        "stylesheets/Tako.loader.styl",
+        "stylesheets/Tako.buttons.styl",
+        "stylesheets/Tako.notifications.styl",
+        "stylesheets/Tako.colors.styl",
+        "stylesheets/Tako.icons.styl"
       ]
       theme: [
-        "stylesheets/TaKo.theme.styl"
+        "stylesheets/Tako.theme.styl"
       ],
 
       components: [
         "components/zepto/zepto.js",
         "components/hammer/hammer.js",
-        "components/hammer/jquery.hammer.js"
+        "components/hammer/jquery.hammer.js",
+        "components/webdb/webdb.js"
       ]
 
 
@@ -61,10 +62,10 @@ module.exports = (grunt) ->
 
     stylus:
       core:
-        options: compress: true, import: [ 'TaKo.constants']
+        options: compress: true, import: [ 'Tako.constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.css': '<%=source.stylus%>'
       theme:
-        options: compress: true, import: [ 'TaKo.constants']
+        options: compress: true, import: [ 'Tako.constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
 
     watch:
