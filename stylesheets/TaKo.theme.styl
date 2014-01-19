@@ -7,8 +7,9 @@ FAIL                = #ed1c13
 SUCCESS             = #199c12
 DISABLED            = #acb8b9
 BACKGROUND          = #e7e7e7
-FONT                = 16px/1.25  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
-FONT_SIZE           = 16px/1.25
+FONT                = 14px  "lato"
+FONT_FAMILY         = "lato"
+FONT_SIZE           = 16px
 
 /* -------------------------- VARIATIONS -------------------------- */
 LIST_border         = darken(SECONDARY_TEXT, 15%)
@@ -33,6 +34,9 @@ SHADOW              = rgba(0,0,0,0.1)
 body
   font FONT
   background-color BACKGROUND
+
+  & *
+    font-family FONT_FAMILY
 
 .theme
   background-color lighten(THEME, 15%)!important
