@@ -76,6 +76,9 @@ button, .button
         margin-left 0!important
 
 header
+  :not(.button)
+    padding-top 0
+
   & button, &.button
     text-indent 0
     display inline-block
@@ -92,6 +95,13 @@ header
     padding-top 6px
     padding-left 0.6em!important
     padding-right 0.6em!important
+
+    &.icon
+      &:before
+        margin-right .5em
+      &:empty:before
+        margin-right 0
+        font-size 1.5em!important
 
     &.icon:before
       font-size 1em!important
