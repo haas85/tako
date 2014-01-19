@@ -47,8 +47,9 @@ section:not(.active) > article{display:none}
 section.footer > article{padding-bottom:65px}
 section.no_header > article{top:0}
 section.extended_header > article{top:100px}
-header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;}
+header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;text-align:center;}
 header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102}
+header > img{width:auto;height:42px;margin-top:4px}
 header > nav.right{position:fixed;z-index:103;right:0;}
 header > nav.right > button{margin-right:5px}
 header > nav.left{position:fixed;z-index:103;left:0;}
