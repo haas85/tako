@@ -49,8 +49,8 @@ section.footer > article{padding-bottom:65px}
 section.no_header > article{top:0}
 section.extended_header > article{top:100px}
 header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;text-align:center;}
-header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102}
-header > img{width:auto;height:42px;margin-top:4px}
+header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102;}
+header > h1 > img{width:auto;height:42px;margin-top:4px}
 header > nav.right{position:fixed;z-index:103;right:0;}
 header > nav.right > button{margin-right:5px}
 header > nav.left{position:fixed;z-index:103;left:0;}
@@ -74,6 +74,11 @@ article ul > li h1,article ul > li h2,article ul > li h3,article ul > li h4,arti
 article ul > li input[type="radio"].onright,article ul > li input[type="checkbox"].onright{margin-top:-.1em;}
 article ul > li input[type="radio"].onright.switch,article ul > li input[type="checkbox"].onright.switch{margin-top:-.4em}
 article ul > li .icon{display:inline-block;float:left;margin-right:.4em;line-height:1em;width:24px;height:24px;font-size:1.4em}
+article ul > li label:not(.select){line-height:32px;height:32px;width:20%;float:left;margin-top:5px}
+article ul > li input,article ul > li select,article ul > li textarea,article ul > li label.select{float:right}
+article ul > li:after{display:block;content:"";clear:both}
+article ul > li [type="text"],article ul > li [type="password"],article ul > li [type="date"],article ul > li [type="datetime"],article ul > li [type="email"],article ul > li [type="number"],article ul > li [type="search"],article ul > li [type="tel"],article ul > li [type="time"],article ul > li [type="url"],article ul > li select,article ul > li textarea,article ul > li label.select{width:80%}
+article ul > li [type="range"]{width:79%}
 article ul.indented > li{margin:.8em}
 aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;margin-bottom:2px;}
@@ -103,12 +108,12 @@ input[type="text"].line,input[type="password"].line,input[type="date"].line,inpu
 li [type="text"],li [type="password"],li [type="date"],li [type="datetime"],li [type="email"],li [type="number"],li [type="search"],li [type="tel"],li [type="time"],li [type="url"]{margin-top:0;margin-bottom:0}
 li fieldset{margin-top:-8px;margin-bottom:-8px;padding-left:0;padding-right:0}
 fieldset{border:none;width:100%;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
-fieldset>label:not(.select){line-height:32px;height:32px;width:20%;float:left;margin-top:5px}
-fieldset>input,fieldset>select,fieldset>textarea,fieldset>label.select{float:right}
+fieldset label:not(.select){line-height:32px;height:32px;width:20%;float:left;margin-top:5px}
+fieldset input,fieldset select,fieldset textarea,fieldset label.select{float:right}
 fieldset:after{display:block;content:"";clear:both}
-fieldset>[type="text"],fieldset>[type="password"],fieldset>[type="date"],fieldset>[type="datetime"],fieldset>[type="email"],fieldset>[type="number"],fieldset>[type="search"],fieldset>[type="tel"],fieldset>[type="time"],fieldset>[type="url"],fieldset>select,fieldset>textarea,fieldset>label.select{width:80%}
-fieldset>[type="range"]{width:79%}
-fieldset>legend{font-size:1.2em;font-weight:bold;border:none;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;background-color:rgba(255,255,255,0.4);padding-left:5px;padding-right:5px}
+fieldset [type="text"],fieldset [type="password"],fieldset [type="date"],fieldset [type="datetime"],fieldset [type="email"],fieldset [type="number"],fieldset [type="search"],fieldset [type="tel"],fieldset [type="time"],fieldset [type="url"],fieldset select,fieldset textarea,fieldset label.select{width:80%}
+fieldset [type="range"]{width:79%}
+fieldset > legend{font-size:1.2em;font-weight:bold;border:none;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;background-color:rgba(255,255,255,0.4);padding-left:5px;padding-right:5px}
 label.select{margin-top:2.5px;margin-bottom:2.5px;position:relative;display:inline-block;width:100%;}
 label.select:before{content:'';right:2px;top:0;width:20px;margin:2px 0;height:28px;background:#fff;position:absolute;pointer-events:none;display:block}
 label.select:after{content:"▼";position:absolute;font-size:18px;top:0;right:0;bottom:0;line-height:32px;padding:0 7px;background:rgba(0,0,0,0);pointer-events:none}

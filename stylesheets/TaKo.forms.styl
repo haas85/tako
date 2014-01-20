@@ -130,9 +130,6 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   &.line
     background transparent
     border none
-    // border-color rgba(0,0,0,0)!important
-    // border-style solid!important
-    // border-width 1px!important
     -webkit-box-sizing border-box
     -moz-box-sizing border-box
     box-sizing border-box
@@ -154,14 +151,14 @@ fieldset
   display block
   box-sizing border-box
 
-  &>label:not(.select)
+  & label:not(.select)
     line-height 32px
     height 32px
     width 20%
     float left
     margin-top 5px
 
-  &>input, &>select, &>textarea, &>label.select
+  & input, & select, & textarea, & label.select
     float right
 
   &:after
@@ -169,13 +166,13 @@ fieldset
     content ""
     clear both
 
-  &>[type="text"], &>[type="password"], &>[type="date"], &>[type="datetime"], &>[type="email"], &>[type="number"], &>[type="search"], &>[type="tel"], &>[type="time"], &>[type="url"], &>select, &>textarea, &>label.select
+  & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea, & label.select
     width 80%
 
-  &>[type="range"]
+  & [type="range"]
     width 79%
 
-  &>legend
+  & > legend
     font-size 1.2em
     font-weight bold
     border none
