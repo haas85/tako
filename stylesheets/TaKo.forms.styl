@@ -122,14 +122,16 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   border-radius 0
 
   &.no_border
-    border none
+    border-color rgba(0,0,0,0)!important
 
   &.no_background
     background-color rgba(0,0,0,0)
 
   &.line
     background transparent
-    border none
+    border-color rgba(0,0,0,0)!important
+    border-style solid!important
+    border-width 1px!important
     -webkit-box-sizing border-box
     -moz-box-sizing border-box
     box-sizing border-box
@@ -171,6 +173,16 @@ fieldset
 
   &>[type="range"]
     width 79%
+
+  &>legend
+    font-size 1.2em
+    font-weight bold
+    border none
+    display block
+    box-sizing border-box
+    background-color rgba(255,255,255,0.4)
+    padding-left 5px
+    padding-right 5px
 
 label.select
   margin-top 2.5px
