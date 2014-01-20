@@ -122,6 +122,7 @@ textarea{line-height:1.2em;min-height:3em;height:3.5em}
 form fieldset,.form fieldset{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:8px 10px 8px 10px;}
 form fieldset:first-child,.form fieldset:first-child{border-top:1px solid rgba(0,0,0,0.1)}
 form.indented > fieldset,.form.indented > fieldset{margin:.8em}
+label.select select{width:100%}
 
 .line{width:100%;display:block;}
 .line:after{display:block;content:"";clear:both}
