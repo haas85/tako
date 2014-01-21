@@ -19,6 +19,8 @@ Tako.Article = do (TK = Tako) ->
 
     $(".current[data-article]").removeClass "current"
     $("[data-article=#{article_id}]").addClass "current"
+    $("[data-visible]").removeClass "show"
+    $("[data-visible=#{article_id}]").addClass "show"
 
   current = ->
     if _current? then _current else _current = $ "section.active article.active"

@@ -26,6 +26,8 @@ window.Tako = Tako = do ->
     $("section").each ->
       if $(@).children("article.active").length is 0
         $(@).children("article").first().addClass "active"
+    _current_art = $("section.active article.active")[0].id
+    $("[data-visible=#{_current_art}]").addClass "show"
     do _loaded
 
   _onReceive = (data) ->

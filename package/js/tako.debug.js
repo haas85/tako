@@ -40,6 +40,7 @@
       return callbacks.push(callback);
     };
     _setup = function() {
+      var _current_art;
       if ($("section.active").length === 0) {
         $("section").first().addClass("active");
       }
@@ -49,6 +50,8 @@
           return $(this).children("article").first().addClass("active");
         }
       });
+      _current_art = $("section.active article.active")[0].id;
+      $("[data-visible=" + _current_art + "]").addClass("show");
       return _loaded();
     };
     _onReceive = function(data) {
@@ -102,7 +105,9 @@
         _current = new_article.trigger("load");
       }
       $(".current[data-article]").removeClass("current");
-      return $("[data-article=" + article_id + "]").addClass("current");
+      $("[data-article=" + article_id + "]").addClass("current");
+      $("[data-visible]").removeClass("show");
+      return $("[data-visible=" + article_id + "]").addClass("show");
     };
     current = function() {
       var _current;

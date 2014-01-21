@@ -44,6 +44,8 @@ div[data-element="aside_background"].hide{background-color:rgba(0,0,0,0)}
 .clear:after{display:block;content:"";clear:both}
 strong{font-weight:bold;font-size:1.1em}
 small{opacity:.6;font-size:1.1em}
+.hidden{display:none !important}
+[data-visible]:not(.show){display:none}
 
 section{height:100%;width:100%;position:absolute;margin:0;padding:0;z-index:0;top:0;left:0;bottom:0;opacity:0;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
 section.active{opacity:1;z-index:100}
