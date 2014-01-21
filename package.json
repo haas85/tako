@@ -3,12 +3,14 @@
   "version"         : "0.1.0",
   "description"     : "Mobile Apps Web Framework",
   "homepage"        : "http://",
-  "author"          : "Iñigo Gonzalez Vazquez <ingonza85@gmail.com>",
+  "author"          : "Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85)",
+  "license"         : "MIT",
   "dependencies": {
     "grunt-contrib-coffee": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-stylus": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-banner": "*"
   }
 }

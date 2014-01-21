@@ -11,7 +11,7 @@ module.exports = (grunt) ->
       banner : """
         /* <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("m/d/yyyy") %>
            <%= pkg.homepage %>
-           Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> - Licensed <%= _.pluck(pkg.license, "type").join(", ") %> */
+           Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> - Under <%= pkg.license %> License */
 
         """
     # =========================================================================
@@ -48,17 +48,16 @@ module.exports = (grunt) ->
 
     # =========================================================================
     coffee:
-      core: files: '<%=meta.temp%>/<%=meta.file%>.debug.js': '<%= source.coffee %>'
       core_debug: files: '<%=meta.package%>/js/<%=meta.file%>.debug.js': '<%= source.coffee %>'
 
     concat:
       components:
-        src: "<%= source.components %>",  dest: "<%=meta.temp%>/js/<%=meta.file%>.components.js"
+        src: "<%= source.components %>",  dest: "<%=meta.temp%>/<%=meta.file%>.components.js"
 
     uglify:
-      options: compress: false, banner: "<%= meta.banner %>"
-      components: files: '<%=meta.package%>/js/<%=meta.file%>.components.js': '<%=meta.temp%>/js/<%=meta.file%>.components.js'
-      engine: files: '<%=meta.package%>/js/<%=meta.file%>.js': '<%=meta.temp%>/<%=meta.file%>.debug.js'
+      options: compress: false
+      components: files: '<%=meta.package%>/js/<%=meta.file%>.components.js': '<%=meta.temp%>/<%=meta.file%>.components.js'
+      engine: files: '<%=meta.package%>/js/<%=meta.file%>.js': '<%=meta.package%>/js/<%=meta.file%>.debug.js'
 
     stylus:
       core:
@@ -68,21 +67,33 @@ module.exports = (grunt) ->
         options: compress: true, import: [ 'Tako.constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
 
+    usebanner:
+      banner:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/js/<%=meta.file%>.debug.js',
+          '<%=meta.package%>/js/<%=meta.file%>.js',
+          '<%=meta.package%>/js/<%=meta.file%>.components.js',
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.css',
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css'
+        ]
+
     watch:
       coffee:
         files: ["<%= source.coffee %>"]
-        tasks: ["coffee:core", "coffee:core_debug", "uglify:engine"]
+        tasks: ["coffee:core", "coffee:core_debug", "uglify:engine", "usebanner:banner"]
       stylus:
         files: ["<%= source.stylus %>"]
-        tasks: ["stylus:core"]
+        tasks: ["stylus:core", "usebanner:banner"]
       theme:
         files: ["<%= source.theme %>"]
-        tasks: ["stylus:theme"]
+        tasks: ["stylus:theme", "usebanner:banner"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-stylus"
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-banner"
 
-  grunt.registerTask "default", [ "coffee", "concat", "uglify", "stylus", "concat"]
+  grunt.registerTask "default", [ "coffee", "concat", "uglify", "stylus", "concat", "usebanner"]
