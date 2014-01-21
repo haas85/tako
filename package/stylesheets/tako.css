@@ -74,11 +74,11 @@ article ul > li h1,article ul > li h2,article ul > li h3,article ul > li h4,arti
 article ul > li input[type="radio"].onright,article ul > li input[type="checkbox"].onright{margin-top:-.1em;}
 article ul > li input[type="radio"].onright.switch,article ul > li input[type="checkbox"].onright.switch{margin-top:-.4em}
 article ul > li .icon{display:inline-block;float:left;margin-right:.4em;line-height:1em;width:24px;height:24px;font-size:1.4em}
-article ul > li label:not(.select){line-height:32px;height:32px;width:20%;float:left;margin-top:5px}
+article ul > li label:not(.select){line-height:32px;height:32px;float:left;margin-top:5px}
 article ul > li input,article ul > li select,article ul > li textarea,article ul > li label.select{float:right}
 article ul > li:after{display:block;content:"";clear:both}
-article ul > li [type="text"],article ul > li [type="password"],article ul > li [type="date"],article ul > li [type="datetime"],article ul > li [type="email"],article ul > li [type="number"],article ul > li [type="search"],article ul > li [type="tel"],article ul > li [type="time"],article ul > li [type="url"],article ul > li select,article ul > li textarea,article ul > li label.select{width:80%}
-article ul > li [type="range"]{width:79%}
+article ul > li [type="text"],article ul > li [type="password"],article ul > li [type="date"],article ul > li [type="datetime"],article ul > li [type="email"],article ul > li [type="number"],article ul > li [type="search"],article ul > li [type="tel"],article ul > li [type="time"],article ul > li [type="url"],article ul > li select,article ul > li textarea,article ul > li label.select{width:100%}
+article ul > li [type="range"]{width:100%}
 article ul.indented > li{margin:.8em}
 aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;margin-bottom:2px;}
@@ -101,6 +101,7 @@ input[type="range"]::-moz-range-track{width:100%;height:7px;margin-top:10px;marg
 input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;height:26px;width:26px;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px}
 input[type="range"]::-moz-range-thumb{height:26px;width:26px;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px}
 select{width:100%}
+label + input[type="text"],label + input[type="password"],label + input[type="date"],label + input[type="datetime"],label + input[type="email"],label + input[type="number"],label + input[type="search"],label + input[type="tel"],label + input[type="time"],label + input[type="url"],label + label.select,label + textarea{margin-top:-5px}
 input[type="text"],input[type="password"],input[type="date"],input[type="datetime"],input[type="email"],input[type="number"],input[type="search"],input[type="tel"],input[type="time"],input[type="url"],label > select,textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none;display:inline-block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;width:100%;padding:5px;font-size:1.2em;-webkit-box-shadow:none;-moz-box-shadow:none;-ms-box-shadow:none;-o-box-shadow:none;box-shadow:none;border-style:solid;border-width:.15em;margin-top:2.5px;margin-bottom:2.5px;-webkit-border-radius:0;-moz-border-radius:0;-ms-border-radius:0;-o-border-radius:0;border-radius:0;}
 input[type="text"].no_border,input[type="password"].no_border,input[type="date"].no_border,input[type="datetime"].no_border,input[type="email"].no_border,input[type="number"].no_border,input[type="search"].no_border,input[type="tel"].no_border,input[type="time"].no_border,input[type="url"].no_border,label > select.no_border,textarea.no_border{border-color:rgba(0,0,0,0) !important}
 input[type="text"].no_background,input[type="password"].no_background,input[type="date"].no_background,input[type="datetime"].no_background,input[type="email"].no_background,input[type="number"].no_background,input[type="search"].no_background,input[type="tel"].no_background,input[type="time"].no_background,input[type="url"].no_background,label > select.no_background,textarea.no_background{background-color:rgba(0,0,0,0)}
@@ -108,12 +109,10 @@ input[type="text"].line,input[type="password"].line,input[type="date"].line,inpu
 li [type="text"],li [type="password"],li [type="date"],li [type="datetime"],li [type="email"],li [type="number"],li [type="search"],li [type="tel"],li [type="time"],li [type="url"]{margin-top:0;margin-bottom:0}
 li fieldset{margin-top:-8px;margin-bottom:-8px;padding-left:0;padding-right:0}
 fieldset{border:none;width:100%;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
-fieldset label:not(.select){line-height:32px;height:32px;width:20%;float:left;margin-top:5px}
-fieldset input,fieldset select,fieldset textarea,fieldset label.select{float:right}
+fieldset label:not(.select){line-height:32px;height:32px;margin-top:5px;float:left}
 fieldset:after{display:block;content:"";clear:both}
-fieldset [type="text"],fieldset [type="password"],fieldset [type="date"],fieldset [type="datetime"],fieldset [type="email"],fieldset [type="number"],fieldset [type="search"],fieldset [type="tel"],fieldset [type="time"],fieldset [type="url"],fieldset select,fieldset textarea,fieldset label.select{width:80%}
-fieldset [type="range"]{width:79%}
 fieldset > legend{font-size:1.2em;font-weight:bold;border:none;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;background-color:rgba(255,255,255,0.4);padding-left:5px;padding-right:5px}
+fieldset > input{float:right}
 label.select{margin-top:2.5px;margin-bottom:2.5px;position:relative;display:inline-block;width:100%;}
 label.select:before{content:'';right:2px;top:0;width:20px;margin:2px 0;height:28px;background:#fff;position:absolute;pointer-events:none;display:block}
 label.select:after{content:"▼";position:absolute;font-size:18px;top:0;right:0;bottom:0;line-height:32px;padding:0 7px;background:rgba(0,0,0,0);pointer-events:none}

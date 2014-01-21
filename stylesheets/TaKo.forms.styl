@@ -105,6 +105,10 @@ input
 select
   width 100%
 
+label
+  & + input[type="text"], & + input[type="password"], & + input[type="date"], & + input[type="datetime"], & + input[type="email"], & + input[type="number"], & + input[type="search"], & + input[type="tel"], & + input[type="time"], & + input[type="url"], & + label.select, & + textarea
+    margin-top -5px
+
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
   -webkit-appearance none
   -moz-appearance none
@@ -154,23 +158,13 @@ fieldset
   & label:not(.select)
     line-height 32px
     height 32px
-    width 20%
-    float left
     margin-top 5px
-
-  & input, & select, & textarea, & label.select
-    float right
+    float left
 
   &:after
     display block
     content ""
     clear both
-
-  & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea, & label.select
-    width 80%
-
-  & [type="range"]
-    width 79%
 
   & > legend
     font-size 1.2em
@@ -181,6 +175,9 @@ fieldset
     background-color rgba(255,255,255,0.4)
     padding-left 5px
     padding-right 5px
+
+  & > input
+    float right
 
 label.select
   margin-top 2.5px
