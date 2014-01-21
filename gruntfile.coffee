@@ -68,26 +68,40 @@ module.exports = (grunt) ->
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
 
     usebanner:
-      banner:
+      components:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/js/<%=meta.file%>.components.js'
+        ]
+      js:
         options: position: "top", banner: "<%= meta.banner %>", linebreak: false
         files: src: [
           '<%=meta.package%>/js/<%=meta.file%>.debug.js',
-          '<%=meta.package%>/js/<%=meta.file%>.js',
-          '<%=meta.package%>/js/<%=meta.file%>.components.js',
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.css',
+          '<%=meta.package%>/js/<%=meta.file%>.js'
+        ]
+
+      css:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.css'
+        ]
+
+      theme:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
           '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css'
         ]
 
     watch:
       coffee:
         files: ["<%= source.coffee %>"]
-        tasks: ["coffee:core", "coffee:core_debug", "uglify:engine", "usebanner:banner"]
+        tasks: ["coffee:core_debug", "uglify:engine", "usebanner:js"]
       stylus:
         files: ["<%= source.stylus %>"]
-        tasks: ["stylus:core", "usebanner:banner"]
+        tasks: ["stylus:core", "usebanner:css"]
       theme:
         files: ["<%= source.theme %>"]
-        tasks: ["stylus:theme", "usebanner:banner"]
+        tasks: ["stylus:theme", "usebanner:theme"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"
