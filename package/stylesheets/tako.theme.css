@@ -47,3 +47,4 @@ input[type="text"].line:focus,input[type="password"].line:focus,input[type="date
 label.select{color:#b9b9b9;}
 label.select:hover{color:#ff944d;}
 label.select:hover > select{border-color:#ff944d}
+li:active{color:#000;background-color:#ff8533}
