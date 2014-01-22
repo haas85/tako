@@ -467,13 +467,62 @@
   Tako.ProgressBar = function(container, value) {
     var Progress;
     Progress = (function() {
+      Progress.prototype.el = null;
+
+      Progress.prototype.fill = null;
+
+      function Progress(container, value) {
+        var PROGRESS;
+        this.value = value != null ? value : 0;
+        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
+        this.el = $(PROGRESS);
+        $("#" + container).append(this.el);
+        this.fill = this.el.children(".percent");
+      }
+
+      Progress.prototype.percent = function(value) {
+        if (value != null) {
+          if (value < 0 || value > 100) {
+            throw "Invalid value";
+          }
+          this.value = value;
+          this.fill.css("width", "" + this.value + "%");
+        }
+        return this.value;
+      };
+
+      Progress.prototype.remove = function() {
+        return this.el.remove();
+      };
+
+      return Progress;
+
+    })();
+    return new Progress(container, value);
+  };
+
+}).call(this);
+
+(function() {
+  Tako.Pull_Refresh = function(container, options) {
+    var PullRefresh;
+    if (options == null) {
+      options = {};
+    }
+    options.pullLabel = options.pullLabel || "Pull to refresh";
+    options.releaseLabel = options.releaseLabel || "Release to refresh";
+    options.refreshLabel = options.refreshLabel || "Loading...";
+    options.onRefresh = options.onRefresh || function() {
+      return this.hide();
+    };
+    PullRefresh = (function() {
       var el, fill;
 
       el = null;
 
       fill = null;
 
-      function Progress(container, value) {
+      function PullRefresh(container, value) {
         var PROGRESS;
         this.value = value != null ? value : 0;
         PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
@@ -482,7 +531,7 @@
         fill = el.children(".percent");
       }
 
-      Progress.prototype.percent = function(value) {
+      PullRefresh.prototype.percent = function(value) {
         if (value != null) {
           if (value < 0 || value > 100) {
             throw "Invalid value";
@@ -493,14 +542,14 @@
         return this.value;
       };
 
-      Progress.prototype.remove = function() {
+      PullRefresh.prototype.remove = function() {
         return el.remove();
       };
 
-      return Progress;
+      return PullRefresh;
 
     })();
-    return new Progress(container, value);
+    return new PullRefresh(container, options);
   };
 
 }).call(this);
