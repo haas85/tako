@@ -132,6 +132,7 @@
             <div>
                 <ul>
                     <li class="icon box"><strong>Elem 1</strong><small>small elem</small></li>
+                    <li><img class="small" src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><strong>Elem 1</strong><small>small elem</small></li>
                     <li><img src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><strong>Elem 1</strong><small>small elem</small></li>
                     <li><img class="big" src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><strong>Elem 1</strong><small>small elem</small></li>
                     <li><strong>Elem 1</strong><small>small elem</small></li>
@@ -209,7 +210,8 @@
     <script>
         Tako.onReady(function(){
             console.log("LOADED");
-            Tako.Article.goTo("lists");
+            Tako.Article.goTo("lists")
+            window.puller = Tako.Pull_Refresh("main");
         });
         // Tako.Connection.onChange(function(online){
         //     if(online){
