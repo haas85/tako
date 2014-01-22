@@ -78,7 +78,8 @@ article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1p
 article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
 article ul > li h1,article ul > li h2,article ul > li h3,article ul > li h4,article ul > li h5,article ul > li h6,article ul > li strong,article ul > li small{overflow:hidden;white-space:nowrap;display:block}
 article ul > li small{margin-top:.2em}
-article ul > li > img{width:40px;height:40px;display:inline;float:left;margin-right:.9em}
+article ul > li > img{width:40px;height:40px;display:inline;float:left;margin-right:.9em;}
+article ul > li > img.big{width:70px;height:70px;margin-right:.7em;margin-left:-.9em;margin-top:-.9em;margin-bottom:-.9em}
 article ul > li input[type="radio"].onright,article ul > li input[type="checkbox"].onright{margin-top:-.1em;}
 article ul > li input[type="radio"].onright.switch,article ul > li input[type="checkbox"].onright.switch{margin-top:-.4em}
 article ul > li .icon{display:inline-block;float:left;margin-right:.4em;line-height:1em;width:24px;height:24px;font-size:1.4em}
