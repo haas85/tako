@@ -210,7 +210,7 @@ button *:nth-child(2),.button *:nth-child(2){margin-left:.5em}
 button>img,.button>img{width:auto;height:1.8em;margin-right:.4em;position:relative;top:6px;}
 button>img+span,.button>img+span{position:relative;top:0;margin-left:0 !important}
 header :not(.button){padding-top:0}
-header button,header.button{text-indent:0;display:inline-block;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);height:46px;margin-top:2px;margin-bottom:2px;line-height:46px;font-size:1.3em !important;padding-top:6px;padding-left:.6em !important;padding-right:.6em !important;}
+header button,header.button{min-width:46px;text-indent:0;display:inline-block;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);height:46px;margin-top:2px;margin-bottom:2px;line-height:46px;font-size:1.3em !important;padding-top:6px;padding-left:.6em !important;padding-right:.6em !important;}
 header button.icon:before,header.button.icon:before{margin-right:.5em}
 header button.icon:empty:before,header.button.icon:empty:before{margin-right:0;font-size:1.5em !important}
 header button.icon:before,header.button.icon:before{font-size:1em !important}
