@@ -75,6 +75,7 @@ article.active{display:block}
 article ul{list-style:none;width:100%;padding:0;margin:0;}
 article ul > li{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:.9em;}
 article ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
+article ul > li.icon:before{display:inline-block;float:left;margin-right:.3em;line-height:40px;width:40px;height:40px;font-size:3em}
 article ul > li:first-child{border-top:1px solid rgba(0,0,0,0.1)}
 article ul > li h1,article ul > li h2,article ul > li h3,article ul > li h4,article ul > li h5,article ul > li h6,article ul > li strong,article ul > li small{overflow:hidden;white-space:nowrap;display:block}
 article ul > li small{margin-top:.2em}
