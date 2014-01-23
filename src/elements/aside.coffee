@@ -35,7 +35,7 @@ Tako.Aside = do (TK = Tako) ->
       do ev.stopPropagation
       do hide
 
-  if aside? and not full
+  if aside.length > 0 and not full
     bck.on "tap", (ev)->
       do ev.preventDefault
       do ev.stopPropagation

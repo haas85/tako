@@ -185,7 +185,7 @@
         return hide();
       });
     });
-    if ((aside != null) && !full) {
+    if (aside.length > 0 && !full) {
       bck.on("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
