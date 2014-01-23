@@ -22,19 +22,14 @@ Tako.Notification = do (TK = Tako) ->
     html = _iconHtml icon, title, content
     _show html, "error top_position upwards margin", time_out, cb
 
-  loading = (title, time_out, cb) ->
-    html = """<div id="circular_container">
-                <div id="circular3dG">
-                  <div id="circular3d_1G" class="circular3dG"></div>
-                  <div id="circular3d_2G" class="circular3dG"></div>
-                  <div id="circular3d_3G" class="circular3dG"></div>
-                  <div id="circular3d_4G" class="circular3dG"></div>
-                  <div id="circular3d_5G" class="circular3dG"></div>
-                  <div id="circular3d_6G" class="circular3dG"></div>
-                  <div id="circular3d_7G" class="circular3dG"></div>
-                  <div id="circular3d_8G" class="circular3dG"></div>
-                </div>"""
-    html += "</div>"
+  loading = (title, time_out, args...) ->
+    if args[0]? and typeof(args[0]) is "string"
+      icon = args[0]
+      cb   = args[1]
+    else
+      icon = "spin6"
+      cb = args[0]
+    html = """<div class="icon #{icon} animated"></div>"""
     html += """<span class="title">#{title}</span>""" if title?
     _show html, "loading center not_clickable", time_out, cb
 

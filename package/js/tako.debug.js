@@ -330,6 +330,8 @@
 }).call(this);
 
 (function() {
+  var __slice = [].slice;
+
   Tako.Notification = (function(TK) {
     var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
     active = false;
@@ -349,10 +351,17 @@
       html = _iconHtml(icon, title, content);
       return _show(html, "error top_position upwards margin", time_out, cb);
     };
-    loading = function(title, time_out, cb) {
-      var html;
-      html = "<div id=\"circular_container\">\n<div id=\"circular3dG\">\n  <div id=\"circular3d_1G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_2G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_3G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_4G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_5G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_6G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_7G\" class=\"circular3dG\"></div>\n  <div id=\"circular3d_8G\" class=\"circular3dG\"></div>\n</div>";
-      html += "</div>";
+    loading = function() {
+      var args, cb, html, icon, time_out, title;
+      title = arguments[0], time_out = arguments[1], args = 3 <= arguments.length ? __slice.call(arguments, 2) : [];
+      if ((args[0] != null) && typeof args[0] === "string") {
+        icon = args[0];
+        cb = args[1];
+      } else {
+        icon = "spin6";
+        cb = args[0];
+      }
+      html = "<div class=\"icon " + icon + " animated\"></div>";
       if (title != null) {
         html += "<span class=\"title\">" + title + "</span>";
       }

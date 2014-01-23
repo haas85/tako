@@ -28,7 +28,6 @@ module.exports = (grunt) ->
         "stylesheets/Tako.lists.styl",
         "stylesheets/Tako.forms.styl",
         "stylesheets/Tako.layouts.styl",
-        "stylesheets/Tako.loader.styl",
         "stylesheets/Tako.buttons.styl",
         "stylesheets/Tako.pullrefresh.styl",
         "stylesheets/Tako.notifications.styl",
