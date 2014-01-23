@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 1/22/2014
+/* TaKo v0.1.0 - 1/23/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 body{font:14px "lato";background-color:#e7e7e7;}
@@ -48,3 +48,4 @@ label.select{color:#b9b9b9;}
 label.select:hover{color:#ff944d;}
 label.select:hover > select{border-color:#ff944d}
 li.tapable:active{color:#000;background-color:#ff8533}
+div.pulltorefresh{background-color:#c4c4c4}

@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 1/22/2014
+/* TaKo v0.1.0 - 1/23/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -504,6 +504,8 @@
 }).call(this);
 
 (function() {
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
   Tako.Pull_Refresh = function(container, options) {
     var PullRefresh;
     if (options == null) {
@@ -512,38 +514,75 @@
     options.pullLabel = options.pullLabel || "Pull to refresh";
     options.releaseLabel = options.releaseLabel || "Release to refresh";
     options.refreshLabel = options.refreshLabel || "Loading...";
-    options.onRefresh = options.onRefresh || function() {
-      return this.hide();
-    };
+    options.onRefresh = options.onRefresh || void 0;
     PullRefresh = (function() {
-      var el, fill;
+      var _transform;
 
-      el = null;
-
-      fill = null;
-
-      function PullRefresh(container, value) {
-        var PROGRESS;
-        this.value = value != null ? value : 0;
-        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
-        el = $(PROGRESS);
-        $("#" + container).append(el);
-        fill = el.children(".percent");
+      function PullRefresh(container, options) {
+        var PULLREFRESH;
+        this.options = options;
+        this.hide = __bind(this.hide, this);
+        this.onRelease = __bind(this.onRelease, this);
+        this.onDragDown = __bind(this.onDragDown, this);
+        PULLREFRESH = "<div class=\"pulltorefresh\">\n<span class=\"icon down-big\"></span><span class=\"text\">" + this.options.pullLabel + "</span>\n</div>";
+        this.el = $(PULLREFRESH);
+        container = $("#" + container);
+        container.prepend(this.el);
+        container.on("dragdown", this.onDragDown);
+        container.on("release", this.onRelease);
+        this.scrolled = container[0].nodeName === "ARTICLE" ? $("body") : container;
+        this.initial = parseInt(this.el.css("margin-bottom").replace("px", ""));
+        this.initial_delta = null;
       }
 
-      PullRefresh.prototype.percent = function(value) {
-        if (value != null) {
-          if (value < 0 || value > 100) {
-            throw "Invalid value";
+      PullRefresh.prototype.onDragDown = function(event) {
+        var displacement;
+        if (this.scrolled.scrollTop() === 0) {
+          if (this.initial_delta === null) {
+            this.initial_delta = event.gesture.deltaY;
+            displacement = 0;
+          } else {
+            displacement = event.gesture.deltaY - this.initial_delta;
           }
-          this.value = value;
-          fill.css("width", "" + this.value + "%");
+          this.current = this.initial + displacement;
+          if (this.current > 0) {
+            this.current = 0;
+          }
+          return _transform(this.el, this.current);
         }
-        return this.value;
       };
 
-      PullRefresh.prototype.remove = function() {
-        return el.remove();
+      PullRefresh.prototype.onRelease = function() {
+        if (this.current === 0 && (this.options.onRefresh != null)) {
+          return this.options.onRefresh.call(this.options.onRefresh);
+        } else {
+          if (this.current !== this.initial) {
+            return this.hide();
+          }
+        }
+      };
+
+      PullRefresh.prototype.hide = function() {
+        this.initial_delta = null;
+        this.current = this.initial;
+        return _transform(this.el, this.initial);
+      };
+
+      _transform = function(element, value) {
+        var string;
+        if ($.os.ios) {
+          string = "translate3d(0px, " + value + "px, 0px) scale3d(1, 1, 1)";
+          element.css("-webkit-transform", string);
+          element.css("transform", string);
+        } else {
+          string = "translate(0, " + value + "px";
+          element.css("-webkit-transform", "translate(0, " + value + "px");
+          element.css("-moz-transform", "translate(0, " + value + "px");
+          element.css("-ms-transform", "translate(0, " + value + "px");
+          element.css("-o-transform", "translate(0, " + value + "px");
+          element.css("transform", "translate(0, " + value + "px");
+        }
+        return element.css("margin-bottom", "" + value + "px");
       };
 
       return PullRefresh;
