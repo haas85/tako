@@ -30,6 +30,7 @@ module.exports = (grunt) ->
         "stylesheets/Tako.layouts.styl",
         "stylesheets/Tako.loader.styl",
         "stylesheets/Tako.buttons.styl",
+        "stylesheets/Tako.pullrefresh.styl",
         "stylesheets/Tako.notifications.styl",
         "stylesheets/Tako.colors.styl",
         "stylesheets/Tako.icons.styl"
@@ -40,6 +41,7 @@ module.exports = (grunt) ->
 
       components: [
         "components/zepto/zepto.js",
+        "components/zepto/detect.js",
         "components/hammer/hammer.js",
         "components/hammer/jquery.hammer.js",
         "components/webdb/webdb.js"
