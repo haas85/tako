@@ -1,0 +1,32 @@
+aside
+  display block
+  width ASIDE_WIDTH
+  padding ASIDE_PADDING
+  top 0
+  bottom 0
+
+  & .counter
+    margin-top -3px
+    -webkit-border-radius 2px
+    -moz-border-radius 2px
+    border-radius 2px
+    padding .2em .4em .2em .4em
+    float right
+
+  &:not(.full)
+    left - ASIDE_TRANSITION
+    z-index ASIDE_INDEX
+    position absolute
+    transition-duration ASIDE_TRANSITION_TIME
+
+    &.show
+      transform(translateX(ASIDE_WIDTH + 8 + ASIDE_PADDING * 2))
+
+  &.full
+    height 100%
+    left 0
+    z-index FULL_ASIDE_INDEX
+    position fixed
+
+aside.show.full + section.active
+  transform(translateX(ASIDE_WIDTH + ASIDE_PADDING * 2))

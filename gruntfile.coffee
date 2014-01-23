@@ -24,6 +24,7 @@ module.exports = (grunt) ->
 
       stylus:[
         "stylesheets/Tako.base.styl",
+        "stylesheets/Tako.aside.styl",
         "stylesheets/Tako.section.styl",
         "stylesheets/Tako.lists.styl",
         "stylesheets/Tako.forms.styl",

@@ -136,23 +136,33 @@
 
 (function() {
   Tako.Aside = (function(TK) {
-    var aside, bck, hide, show, toggle;
+    var aside, bck, full, hide, show, toggle;
     aside = $("aside");
+    bck = null;
+    full = false;
     if (aside.length > 0) {
-      $("body").append('<div data-element="aside_background"></div>');
+      if (aside.hasClass("full")) {
+        full = true;
+      } else {
+        $("body").append('<div data-element="aside_background"></div>');
+        bck = $("[data-element=aside_background]");
+        bck.append(aside);
+      }
     }
-    bck = $("[data-element=aside_background]");
-    bck.append(aside);
     show = function() {
-      bck.removeClass("hide").addClass("show");
+      if (!full) {
+        bck.removeClass("hide").addClass("show");
+      }
       return aside.addClass("show");
     };
     hide = function() {
       aside.removeClass("show");
-      bck.addClass("hide");
-      return setTimeout((function() {
-        return bck.removeClass("show");
-      }), 150);
+      if (!full) {
+        bck.addClass("hide");
+        return setTimeout((function() {
+          return bck.removeClass("show");
+        }), 150);
+      }
     };
     toggle = function() {
       if (aside.hasClass("show")) {
@@ -175,11 +185,13 @@
         return hide();
       });
     });
-    bck.on("tap", function(ev) {
-      ev.preventDefault();
-      ev.stopPropagation();
-      return hide();
-    });
+    if ((aside != null) && !full) {
+      bck.on("tap", function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        return hide();
+      });
+    }
     return {
       show: show,
       hide: hide,

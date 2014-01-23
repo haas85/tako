@@ -22,28 +22,6 @@ body
   & *
     -webkit-tap-highlight-color rgba(0,0,0,0)
 
-aside
-  display block
-  width ASIDE_WIDTH
-  padding ASIDE_PADDING
-  z-index ASIDE_INDEX
-  position absolute
-  top 0
-  bottom 0
-  left - ASIDE_TRANSITION
-  transition-duration ASIDE_TRANSITION_TIME
-
-  &.show
-    transform(translateX(ASIDE_WIDTH + 8 + ASIDE_PADDING * 2))
-
-  & .counter
-    margin-top -3px
-    -webkit-border-radius 2px
-    -moz-border-radius 2px
-    border-radius 2px
-    padding .2em .4em .2em .4em
-    float right
-
 div[data-element="aside_background"]
   position fixed
   top HEADER_HEIGHT

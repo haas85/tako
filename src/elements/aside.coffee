@@ -1,18 +1,24 @@
 Tako.Aside = do (TK = Tako) ->
   aside = $ "aside"
+  bck = null
+  full = false
   if aside.length > 0
-    $("body").append '<div data-element="aside_background"></div>'
-  bck = $ "[data-element=aside_background]"
-  bck.append aside
+    if aside.hasClass "full"
+      full = true
+    else
+      $("body").append '<div data-element="aside_background"></div>'
+      bck = $ "[data-element=aside_background]"
+      bck.append aside
 
   show = ->
-    bck.removeClass("hide").addClass "show"
+    bck.removeClass("hide").addClass "show" if not full
     aside.addClass "show"
 
   hide = ->
     aside.removeClass "show"
-    bck.addClass "hide"
-    setTimeout ( -> bck.removeClass "show"), 150
+    if not full
+      bck.addClass "hide"
+      setTimeout ( -> bck.removeClass "show"), 150
 
   toggle = ->
     if aside.hasClass "show" then hide() else show()
@@ -29,10 +35,11 @@ Tako.Aside = do (TK = Tako) ->
       do ev.stopPropagation
       do hide
 
-  bck.on "tap", (ev)->
-    do ev.preventDefault
-    do ev.stopPropagation
-    do hide
+  if aside? and not full
+    bck.on "tap", (ev)->
+      do ev.preventDefault
+      do ev.stopPropagation
+      do hide
 
   show: show
   hide: hide

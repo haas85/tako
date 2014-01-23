@@ -17,7 +17,8 @@
 </head>
 
 <body>
-    <aside>
+    <!-- <aside class="full"> -->
+    <aside class>
         <ul>
             <li data-article="forms">Forms <span class="counter">125</span></li>
             <li data-article="lists">Lists</li>
@@ -218,13 +219,7 @@
                     puller.hide()}, 3000);
             }});
         });
-        // Tako.Connection.onChange(function(online){
-        //     if(online){
-        //         alert("Connected")
-        //     }else{
-        //         alert("Disconnected");
-        //     }
-        // });
+
         Tako.init({"sections": ["section2.html"]});
         $("#show_success").bind("tap", function(){
             Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
