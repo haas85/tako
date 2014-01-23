@@ -9,7 +9,6 @@ div.pulltorefresh
   border-bottom 1px solid rgba(0, 0, 0, 0.6)
   padding-top PULL_HEIGHT - PULL_CONTENT
   padding-bottom PULL_PADDING
-  text-align center
   transition -webkit-transform 0ms
   transform(translate(0,- INITIAL_POS))
   margin-bottom - INITIAL_POS
@@ -21,6 +20,8 @@ div.pulltorefresh
 
     &.text
       font-size 1.5em
+      position relative
+      top -7px
 
     &.icon
       width CONTENT_HEIGHT
@@ -28,6 +29,7 @@ div.pulltorefresh
       border PULL_BORDER solid rgba(0, 0, 0, 0.8)
       text-align center
       padding 0
+      margin-left 1em
       margin-right 1em
       font-size 2em
 
@@ -36,7 +38,3 @@ div.pulltorefresh
         font-size 3em
         margin-right .5em
         margin-top 10px
-
-        &+span.text
-          position relative
-          top -7px
