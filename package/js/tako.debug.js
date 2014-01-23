@@ -570,7 +570,7 @@
 
       _transform = function(element, value) {
         var string;
-        if ($.os.ios) {
+        if ($.os.ios || ($.os.android && parseFloat($.os.version) > 2.3)) {
           string = "translate3d(0px, " + value + "px, 0px) scale3d(1, 1, 1)";
           element.css("-webkit-transform", string);
           element.css("transform", string);

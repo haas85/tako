@@ -44,7 +44,7 @@ Tako.Pull_Refresh = (container, options={}) ->
       _transform @el, @initial
 
     _transform = (element, value) ->
-      if $.os.ios
+      if $.os.ios or ($.os.android and parseFloat($.os.version)>2.3 )
         string = "translate3d(0px, #{value}px, 0px) scale3d(1, 1, 1)"
         element.css "-webkit-transform", string
         element.css "transform", string
