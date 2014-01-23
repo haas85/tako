@@ -1,16 +1,16 @@
-CONTENT_HEIGHT = PULL_HEIGHT - ( PULL_PADDING * 2)
+CONTENT_HEIGHT = PULL_CONTENT - ( PULL_PADDING * 2)
 ICON_RADIUS    = CONTENT_HEIGHT /2 + PULL_BORDER
-INITIAL_POS    = PULL_HEIGHT + 12
+INITIAL_POS    = PULL_HEIGHT + 11
 
 div.pulltorefresh
-  height PULL_HEIGHT
   width 100%
-  line-height PULL_HEIGHT
+  line-height PULL_CONTENT
   border-top 1px solid rgba(0, 0, 0, 0.1)
   border-bottom 1px solid rgba(0, 0, 0, 0.6)
-  padding-top PULL_PADDING
+  padding-top PULL_HEIGHT - PULL_CONTENT
   padding-bottom PULL_PADDING
   text-align center
+  transition -webkit-transform 0ms
   transform(translate(0,- INITIAL_POS))
   margin-bottom - INITIAL_POS
 
@@ -30,3 +30,13 @@ div.pulltorefresh
       padding 0
       margin-right 1em
       font-size 2em
+
+      &.animated
+        border none
+        font-size 3em
+        margin-right .5em
+        margin-top 10px
+
+        &+span.text
+          position relative
+          top -7px

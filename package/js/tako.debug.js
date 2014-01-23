@@ -506,8 +506,37 @@
 (function() {
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
+  (function() {
+    var lastTime, vendors, x;
+    lastTime = 0;
+    vendors = ["ms", "moz", "webkit", "o"];
+    x = 0;
+    while (x < vendors.length && !window.requestAnimationFrame) {
+      window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"];
+      window.cancelAnimationFrame = window[vendors[x] + "CancelAnimationFrame"] || window[vendors[x] + "CancelRequestAnimationFrame"];
+      ++x;
+    }
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = function(callback, element) {
+        var currTime, id, timeToCall;
+        currTime = new Date().getTime();
+        timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        id = window.setTimeout(function() {
+          return callback(currTime + timeToCall);
+        }, timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+      };
+    }
+    if (!window.cancelAnimationFrame) {
+      return window.cancelAnimationFrame = function(id) {
+        return clearTimeout(id);
+      };
+    }
+  })();
+
   Tako.Pull_Refresh = function(container, options) {
-    var PullRefresh;
+    var PullToRefresh;
     if (options == null) {
       options = {};
     }
@@ -515,80 +544,145 @@
     options.releaseLabel = options.releaseLabel || "Release to refresh";
     options.refreshLabel = options.refreshLabel || "Loading...";
     options.onRefresh = options.onRefresh || void 0;
-    PullRefresh = (function() {
-      var _transform;
-
-      function PullRefresh(container, options) {
+    container = document.getElementById(container);
+    PullToRefresh = (function() {
+      function PullToRefresh(container, options) {
         var PULLREFRESH;
         this.options = options;
+        this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
-        this.onRelease = __bind(this.onRelease, this);
-        this.onDragDown = __bind(this.onDragDown, this);
+        this.setRotation = __bind(this.setRotation, this);
+        this.setHeight = __bind(this.setHeight, this);
+        this.onPull = __bind(this.onPull, this);
         PULLREFRESH = "<div class=\"pulltorefresh\">\n<span class=\"icon down-big\"></span><span class=\"text\">" + this.options.pullLabel + "</span>\n</div>";
-        this.el = $(PULLREFRESH);
-        container = $("#" + container);
-        container.prepend(this.el);
-        container.on("dragdown", this.onDragDown);
-        container.on("release", this.onRelease);
-        this.scrolled = container[0].nodeName === "ARTICLE" ? $("body") : container;
-        this.initial = parseInt(this.el.css("margin-bottom").replace("px", ""));
-        this.initial_delta = null;
+        this.breakpoint = 90;
+        this.container = container;
+        this.pullrefresh = $(PULLREFRESH)[0];
+        $(this.container).prepend(this.pullrefresh);
+        this.icon = $(this.pullrefresh).find(".icon");
+        this.text = $(this.pullrefresh).find(".text");
+        this._slidedown_height = 0;
+        this._anim = null;
+        this._dragged_down = false;
+        this.showRelease = false;
+        Hammer(this.container).on("touch dragdown release", this.onPull);
       }
 
-      PullRefresh.prototype.onDragDown = function(event) {
-        var displacement;
-        if (this.scrolled.scrollTop() === 0) {
-          if (this.initial_delta === null) {
-            this.initial_delta = event.gesture.deltaY;
-            displacement = 0;
-          } else {
-            displacement = event.gesture.deltaY - this.initial_delta;
-          }
-          this.current = this.initial + displacement;
-          if (this.current > 0) {
-            this.current = 0;
-          }
-          return _transform(this.el, this.current);
+      PullToRefresh.prototype.onPull = function(ev) {
+        var scrollY;
+        switch (ev.type) {
+          case "touch":
+            if (!this.refreshing) {
+              return this.hide();
+            }
+            break;
+          case "release":
+            if (!this._dragged_down) {
+              return;
+            }
+            cancelAnimationFrame(this._anim);
+            if (this._slidedown_height >= this.breakpoint) {
+              if (this.options.onRefresh) {
+                return this.onRefresh();
+              } else {
+                return this.hide();
+              }
+            } else {
+              return this.hide();
+            }
+            break;
+          case "dragdown":
+            this._dragged_down = true;
+            scrollY = window.scrollY;
+            if (scrollY > 5) {
+              return;
+            } else {
+              if (scrollY !== 0) {
+                window.scrollTo(0, 0);
+              }
+            }
+            if (!this._anim) {
+              this.updateHeight();
+            }
+            ev.gesture.preventDefault();
+            ev.gesture.stopPropagation();
+            if (this._slidedown_height >= this.breakpoint) {
+              this.onArrived();
+            } else {
+              if (this.showRelease) {
+                this.onUp();
+              }
+            }
+            return this._slidedown_height = ev.gesture.deltaY * 0.4;
         }
       };
 
-      PullRefresh.prototype.onRelease = function() {
-        if (this.current === 0 && (this.options.onRefresh != null)) {
-          return this.options.onRefresh.call(this.options.onRefresh);
-        } else {
-          if (this.current !== this.initial) {
-            return this.hide();
-          }
-        }
+      PullToRefresh.prototype.setHeight = function(height) {
+        this.container.style.transform = "translate(0, " + height + "px) ";
+        this.container.style.oTransform = "translate(0, " + height + "px)";
+        this.container.style.msTransform = "translate(0, " + height + "px)";
+        this.container.style.mozTransform = "translate(0, " + height + "px)";
+        return this.container.style.webkitTransform = "translate(0, " + height + "px)";
       };
 
-      PullRefresh.prototype.hide = function() {
-        this.initial_delta = null;
-        this.current = this.initial;
-        return _transform(this.el, this.initial);
+      PullToRefresh.prototype.rotate = function() {
+        var angle, slided;
+        slided = this._slidedown_height >= this.breakpoint ? this.breakpoint : this._slidedown_height;
+        angle = slided * 180 / this.breakpoint;
+        return this.setRotation(angle);
       };
 
-      _transform = function(element, value) {
-        var string;
-        if ($.os.ios || ($.os.android && parseFloat($.os.version) > 2.3)) {
-          string = "translate3d(0px, " + value + "px, 0px) scale3d(1, 1, 1)";
-          element.css("-webkit-transform", string);
-          element.css("transform", string);
-        } else {
-          string = "translate(0, " + value + "px";
-          element.css("-webkit-transform", "translate(0, " + value + "px");
-          element.css("-moz-transform", "translate(0, " + value + "px");
-          element.css("-ms-transform", "translate(0, " + value + "px");
-          element.css("-o-transform", "translate(0, " + value + "px");
-          element.css("transform", "translate(0, " + value + "px");
-        }
-        return element.css("margin-bottom", "" + value + "px");
+      PullToRefresh.prototype.setRotation = function(angle) {
+        this.icon[0].style.transform = "rotate(" + angle + "deg)";
+        this.icon[0].style.oTransform = "rotate(" + angle + "deg)";
+        this.icon[0].style.msTransform = "rotate(" + angle + "deg)";
+        this.icon[0].style.mozTransform = "rotate(" + angle + "deg)";
+        return this.icon[0].style.webkitTransform = "rotate(" + angle + "deg)";
       };
 
-      return PullRefresh;
+      PullToRefresh.prototype.onRefresh = function() {
+        this.icon[0].className = "icon spin6 animated";
+        this.text.html(this.options.refreshLabel);
+        this.setHeight(this.breakpoint - 10);
+        this.refreshing = true;
+        return this.options.onRefresh.call(this.options.onRefresh);
+      };
+
+      PullToRefresh.prototype.onArrived = function() {
+        this.showRelease = true;
+        return this.text.html(this.options.releaseLabel);
+      };
+
+      PullToRefresh.prototype.onUp = function() {
+        this.showRelease = false;
+        return this.text.html(this.options.pullLabel);
+      };
+
+      PullToRefresh.prototype.hide = function() {
+        this.icon[0].className = "icon down-big";
+        this.text.html(this.options.pullLabel);
+        this._slidedown_height = 0;
+        this.setHeight(0);
+        this.setRotation(0);
+        cancelAnimationFrame(this._anim);
+        this._anim = null;
+        this._dragged_down = false;
+        return this.refreshing = false;
+      };
+
+      PullToRefresh.prototype.updateHeight = function() {
+        var _this = this;
+        this.setHeight(this._slidedown_height);
+        this.rotate();
+        return this._anim = requestAnimationFrame(function() {
+          return _this.updateHeight();
+        });
+      };
+
+      return PullToRefresh;
 
     })();
-    return new PullRefresh(container, options);
+    return new PullToRefresh(container, options);
   };
 
 }).call(this);

@@ -210,7 +210,11 @@
     <script>
         Tako.onReady(function(){
             console.log("LOADED");
-            window.puller = Tako.Pull_Refresh("main");
+            window.puller = Tako.Pull_Refresh("main", {onRefresh:function(){
+                setTimeout(function(){
+                    alert("Refresh finished");
+                    puller.hide()}, 3000);
+            }});
         });
         // Tako.Connection.onChange(function(online){
         //     if(online){
