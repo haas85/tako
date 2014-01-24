@@ -77,8 +77,12 @@ footer
   background-color SECONDARY
   color SECONDARY_TEXT !important
 
-  & nav > ul button
+  & button
     background-color SECONDARY
+
+    &:active, &:hover
+      & .counter
+        background-color SECONDARY
 
   & .counter
     background-color SECONDARY_ACTIVE
@@ -127,7 +131,7 @@ aside .current, footer .current
   background-color SECONDARY_ACTIVE
 
 aside li, footer button
-  &:hover
+  &:active, &:hover
     background-color SECONDARY_ACTIVE
 
 div[data-element="notification"] > div.window
