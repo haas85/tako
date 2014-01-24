@@ -22,23 +22,6 @@ body
   & *
     -webkit-tap-highlight-color rgba(0,0,0,0)
 
-div[data-element="aside_background"]
-  position fixed
-  top HEADER_HEIGHT
-  left 0
-  width 100%
-  height 100%
-  transition(background-color ASIDE_TRANSITION_TIME linear)
-  z-index 0
-  background-color rgba(0, 0, 0, 0)
-
-  &.show
-    background-color rgba(0, 0, 0, .6)
-    z-index ASIDE_BCK_INDEX
-
-  &.hide
-    background-color rgba(0, 0, 0, 0)
-
 .indented > *
   padding INDENT
 

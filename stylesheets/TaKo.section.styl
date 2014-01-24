@@ -38,6 +38,26 @@ header
   width 100%
   z-index HEADER_INDEX
   text-align center
+  transition-duration SECTION_TRANSITION_TIME
+
+  &.asided
+    left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+    & > nav
+      &.right
+        position fixed
+        z-index HEADER_NAV_INDEX
+        right - (ASIDE_WIDTH + ASIDE_PADDING * 2) !important
+
+        & > button
+          margin-right 5px
+
+      &.left
+        position fixed
+        z-index HEADER_NAV_INDEX
+        left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+
+        & > button
+          margin-left 5px
 
   & > h1
     font-weight bold

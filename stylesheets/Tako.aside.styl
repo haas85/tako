@@ -15,12 +15,15 @@ aside
 
   &:not(.full)
     left - ASIDE_TRANSITION
-    z-index ASIDE_INDEX
     position absolute
+    z-index ASIDE_INDEX
     transition-duration ASIDE_TRANSITION_TIME
 
     &.show
       transform(translateX(ASIDE_WIDTH + 8 + ASIDE_PADDING * 2))
+
+  &.show
+    z-index ASIDE_INDEX!important
 
   &.full
     height 100%
@@ -28,5 +31,27 @@ aside
     z-index FULL_ASIDE_INDEX
     position fixed
 
-aside.show.full + section.active
+aside.full.show+ div +section.active
   transform(translateX(ASIDE_WIDTH + ASIDE_PADDING * 2))
+
+div[data-element="aside_background"]
+  position fixed
+  top HEADER_HEIGHT
+  left 0
+  width 100%
+  height 100%
+  transition(background-color ASIDE_TRANSITION_TIME linear)
+  z-index 0
+  background-color rgba(0, 0, 0, 0)
+
+  &.show
+    background-color rgba(0, 0, 0, .6)
+    z-index ASIDE_BCK_INDEX
+
+  &.hide
+    background-color rgba(0, 0, 0, 0)
+
+div[data-element="aside_background"].full
+  background-color rgba(0, 0, 0, 0)!important
+  left ASIDE_WIDTH + ASIDE_PADDING * 2
+  top 0

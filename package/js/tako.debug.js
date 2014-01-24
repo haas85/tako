@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 1/23/2014
+/* TaKo v0.1.0 - 1/24/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -136,33 +136,41 @@
 
 (function() {
   Tako.Aside = (function(TK) {
-    var aside, bck, full, hide, show, toggle;
+    var android23, aside, bck, full, hide, show, toggle;
     aside = $("aside");
     bck = null;
     full = false;
+    android23 = false;
+    if (($.os != null) && $.os.android && $.os.version.indexOf("2.3") !== -1) {
+      android23 = true;
+    }
     if (aside.length > 0) {
+      bck = $('<div data-element="aside_background"></div>');
+      $("body").append(bck);
       if (aside.hasClass("full")) {
         full = true;
+        bck.addClass("full");
+        aside.after(bck);
       } else {
-        $("body").append('<div data-element="aside_background"></div>');
-        bck = $("[data-element=aside_background]");
         bck.append(aside);
       }
     }
     show = function() {
-      if (!full) {
-        bck.removeClass("hide").addClass("show");
+      if (full && android23) {
+        $("section.active header").addClass("asided");
       }
+      bck.removeClass("hide").addClass("show");
       return aside.addClass("show");
     };
     hide = function() {
-      aside.removeClass("show");
-      if (!full) {
-        bck.addClass("hide");
-        return setTimeout((function() {
-          return bck.removeClass("show");
-        }), 150);
+      if (full && android23) {
+        $("section.active header").removeClass("asided");
       }
+      aside.removeClass("show");
+      bck.addClass("hide");
+      return setTimeout((function() {
+        return bck.removeClass("show");
+      }), 150);
     };
     toggle = function() {
       if (aside.hasClass("show")) {
@@ -185,7 +193,7 @@
         return hide();
       });
     });
-    if (aside.length > 0 && !full) {
+    if (aside.length > 0) {
       bck.on("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
