@@ -80,12 +80,15 @@ Tako.Notification = do (TK = Tako) ->
 
   _show = (html, classes, time_out, cb) ->
     if not active
+      notification_window.attr "style", ""
       active = true
       do notification_window.removeClass
       notification_window.addClass "window " + classes
       notification_window.html html
       notification.addClass "show"
-      setTimeout (-> notification_window.addClass("show")), 100
+      if classes.indexOf("center") isnt -1
+        notification_window[0].setAttribute("style", "margin-left:-#{notification_window.width()/2}px; margin-top:-#{notification_window.height()/2}px")
+      setTimeout (-> notification_window.addClass("show")), 300
       callback = cb if cb?
       if time_out?
         timeout = setTimeout hide, time_out*1000

@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 1/24/2014
+/* TaKo v0.1.0 - 1/25/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -434,14 +434,18 @@
     _show = function(html, classes, time_out, cb) {
       var original_cb;
       if (!active) {
+        notification_window.attr("style", "");
         active = true;
         notification_window.removeClass();
         notification_window.addClass("window " + classes);
         notification_window.html(html);
         notification.addClass("show");
+        if (classes.indexOf("center") !== -1) {
+          notification_window[0].setAttribute("style", "margin-left:-" + (notification_window.width() / 2) + "px; margin-top:-" + (notification_window.height() / 2) + "px");
+        }
         setTimeout((function() {
           return notification_window.addClass("show");
-        }), 100);
+        }), 300);
         if (cb != null) {
           callback = cb;
         }
