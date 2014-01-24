@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    <!-- <aside class="full"> -->
-    <aside>
+    <aside class="full">
+    <!-- <aside> -->
         <ul>
             <li data-article="forms">Forms <span class="counter">125</span></li>
             <li data-article="lists">Lists</li>
@@ -43,6 +43,12 @@
                 <span>Elem3</span>
             </nav>
         </header>
+        <footer>
+            <nav>
+                <div><button class="icon ok" id="show_success2">Success<span class="counter">5</span></button></div>
+                <div><button id="show_progress2">Progress<span class="counter">84</span></button></div>
+            </nav>
+        </footer>
         <article id="main">
             <button class="anchor" data-article="notifications">Action</button>
         </article>
@@ -246,6 +252,6 @@
             setTimeout(function(){progress.percent(100)},4500);
         });
     </script>
-    <!-- <script src="http://192.168.2.101:8080/target/target-script-min.js"></script> -->
+    <script src="http://192.168.2.101:8080/target/target-script-min.js"></script>
 </body>
 </html>

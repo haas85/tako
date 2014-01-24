@@ -136,14 +136,14 @@
 
 (function() {
   Tako.Aside = (function(TK) {
-    var android23, aside, bck, full, hide, show, toggle;
+    var android, aside, bck, full, hide, show, toggle;
     aside = $("aside");
     if (aside.length > 0) {
       bck = null;
       full = false;
-      android23 = false;
-      if (($.os != null) && $.os.android && $.os.version.indexOf("2.3") !== -1) {
-        android23 = true;
+      android = false;
+      if (($.os != null) && $.os.android) {
+        android = true;
       }
       bck = $('<div data-element="aside_background"></div>');
       $("body").append(bck);
@@ -155,15 +155,17 @@
         bck.append(aside);
       }
       show = function() {
-        if (full && android23) {
+        if (full && android) {
           $("section.active header").addClass("asided");
+          $("section.active footer").addClass("asided");
         }
         bck.removeClass("hide").addClass("show");
         return aside.addClass("show");
       };
       hide = function() {
-        if (full && android23) {
+        if (full && android) {
           $("section.active header").removeClass("asided");
+          $("section.active footer").removeClass("asided");
         }
         aside.removeClass("show");
         bck.addClass("hide");

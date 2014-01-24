@@ -4,10 +4,10 @@ Tako.Aside = do (TK = Tako) ->
   if aside.length > 0
     bck = null
     full = false
-    android23 = false
+    android = false
 
-    if $.os? and $.os.android and $.os.version.indexOf("2.3") isnt -1
-      android23 = true
+    if $.os? and $.os.android
+      android = true
 
     bck = $ '<div data-element="aside_background"></div>'
     $("body").append bck
@@ -19,12 +19,16 @@ Tako.Aside = do (TK = Tako) ->
       bck.append aside
 
     show = ->
-      $("section.active header").addClass "asided" if full and android23
+      if full and android
+        $("section.active header").addClass "asided"
+        $("section.active footer").addClass "asided"
       bck.removeClass("hide").addClass "show"
       aside.addClass "show"
 
     hide = ->
-      $("section.active header").removeClass "asided" if full and android23
+      if full and android
+        $("section.active header").removeClass "asided"
+        $("section.active footer").removeClass "asided"
       aside.removeClass "show"
       bck.addClass "hide"
       setTimeout ( -> bck.removeClass "show"), 150
