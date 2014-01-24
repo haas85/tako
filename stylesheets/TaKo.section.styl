@@ -44,6 +44,7 @@ header
     left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
     & > nav
       &.right
+        transition-duration SECTION_TRANSITION_TIME
         position fixed
         z-index HEADER_NAV_INDEX
         right - (ASIDE_WIDTH + ASIDE_PADDING * 2) !important
@@ -52,6 +53,7 @@ header
           margin-right 5px
 
       &.left
+        transition-duration SECTION_TRANSITION_TIME
         position fixed
         z-index HEADER_NAV_INDEX
         left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
@@ -143,6 +145,7 @@ footer
   box-direction normal
   box-pack justify
   box-align stretch
+  transition-duration SECTION_TRANSITION_TIME
 
   &.asided
     left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
