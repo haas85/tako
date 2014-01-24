@@ -138,13 +138,13 @@
   Tako.Aside = (function(TK) {
     var android23, aside, bck, full, hide, show, toggle;
     aside = $("aside");
-    bck = null;
-    full = false;
-    android23 = false;
-    if (($.os != null) && $.os.android && $.os.version.indexOf("2.3") !== -1) {
-      android23 = true;
-    }
     if (aside.length > 0) {
+      bck = null;
+      full = false;
+      android23 = false;
+      if (($.os != null) && $.os.android && $.os.version.indexOf("2.3") !== -1) {
+        android23 = true;
+      }
       bck = $('<div data-element="aside_background"></div>');
       $("body").append(bck);
       if (aside.hasClass("full")) {
@@ -154,57 +154,55 @@
       } else {
         bck.append(aside);
       }
-    }
-    show = function() {
-      if (full && android23) {
-        $("section.active header").addClass("asided");
-      }
-      bck.removeClass("hide").addClass("show");
-      return aside.addClass("show");
-    };
-    hide = function() {
-      if (full && android23) {
-        $("section.active header").removeClass("asided");
-      }
-      aside.removeClass("show");
-      bck.addClass("hide");
-      return setTimeout((function() {
-        return bck.removeClass("show");
-      }), 150);
-    };
-    toggle = function() {
-      if (aside.hasClass("show")) {
-        return hide();
-      } else {
-        return show();
-      }
-    };
-    $("[data-action=aside]").each(function(element) {
-      return $(this).on("tap", function(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        return toggle();
+      show = function() {
+        if (full && android23) {
+          $("section.active header").addClass("asided");
+        }
+        bck.removeClass("hide").addClass("show");
+        return aside.addClass("show");
+      };
+      hide = function() {
+        if (full && android23) {
+          $("section.active header").removeClass("asided");
+        }
+        aside.removeClass("show");
+        bck.addClass("hide");
+        return setTimeout((function() {
+          return bck.removeClass("show");
+        }), 150);
+      };
+      toggle = function() {
+        if (aside.hasClass("show")) {
+          return hide();
+        } else {
+          return show();
+        }
+      };
+      $("[data-action=aside]").each(function(element) {
+        return $(this).on("tap", function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return toggle();
+        });
       });
-    });
-    $("aside *").each(function(element) {
-      return $(this).on("tap", function(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        return hide();
+      $("aside *").each(function(element) {
+        return $(this).on("tap", function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return hide();
+        });
       });
-    });
-    if (aside.length > 0) {
       bck.on("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return hide();
       });
+      return {
+        show: show,
+        hide: hide,
+        toggle: toggle
+      };
     }
-    return {
-      show: show,
-      hide: hide,
-      toggle: toggle
-    };
   })(Tako);
 
 }).call(this);
