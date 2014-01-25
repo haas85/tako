@@ -246,7 +246,7 @@
             Tako.Notification.loading("Loading Data", 5, function(){console.log("LOADING CB");})
         });
         $("#show_progress").bind("tap", function(){
-            var progress = Tako.Notification.progress("box", "Downloading", "Please wait until your download is completed");
+            var progress = Tako.Notification.progress("box animated", "Downloading", "Please wait until your download is completed");
             setTimeout(function(){progress.percent(20)},1000);
             setTimeout(function(){progress.percent(60)},2500);
             setTimeout(function(){progress.percent(100)},4500);
