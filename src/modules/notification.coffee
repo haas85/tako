@@ -36,7 +36,7 @@ Tako.Notification = do (TK = Tako) ->
     _show html, "loading center not_clickable", time_out, cb
 
   progress = (icon, title, content, time_out, cb) ->
-    html = """<span class="icon #{icon}"></span>
+    html = """<div class="icon #{icon} animated"></div>
               <span class="title">#{title}</span>
               <div class="content padding bottom">#{content}</div>
               <div id="notification_progress"></div>

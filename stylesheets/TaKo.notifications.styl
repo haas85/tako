@@ -83,6 +83,24 @@ div[data-element="notification"]
       position relative
       top -10%
 
+      &.progress
+        display -webkit-box
+        display -ms-box
+        display -moz-box
+        display -o-box
+        display box
+
+        box-orient vertical
+        box-direction normal
+        box-pack center
+        box-align center
+
+        & *
+          box-flex 1
+          width 100%
+
+        & .icon
+          height 60px!important
 
     &.confirm
       max-width 800px
