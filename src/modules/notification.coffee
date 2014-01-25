@@ -39,7 +39,7 @@ Tako.Notification = do (TK = Tako) ->
     html = """<div><span class="icon #{icon}"></span></div>
               <span class="title">#{title}</span>
               <div class="content padding bottom">#{content}</div>
-              <div id="notification_progress"></div>
+              <div id="notification_progress"></div><div style="clear:both"></div>
               """
     _show html, "center progress padding top not_clickable", time_out, cb
     progress = TK.ProgressBar "notification_progress", 0

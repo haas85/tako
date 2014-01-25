@@ -390,7 +390,7 @@
     };
     progress = function(icon, title, content, time_out, cb) {
       var html;
-      html = "<div><span class=\"icon " + icon + "\"></span></div>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom\">" + content + "</div>\n<div id=\"notification_progress\"></div>";
+      html = "<div><span class=\"icon " + icon + "\"></span></div>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom\">" + content + "</div>\n<div id=\"notification_progress\"></div><div style=\"clear:both\"></div>";
       _show(html, "center progress padding top not_clickable", time_out, cb);
       progress = TK.ProgressBar("notification_progress", 0);
       return {
