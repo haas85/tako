@@ -30,6 +30,7 @@ aside
     left 0
     z-index FULL_ASIDE_INDEX
     position fixed
+    transition-duration SECTION_TRANSITION_TIME
 
 aside.full.show+ div +section.active
   transform(translateX(ASIDE_WIDTH + ASIDE_PADDING * 2))
