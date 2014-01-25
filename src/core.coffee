@@ -23,6 +23,9 @@ window.Tako = Tako = do ->
   _setup = ->
     if $("section.active").length is 0 then $("section").first().addClass "active"
     $("body").hammer()
+    $("section>header>nav:not(.left):not(.right)").parent().parent().addClass "extended_header"
+    $("section>footer").parent().addClass "footer"
+    $("article").css "min-height", "#{$(window).height() - 165}px"
     $("section").each ->
       if $(@).children("article.active").length is 0
         $(@).children("article").first().addClass "active"

@@ -45,6 +45,9 @@
         $("section").first().addClass("active");
       }
       $("body").hammer();
+      $("section>header>nav:not(.left):not(.right)").parent().parent().addClass("extended_header");
+      $("section>footer").parent().addClass("footer");
+      $("article").css("min-height", "" + ($(window).height() - 165) + "px");
       $("section").each(function() {
         if ($(this).children("article.active").length === 0) {
           return $(this).children("article").first().addClass("active");
