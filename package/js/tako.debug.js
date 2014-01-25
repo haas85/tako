@@ -159,16 +159,14 @@
       }
       show = function() {
         if (full && android) {
-          $("section.active header").addClass("asided");
-          $("section.active footer").addClass("asided");
+          $("section.active").addClass("asided");
         }
         bck.removeClass("hide").addClass("show");
         return aside.addClass("show");
       };
       hide = function() {
         if (full && android) {
-          $("section.active header").removeClass("asided");
-          $("section.active footer").removeClass("asided");
+          $("section.active").removeClass("asided");
         }
         aside.removeClass("show");
         bck.addClass("hide");

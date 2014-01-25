@@ -28,6 +28,35 @@ section
   &.extended_header > article
     top HEADER_HEIGHT * 2
 
+  &.asided
+    & header
+      left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+
+      & > nav
+        &.right
+          transition-duration SECTION_TRANSITION_TIME
+          position fixed
+          z-index HEADER_NAV_INDEX
+          right - (ASIDE_WIDTH + ASIDE_PADDING * 2) !important
+
+          & > button
+            margin-right 5px
+
+        &.left
+          transition-duration SECTION_TRANSITION_TIME
+          position fixed
+          z-index HEADER_NAV_INDEX
+          left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+
+          & > button
+            margin-left 5px
+
+    & footer
+      left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+
+      & nav
+        left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+
 header
   position fixed
   top 0
@@ -39,27 +68,6 @@ header
   z-index HEADER_INDEX
   text-align center
   transition-duration SECTION_TRANSITION_TIME
-
-  &.asided
-    left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
-    & > nav
-      &.right
-        transition-duration SECTION_TRANSITION_TIME
-        position fixed
-        z-index HEADER_NAV_INDEX
-        right - (ASIDE_WIDTH + ASIDE_PADDING * 2) !important
-
-        & > button
-          margin-right 5px
-
-      &.left
-        transition-duration SECTION_TRANSITION_TIME
-        position fixed
-        z-index HEADER_NAV_INDEX
-        left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
-
-        & > button
-          margin-left 5px
 
   & > h1
     font-weight bold
@@ -146,12 +154,6 @@ footer
   box-pack justify
   box-align stretch
   transition-duration SECTION_TRANSITION_TIME
-
-  &.asided
-    left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
-
-    & nav
-      left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
 
   & nav
     margin 0

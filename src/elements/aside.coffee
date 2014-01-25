@@ -19,16 +19,12 @@ Tako.Aside = do (TK = Tako) ->
       bck.append aside
 
     show = ->
-      if full and android
-        $("section.active header").addClass "asided"
-        $("section.active footer").addClass "asided"
+      $("section.active").addClass "asided" if full and android
       bck.removeClass("hide").addClass "show"
       aside.addClass "show"
 
     hide = ->
-      if full and android
-        $("section.active header").removeClass "asided"
-        $("section.active footer").removeClass "asided"
+      $("section.active").removeClass "asided" if full and android
       aside.removeClass "show"
       bck.addClass "hide"
       setTimeout ( -> bck.removeClass "show"), 150
