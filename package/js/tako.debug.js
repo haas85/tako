@@ -355,9 +355,9 @@
   Tako.Notification = (function(TK) {
     var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
     active = false;
-    notification = $("<div data-element=\"notification\"></div>");
+    notification = $("<div data-element=\"notification\"><div></div</div>");
     notification_window = $("<div class=\"window\"></div>");
-    notification.append(notification_window);
+    notification.find("div").append(notification_window);
     $("body").append(notification);
     timeout = null;
     callback = null;
@@ -434,18 +434,14 @@
     _show = function(html, classes, time_out, cb) {
       var original_cb;
       if (!active) {
-        notification_window.attr("style", "");
         active = true;
         notification_window.removeClass();
         notification_window.addClass("window " + classes);
         notification_window.html(html);
         notification.addClass("show");
-        if (classes.indexOf("center") !== -1) {
-          notification_window[0].setAttribute("style", "margin-left:-" + (notification_window.width() / 2) + "px; margin-top:-" + (notification_window.height() / 2) + "px");
-        }
         setTimeout((function() {
           return notification_window.addClass("show");
-        }), 300);
+        }), 100);
         if (cb != null) {
           callback = cb;
         }
