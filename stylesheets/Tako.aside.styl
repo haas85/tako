@@ -32,8 +32,8 @@ aside
     position fixed
     transition-duration SECTION_TRANSITION_TIME
 
-aside.full.show+ div +section.active
-  transform(translateX(ASIDE_WIDTH + ASIDE_PADDING * 2))
+aside.full.show+ div + section.active
+  left ASIDE_WIDTH + ASIDE_PADDING * 2
 
 div[data-element="aside_background"]
   position fixed

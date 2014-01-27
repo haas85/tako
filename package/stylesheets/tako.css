@@ -47,7 +47,7 @@ aside:not(.full){left:-276px;position:absolute;z-index:201;-webkit-transition-du
 aside:not(.full).show{-webkit-transform:translateX(276px);-moz-transform:translateX(276px);-ms-transform:translateX(276px);-o-transform:translateX(276px);transform:translateX(276px)}
 aside.show{z-index:201 !important}
 aside.full{height:100%;left:0;z-index:50;position:fixed;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms}
-aside.full.show+ div +section.active{-webkit-transform:translateX(268px);-moz-transform:translateX(268px);-ms-transform:translateX(268px);-o-transform:translateX(268px);transform:translateX(268px)}
+aside.full.show+ div + section.active{left:268px}
 div[data-element="aside_background"]{position:fixed;top:50px;left:0;width:100%;height:100%;z-index:0;background-color:rgba(0,0,0,0);-webkit-transition:background-color 150ms linear;-moz-transition:background-color 150ms linear;-ms-transition:background-color 150ms linear;-o-transition:background-color 150ms linear;transition:background-color 150ms linear;}
 div[data-element="aside_background"].show{background-color:rgba(0,0,0,0.6);z-index:200}
 div[data-element="aside_background"].hide{background-color:rgba(0,0,0,0)}
@@ -59,13 +59,14 @@ section:not(.active) > article{display:none}
 section.footer > article{padding-bottom:65px}
 section.no_header > article{top:0}
 section.extended_header > article{top:100px}
-section.asided header{left:268px !important;}
+section.asided header{margin-left:268px !important;}
 section.asided header > nav.right{-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;position:fixed;z-index:103;right:-268px !important;}
 section.asided header > nav.right > button{margin-right:5px}
-section.asided header > nav.left{-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;position:fixed;z-index:103;left:268px !important;}
+section.asided header > nav.left{-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;position:fixed;z-index:103;margin-left:268px !important;}
 section.asided header > nav.left > button{margin-left:5px}
-section.asided footer{left:268px !important;}
-section.asided footer nav{left:268px !important}
+section.asided footer{margin-left:268px !important}
+section.non_animated{-webkit-transition-duration:0 !important;-moz-transition-duration:0 !important;-ms-transition-duration:0 !important;-o-transition-duration:0 !important;transition-duration:0 !important;}
+section.non_animated *{-webkit-transition-duration:0 !important;-moz-transition-duration:0 !important;-ms-transition-duration:0 !important;-o-transition-duration:0 !important;transition-duration:0 !important}
 header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;text-align:center;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
 header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102;}
 header > h1 > img{width:auto;height:42px;margin-top:4px}

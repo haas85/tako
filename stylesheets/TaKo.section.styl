@@ -30,7 +30,7 @@ section
 
   &.asided
     & header
-      left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+      margin-left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
 
       & > nav
         &.right
@@ -46,16 +46,18 @@ section
           transition-duration SECTION_TRANSITION_TIME
           position fixed
           z-index HEADER_NAV_INDEX
-          left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+          margin-left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
 
           & > button
             margin-left 5px
 
     & footer
-      left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+      margin-left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
 
-      & nav
-        left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+  &.non_animated
+    transition-duration 0ms !important
+    & *
+      transition-duration 0ms !important
 
 header
   position fixed

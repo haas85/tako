@@ -19,15 +19,19 @@ Tako.Aside = do (TK = Tako) ->
       bck.append aside
 
     show = ->
-      $("section.active").addClass "asided" if full and android
+      $("section.active").addClass "non_animated" if full and android
+      $("section.active").addClass "asided"
       bck.removeClass("hide").addClass "show"
       aside.addClass "show"
 
     hide = ->
-      $("section.active").removeClass "asided" if full and android
+      $("section.active").removeClass "asided"
       aside.removeClass "show"
       bck.addClass "hide"
-      setTimeout ( -> bck.removeClass "show"), 150
+      setTimeout ( ->
+        bck.removeClass "show"
+        $("section.active").removeClass "non_animated"
+      ), 150
 
     toggle = ->
       if aside.hasClass "show" then hide() else show()
