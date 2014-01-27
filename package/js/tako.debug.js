@@ -139,39 +139,25 @@
 
 (function() {
   Tako.Aside = (function(TK) {
-    var android, aside, bck, full, hide, show, toggle;
+    var aside, bck, hide, show, toggle;
     aside = $("aside");
     if (aside.length > 0) {
       bck = null;
-      full = false;
-      android = false;
-      if (($.os != null) && $.os.android) {
-        android = true;
-      }
       bck = $('<div data-element="aside_background"></div>');
       $("body").append(bck);
       if (aside.hasClass("full")) {
-        full = true;
         bck.addClass("full");
-        aside.after(bck);
-      } else {
-        bck.append(aside);
       }
+      bck.append(aside);
       show = function() {
-        if (full && android) {
-          $("section.active").addClass("non_animated");
-        }
-        $("section.active").addClass("asided");
         bck.removeClass("hide").addClass("show");
         return aside.addClass("show");
       };
       hide = function() {
-        $("section.active").removeClass("asided");
         aside.removeClass("show");
         bck.addClass("hide");
         return setTimeout((function() {
-          bck.removeClass("show");
-          return $("section.active").removeClass("non_animated");
+          return bck.removeClass("show");
         }), 150);
       };
       toggle = function() {

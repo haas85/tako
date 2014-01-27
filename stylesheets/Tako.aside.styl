@@ -4,6 +4,10 @@ aside
   padding ASIDE_PADDING
   top 0
   bottom 0
+  left - ASIDE_TRANSITION
+  position absolute
+  z-index ASIDE_INDEX
+  transition-duration ASIDE_TRANSITION_TIME
 
   & .counter
     margin-top -3px
@@ -13,27 +17,11 @@ aside
     padding .2em .4em .2em .4em
     float right
 
-  &:not(.full)
-    left - ASIDE_TRANSITION
-    position absolute
-    z-index ASIDE_INDEX
-    transition-duration ASIDE_TRANSITION_TIME
-
-    &.show
-      transform(translateX(ASIDE_WIDTH + 8 + ASIDE_PADDING * 2))
+  &.show
+    transform(translateX(ASIDE_WIDTH + 8 + ASIDE_PADDING * 2))
 
   &.show
     z-index ASIDE_INDEX!important
-
-  &.full
-    height 100%
-    left 0
-    z-index FULL_ASIDE_INDEX
-    position fixed
-    transition-duration SECTION_TRANSITION_TIME
-
-aside.full.show+ div + section.active
-  left ASIDE_WIDTH + ASIDE_PADDING * 2
 
 div[data-element="aside_background"]
   position fixed
@@ -45,6 +33,10 @@ div[data-element="aside_background"]
   background-color rgba(0, 0, 0, 0)
   transition(background-color ASIDE_TRANSITION_TIME linear)
 
+  &.full
+    background-color rgba(0, 0, 0, 0)!important
+    top 0
+
   &.show
     background-color rgba(0, 0, 0, .6)
     z-index ASIDE_BCK_INDEX
@@ -52,7 +44,3 @@ div[data-element="aside_background"]
   &.hide
     background-color rgba(0, 0, 0, 0)
 
-div[data-element="aside_background"].full
-  background-color rgba(0, 0, 0, 0)!important
-  left ASIDE_WIDTH + ASIDE_PADDING * 2
-  top 0
