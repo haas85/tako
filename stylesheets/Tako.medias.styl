@@ -1,0 +1,139 @@
+// @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)
+@media screen and (min-width : 768px) and (orientation : landscape)
+  body, html
+    display -webkit-box
+    display -ms-box
+    display -o-box
+    display -moz-box
+    display box
+
+    box-align stretch
+    box-orient horizontal
+    box-pack justify
+
+  div[data-element="aside_background"]
+    display block
+    width ASIDE_WIDTH + ASIDE_PADDING * 2!important
+    z-index ASIDE_BCK_INDEX
+    height 100%
+    box-flex 0
+    top 0
+
+  aside
+    height 100%
+    top 0
+    left 0
+    z-index FULL_ASIDE_INDEX
+    position absolute
+
+  section
+    display none
+
+  section.active
+    position static
+    margin-left ASIDE_WIDTH + ASIDE_PADDING * 2!important
+    box-flex 1
+    height 100%
+
+    display -webkit-box
+    display -ms-box
+    display -o-box
+    display -moz-box
+    display box
+
+    box-align stretch
+    box-orient vertical
+    box-pack justify
+
+    &.footer > article
+      padding-bottom 0!important
+
+    &.extended_header > article
+      top 0!important
+
+  header
+    position static
+    box-flex 0
+    margin 0
+    text-align left
+    ordinal-group(1)
+
+    & > h1
+      position static
+      text-align left
+      width auto
+      padding 0 1em
+
+      & > img
+        width auto
+
+    & > nav
+
+      &.right
+        position relative
+        z-index HEADER_NAV_INDEX
+        float right
+
+        & > button
+          margin-right 5px
+
+        &:after
+          display block
+          content ""
+          clear both
+
+      &.left
+        position relative
+        z-index HEADER_NAV_INDEX
+        float right
+
+        & > button
+          margin-left 5px
+
+        &:after
+          display block
+          content ""
+          clear both
+
+      // &:not(.right)
+      //   &:not(.left)
+      //     font-size 1.2em
+      //     width 100%
+      //     margin HEADER_HEIGHT 0 0 0
+      //     height HEADER_HEIGHT
+      //     line-height HEADER_HEIGHT
+      //     padding 0
+      //     display -webkit-box
+      //     display -ms-box
+      //     display -moz-box
+      //     display -o-box
+      //     display box
+      //     box-orient horizontal
+      //     box-direction normal
+      //     box-pack justify
+      //     box-align stretch
+
+      //     & > *
+      //       box-flex 1
+      //       text-align center
+      //       width 100%
+      //       display block
+      //       height HEADER_HEIGHT
+
+      //     & .icon
+      //       font-size 1em
+
+  article
+    position static
+    top 0
+    overflow-y scroll
+    box-flex 1
+    ordinal-group(2)
+
+  footer
+    position static
+    box-flex 0
+    ordinal-group(3)
+
+  [data-action=aside]
+    display none

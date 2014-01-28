@@ -33,7 +33,8 @@ module.exports = (grunt) ->
         "stylesheets/Tako.pullrefresh.styl",
         "stylesheets/Tako.notifications.styl",
         "stylesheets/Tako.colors.styl",
-        "stylesheets/Tako.icons.styl"
+        "stylesheets/Tako.icons.styl",
+        "stylesheets/Tako.medias.styl"
       ]
       theme: [
         "stylesheets/Tako.theme.styl"

@@ -246,3 +246,13 @@ li.tapable:active
 
 div.pulltorefresh
   background-color darken(BACKGROUND, 15%)
+
+@media screen and (min-width : 768px) and (orientation : landscape)
+  aside
+    box-shadow inset -4px -8px 3px 1px darken(SECONDARY, 50%)
+
+  footer, footer button
+    background-color lighten(SECONDARY, 10%)!important
+
+    & .counter
+      background-color darken(SECONDARY_ACTIVE, 40%)
