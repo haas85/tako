@@ -49,11 +49,7 @@ div[data-element="aside_background"]{position:fixed;top:50px;left:0;width:100%;h
 div[data-element="aside_background"].full{background-color:rgba(0,0,0,0) !important;top:0}
 div[data-element="aside_background"].show{background-color:rgba(0,0,0,0.6);z-index:200}
 div[data-element="aside_background"].hide{background-color:rgba(0,0,0,0)}
-@media screen and (min-width : 768px){body{display:-webkit-box;display:-ms-box;display:-o-box;display:-moz-box;display:box}
-div[data-element="aside_background"]{display:block;width:256px;z-index:200;height:100%;left:0}
-aside{-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;height:100%;left:0;z-index:50;position:absolute}
-section{-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1}
-}
+
 section{height:100%;width:100%;margin:0;padding:0;z-index:0;opacity:0;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
 section.active{opacity:1;z-index:100}
 section:not(.active) > article{display:none}

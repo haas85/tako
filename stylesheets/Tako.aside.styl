@@ -43,29 +43,3 @@ div[data-element="aside_background"]
 
   &.hide
     background-color rgba(0, 0, 0, 0)
-
-// @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)
-@media screen and (min-width : 768px)
-  body
-    display -webkit-box
-    display -ms-box
-    display -o-box
-    display -moz-box
-    display box
-
-  div[data-element="aside_background"]
-    display block
-    width ASIDE_WIDTH
-    z-index ASIDE_BCK_INDEX
-    height 100%
-    left 0
-  aside
-    box-flex 0
-    height 100%
-    left 0
-    z-index FULL_ASIDE_INDEX
-    position absolute
-
-  section
-    // left ASIDE_WIDTH + ASIDE_PADDING * 2!important
-    box-flex 1
