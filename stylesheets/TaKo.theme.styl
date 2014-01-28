@@ -74,18 +74,18 @@ header
           box-sizing(border-box)
 
 footer
-  background-color SECONDARY
+  background-color lighten(SECONDARY, 10%)!important
   color SECONDARY_TEXT !important
 
   & button
-    background-color SECONDARY
+    background-color lighten(SECONDARY, 10%)!important
 
     &:active, &:hover
       & .counter
         background-color SECONDARY
 
   & .counter
-    background-color SECONDARY_ACTIVE
+    background-color darken(SECONDARY_ACTIVE, 40%)
 
 article
   background-color BACKGROUND
@@ -250,9 +250,3 @@ div.pulltorefresh
 @media screen and (min-width : 768px) and (orientation : landscape)
   aside
     box-shadow inset -4px -8px 3px 1px darken(SECONDARY, 50%)
-
-  footer, footer button
-    background-color lighten(SECONDARY, 10%)!important
-
-    & .counter
-      background-color darken(SECONDARY_ACTIVE, 40%)

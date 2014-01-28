@@ -11,10 +11,10 @@ header .button{border:1px solid #b34700}
 header .counter{background-color:#e65c00}
 header > nav:not(.right):not(.left){color:#f4f4f4;background-color:#2f2f2f;}
 header > nav:not(.right):not(.left) .current{background-color:#4e4e4e;border-bottom:4px solid #f60;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box}
-footer{background-color:#2f2f2f;color:#f4f4f4 !important;}
-footer button{background-color:#2f2f2f;}
+footer{background-color:#444 !important;color:#f4f4f4 !important;}
+footer button{background-color:#444 !important;}
 footer button:active .counter,footer button:hover .counter{background-color:#2f2f2f}
-footer .counter{background-color:#4e4e4e}
+footer .counter{background-color:#2f2f2f}
 article{background-color:#e7e7e7;color:#000}
 aside{background-color:#2f2f2f;color:#f4f4f4 !important;}
 aside.full{-webkit-box-shadow:4px 0 3px 1px #181818;-moz-box-shadow:4px 0 3px 1px #181818;-ms-box-shadow:4px 0 3px 1px #181818;-o-box-shadow:4px 0 3px 1px #181818;box-shadow:4px 0 3px 1px #181818}
@@ -53,6 +53,4 @@ label.select:hover > select{border-color:#ff944d}
 li.tapable:active{color:#000;background-color:#ff8533}
 div.pulltorefresh{background-color:#c4c4c4}
 @media screen and (min-width : 768px) and (orientation : landscape){aside{-webkit-box-shadow:inset -4px -8px 3px 1px #181818;-moz-box-shadow:inset -4px -8px 3px 1px #181818;-ms-box-shadow:inset -4px -8px 3px 1px #181818;-o-box-shadow:inset -4px -8px 3px 1px #181818;box-shadow:inset -4px -8px 3px 1px #181818}
-footer,footer button{background-color:#444 !important;}
-footer .counter,footer button .counter{background-color:#2f2f2f}
 }
