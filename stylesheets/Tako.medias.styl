@@ -49,7 +49,7 @@
       padding-bottom 0!important
 
     &.extended_header > article
-      top 0!important
+      margin-top HEADER_HEIGHT
 
   header
     position static
@@ -68,6 +68,10 @@
         width auto
 
     & > nav
+      &:after
+        display block
+        content ""
+        clear both
 
       &.right
         position relative
@@ -77,11 +81,6 @@
         & > button
           margin-right 5px
 
-        &:after
-          display block
-          content ""
-          clear both
-
       &.left
         position relative
         z-index HEADER_NAV_INDEX
@@ -90,38 +89,10 @@
         & > button
           margin-left 5px
 
-        &:after
-          display block
-          content ""
-          clear both
-
-      // &:not(.right)
-      //   &:not(.left)
-      //     font-size 1.2em
-      //     width 100%
-      //     margin HEADER_HEIGHT 0 0 0
-      //     height HEADER_HEIGHT
-      //     line-height HEADER_HEIGHT
-      //     padding 0
-      //     display -webkit-box
-      //     display -ms-box
-      //     display -moz-box
-      //     display -o-box
-      //     display box
-      //     box-orient horizontal
-      //     box-direction normal
-      //     box-pack justify
-      //     box-align stretch
-
-      //     & > *
-      //       box-flex 1
-      //       text-align center
-      //       width 100%
-      //       display block
-      //       height HEADER_HEIGHT
-
-      //     & .icon
-      //       font-size 1em
+      &:not(.right)
+        &:not(.left)
+          position relative
+          margin -17px 0 0 0
 
   article
     position static
