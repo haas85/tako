@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 1/28/2014
+/* TaKo v0.1.0 - 1/29/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -581,13 +581,21 @@
         this._anim = null;
         this._dragged_down = false;
         this.showRelease = false;
+        this._phone = true;
         Hammer(this.container).on("touch dragdown release", this.onPull);
       }
 
       PullToRefresh.prototype.onPull = function(ev) {
-        var scrollY;
+        var height, scrollY, width;
         switch (ev.type) {
           case "touch":
+            width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+            height = window.innerHeight > 0 ? window.innerHeight : screen.height;
+            if (((width > 768) && (width > height)) || (this.container.nodeName !== "ARTICLE")) {
+              this.phone = false;
+            } else {
+              this.phone = true;
+            }
             if (!this.refreshing) {
               return this.hide();
             }
@@ -609,12 +617,16 @@
             break;
           case "dragdown":
             this._dragged_down = true;
-            scrollY = window.scrollY;
+            scrollY = this.phone ? window.scrollY : this.container.scrollTop;
             if (scrollY > 5) {
               return;
             } else {
               if (scrollY !== 0) {
-                window.scrollTo(0, 0);
+                if (this.phone) {
+                  window.scrollTo(0, 0);
+                } else {
+                  this.container.scrollTop = 0;
+                }
               }
             }
             if (!this._anim) {
@@ -634,11 +646,21 @@
       };
 
       PullToRefresh.prototype.setHeight = function(height) {
-        this.container.style.transform = "translate(0, " + height + "px) ";
-        this.container.style.oTransform = "translate(0, " + height + "px)";
-        this.container.style.msTransform = "translate(0, " + height + "px)";
-        this.container.style.mozTransform = "translate(0, " + height + "px)";
-        return this.container.style.webkitTransform = "translate(0, " + height + "px)";
+        if (this.phone) {
+          this.container.style.transform = "translate(0, " + height + "px) ";
+          this.container.style.oTransform = "translate(0, " + height + "px)";
+          this.container.style.msTransform = "translate(0, " + height + "px)";
+          this.container.style.mozTransform = "translate(0, " + height + "px)";
+          return this.container.style.webkitTransform = "translate(0, " + height + "px)";
+        } else {
+          height -= 511;
+          this.pullrefresh.style.transform = "translate(0, " + height + "px) ";
+          this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
+          this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
+          this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
+          this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
+          return this.pullrefresh.style.marginBottom = "" + height + "px";
+        }
       };
 
       PullToRefresh.prototype.rotate = function() {
