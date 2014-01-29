@@ -1,13 +1,5 @@
 Tako.Section = do (TK = Tako) ->
 
-  title = (html, section_id) ->
-    unless section_id?
-      el = current().children("header").children("h1")
-    else
-      el = $("section##{section_id}").children("header").children("h1")
-    if el.length is 1
-      if html? then el.html html else el.html()
-
   goTo = (section_id)->
     el = current()
     if el[0].id isnt section_id
@@ -29,6 +21,13 @@ Tako.Section = do (TK = Tako) ->
 
   _current = null
 
-  goTo: goTo
-  title: title
-  current: current
+  (id) ->
+    if id? then goTo id else current()
+
+Tako.Section.title = (html, section_id) ->
+  unless section_id?
+    el = Tako.Section().children("header").children("h1")
+  else
+    el = $("section##{section_id}").children("header").children("h1")
+  if el.length is 1
+    if html? then el.html html else el.html()

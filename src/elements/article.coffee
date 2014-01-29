@@ -33,5 +33,5 @@ Tako.Article = do (TK = Tako) ->
 
   _current = null
 
-  goTo: goTo
-  current: current
+  (id) ->
+    if id? then goTo id else current()

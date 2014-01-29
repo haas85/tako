@@ -140,9 +140,12 @@
       });
     });
     _current = null;
-    return {
-      goTo: goTo,
-      current: current
+    return function(id) {
+      if (id != null) {
+        return goTo(id);
+      } else {
+        return current();
+      }
     };
   })(Tako);
 
@@ -205,22 +208,7 @@
   })(Tako);
 
   Tako.Section = (function(TK) {
-    var current, goTo, title, _current;
-    title = function(html, section_id) {
-      var el;
-      if (section_id == null) {
-        el = current().children("header").children("h1");
-      } else {
-        el = $("section#" + section_id).children("header").children("h1");
-      }
-      if (el.length === 1) {
-        if (html != null) {
-          return el.html(html);
-        } else {
-          return el.html();
-        }
-      }
-    };
+    var current, goTo, _current;
     goTo = function(section_id) {
       var el, _current;
       el = current();
@@ -250,12 +238,30 @@
       });
     });
     _current = null;
-    return {
-      goTo: goTo,
-      title: title,
-      current: current
+    return function(id) {
+      if (id != null) {
+        return goTo(id);
+      } else {
+        return current();
+      }
     };
   })(Tako);
+
+  Tako.Section.title = function(html, section_id) {
+    var el;
+    if (section_id == null) {
+      el = Tako.Section().children("header").children("h1");
+    } else {
+      el = $("section#" + section_id).children("header").children("h1");
+    }
+    if (el.length === 1) {
+      if (html != null) {
+        return el.html(html);
+      } else {
+        return el.html();
+      }
+    }
+  };
 
   _fallback = function() {
     var _android, _firefox, _ios;
