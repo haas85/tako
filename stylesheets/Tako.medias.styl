@@ -55,6 +55,7 @@
     box-flex 0
     margin 0
     text-align left
+    max-height HEADER_HEIGHT
     ordinal-group(1)
 
     & > h1
@@ -62,6 +63,7 @@
       text-align left
       width auto
       padding 0 1em
+      margin 0
 
       & > img
         width auto
@@ -91,8 +93,10 @@
       &:not(.right)
         &:not(.left)
           position relative
-          margin -17px 0 0 0
-          float left
+          top - (HEADER_HEIGHT + 3)
+
+      & button, & .button
+        position static
 
   article
     position static
@@ -106,5 +110,5 @@
     box-flex 0
     ordinal-group(3)
 
-  [data-action=aside]
-    display none
+  // [data-action=aside]
+  //   display none

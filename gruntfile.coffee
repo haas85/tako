@@ -51,11 +51,13 @@ module.exports = (grunt) ->
 
     # =========================================================================
     coffee:
-      core_debug: files: '<%=meta.package%>/js/<%=meta.file%>.debug.js': '<%= source.coffee %>'
+      core_debug: files: '<%=meta.package%>/js/<%=meta.file%>.debug.js': "<%=meta.temp%>/<%=meta.file%>.coffee"
 
     concat:
       components:
         src: "<%= source.components %>",  dest: "<%=meta.temp%>/<%=meta.file%>.components.js"
+      core:
+        src: "<%= source.coffee %>",  dest: "<%=meta.temp%>/<%=meta.file%>.coffee"
 
     uglify:
       options: compress: false
@@ -98,7 +100,7 @@ module.exports = (grunt) ->
     watch:
       coffee:
         files: ["<%= source.coffee %>"]
-        tasks: ["coffee:core_debug", "uglify:engine", "usebanner:js"]
+        tasks: [ "concat:core", "coffee:core_debug", "uglify:engine", "usebanner:js"]
       stylus:
         files: ["<%= source.stylus %>"]
         tasks: ["stylus:core", "usebanner:css"]
@@ -113,4 +115,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-banner"
 
-  grunt.registerTask "default", [ "coffee", "concat", "uglify", "stylus", "concat", "usebanner"]
+  grunt.registerTask "default", [ "concat", "coffee", "uglify", "stylus", "concat", "usebanner"]

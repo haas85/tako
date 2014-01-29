@@ -67,11 +67,12 @@ section.non_animated *{-webkit-transition-duration:0 !important;-moz-transition-
 header{position:fixed;top:0;left:0;right:0;height:50px;line-height:50px;width:100%;z-index:101;text-align:center;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
 header > h1{font-weight:bold;display:inline-block;position:absolute;text-align:center;width:100%;left:0;margin-top:0;z-index:102;}
 header > h1 > img{width:auto;height:42px;margin-top:4px}
+header > nav{height:50px;max-height:50px;}
 header > nav.right{position:fixed;z-index:103;right:0;}
 header > nav.right > button{margin-right:5px}
 header > nav.left{position:fixed;z-index:103;left:0;}
 header > nav.left > button{margin-left:5px}
-header > nav:not(.right):not(.left){font-size:1.2em;width:100%;margin:50px 0 0 0;height:50px;line-height:50px;padding:0;display:-webkit-box;display:-ms-box;display:-moz-box;display:-o-box;display:box;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;-o-box-orient:horizontal;box-orient:horizontal;-webkit-box-direction:normal;-moz-box-direction:normal;-ms-box-direction:normal;-o-box-direction:normal;box-direction:normal;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-box-pack:justify;-o-box-pack:justify;box-pack:justify;-webkit-box-align:stretch;-moz-box-align:stretch;-ms-box-align:stretch;-o-box-align:stretch;box-align:stretch;}
+header > nav:not(.right):not(.left){font-size:1.2em;width:100%;margin:50px 0 0 0;line-height:50px;padding:0;display:-webkit-box;display:-ms-box;display:-moz-box;display:-o-box;display:box;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;-o-box-orient:horizontal;box-orient:horizontal;-webkit-box-direction:normal;-moz-box-direction:normal;-ms-box-direction:normal;-o-box-direction:normal;box-direction:normal;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-box-pack:justify;-o-box-pack:justify;box-pack:justify;-webkit-box-align:stretch;-moz-box-align:stretch;-ms-box-align:stretch;-o-box-align:stretch;box-align:stretch;}
 header > nav:not(.right):not(.left) > *{-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1;text-align:center;width:100%;display:block;height:50px}
 header > nav:not(.right):not(.left) .icon{font-size:1em}
 footer{position:fixed;bottom:0;left:0;right:0;margin:0 0 -2px 0;width:100%;height:65px;line-height:65px;z-index:101;display:-webkit-box;display:-ms-box;display:-moz-box;display:-o-box;display:box;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;-o-box-orient:horizontal;box-orient:horizontal;-webkit-box-direction:normal;-moz-box-direction:normal;-ms-box-direction:normal;-o-box-direction:normal;box-direction:normal;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-box-pack:justify;-o-box-pack:justify;box-pack:justify;-webkit-box-align:stretch;-moz-box-align:stretch;-ms-box-align:stretch;-o-box-align:stretch;box-align:stretch;-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;}
@@ -204,7 +205,7 @@ button *:nth-child(2),.button *:nth-child(2){margin-left:.5em}
 button>img,.button>img{width:auto;height:1.8em;margin-right:0;position:relative;top:6px;}
 button>img+span,.button>img+span{position:relative;top:0;margin-left:.4em !important}
 header :not(.button){padding-top:0}
-header button,header.button{min-width:46px;text-indent:0;display:inline-block;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);height:46px;margin-top:2px;margin-bottom:2px;line-height:46px;font-size:1.3em !important;padding-top:6px;padding-left:.6em !important;padding-right:.6em !important;}
+header button,header.button{min-width:46px;text-indent:0;display:inline-block;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;background-color:rgba(0,0,0,0);-webkit-background-image:none;-moz-background-image:none;-ms-background-image:none;-o-background-image:none;background-image:none;height:46px;margin-top:2px;margin-bottom:2px;line-height:46px;font-size:1.3em !important;padding-top:6px;padding-left:.6em !important;padding-right:.6em !important;}
 header button.icon:before,header.button.icon:before{margin-right:.5em}
 header button.icon:empty:before,header.button.icon:empty:before{margin-right:0;font-size:1.5em !important}
 header button.icon:before,header.button.icon:before{font-size:1em !important}
@@ -628,16 +629,16 @@ section{display:none}
 section.active{position:static;margin-left:268px !important;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1;height:100%;display:-webkit-box;display:-ms-box;display:-o-box;display:-moz-box;display:box;-webkit-box-align:stretch;-moz-box-align:stretch;-ms-box-align:stretch;-o-box-align:stretch;box-align:stretch;-webkit-box-orient:vertical;-moz-box-orient:vertical;-ms-box-orient:vertical;-o-box-orient:vertical;box-orient:vertical;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-box-pack:justify;-o-box-pack:justify;box-pack:justify;}
 section.active.footer > article{padding-bottom:0 !important}
 section.active.extended_header > article{margin-top:50px}
-header{position:static;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;margin:0;text-align:left;-webkit-box-ordinal-group:1;-moz-box-ordinal-group:1;-ms-box-ordinal-group:1;-o-box-ordinal-group:1;box-ordinal-group:1;}
-header > h1{position:static;text-align:left;width:auto;padding:0 1em;}
+header{position:static;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;margin:0;text-align:left;max-height:50px;-webkit-box-ordinal-group:1;-moz-box-ordinal-group:1;-ms-box-ordinal-group:1;-o-box-ordinal-group:1;box-ordinal-group:1;}
+header > h1{position:static;text-align:left;width:auto;padding:0 1em;margin:0;}
 header > h1 > img{width:auto}
 header > nav:after{display:block;content:"";clear:both}
 header > nav.right{position:relative;z-index:103;float:right;}
 header > nav.right > button{margin-right:5px}
 header > nav.left{position:relative;z-index:103;float:right;}
 header > nav.left > button{margin-left:5px}
-header > nav:not(.right):not(.left){position:relative;margin:-17px 0 0 0;float:left}
+header > nav:not(.right):not(.left){position:relative;top:-53px}
+header > nav button,header > nav .button{position:static}
 article{position:static;top:0;overflow-y:scroll;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;-o-box-flex:1;box-flex:1;-webkit-box-ordinal-group:2;-moz-box-ordinal-group:2;-ms-box-ordinal-group:2;-o-box-ordinal-group:2;box-ordinal-group:2}
 footer{position:static;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;-webkit-box-ordinal-group:3;-moz-box-ordinal-group:3;-ms-box-ordinal-group:3;-o-box-ordinal-group:3;box-ordinal-group:3}
-[data-action=aside]{display:none}
 }

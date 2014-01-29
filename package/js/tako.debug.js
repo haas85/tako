@@ -2,7 +2,9 @@
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Tako;
+  var Tako, _fallback,
+    __slice = [].slice,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = Tako = (function() {
     var callbacks, init, onReady, remaining, _loaded, _onError, _onReceive, _setup;
@@ -55,6 +57,7 @@
       });
       _current_art = $("section.active article.active")[0].id;
       $("[data-visible=" + _current_art + "]").addClass("show");
+      _fallback();
       return _loaded();
     };
     _onReceive = function(data) {
@@ -86,9 +89,6 @@
     };
   })();
 
-}).call(this);
-
-(function() {
   Tako.Article = (function(TK) {
     var current, goTo, _current;
     goTo = function(article_id) {
@@ -135,9 +135,6 @@
     };
   })(Tako);
 
-}).call(this);
-
-(function() {
   Tako.Aside = (function(TK) {
     var aside, bck, hide, show, toggle;
     aside = $("aside");
@@ -194,9 +191,6 @@
     }
   })(Tako);
 
-}).call(this);
-
-(function() {
   Tako.Section = (function(TK) {
     var current, goTo, title, _current;
     title = function(html, section_id) {
@@ -250,9 +244,14 @@
     };
   })(Tako);
 
-}).call(this);
+  _fallback = function() {
+    var firefox_fix;
+    firefox_fix = "<style>\n  @media screen and (min-width: 768px) and (orientation: landscape){\n    section.active.extended_header > article {\n      margin-top: 0;\n    }\n  }\n</style>";
+    if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
+      return $("head").append(firefox_fix);
+    }
+  };
 
-(function() {
   Tako.Connection = (function() {
     var _callbacks, _state, _stateChange;
     _state = navigator.onLine;
@@ -285,9 +284,6 @@
     };
   })();
 
-}).call(this);
-
-(function() {
   Tako.DB = (function() {
     return {
       manager: null,
@@ -333,11 +329,6 @@
       }
     };
   })();
-
-}).call(this);
-
-(function() {
-  var __slice = [].slice;
 
   Tako.Notification = (function(TK) {
     var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
@@ -477,9 +468,6 @@
     };
   })(Tako);
 
-}).call(this);
-
-(function() {
   Tako.ProgressBar = function(container, value) {
     var Progress;
     Progress = (function() {
@@ -516,11 +504,6 @@
     })();
     return new Progress(container, value);
   };
-
-}).call(this);
-
-(function() {
-  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   (function() {
     var lastTime, vendors, x;
@@ -723,9 +706,6 @@
     return new PullToRefresh(container, options);
   };
 
-}).call(this);
-
-(function() {
   (function() {
     var _clear, _get, _remove, _set;
     _get = function(type, key) {

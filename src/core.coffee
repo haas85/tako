@@ -31,6 +31,7 @@ window.Tako = Tako = do ->
         $(@).children("article").first().addClass "active"
     _current_art = $("section.active article.active")[0].id
     $("[data-visible=#{_current_art}]").addClass "show"
+    do _fallback
     do _loaded
 
   _onReceive = (data) ->
