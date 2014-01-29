@@ -20,6 +20,11 @@ window.Tako = Tako = do ->
 
   onReady = (callback) -> callbacks.push callback
 
+  viewType = ->
+    width = if window.innerWidth > 0 then window.innerWidth else screen.width
+    height = if window.innerHeight > 0 then window.innerHeight else screen.height
+    if (width > 768) and (width > height) then "TABLET/DESKTOP" else "PHONE"
+
   _setup = ->
     if $("section.active").length is 0 then $("section").first().addClass "active"
     $("body").hammer()
@@ -49,4 +54,5 @@ window.Tako = Tako = do ->
 
   init      : init
   onReady   : onReady
+  viewType  : viewType
 

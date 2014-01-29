@@ -7,7 +7,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = Tako = (function() {
-    var callbacks, init, onReady, remaining, _loaded, _onError, _onReceive, _setup;
+    var callbacks, init, onReady, remaining, viewType, _loaded, _onError, _onReceive, _setup;
     remaining = 0;
     callbacks = [];
     init = function(options) {
@@ -40,6 +40,16 @@
     };
     onReady = function(callback) {
       return callbacks.push(callback);
+    };
+    viewType = function() {
+      var height, width;
+      width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+      height = window.innerHeight > 0 ? window.innerHeight : screen.height;
+      if ((width > 768) && (width > height)) {
+        return "TABLET/DESKTOP";
+      } else {
+        return "PHONE";
+      }
     };
     _setup = function() {
       var _current_art;
@@ -85,7 +95,8 @@
     };
     return {
       init: init,
-      onReady: onReady
+      onReady: onReady,
+      viewType: viewType
     };
   })();
 
@@ -158,10 +169,12 @@
         }), 150);
       };
       toggle = function() {
-        if (aside.hasClass("show")) {
-          return hide();
-        } else {
-          return show();
+        if (TK.viewType === "PHONE") {
+          if (aside.hasClass("show")) {
+            return hide();
+          } else {
+            return show();
+          }
         }
       };
       $("[data-action=aside]").each(function(element) {
