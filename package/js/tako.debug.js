@@ -245,10 +245,26 @@
   })(Tako);
 
   _fallback = function() {
-    var firefox_fix;
-    firefox_fix = "<style>\n  @media screen and (min-width: 768px) and (orientation: landscape){\n    section.active.extended_header > article {\n      margin-top: 0;\n    }\n  }\n</style>";
+    var _android, _firefox, _ios;
+    _android = function() {
+      return this;
+    };
+    _ios = function() {
+      return this;
+    };
+    _firefox = function() {
+      var style;
+      style = "<style>\n  @media screen and (min-width: 768px) and (orientation: landscape){\n    section.active.extended_header > article {\n      margin-top: 0;\n    }\n  }\n</style>";
+      return $("head").append(style);
+    };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
-      return $("head").append(firefox_fix);
+      _firefox();
+    }
+    if (($.os != null) && $.os.android) {
+      _android();
+    }
+    if (($.os != null) && $.os.ios) {
+      return _ios();
     }
   };
 

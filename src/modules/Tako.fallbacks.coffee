@@ -1,13 +1,24 @@
 _fallback = ->
-  firefox_fix = """
-    <style>
-      @media screen and (min-width: 768px) and (orientation: landscape){
-        section.active.extended_header > article {
-          margin-top: 0;
+
+  _android = -> @
+  _ios = -> @
+  _firefox = ->
+    style = """
+      <style>
+        @media screen and (min-width: 768px) and (orientation: landscape){
+          section.active.extended_header > article {
+            margin-top: 0;
+          }
         }
-      }
-    </style>
-  """
+      </style>
+    """
+    $("head").append style
+
   # Firefox
-  if navigator.userAgent.toLowerCase().indexOf("firefox") isnt -1
-    $("head").append firefox_fix
+  _firefox() if navigator.userAgent.toLowerCase().indexOf("firefox") isnt -1
+
+  # Android
+  _android() if $.os? and $.os.android
+
+  # IOS
+  _ios() if $.os? and $.os.ios
