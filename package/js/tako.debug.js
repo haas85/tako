@@ -389,7 +389,7 @@
     var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
     active = false;
     notification = $("<div data-element=\"notification\"><div></div</div>");
-    notification_window = $("<div class=\"window\"></div>");
+    notification_window = $("<section class=\"window\"></section>");
     notification.find("div").append(notification_window);
     $("body").append(notification);
     timeout = null;
@@ -397,15 +397,15 @@
     success = function(icon, title, content, time_out, cb) {
       var html;
       html = _iconHtml(icon, title, content);
-      return _show(html, "success top_position upwards margin", time_out, cb);
+      return _show(html, "success center upwards", true, time_out, cb);
     };
     error = function(icon, title, content, time_out, cb) {
       var html;
       html = _iconHtml(icon, title, content);
-      return _show(html, "error top_position upwards margin", time_out, cb);
+      return _show(html, "error center downwards", true, time_out, cb);
     };
     loading = function() {
-      var args, cb, html, icon, time_out, title;
+      var args, cb, classes, html, icon, time_out, title;
       title = arguments[0], time_out = arguments[1], args = 3 <= arguments.length ? __slice.call(arguments, 2) : [];
       if ((args[0] != null) && typeof args[0] === "string") {
         icon = args[0];
@@ -414,16 +414,20 @@
         icon = "spin6";
         cb = args[0];
       }
-      html = "<div class=\"icon " + icon + " animated\"></div>";
+      html = "";
+      classes = "loading center not_clickable";
       if (title != null) {
-        html += "<span class=\"title\">" + title + "</span>";
+        html = "<header>\n    <span class=\"underlined\">" + title + "</span>\n</header>";
+      } else {
+        classes += " squared";
       }
-      return _show(html, "loading center not_clickable", time_out, cb);
+      html += "<article>\n  <span class=\"icon " + icon + " animated\"></span>\n</article>";
+      return _show(html, classes, true, time_out, cb);
     };
     progress = function(icon, title, content, time_out, cb) {
       var html;
       html = "<div><span class=\"icon " + icon + "\"></span></div>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom\">" + content + "</div>\n<div id=\"notification_progress\"></div><div style=\"clear:both\"></div>";
-      _show(html, "center progress padding top not_clickable", time_out, cb);
+      _show(html, "center progress not_clickable", time_out, cb);
       progress = TK.ProgressBar("notification_progress", 0);
       return {
         percent: function(value) {
@@ -461,10 +465,9 @@
       return setTimeout(_hide, 500);
     };
     _iconHtml = function(icon, title, content) {
-      var html;
-      return html = "<span class=\"icon " + icon + "\"></span>\n<div>\n  <span class=\"title\">" + title + "</span>\n  <div class=\"content\">" + content + "</div>\n</div>";
+      return "<header>\n  <span class=\"icon " + icon + "\"></span>\n</header>\n<article>\n  <span class=\"title\">" + title + "</span>\n    <span class=\"content\">" + content + "</span>\n</article>";
     };
-    _show = function(html, classes, time_out, cb) {
+    _show = function(html, classes, flexed, time_out, cb) {
       var original_cb;
       if (!active) {
         active = true;
@@ -472,6 +475,11 @@
         notification_window.addClass("window " + classes);
         notification_window.html(html);
         notification.addClass("show");
+        if (flexed) {
+          notification.addClass("flexed");
+        } else {
+          notification.removeClass("flexed");
+        }
         setTimeout((function() {
           return notification_window.addClass("show");
         }), 100);

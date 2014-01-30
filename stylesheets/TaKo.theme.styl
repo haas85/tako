@@ -134,29 +134,28 @@ aside li, footer button
   &:active, &:hover
     background-color SECONDARY_ACTIVE
 
-div[data-element="notification"] > div > div.window
-  background-color rgba(0,0,0,0.8)
+div[data-element="notification"] > div > section.window
 
-  & *
-    color rgba(250,250,250,0.6)
-
-  & .title
-    color rgba(255,255,255,0.9)
 
   & .icon
     font-weight bold
 
-  &.success
-    border-color SUCCESS
+  &.success > header
+    background-color lighten(SUCCESS, 15%)
+    background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
 
-    & .icon
-      color SUCCESS
+  &.error > header
+    background-color lighten(FAIL, 15%)
+    background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image linear-gradient(lighten(FAIL, 15%), FAIL)
 
-  &.error
-    border-color FAIL
-
-    & .icon
-      color FAIL
 
 [data-element=notification] .loading .icon
   color THEME

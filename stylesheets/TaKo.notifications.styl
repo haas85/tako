@@ -1,3 +1,5 @@
+NOTIFICATION_WHITE = #f7ecf8
+
 div[data-element="notification"]
   position fixed
   top 0
@@ -18,26 +20,31 @@ div[data-element="notification"]
     width 100%
     height 100%
 
-    display -webkit-box
-    display -ms-box
-    display -moz-box
-    display -o-box
-    display box
-    width 100%
+  &.flexed > div
+      display -webkit-box
+      display -ms-box
+      display -moz-box
+      display -o-box
+      display box
 
-    box-orient vertical
-    box-direction normal
-    box-pack center
-    box-align center
+      box-orient vertical
+      box-direction normal
+      box-pack center
+      box-align center
 
-  & > div > div.window
-    color rgba(0, 0, 0, 0.8)
+  & > div > section.window
+    background-color NOTIFICATION_WHITE
     margin-left auto
     margin-right auto
-    opacity 0
-    max-width 450px
+    max-width 350px
     width 90%
+    opacity 0
+    height auto
+    padding 0
     transition-duration NOTIFICATION_TRANSITION_TIME
+
+    & > header
+      position static
 
     &:after
       display block
@@ -47,9 +54,6 @@ div[data-element="notification"]
     &.top_position
       margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT
 
-      &.downwards
-        margin-top - NOTIFICATION_TRANSITION
-
       &.margin
         margin-top NOTIFICATION_TRANSITION + HEADER_HEIGHT * 2
 
@@ -57,12 +61,15 @@ div[data-element="notification"]
         margin-top NOTIFICATION_TRANSITION
 
     &.upwards
+      transform(translate(0, NOTIFICATION_TRANSITION))
       &.show
-        transform(translate(0,- NOTIFICATION_TRANSITION))
+        transform(translate(0,0))
 
     &.downwards
+      transform(translate(0, - NOTIFICATION_TRANSITION))
       &.show
-        transform(translate(0, NOTIFICATION_TRANSITION))
+        transform(translate(0,0))
+
 
     &.left
       & *
@@ -77,45 +84,10 @@ div[data-element="notification"]
 
     &.center
       text-align center
-      padding 1.8em 1.8em 0 1.8em
       box-flex 1
       max-height 175px
       position relative
       top -10%
-
-      &.progress
-        display -webkit-box
-        display -ms-box
-        display -moz-box
-        display -o-box
-        display box
-
-        box-orient vertical
-        box-direction normal
-        box-pack center
-        box-align center
-
-        & *
-          box-flex 1
-          width 100%
-
-        & .icon
-          height 60px!important
-
-    &.confirm
-      max-width 800px
-      padding 1.8em
-
-      & *
-        font-size 1.1em
-
-      & .accept
-        float left
-        width 48.5%
-
-      & .cancel
-        float right
-        width 48.5%
 
     & .icon
       display block
@@ -123,11 +95,6 @@ div[data-element="notification"]
       height 100%
       width 80px
       font-size 3em
-      float left
-      margin-right 0.2em
-
-    &.loading .icon
-      font-size 4em!important
 
     &:not(.progress) .icon
       line-height 80px
@@ -135,19 +102,48 @@ div[data-element="notification"]
     &.show
       opacity 1
 
+    & > header, & > article
+      position static
+      background-color NOTIFICATION_WHITE
+
     &.success, &.error
-      border-style solid
-      border-width 0 0 0 4px
       min-width 280px
+
+      & > header
+        text-align center
+        color NOTIFICATION_WHITE!important
+        height 100px
+        line-height 100px
+
+        & > span.icon
+          text-align center
+          width 100%
+          color NOTIFICATION_WHITE!important
+          height 100px
+          line-height 100px
+
+          &:before
+            height 100px
+            line-height 100px
+
+      & > article
+        display block
+        position static
+        height 125px
+        padding-top 10px
+        color black
+
+        & > .title
+          font-weight bold
+
+        & > span
+          display block
+          width 100%
+          text-align center
 
       & .title
         padding-top 0.3em
 
-    &.progress, &.loading
-      width 80%
-
-      & .icon
-        width 100%
 
     & .title
       line-height 40px
@@ -156,6 +152,39 @@ div[data-element="notification"]
     & .content
       padding-top 0.5em
 
-    & #circular_container
-      width LOADER_SIZE
-      margin 0 auto 0 auto
+    &.loading, &.progress
+      &.squared
+        width 150px
+        height 150px
+        max-height 150px
+
+        & .icon
+          margin-top 0
+          font-size 7em
+          width 150px
+          height 150px
+          line-height 150px
+          margin-left auto
+          margin-right auto
+
+      & > header
+        font-weight bold
+        font-size 1.3em
+
+      & > article
+        display block
+        height 100px
+        line-height 100px
+        width 100%
+        text-align center
+
+        & .icon
+          font-size 5em
+          display block
+          width 100px
+          height 100px
+          line-height 100px
+          text-align center
+          margin-top .15em
+          margin-left auto
+          margin-right auto
