@@ -265,7 +265,7 @@ div[data-element="notification"] > div > section.window.success .title,div[data-
 div[data-element="notification"] > div > section.window .title{line-height:40px;font-size:1.2em}
 div[data-element="notification"] > div > section.window .content{padding-top:.5em}
 div[data-element="notification"] > div > section.window.loading.squared,div[data-element="notification"] > div > section.window.progress.squared{width:150px !important;height:150px !important;max-height:150px !important;}
-div[data-element="notification"] > div > section.window.loading.squared > article,div[data-element="notification"] > div > section.window.progress.squared > article{width:150px !important;height:150px !important;max-height:150px !important}
+div[data-element="notification"] > div > section.window.loading.squared > article,div[data-element="notification"] > div > section.window.progress.squared > article{overflow:hidden;width:150px !important;height:150px !important;max-height:150px !important}
 div[data-element="notification"] > div > section.window.loading.squared .icon,div[data-element="notification"] > div > section.window.progress.squared .icon{margin-top:0;font-size:7em;width:150px;height:150px;line-height:150px;margin-left:auto;margin-right:auto}
 div[data-element="notification"] > div > section.window.loading > header,div[data-element="notification"] > div > section.window.progress > header{font-weight:bold;font-size:1.3em;text-align:center !important}
 div[data-element="notification"] > div > section.window.loading > article,div[data-element="notification"] > div > section.window.progress > article{display:block;height:100px;line-height:100px;width:100%;text-align:center;}
