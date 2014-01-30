@@ -437,7 +437,7 @@
             })
         });
         $("#show_loading").bind("tap", function(){
-            Tako.Notification.loading("Loading Data", null, function(){console.log("LOADING CB");})
+            Tako.Notification.loading(null, null, function(){console.log("LOADING CB");})
         });
         $("#show_progress").bind("tap", function(){
             var progress = Tako.Notification.progress("box animated", "Downloading", "Please wait until your download is completed");

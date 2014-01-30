@@ -236,7 +236,7 @@ div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;di
 div[data-element="notification"].show{display:block}
 div[data-element="notification"] > div{margin:0;padding:0;width:100%;height:100%}
 div[data-element="notification"].flexed > div{display:-webkit-box;display:-ms-box;display:-moz-box;display:-o-box;display:box;-webkit-box-orient:vertical;-moz-box-orient:vertical;-ms-box-orient:vertical;-o-box-orient:vertical;box-orient:vertical;-webkit-box-direction:normal;-moz-box-direction:normal;-ms-box-direction:normal;-o-box-direction:normal;box-direction:normal;-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;-o-box-pack:center;box-pack:center;-webkit-box-align:center;-moz-box-align:center;-ms-box-align:center;-o-box-align:center;box-align:center}
-div[data-element="notification"] > div > section.window{background-color:#f7ecf8;margin-left:auto;margin-right:auto;max-width:350px;width:90%;opacity:0;height:auto;padding:0;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
+div[data-element="notification"] > div > section.window{display:block;background-color:#f7ecf8;margin-left:auto;margin-right:auto;max-width:350px;width:90%;opacity:0;height:auto;padding:0;-webkit-transition-duration:500ms;-moz-transition-duration:500ms;-ms-transition-duration:500ms;-o-transition-duration:500ms;transition-duration:500ms;}
 div[data-element="notification"] > div > section.window > header{position:static}
 div[data-element="notification"] > div > section.window:after{display:block;content:"";clear:both}
 div[data-element="notification"] > div > section.window.top_position{margin-top:620px;}
@@ -255,7 +255,7 @@ div[data-element="notification"] > div > section.window:not(.progress) .icon{lin
 div[data-element="notification"] > div > section.window.show{opacity:1}
 div[data-element="notification"] > div > section.window > header,div[data-element="notification"] > div > section.window > article{position:static;background-color:#f7ecf8}
 div[data-element="notification"] > div > section.window.success,div[data-element="notification"] > div > section.window.error{min-width:280px;}
-div[data-element="notification"] > div > section.window.success > header,div[data-element="notification"] > div > section.window.error > header{text-align:center;color:#f7ecf8 !important;height:100px;line-height:100px;}
+div[data-element="notification"] > div > section.window.success > header,div[data-element="notification"] > div > section.window.error > header{text-align:center;color:#f7ecf8 !important;height:100px !important;max-height:100px !important;line-height:100px !important;}
 div[data-element="notification"] > div > section.window.success > header > span.icon,div[data-element="notification"] > div > section.window.error > header > span.icon{text-align:center;width:100%;color:#f7ecf8 !important;height:100px;line-height:100px;}
 div[data-element="notification"] > div > section.window.success > header > span.icon:before,div[data-element="notification"] > div > section.window.error > header > span.icon:before{height:100px;line-height:100px}
 div[data-element="notification"] > div > section.window.success > article,div[data-element="notification"] > div > section.window.error > article{display:block;position:static;height:125px;padding-top:10px;color:#000;}
@@ -264,9 +264,10 @@ div[data-element="notification"] > div > section.window.success > article > span
 div[data-element="notification"] > div > section.window.success .title,div[data-element="notification"] > div > section.window.error .title{padding-top:.3em}
 div[data-element="notification"] > div > section.window .title{line-height:40px;font-size:1.2em}
 div[data-element="notification"] > div > section.window .content{padding-top:.5em}
-div[data-element="notification"] > div > section.window.loading.squared,div[data-element="notification"] > div > section.window.progress.squared{width:150px;height:150px;max-height:150px;}
+div[data-element="notification"] > div > section.window.loading.squared,div[data-element="notification"] > div > section.window.progress.squared{width:150px !important;height:150px !important;max-height:150px !important;}
+div[data-element="notification"] > div > section.window.loading.squared > article,div[data-element="notification"] > div > section.window.progress.squared > article{width:150px !important;height:150px !important;max-height:150px !important}
 div[data-element="notification"] > div > section.window.loading.squared .icon,div[data-element="notification"] > div > section.window.progress.squared .icon{margin-top:0;font-size:7em;width:150px;height:150px;line-height:150px;margin-left:auto;margin-right:auto}
-div[data-element="notification"] > div > section.window.loading > header,div[data-element="notification"] > div > section.window.progress > header{font-weight:bold;font-size:1.3em}
+div[data-element="notification"] > div > section.window.loading > header,div[data-element="notification"] > div > section.window.progress > header{font-weight:bold;font-size:1.3em;text-align:center !important}
 div[data-element="notification"] > div > section.window.loading > article,div[data-element="notification"] > div > section.window.progress > article{display:block;height:100px;line-height:100px;width:100%;text-align:center;}
 div[data-element="notification"] > div > section.window.loading > article .icon,div[data-element="notification"] > div > section.window.progress > article .icon{font-size:5em;display:block;width:100px;height:100px;line-height:100px;text-align:center;margin-top:.15em;margin-left:auto;margin-right:auto}
 

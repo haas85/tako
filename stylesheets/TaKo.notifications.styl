@@ -1,4 +1,5 @@
 NOTIFICATION_WHITE = #f7ecf8
+NOTIFICATION_TEXT = black
 
 div[data-element="notification"]
   position fixed
@@ -33,6 +34,7 @@ div[data-element="notification"]
       box-align center
 
   & > div > section.window
+    display block
     background-color NOTIFICATION_WHITE
     margin-left auto
     margin-right auto
@@ -112,8 +114,9 @@ div[data-element="notification"]
       & > header
         text-align center
         color NOTIFICATION_WHITE!important
-        height 100px
-        line-height 100px
+        height 100px!important
+        max-height 100px!important
+        line-height 100px!important
 
         & > span.icon
           text-align center
@@ -131,7 +134,7 @@ div[data-element="notification"]
         position static
         height 125px
         padding-top 10px
-        color black
+        color NOTIFICATION_TEXT
 
         & > .title
           font-weight bold
@@ -154,9 +157,13 @@ div[data-element="notification"]
 
     &.loading, &.progress
       &.squared
-        width 150px
-        height 150px
-        max-height 150px
+        width 150px!important
+        height 150px!important
+        max-height 150px!important
+        & > article
+          width 150px!important
+          height 150px!important
+          max-height 150px!important
 
         & .icon
           margin-top 0
@@ -170,6 +177,7 @@ div[data-element="notification"]
       & > header
         font-weight bold
         font-size 1.3em
+        text-align center!important
 
       & > article
         display block
