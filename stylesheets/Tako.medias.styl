@@ -12,7 +12,7 @@
 
   div[data-element="aside_background"]
     display block
-    width ASIDE_WIDTH!important
+    width ASIDE_WIDTH + ASIDE_PADDING!important
     z-index ASIDE_BCK_INDEX
     height 100%
     box-flex 0
@@ -24,13 +24,14 @@
     left 0
     z-index FULL_ASIDE_INDEX
     position absolute
+    padding-right ASIDE_PADDING
 
   section
     display none
 
   section.active
     position static
-    margin-left ASIDE_WIDTH!important
+    margin-left ASIDE_WIDTH + ASIDE_PADDING!important
     box-flex 1
     height 100%
 
