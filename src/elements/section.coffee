@@ -14,6 +14,12 @@ Tako.Section = do (TK = Tako) ->
     if _current? then _current else _current = $ "section.active"
 
   $("[data-section]").each (element) ->
+    if @.nodeName is "LI"
+      $(@).children().each ->
+        $(@).bind "tap", (ev) =>
+          do ev.preventDefault
+          do ev.stopPropagation
+          goTo $(@).parent().attr "data-section"
     $(@).bind "tap", (ev)=>
       do ev.preventDefault
       do ev.stopPropagation

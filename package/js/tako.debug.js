@@ -133,6 +133,16 @@
     };
     $("[data-article]").each(function(element) {
       var _this = this;
+      if (this.nodeName === "LI") {
+        $(this).children().each(function() {
+          var _this = this;
+          return $(this).bind("tap", function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            return goTo($(_this).parent().attr("data-article"));
+          });
+        });
+      }
       return $(this).bind("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
@@ -231,6 +241,16 @@
     };
     $("[data-section]").each(function(element) {
       var _this = this;
+      if (this.nodeName === "LI") {
+        $(this).children().each(function() {
+          var _this = this;
+          return $(this).bind("tap", function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            return goTo($(_this).parent().attr("data-section"));
+          });
+        });
+      }
       return $(this).bind("tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();

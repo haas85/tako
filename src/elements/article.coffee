@@ -26,6 +26,12 @@ Tako.Article = do (TK = Tako) ->
     if _current? then _current else _current = $ "section.active article.active"
 
   $("[data-article]").each (element) ->
+    if @.nodeName is "LI"
+      $(@).children().each ->
+        $(@).bind "tap", (ev) =>
+          do ev.preventDefault
+          do ev.stopPropagation
+          goTo $(@).parent().attr "data-article"
     $(@).bind "tap", (ev) =>
       do ev.preventDefault
       do ev.stopPropagation
@@ -33,5 +39,4 @@ Tako.Article = do (TK = Tako) ->
 
   _current = null
 
-  (id) ->
-    if id? then goTo id else current()
+  (id) -> if id? then goTo id else current()
