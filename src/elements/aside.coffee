@@ -21,7 +21,7 @@ Tako.Aside = do (TK = Tako) ->
       ), 150
 
     toggle = ->
-      if TK.viewType is "PHONE"
+      if TK.viewType() is "PHONE"
         if aside.hasClass "show" then hide() else show()
 
     $("[data-action=aside]").each (element) ->

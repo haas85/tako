@@ -41,7 +41,7 @@ small{opacity:.6;font-size:1.1em}
 .hidden{display:none !important}
 [data-visible]:not(.show){display:none}
 
-aside{display:block;width:256px;padding:6px;top:0;bottom:0;left:-276px;position:absolute;z-index:201;-webkit-transition-duration:150ms;-moz-transition-duration:150ms;-ms-transition-duration:150ms;-o-transition-duration:150ms;transition-duration:150ms;}
+aside{display:block;width:256px;top:0;bottom:0;left:-276px;position:absolute;z-index:201;-webkit-transition-duration:150ms;-moz-transition-duration:150ms;-ms-transition-duration:150ms;-o-transition-duration:150ms;transition-duration:150ms;}
 aside .counter{margin-top:-3px;-webkit-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:2px;padding:.2em .4em .2em .4em;float:right}
 aside.show{-webkit-transform:translateX(276px);-moz-transform:translateX(276px);-ms-transform:translateX(276px);-o-transform:translateX(276px);transform:translateX(276px)}
 aside.show{z-index:201 !important}
@@ -109,7 +109,7 @@ aside ul > li.icon{line-height:20px;height:24px;}
 aside ul > li.icon:before{margin-top:2px;display:inline-block;margin-right:.6em;width:24px;font-size:1.6em}
 aside ul > li > img{width:40px;height:40px;display:inline;float:left;margin-right:.9em;}
 aside ul > li > img + *{position:relative;top:10px}
-aside ul > li > img.big{width:70px;height:70px;margin-right:.7em;margin-left:-.9em;margin-top:-.9em;margin-bottom:-.9em}
+aside ul > li > img.big{width:56px;height:56px;margin-right:.7em;margin-left:-.6em;margin-top:-.5em;margin-bottom:-.6em}
 aside ul > li > img.small{width:30px;height:30px;margin-right:1.1em;margin-top:.4em}
 aside ul > li:after{display:block;content:"";clear:both}
 aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
@@ -642,7 +642,7 @@ header > h1 > img{width:auto}
 header > nav:after{display:block;content:"";clear:both}
 header > nav.right{position:relative;z-index:103;float:right;}
 header > nav.right > button{margin-right:5px}
-header > nav.left{position:relative;z-index:103;float:right;}
+header > nav.left{position:relative;z-index:103;float:left;}
 header > nav.left > button{margin-left:5px}
 header > nav:not(.right):not(.left){position:relative;top:-53px}
 header > nav button,header > nav .button{position:static}

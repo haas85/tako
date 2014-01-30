@@ -172,7 +172,7 @@
         }), 150);
       };
       toggle = function() {
-        if (TK.viewType === "PHONE") {
+        if (TK.viewType() === "PHONE") {
           if (aside.hasClass("show")) {
             return hide();
           } else {
