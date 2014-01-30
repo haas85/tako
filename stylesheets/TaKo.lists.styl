@@ -104,12 +104,52 @@ aside ul
   margin-left 0
   margin-right 0
 
-
   & > li
     position relative
     font-size 1.2em
     padding 11px 10px 11px 10px
     margin-bottom 2px
+
+    &.icon
+      line-height 20px
+      height 24px
+      &:before
+        margin-top 2px
+        display inline-block
+        margin-right .6em
+        width 24px
+        font-size 1.6em
+
+    & > img
+      width LIST_IMAGE
+      height LIST_IMAGE
+      display inline
+      float left
+      margin-right .9em
+
+      & + *
+        position relative
+        top 10px
+
+      &.big
+        width LIST_BIG_IMAGE
+        height LIST_BIG_IMAGE
+        margin-right .7em
+        margin-left -.9em
+        margin-top -.9em
+        margin-bottom -.9em
+
+
+      &.small
+        width LIST_SMALL_IMAGE
+        height LIST_SMALL_IMAGE
+        margin-right 1.1em
+        margin-top .4em
+
+    &:after
+      display block
+      content ""
+      clear both
 
     &.separator
       background-color rgba(0, 0, 0, 0.1)

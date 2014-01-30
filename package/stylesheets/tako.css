@@ -105,6 +105,13 @@ article ul > li [type="range"]{width:100%}
 article ul.indented > li{margin:.8em}
 aside ul{list-style:none;width:100%;padding:0;margin-left:0;margin-right:0;}
 aside ul > li{position:relative;font-size:1.2em;padding:11px 10px 11px 10px;margin-bottom:2px;}
+aside ul > li.icon{line-height:20px;height:24px;}
+aside ul > li.icon:before{margin-top:2px;display:inline-block;margin-right:.6em;width:24px;font-size:1.6em}
+aside ul > li > img{width:40px;height:40px;display:inline;float:left;margin-right:.9em;}
+aside ul > li > img + *{position:relative;top:10px}
+aside ul > li > img.big{width:70px;height:70px;margin-right:.7em;margin-left:-.9em;margin-top:-.9em;margin-bottom:-.9em}
+aside ul > li > img.small{width:30px;height:30px;margin-right:1.1em;margin-top:.4em}
+aside ul > li:after{display:block;content:"";clear:both}
 aside ul > li.separator{background-color:rgba(0,0,0,0.1);color:#fff;padding:1px 10px 1px 10px}
 
 fieldset{min-height:54px;}
