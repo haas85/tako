@@ -113,7 +113,7 @@
         _current = new_article.addClass("active");
       }
       if (_current_section[0].id !== new_section[0].id) {
-        Tako.Section.goTo(new_section[0].id);
+        Tako.Section(new_section[0].id);
       } else {
         _current_article.trigger("unload");
         _current = new_article.trigger("load");
