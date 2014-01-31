@@ -36,7 +36,7 @@ Tako.Notification = do (TK = Tako) ->
     if title?
       html = """
       <header>
-          <span class="underlined">#{title}</span>
+          <span>#{title}</span>
       </header>"""
     else
       classes += " squared"
@@ -48,12 +48,17 @@ Tako.Notification = do (TK = Tako) ->
     _show html, classes, true, time_out, cb
 
   progress = (icon, title, content, time_out, cb) ->
-    html = """<div><span class="icon #{icon}"></span></div>
-              <span class="title">#{title}</span>
-              <div class="content padding bottom">#{content}</div>
-              <div id="notification_progress"></div><div style="clear:both"></div>
-              """
-    _show html, "center progress not_clickable", time_out, cb
+    html = """<header class="#{if icon? then 'align-left' else 'center'}">"""
+    html += """<span class="icon #{icon}"></span>""" if icon?
+    html +=  """
+    <span>#{title}</span>
+    </header>
+    <article>
+      <span class="content">#{content}</span>
+      <div id="notification_progress"></div><div style="clear:both"></div>
+    </article>
+    """
+    _show html, "center progress not_clickable", true, time_out, cb
     progress = TK.ProgressBar "notification_progress", 0
     percent: (value) ->
       val = progress.percent value
@@ -92,7 +97,7 @@ Tako.Notification = do (TK = Tako) ->
     </header>
     <article>
       <span class="title">#{title}</span>
-        <span class="content">#{content}</span>
+      <span class="content">#{content}</span>
     </article>
     """
 

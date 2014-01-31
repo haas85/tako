@@ -417,7 +417,7 @@
       html = "";
       classes = "loading center not_clickable";
       if (title != null) {
-        html = "<header>\n    <span class=\"underlined\">" + title + "</span>\n</header>";
+        html = "<header>\n    <span>" + title + "</span>\n</header>";
       } else {
         classes += " squared";
       }
@@ -426,8 +426,12 @@
     };
     progress = function(icon, title, content, time_out, cb) {
       var html;
-      html = "<div><span class=\"icon " + icon + "\"></span></div>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom\">" + content + "</div>\n<div id=\"notification_progress\"></div><div style=\"clear:both\"></div>";
-      _show(html, "center progress not_clickable", time_out, cb);
+      html = "<header class=\"" + (icon != null ? 'align-left' : 'center') + "\">";
+      if (icon != null) {
+        html += "<span class=\"icon " + icon + "\"></span>";
+      }
+      html += "<span>" + title + "</span>\n</header>\n<article>\n  <span class=\"content\">" + content + "</span>\n  <div id=\"notification_progress\"></div><div style=\"clear:both\"></div>\n</article>";
+      _show(html, "center progress not_clickable", true, time_out, cb);
       progress = TK.ProgressBar("notification_progress", 0);
       return {
         percent: function(value) {
@@ -465,7 +469,7 @@
       return setTimeout(_hide, 500);
     };
     _iconHtml = function(icon, title, content) {
-      return "<header>\n  <span class=\"icon " + icon + "\"></span>\n</header>\n<article>\n  <span class=\"title\">" + title + "</span>\n    <span class=\"content\">" + content + "</span>\n</article>";
+      return "<header>\n  <span class=\"icon " + icon + "\"></span>\n</header>\n<article>\n  <span class=\"title\">" + title + "</span>\n  <span class=\"content\">" + content + "</span>\n</article>";
     };
     _show = function(html, classes, flexed, time_out, cb) {
       var original_cb;
