@@ -20,9 +20,9 @@
     &:before
       content '\e845'
 
-  &.wordpress
+  &.spin2
     &:before
-      content '\e92b'
+      content '\e846'
 
   &.spin3
     &:before
@@ -615,10 +615,6 @@
   &.to-end
     &:before
       content '\e817'
-
-  &.spin2
-    &:before
-      content '\e846'
 
   &.to-start
     &:before
@@ -1216,7 +1212,112 @@
     &:before
       content '\e929'
 
+  &.wordpress
+    &:before
+      content '\e92b'
+
   &.to-end-alt
     &:before
       content '\e818'
+
+  &[class*="spin"].animated
+    animation(animated-spin 2s infinite linear)
+    display inline-block
+
+  &.animated:not([class*="spin"])
+    animation(blink 2s linear infinite)
+
+
+@keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.2 }
+  100% { opacity 1 }
+@-webkit-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.2 }
+  100% { opacity 1 }
+@-moz-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.2 }
+  100% { opacity 1 }
+@-o-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.2 }
+  100% { opacity 1 }
+@-ms-keyframes blink
+  0% { opacity 1 }
+  50% { opacity 0.2 }
+  100% { opacity 1 }
+
+@-moz-keyframes animated-spin
+  0% {
+    -moz-transform rotate(0deg)
+    -o-transform rotate(0deg)
+    -webkit-transform rotate(0deg)
+    transform rotate(0deg)
+  }
+
+  100% {
+    -moz-transform rotate(359deg)
+    -o-transform rotate(359deg)
+    -webkit-transform rotate(359deg)
+    transform rotate(359deg)
+  }
+@-webkit-keyframes animated-spin
+  0% {
+    -moz-transform rotate(0deg)
+    -o-transform rotate(0deg)
+    -webkit-transform rotate(0deg)
+    transform rotate(0deg)
+  }
+
+  100% {
+    -moz-transform rotate(359deg)
+    -o-transform rotate(359deg)
+    -webkit-transform rotate(359deg)
+    transform rotate(359deg)
+  }
+@-o-keyframes animated-spin
+  0% {
+    -moz-transform rotate(0deg)
+    -o-transform rotate(0deg)
+    -webkit-transform rotate(0deg)
+    transform rotate(0deg)
+  }
+
+  100% {
+    -moz-transform rotate(359deg)
+    -o-transform rotate(359deg)
+    -webkit-transform rotate(359deg)
+    transform rotate(359deg)
+  }
+@-ms-keyframes animated-spin
+  0% {
+    -moz-transform rotate(0deg)
+    -o-transform rotate(0deg)
+    -webkit-transform rotate(0deg)
+    transform rotate(0deg)
+  }
+
+  100% {
+    -moz-transform rotate(359deg)
+    -o-transform rotate(359deg)
+    -webkit-transform rotate(359deg)
+    transform rotate(359deg)
+  }
+@keyframes animated-spin
+  0% {
+    -moz-transform rotate(0deg)
+    -o-transform rotate(0deg)
+    -webkit-transform rotate(0deg)
+    transform rotate(0deg)
+  }
+
+  100% {
+    -moz-transform rotate(359deg)
+    -o-transform rotate(359deg)
+    -webkit-transform rotate(359deg)
+    transform rotate(359deg)
+  }
+
 
