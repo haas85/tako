@@ -139,7 +139,7 @@ input[type="text"].no_background,input[type="password"].no_background,input[type
 input[type="text"].line,input[type="password"].line,input[type="date"].line,input[type="datetime"].line,input[type="email"].line,input[type="number"].line,input[type="search"].line,input[type="tel"].line,input[type="time"].line,input[type="url"].line,label > select.line,textarea.line{background:transparent;border:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box}
 li [type="text"],li [type="password"],li [type="date"],li [type="datetime"],li [type="email"],li [type="number"],li [type="search"],li [type="tel"],li [type="time"],li [type="url"]{margin-top:0;margin-bottom:0}
 li fieldset{margin-top:-8px;margin-bottom:-8px;padding-left:0;padding-right:0}
-fieldset{border:none;width:100%;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+fieldset{border:none;width:100%;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;margin-left:0;margin-right:0;}
 fieldset label:not(.select){line-height:32px;height:32px;margin-top:5px;float:left}
 fieldset:after{display:block;content:"";clear:both}
 fieldset > legend{font-size:1.2em;font-weight:bold;border:none;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;background-color:rgba(255,255,255,0.4);padding-left:5px;padding-right:5px}
