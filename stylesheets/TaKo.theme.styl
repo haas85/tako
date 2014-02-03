@@ -1,6 +1,6 @@
 THEME               = #FF6600
-SECONDARY           = #2f2f2f
-SECONDARY_ACTIVE    = lighten(SECONDARY, 15%)
+SECONDARY           = #2d2d2d
+SECONDARY_ACTIVE    = lighten(SECONDARY, 20%)
 TEXT                = #000
 SECONDARY_TEXT      = #F4F4F4
 FAIL                = #ed1c13
@@ -66,7 +66,7 @@ header
     &:not(.right)
       &:not(.left)
         color SECONDARY_TEXT
-        background-color SECONDARY
+        background-color lighten(SECONDARY, 5%)!important
 
         & .current
           background-color SECONDARY_ACTIVE
@@ -74,11 +74,11 @@ header
           box-sizing(border-box)
 
 footer
-  background-color lighten(SECONDARY, 10%)!important
+  background-color lighten(SECONDARY, 5%)!important
   color SECONDARY_TEXT !important
 
   & button
-    background-color lighten(SECONDARY, 10%)!important
+    background-color lighten(SECONDARY, 5%)!important
 
     &:active, &:hover
       & .counter
