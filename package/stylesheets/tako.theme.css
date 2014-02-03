@@ -46,5 +46,5 @@ label.select:hover{color:#ff944d;}
 label.select:hover > select{border-color:#ff944d}
 li.tapable:active{color:#000;background-color:#ff8533}
 div.pulltorefresh{background-color:#c4c4c4}
-@media screen and (min-width : 768px) and (orientation : landscape){aside{-webkit-box-shadow:inset -4px -8px 3px 1px #171717 !important;-moz-box-shadow:inset -4px -8px 3px 1px #171717 !important;-ms-box-shadow:inset -4px -8px 3px 1px #171717 !important;-o-box-shadow:inset -4px -8px 3px 1px #171717 !important;box-shadow:inset -4px -8px 3px 1px #171717 !important}
+@media screen and (min-width : 768px) and (orientation : landscape){aside{-webkit-box-shadow:inset -4px 0 3px 1px #171717 !important;-moz-box-shadow:inset -4px 0 3px 1px #171717 !important;-ms-box-shadow:inset -4px 0 3px 1px #171717 !important;-o-box-shadow:inset -4px 0 3px 1px #171717 !important;box-shadow:inset -4px 0 3px 1px #171717 !important}
 }
