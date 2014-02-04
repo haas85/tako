@@ -117,14 +117,17 @@ Tako.Pull_Refresh = (container, options={})->
       @text.html @options.refreshLabel
       @setHeight @breakpoint - 10
       @refreshing = true
+      @setRotation 0
       @options.onRefresh.call @options.onRefresh
 
     onArrived: ->
       @showRelease = true
+      @setRotation 180
       @text.html @options.releaseLabel
 
     onUp: ->
       @showRelease = false
+      @setRotation 0
       @text.html @options.pullLabel
 
     hide: =>
@@ -140,7 +143,6 @@ Tako.Pull_Refresh = (container, options={})->
 
     updateHeight: =>
       @setHeight @_slidedown_height
-      do @rotate
       @_anim = requestAnimationFrame(=>
         @updateHeight()
       )

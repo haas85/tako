@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 1/31/2014
+/* TaKo v0.1.0 - 2/4/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -283,30 +283,6 @@
     }
   };
 
-  _fallback = function() {
-    var _android, _firefox, _ios;
-    _android = function() {
-      return this;
-    };
-    _ios = function() {
-      return this;
-    };
-    _firefox = function() {
-      var style;
-      style = "<style>\n  @media screen and (min-width: 768px) and (orientation: landscape){\n    section.active.extended_header > article {\n      margin-top: 0;\n    }\n  }\n</style>";
-      return $("head").append(style);
-    };
-    if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
-      _firefox();
-    }
-    if (($.os != null) && $.os.android) {
-      _android();
-    }
-    if (($.os != null) && $.os.ios) {
-      return _ios();
-    }
-  };
-
   Tako.Connection = (function() {
     var _callbacks, _state, _stateChange;
     _state = navigator.onLine;
@@ -384,6 +360,30 @@
       }
     };
   })();
+
+  _fallback = function() {
+    var _android, _firefox, _ios;
+    _android = function() {
+      return this;
+    };
+    _ios = function() {
+      return this;
+    };
+    _firefox = function() {
+      var style;
+      style = "<style>\n  @media screen and (min-width: 768px) and (orientation: landscape){\n    section.active.extended_header > article {\n      margin-top: 0;\n    }\n  }\n</style>";
+      return $("head").append(style);
+    };
+    if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
+      _firefox();
+    }
+    if (($.os != null) && $.os.android) {
+      _android();
+    }
+    if (($.os != null) && $.os.ios) {
+      return _ios();
+    }
+  };
 
   Tako.Notification = (function(TK) {
     var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
@@ -733,16 +733,19 @@
         this.text.html(this.options.refreshLabel);
         this.setHeight(this.breakpoint - 10);
         this.refreshing = true;
+        this.setRotation(0);
         return this.options.onRefresh.call(this.options.onRefresh);
       };
 
       PullToRefresh.prototype.onArrived = function() {
         this.showRelease = true;
+        this.setRotation(180);
         return this.text.html(this.options.releaseLabel);
       };
 
       PullToRefresh.prototype.onUp = function() {
         this.showRelease = false;
+        this.setRotation(0);
         return this.text.html(this.options.pullLabel);
       };
 
@@ -761,7 +764,6 @@
       PullToRefresh.prototype.updateHeight = function() {
         var _this = this;
         this.setHeight(this._slidedown_height);
-        this.rotate();
         return this._anim = requestAnimationFrame(function() {
           return _this.updateHeight();
         });

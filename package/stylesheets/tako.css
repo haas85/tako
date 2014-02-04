@@ -234,6 +234,7 @@ div.pulltorefresh{width:100%;line-height:60px;border-top:1px solid rgba(0,0,0,0.
 div.pulltorefresh span{height:50px;line-height:50px;display:inline-block;}
 div.pulltorefresh span.text{font-size:1.5em;position:relative;top:-7px}
 div.pulltorefresh span.icon{width:50px;-webkit-border-radius:28px;-moz-border-radius:28px;-ms-border-radius:28px;-o-border-radius:28px;border-radius:28px;border:3px solid rgba(0,0,0,0.8);text-align:center;padding:0;margin-left:1em;margin-right:1em;font-size:2em;}
+div.pulltorefresh span.icon.down-big{-webkit-transition-duration:250ms;-moz-transition-duration:250ms;-ms-transition-duration:250ms;-o-transition-duration:250ms;transition-duration:250ms}
 div.pulltorefresh span.icon.animated{border:none;font-size:3em;margin-right:.5em;margin-top:10px}
 
 div[data-element="notification"]{position:fixed;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0.6);z-index:400;padding-top:0;}
