@@ -22,6 +22,30 @@ aside
   &.show
     z-index ASIDE_INDEX!important
 
+  & > header
+    width 100%
+    margin 0
+    padding 0
+    text-align center
+    height HEADER_HEIGHT
+    line-height HEADER_HEIGHT
+
+    & > h1
+      font-weight bold
+      display inline-block
+      text-align center
+      height HEADER_HEIGHT
+      line-height HEADER_HEIGHT
+      width 100%
+      margin 0
+
+      & > img
+        width auto
+        height HEADER_HEIGHT - 8
+        margin-top 8px
+    & + ul
+      margin-top 8px
+
 div[data-element="aside_background"]
   position fixed
   top HEADER_HEIGHT
