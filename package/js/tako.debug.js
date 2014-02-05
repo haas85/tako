@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/5/2014
+/* TaKo v0.1.0 - 2/6/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -59,7 +59,6 @@
       $("body").hammer();
       $("section>header>nav:not(.left):not(.right)").parent().parent().addClass("extended_header");
       $("section>footer").parent().addClass("footer");
-      $("article").css("min-height", "" + ($(window).height() - 165) + "px");
       $("section").each(function() {
         if ($(this).children("article.active").length === 0) {
           return $(this).children("article").first().addClass("active");
@@ -362,7 +361,10 @@
   })();
 
   _fallback = function() {
-    var _android, _firefox, _ios;
+    var height, style, _android, _firefox, _ios;
+    style = "<style>";
+    height = $(window).height();
+    style += "section > article{min-height:" + (height - 50) + "px}\nsection.extended_header > article{min-height:" + (height - 100) + "px}\nsection.footer > article{min-height:" + (height - 115) + "px}\nsection.extended_header.footer > article{min-height:" + (height - 165) + "px}\nsection.no_header > article{min-height:" + height + "px}\nsection.no_header.footer > article{min-height:" + (height - 65) + "px}";
     _android = function() {
       return this;
     };
@@ -370,9 +372,7 @@
       return this;
     };
     _firefox = function() {
-      var style;
-      style = "<style>\n  @media screen and (min-width: 768px) and (orientation: landscape){\n    section.active.extended_header > article {\n      margin-top: 0;\n    }\n  }\n</style>";
-      return $("head").append(style);
+      return style += "@media screen and (min-width: 768px) and (orientation: landscape){\n  section.active.extended_header > article {\n    margin-top: 0;\n  }\n}";
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();
@@ -381,8 +381,10 @@
       _android();
     }
     if (($.os != null) && $.os.ios) {
-      return _ios();
+      _ios();
     }
+    style += "</style>";
+    return $("head").append(style);
   };
 
   Tako.Notification = (function(TK) {
