@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/4/2014
+/* TaKo v0.1.0 - 2/6/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 body{font:14px "lato";background-color:#e7e7e7;}
@@ -14,7 +14,7 @@ section > header > nav:not(.right):not(.left) .current{background-color:#575757;
 footer{background-color:#383838 !important;color:#f4f4f4 !important;}
 footer button{background-color:#383838 !important;}
 footer button:active .counter,footer button:hover .counter{background-color:#2d2d2d}
-footer .counter{background-color:#343434}
+footer .counter{background-color:#2c2c2c}
 article{background-color:#e7e7e7;color:#000}
 aside{background-color:#2d2d2d;color:#f4f4f4 !important;-webkit-box-shadow:4px 0 3px 1px #171717;-moz-box-shadow:4px 0 3px 1px #171717;-ms-box-shadow:4px 0 3px 1px #171717;-o-box-shadow:4px 0 3px 1px #171717;box-shadow:4px 0 3px 1px #171717;}
 aside .counter{background-color:#6c6c6c}

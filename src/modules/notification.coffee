@@ -18,11 +18,11 @@ Tako.Notification = do (TK = Tako) ->
 
   success = (icon, title, content, time_out, cb) ->
     html = _iconHtml icon, title, content
-    _show html, "success center upwards", true, time_out, cb
+    _show html, "success center upwards", time_out, cb
 
   error = (icon, title, content, time_out, cb) ->
     html = _iconHtml icon, title, content
-    _show html, "error center downwards", true, time_out, cb
+    _show html, "error center downwards", time_out, cb
 
   loading = (title, time_out, args...) ->
     if args[0]? and typeof(args[0]) is "string"
@@ -45,7 +45,7 @@ Tako.Notification = do (TK = Tako) ->
       <span class="icon #{icon} animated"></span>
     </article>
     """
-    _show html, classes, true, time_out, cb
+    _show html, classes, time_out, cb
 
   progress = (icon, title, content, time_out, cb) ->
     html = """<header class="#{if icon? then 'align-left' else 'center'}">"""
@@ -58,7 +58,7 @@ Tako.Notification = do (TK = Tako) ->
       <div id="notification_progress"></div><div style="clear:both"></div>
     </article>
     """
-    _show html, "center progress not_clickable", true, time_out, cb
+    _show html, "center progress not_clickable", time_out, cb
     progress = TK.ProgressBar "notification_progress", 0
     percent: (value) ->
       val = progress.percent value
@@ -66,15 +66,21 @@ Tako.Notification = do (TK = Tako) ->
       val
 
   confirm = (icon, title, content, accept, cancel, cb) ->
-    html = """<span class="icon #{icon}"></span>
-              <span class="title">#{title}</span>
-              <div class="content padding bottom clear">#{content}</div>
-              <button class="button accept">#{accept}</button>
-              <button class="button cancel">#{cancel}</button>
+    html = """<article>
+                <span class="icon #{icon}"></span>
+                <div>
+                  <span class="title">#{title}</span><br>
+                  <span class="content padding bottom clear">#{content}</span>
+                </div>
+              </article>
+              <footer>
+                <button class="button accept">#{accept}</button>
+                <button class="button cancel">#{cancel}</button>
+              </footer>
             """
-    _show html, "confirm top_position downwards not_clickable", null, null
+    _show html, "center confirm not_clickable", null, null
 
-    buttons = notification_window.children("button")
+    buttons = notification_window.find("button")
     buttons.bind "tap", (element) ->
       buttons.unbind "tap"
       do hide
@@ -103,17 +109,13 @@ Tako.Notification = do (TK = Tako) ->
 
 
 
-  _show = (html, classes, flexed, time_out, cb) ->
+  _show = (html, classes, time_out, cb) ->
     if not active
       active = true
       do notification_window.removeClass
       notification_window.addClass "window " + classes
       notification_window.html html
       notification.addClass "show"
-      if flexed
-        notification.addClass "flexed"
-      else
-        notification.removeClass "flexed"
       setTimeout (-> notification_window.addClass("show")), 100
       callback = cb if cb?
       if time_out?

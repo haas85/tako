@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/4/2014
+/* TaKo v0.1.0 - 2/5/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -397,12 +397,12 @@
     success = function(icon, title, content, time_out, cb) {
       var html;
       html = _iconHtml(icon, title, content);
-      return _show(html, "success center upwards", true, time_out, cb);
+      return _show(html, "success center upwards", time_out, cb);
     };
     error = function(icon, title, content, time_out, cb) {
       var html;
       html = _iconHtml(icon, title, content);
-      return _show(html, "error center downwards", true, time_out, cb);
+      return _show(html, "error center downwards", time_out, cb);
     };
     loading = function() {
       var args, cb, classes, html, icon, time_out, title;
@@ -422,7 +422,7 @@
         classes += " squared";
       }
       html += "<article>\n  <span class=\"icon " + icon + " animated\"></span>\n</article>";
-      return _show(html, classes, true, time_out, cb);
+      return _show(html, classes, time_out, cb);
     };
     progress = function(icon, title, content, time_out, cb) {
       var html;
@@ -431,7 +431,7 @@
         html += "<span class=\"icon " + icon + "\"></span>";
       }
       html += "<span>" + title + "</span>\n</header>\n<article>\n  <span class=\"content\">" + content + "</span>\n  <div id=\"notification_progress\"></div><div style=\"clear:both\"></div>\n</article>";
-      _show(html, "center progress not_clickable", true, time_out, cb);
+      _show(html, "center progress not_clickable", time_out, cb);
       progress = TK.ProgressBar("notification_progress", 0);
       return {
         percent: function(value) {
@@ -448,9 +448,9 @@
     };
     confirm = function(icon, title, content, accept, cancel, cb) {
       var buttons, html;
-      html = "<span class=\"icon " + icon + "\"></span>\n<span class=\"title\">" + title + "</span>\n<div class=\"content padding bottom clear\">" + content + "</div>\n<button class=\"button accept\">" + accept + "</button>\n<button class=\"button cancel\">" + cancel + "</button>";
-      _show(html, "confirm top_position downwards not_clickable", null, null);
-      buttons = notification_window.children("button");
+      html = "<article>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</article>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
+      _show(html, "center confirm not_clickable", null, null);
+      buttons = notification_window.find("button");
       return buttons.bind("tap", function(element) {
         buttons.unbind("tap");
         hide();
@@ -471,7 +471,7 @@
     _iconHtml = function(icon, title, content) {
       return "<header>\n  <span class=\"icon " + icon + "\"></span>\n</header>\n<article>\n  <span class=\"title\">" + title + "</span>\n  <span class=\"content\">" + content + "</span>\n</article>";
     };
-    _show = function(html, classes, flexed, time_out, cb) {
+    _show = function(html, classes, time_out, cb) {
       var original_cb;
       if (!active) {
         active = true;
@@ -479,11 +479,6 @@
         notification_window.addClass("window " + classes);
         notification_window.html(html);
         notification.addClass("show");
-        if (flexed) {
-          notification.addClass("flexed");
-        } else {
-          notification.removeClass("flexed");
-        }
         setTimeout((function() {
           return notification_window.addClass("show");
         }), 100);

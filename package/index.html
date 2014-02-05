@@ -18,6 +18,9 @@
 
 <body>
     <aside class="full">
+        <header>
+            <h1>Hola</h1>
+        </header>
     <!-- <aside> -->
         <ul>
             <li class="icon box" data-article="forms">Forms <span class="counter">125</span></li>
@@ -57,12 +60,17 @@
                 </p>
 
                 <p>
-                    <button class="smallest">Smallest</button>
+                    <a class="button smallest">Smallest</a>
+                    <a class="button small">Small</a>
+                    <a class="button">Normal</a>
+                    <a class="button big">Big</a>
+                    <a class="button biggest">Biggest</a>
+                </p>
+                <button class="smallest">Smallest</button>
                     <button class="small">Small</button>
                     <button >Normal</button>
                     <button class="big">Big</button>
                     <button class="biggest">Biggest</button>
-                </p>
 
                 <p>
                     <button class="smallest"><span class="icon spin1 animated"></span><span>Hola</span></button>
@@ -418,6 +426,7 @@
                     alert("Refresh finished");
                     puller.hide()}, 3000);
             }});
+            Tako.Article("notifications");
         });
 
         Tako.init({"sections": ["section2.html"]});
@@ -428,7 +437,7 @@
             Tako.Notification.error("cancel", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
         });
         $("#show_confirm").bind("tap", function(){
-            Tako.Notification.confirm("help", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
+            Tako.Notification.confirm("help-circled", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
                 if(result){
                     alert("I know you like them!!");
                 }else{
@@ -437,7 +446,7 @@
             })
         });
         $("#show_loading").bind("tap", function(){
-            Tako.Notification.loading(null, null, function(){console.log("LOADING CB");})
+            Tako.Notification.loading("Loading", 5, function(){console.log("LOADING CB");})
         });
         $("#show_progress").bind("tap", function(){
             var progress = Tako.Notification.progress("spin1 animated", "Downloading", "Please wait until your download is completed");
