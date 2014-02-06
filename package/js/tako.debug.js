@@ -361,10 +361,11 @@
   })();
 
   _fallback = function() {
-    var height, style, _android, _firefox, _ios;
+    var height, style, _SECTION, _android, _firefox, _ios;
     style = "<style>";
     height = $(window).height();
-    style += "section > article{min-height:" + (height - 50) + "px}\nsection.extended_header > article{min-height:" + (height - 100) + "px}\nsection.footer > article{min-height:" + (height - 115) + "px}\nsection.extended_header.footer > article{min-height:" + (height - 165) + "px}\nsection.no_header > article{min-height:" + height + "px}\nsection.no_header.footer > article{min-height:" + (height - 65) + "px}";
+    _SECTION = "body>section";
+    style += "body>section > article{min-height:" + (height - 50) + "px}\nbody>section.extended_header > article{min-height:" + (height - 100) + "px}\nbody>section.footer > article{min-height:" + (height - 115) + "px}\nbody>section.extended_header.footer > article{min-height:" + (height - 165) + "px}\nbody>section.no_header > article{min-height:" + height + "px}\nbody>section.no_header.footer > article{min-height:" + (height - 65) + "px}";
     _android = function() {
       return this;
     };
@@ -388,7 +389,7 @@
   };
 
   Tako.Notification = (function(TK) {
-    var active, callback, confirm, error, hide, loading, notification, notification_window, progress, success, timeout, _hide, _iconHtml, _ontap, _show;
+    var active, callback, confirm, custom, error, hide, loading, notification, notification_window, progress, success, timeout, _close, _hide, _iconHtml, _ontap, _show;
     active = false;
     notification = $("<div data-element=\"notification\"><div></div</div>");
     notification_window = $("<section class=\"window\"></section>");
@@ -463,6 +464,30 @@
         }
       });
     };
+    custom = function(title, content, closable, classes, timeout, cb) {
+      var header, html;
+      if (closable == null) {
+        closable = true;
+      }
+      if (classes == null) {
+        classes = "";
+      }
+      header = "";
+      if ((title != null) && closable) {
+        header = "<header>\n  <span class=\"close black\">X</span>\n  <h1>\n    <span>" + title + "</span>\n  </h1>\n</header>";
+      } else if (title != null) {
+        header = "<header><h1>\n  <span>" + title + "</span>\n</h1></header>";
+      }
+      html = "" + header + "\n<article>";
+      if (closable && (title == null)) {
+        html += "<span class=\"close black\">X</span>";
+      }
+      html += "" + content + "\n</article>";
+      _show(html, "center custom not_clickable " + classes, timeout, cb);
+      console.log(notification);
+      console.log(notification.find(".close"));
+      return notification.find(".close").on("tap", _close);
+    };
     hide = function() {
       active = false;
       clearTimeout(timeout);
@@ -512,6 +537,15 @@
         return setTimeout(_hide, 500);
       }
     };
+    _close = function(ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      active = false;
+      clearTimeout(timeout);
+      timeout = null;
+      notification_window.removeClass("show");
+      return setTimeout(_hide, 500);
+    };
     _hide = function() {
       var cb;
       notification.removeClass("show");
@@ -528,6 +562,7 @@
       confirm: confirm,
       loading: loading,
       progress: progress,
+      custom: custom,
       hide: hide
     };
   })(Tako);

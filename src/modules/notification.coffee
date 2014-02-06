@@ -3,13 +3,9 @@ Tako.Notification = do (TK = Tako) ->
 
 
   notification = $ """<div data-element="notification"><div></div</div>"""
-  # notification = $ """<div></div>"""
-  # notification_bck.append notification
-
   notification_window = $ """<section class="window"></section>"""
 
   notification.find("div").append notification_window
-
   $("body").append notification
 
   timeout = null
@@ -89,6 +85,33 @@ Tako.Notification = do (TK = Tako) ->
       else
         cb.call cb, false
 
+  custom = (title, content, closable=true, classes="", timeout, cb) ->
+    header = ""
+    if title? and closable
+      header = """
+        <header>
+          <span class="close black">X</span>
+          <h1>
+            <span>#{title}</span>
+          </h1>
+        </header>"""
+    else if title?
+      header = """<header><h1>
+        <span>#{title}</span>
+      </h1></header>"""
+    html = """
+    #{header}
+    <article>"""
+    html += """<span class="close black">X</span>""" if closable and not title?
+    html += """#{content}
+    </article>
+    """
+
+    _show html, "center custom not_clickable #{classes}", timeout, cb
+    console.log notification
+    console.log notification.find(".close")
+    notification.find(".close").on "tap", _close
+
   hide = ->
     active = false
     clearTimeout timeout
@@ -137,6 +160,15 @@ Tako.Notification = do (TK = Tako) ->
       notification_window.removeClass "show"
       setTimeout _hide, 500
 
+  _close = (ev) ->
+    do ev.preventDefault
+    do ev.stopPropagation
+    active = false
+    clearTimeout timeout
+    timeout = null
+    notification_window.removeClass "show"
+    setTimeout _hide, 500
+
   _hide = ->
     notification.removeClass "show"
     cb = callback
@@ -151,5 +183,5 @@ Tako.Notification = do (TK = Tako) ->
   confirm: confirm
   loading: loading
   progress: progress
-  # custom: custom
+  custom: custom
   hide: hide

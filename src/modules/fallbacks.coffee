@@ -3,13 +3,15 @@ _fallback = ->
 
   height = $(window).height()
 
+  _SECTION = "body>section"
+
   style += """
-    section > article{min-height:#{height-50}px}
-    section.extended_header > article{min-height:#{height-100}px}
-    section.footer > article{min-height:#{height-115}px}
-    section.extended_header.footer > article{min-height:#{height-165}px}
-    section.no_header > article{min-height:#{height}px}
-    section.no_header.footer > article{min-height:#{height-65}px}
+    body>section > article{min-height:#{height-50}px}
+    body>section.extended_header > article{min-height:#{height-100}px}
+    body>section.footer > article{min-height:#{height-115}px}
+    body>section.extended_header.footer > article{min-height:#{height-165}px}
+    body>section.no_header > article{min-height:#{height}px}
+    body>section.no_header.footer > article{min-height:#{height-65}px}
   """
 
   _android = -> @

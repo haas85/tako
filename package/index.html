@@ -391,6 +391,7 @@
                 <button class="wide accept" id="show_success">Success</button>
                 <button class="wide cancel" id="show_error">Error</button>
                 <button class="wide" id="show_confirm">Confirm</button>
+                <button class="wide" id="show_custom">Custom</button>
                 <button class="wide grey" id="show_loading">Loading</button>
                 <button class="wide" id="show_progress">Progress</button>
             </div>
@@ -445,6 +446,8 @@
                 }
             })
         });
+        $("#show_custom").bind("tap", function(){
+            Tako.Notification.custom("Custom", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus auctor convallis. Aliquam eget ipsum a velit pulvinar elementum vitae non dolor. Nullam dui metus, tincidunt non dolor eu, laoreet auctor tellus. Suspendisse vestibulum scelerisque nibh non scelerisque. Cras eget lobortis orci. Vestibulum ultrices enim mattis fermentum tristique. Nunc ultricies feugiat tellus, ut facilisis est dignissim nec. Vivamus molestie sem vel euismod vestibulum.", false, "invento", null, function(){console.log("Fin de custom")});});
         $("#show_loading").bind("tap", function(){
             Tako.Notification.loading("Loading", 5, function(){console.log("LOADING CB");})
         });

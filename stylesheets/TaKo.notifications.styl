@@ -42,6 +42,7 @@ div[data-element="notification"]
     height auto
     padding 0
     transition-duration NOTIFICATION_TRANSITION_TIME
+    background-color NOTIFICATION_WHITE
 
     & > header
       position static
@@ -295,3 +296,48 @@ div[data-element="notification"]
     &.progress
       & > article
         height 150px
+
+    &.custom
+      & > header
+        text-align center
+        width 100%
+
+      & > article
+        width 100%
+        position static
+        display block
+        padding 10px
+        box-sizing border-box
+
+        & .close
+          position relative
+          top -10px
+          right -10px
+
+      & .close
+        position absolute
+        top 0
+        right 0
+        float right
+        width 50px
+        height 50px
+        line-height 50px
+        text-align center
+        display inline-block
+        font-size 2em
+        font-weight bolder
+
+        height 50px
+        width 50px
+        line-height 50px
+        color NOTIFICATION_WHITE
+        z-index 410
+
+        & + h1 > span
+          text-align center
+          padding-right 55px
+
+        & + article
+          display block
+          position relative
+          top 30px

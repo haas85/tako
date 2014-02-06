@@ -56,6 +56,12 @@ section > header
           border-bottom 4px solid THEME
           box-sizing(border-box)
 
+        & > *
+          border-right 1px solid darken(SECONDARY, 15%)
+
+          &:last-child
+            border-right none
+
 footer
   background-color lighten(SECONDARY, 5%)!important
   color SECONDARY_TEXT !important
@@ -66,6 +72,12 @@ footer
     &:active, &:hover
       & .counter
         background-color SECONDARY
+
+  & > nav > *
+    border-right 1px solid darken(SECONDARY, 15%)
+
+    &:last-child
+      border-right none
 
   & .counter
     background-color darken(SECONDARY_ACTIVE, 50%)
