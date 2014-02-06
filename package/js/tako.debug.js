@@ -474,18 +474,16 @@
       }
       header = "";
       if ((title != null) && closable) {
-        header = "<header>\n  <span class=\"close black\">X</span>\n  <h1>\n    <span>" + title + "</span>\n  </h1>\n</header>";
+        header = "<header>\n  <span class=\"close black icon cancel\"></span>\n  <h1>\n    <span>" + title + "</span>\n  </h1>\n</header>";
       } else if (title != null) {
         header = "<header><h1>\n  <span>" + title + "</span>\n</h1></header>";
       }
       html = "" + header + "\n<article>";
       if (closable && (title == null)) {
-        html += "<span class=\"close black\">X</span>";
+        html += "<span class=\"close black icon cancel\"></span>";
       }
       html += "" + content + "\n</article>";
       _show(html, "center custom not_clickable " + classes, timeout, cb);
-      console.log(notification);
-      console.log(notification.find(".close"));
       return notification.find(".close").on("tap", _close);
     };
     hide = function() {

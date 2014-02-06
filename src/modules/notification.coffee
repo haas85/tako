@@ -90,7 +90,7 @@ Tako.Notification = do (TK = Tako) ->
     if title? and closable
       header = """
         <header>
-          <span class="close black">X</span>
+          <span class="close black icon cancel"></span>
           <h1>
             <span>#{title}</span>
           </h1>
@@ -102,14 +102,12 @@ Tako.Notification = do (TK = Tako) ->
     html = """
     #{header}
     <article>"""
-    html += """<span class="close black">X</span>""" if closable and not title?
+    html += """<span class="close black icon cancel"></span>""" if closable and not title?
     html += """#{content}
     </article>
     """
 
     _show html, "center custom not_clickable #{classes}", timeout, cb
-    console.log notification
-    console.log notification.find(".close")
     notification.find(".close").on "tap", _close
 
   hide = ->
