@@ -90,7 +90,7 @@ Tako.Notification = do (TK = Tako) ->
     if title? and closable
       header = """
         <header>
-          <span class="close black icon cancel"></span>
+          <span class="close icon cancel"></span>
           <h1>
             <span>#{title}</span>
           </h1>

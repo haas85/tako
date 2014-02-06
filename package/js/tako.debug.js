@@ -474,7 +474,7 @@
       }
       header = "";
       if ((title != null) && closable) {
-        header = "<header>\n  <span class=\"close black icon cancel\"></span>\n  <h1>\n    <span>" + title + "</span>\n  </h1>\n</header>";
+        header = "<header>\n  <span class=\"close icon cancel\"></span>\n  <h1>\n    <span>" + title + "</span>\n  </h1>\n</header>";
       } else if (title != null) {
         header = "<header><h1>\n  <span>" + title + "</span>\n</h1></header>";
       }
