@@ -151,7 +151,7 @@ fieldset > input{float:right}
 label.select{margin-top:2.5px;margin-bottom:2.5px;position:relative;display:inline-block;width:100%;}
 label.select:before{content:'';right:2px;top:0;width:20px;margin:2px 0;height:28px;background:#fff;position:absolute;pointer-events:none;display:block}
 label.select:after{content:"▼";position:absolute;font-size:18px;top:0;right:0;bottom:0;line-height:32px;padding:0 7px;background:rgba(0,0,0,0);pointer-events:none}
-label.select > select{-webkit-border-radius:0;-moz-border-radius:0;-ms-border-radius:0;-o-border-radius:0;border-radius:0;margin:0;height:32px}
+label.select > select{-webkit-border-radius:0;-moz-border-radius:0;-ms-border-radius:0;-o-border-radius:0;border-radius:0;margin:0}
 textarea{line-height:1.2em;min-height:3em;height:3.5em}
 form fieldset,.form fieldset{position:relative;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:8px 10px 8px 10px;}
 form fieldset:first-child,.form fieldset:first-child{border-top:1px solid rgba(0,0,0,0.1)}
