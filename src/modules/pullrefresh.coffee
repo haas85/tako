@@ -50,12 +50,7 @@ Tako.Pull_Refresh = (container, options={})->
     onPull: (ev) =>
       switch ev.type
         when "touch"
-          width = if window.innerWidth > 0 then window.innerWidth else screen.width
-          height = if window.innerHeight > 0 then window.innerHeight else screen.height
-          if ((width > 768) and (width > height)) or (@container.nodeName isnt "ARTICLE")
-            @phone = false
-          else
-            @phone = true
+          do @_setUp
           @hide() if not @refreshing
         when "release"
           return unless @_dragged_down
@@ -69,12 +64,8 @@ Tako.Pull_Refresh = (container, options={})->
             do @hide
         when "dragdown"
           @_dragged_down = true
-          scrollY = if @phone then window.scrollY else @container.scrollTop
-          if scrollY > 5
-            return
-          else
-            if scrollY isnt 0
-              if @phone then window.scrollTo(0, 0) else @container.scrollTop = 0
+          scrollY = @scroller[@scroll_string]
+          return if scrollY > 5
           @updateHeight() unless @_anim
           ev.gesture.preventDefault()
           ev.gesture.stopPropagation()
@@ -99,11 +90,6 @@ Tako.Pull_Refresh = (container, options={})->
         @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
         @pullrefresh.style.webkitTransform = "translate(0, #{height}px)"
         @pullrefresh.style.marginBottom = "#{height}px"
-
-    rotate: ->
-      slided = if @_slidedown_height >= @breakpoint then @breakpoint else @_slidedown_height
-      angle = slided * 180/ @breakpoint
-      @setRotation angle
 
     setRotation: (angle) =>
       @icon[0].style.transform = "rotate(#{angle}deg)"
@@ -146,5 +132,18 @@ Tako.Pull_Refresh = (container, options={})->
       @_anim = requestAnimationFrame(=>
         @updateHeight()
       )
+
+    _setUp: =>
+      width = if window.innerWidth > 0 then window.innerWidth else screen.width
+      height = if window.innerHeight > 0 then window.innerHeight else screen.height
+      if ((width > 768) and (width > height)) or (@container.nodeName isnt "ARTICLE")
+          @phone = false
+          @scroller = @container
+          @scroll_string = "scrollTop"
+        else
+          @phone = true
+          @scroller = window
+          @scroll_string = "scrollY"
+
 
   new PullToRefresh(container, options)

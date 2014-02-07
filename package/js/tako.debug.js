@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/6/2014
+/* TaKo v0.1.0 - 2/7/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -645,6 +645,7 @@
       function PullToRefresh(container, options) {
         var PULLREFRESH;
         this.options = options;
+        this._setUp = __bind(this._setUp, this);
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
         this.setRotation = __bind(this.setRotation, this);
@@ -666,16 +667,10 @@
       }
 
       PullToRefresh.prototype.onPull = function(ev) {
-        var height, scrollY, width;
+        var scrollY;
         switch (ev.type) {
           case "touch":
-            width = window.innerWidth > 0 ? window.innerWidth : screen.width;
-            height = window.innerHeight > 0 ? window.innerHeight : screen.height;
-            if (((width > 768) && (width > height)) || (this.container.nodeName !== "ARTICLE")) {
-              this.phone = false;
-            } else {
-              this.phone = true;
-            }
+            this._setUp();
             if (!this.refreshing) {
               return this.hide();
             }
@@ -697,17 +692,9 @@
             break;
           case "dragdown":
             this._dragged_down = true;
-            scrollY = this.phone ? window.scrollY : this.container.scrollTop;
+            scrollY = this.scroller[this.scroll_string];
             if (scrollY > 5) {
               return;
-            } else {
-              if (scrollY !== 0) {
-                if (this.phone) {
-                  window.scrollTo(0, 0);
-                } else {
-                  this.container.scrollTop = 0;
-                }
-              }
             }
             if (!this._anim) {
               this.updateHeight();
@@ -741,13 +728,6 @@
           this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
           return this.pullrefresh.style.marginBottom = "" + height + "px";
         }
-      };
-
-      PullToRefresh.prototype.rotate = function() {
-        var angle, slided;
-        slided = this._slidedown_height >= this.breakpoint ? this.breakpoint : this._slidedown_height;
-        angle = slided * 180 / this.breakpoint;
-        return this.setRotation(angle);
       };
 
       PullToRefresh.prototype.setRotation = function(angle) {
@@ -797,6 +777,21 @@
         return this._anim = requestAnimationFrame(function() {
           return _this.updateHeight();
         });
+      };
+
+      PullToRefresh.prototype._setUp = function() {
+        var height, width;
+        width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+        height = window.innerHeight > 0 ? window.innerHeight : screen.height;
+        if (((width > 768) && (width > height)) || (this.container.nodeName !== "ARTICLE")) {
+          this.phone = false;
+          this.scroller = this.container;
+          return this.scroll_string = "scrollTop";
+        } else {
+          this.phone = true;
+          this.scroller = window;
+          return this.scroll_string = "scrollY";
+        }
       };
 
       return PullToRefresh;
