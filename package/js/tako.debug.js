@@ -111,6 +111,7 @@
         new_section.children().removeClass("active");
         _current = new_article.addClass("active");
       }
+      window.scrollTo(0, 0);
       if (_current_section[0].id !== new_section[0].id) {
         Tako.Section(new_section[0].id);
       } else {
@@ -224,6 +225,7 @@
       if (el[0].id !== section_id) {
         el.removeClass("active");
         el.children("article.active").trigger("unload");
+        window.scrollTo(0, 0);
         _current = $("section#" + section_id).addClass("active");
         _current.children("article.active").trigger("load");
         $(".current[data-section]").removeClass("current");

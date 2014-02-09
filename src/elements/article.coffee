@@ -11,6 +11,8 @@ Tako.Article = do (TK = Tako) ->
       new_section.children().removeClass "active"
       _current = new_article.addClass "active"
 
+    window.scrollTo 0, 0
+
     if _current_section[0].id isnt new_section[0].id
       Tako.Section new_section[0].id
     else

@@ -5,6 +5,7 @@ Tako.Section = do (TK = Tako) ->
     if el[0].id isnt section_id
       el.removeClass("active")
       el.children("article.active").trigger "unload"
+      window.scrollTo 0, 0
       _current = $("section##{section_id}").addClass "active"
       _current.children("article.active").trigger "load"
       $(".current[data-section]").removeClass "current"
