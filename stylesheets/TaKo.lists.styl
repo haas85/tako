@@ -28,13 +28,24 @@ article ul
     &:first-child
       border-top 1px solid rgba(0, 0, 0, 0.1)
 
-    & h1, h2, h3, h4, h5, h6, strong, small
+    & h1, h2, h3, h4, h5, h6, strong, small, .strong, .small
       overflow hidden
       white-space nowrap
       display block
 
     & small
       margin-top .2em
+
+    & .small:not(img)
+      margin-top .2em
+      opacity .6
+      font-size 1.1em!important
+
+    & .strong
+      font-weight bold
+      font-size 1.1em
+
+
 
     & > img
       width LIST_IMAGE
