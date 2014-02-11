@@ -646,7 +646,6 @@
       function PullToRefresh(container, options) {
         var PULLREFRESH;
         this.options = options;
-        this._setUp = __bind(this._setUp, this);
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
         this.setRotation = __bind(this.setRotation, this);
@@ -663,15 +662,12 @@
         this._anim = null;
         this._dragged_down = false;
         this.showRelease = false;
-        this._phone = true;
         Hammer(this.container).on("touch dragdown release", this.onPull);
       }
 
       PullToRefresh.prototype.onPull = function(ev) {
-        var scrollY;
         switch (ev.type) {
           case "touch":
-            this._setUp();
             if (!this.refreshing) {
               return this.hide();
             }
@@ -693,8 +689,7 @@
             break;
           case "dragdown":
             this._dragged_down = true;
-            scrollY = this.scroller[this.scroll_string];
-            if (scrollY > 5) {
+            if (this.container.scrollTop > 5) {
               return;
             }
             if (!this._anim) {
@@ -714,21 +709,13 @@
       };
 
       PullToRefresh.prototype.setHeight = function(height) {
-        if (this.phone) {
-          this.container.style.transform = "translate(0, " + height + "px) ";
-          this.container.style.oTransform = "translate(0, " + height + "px)";
-          this.container.style.msTransform = "translate(0, " + height + "px)";
-          this.container.style.mozTransform = "translate(0, " + height + "px)";
-          return this.container.style.webkitTransform = "translate(0, " + height + "px)";
-        } else {
-          height -= 511;
-          this.pullrefresh.style.transform = "translate(0, " + height + "px) ";
-          this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
-          this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
-          this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
-          this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
-          return this.pullrefresh.style.marginBottom = "" + height + "px";
-        }
+        height -= 511;
+        this.pullrefresh.style.transform = "translate(0, " + height + "px) ";
+        this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
+        return this.pullrefresh.style.marginBottom = "" + height + "px";
       };
 
       PullToRefresh.prototype.setRotation = function(angle) {
@@ -778,21 +765,6 @@
         return this._anim = requestAnimationFrame(function() {
           return _this.updateHeight();
         });
-      };
-
-      PullToRefresh.prototype._setUp = function() {
-        var height, width;
-        width = window.innerWidth > 0 ? window.innerWidth : screen.width;
-        height = window.innerHeight > 0 ? window.innerHeight : screen.height;
-        if (((width > 768) && (width > height)) || (this.container.nodeName !== "ARTICLE")) {
-          this.phone = false;
-          this.scroller = this.container;
-          return this.scroll_string = "scrollTop";
-        } else {
-          this.phone = true;
-          this.scroller = window;
-          return this.scroll_string = "scrollY";
-        }
       };
 
       return PullToRefresh;

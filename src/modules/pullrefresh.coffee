@@ -44,13 +44,11 @@ Tako.Pull_Refresh = (container, options={})->
       @_anim = null
       @_dragged_down = false
       @showRelease = false
-      @_phone = true
       Hammer(@container).on "touch dragdown release", @onPull
 
     onPull: (ev) =>
       switch ev.type
         when "touch"
-          do @_setUp
           @hide() if not @refreshing
         when "release"
           return unless @_dragged_down
@@ -64,8 +62,7 @@ Tako.Pull_Refresh = (container, options={})->
             do @hide
         when "dragdown"
           @_dragged_down = true
-          scrollY = @scroller[@scroll_string]
-          return if scrollY > 5
+          return if @container.scrollTop > 5
           @updateHeight() unless @_anim
           ev.gesture.preventDefault()
           ev.gesture.stopPropagation()
@@ -76,20 +73,13 @@ Tako.Pull_Refresh = (container, options={})->
           @_slidedown_height = ev.gesture.deltaY * 0.4
 
     setHeight: (height) =>
-      if @phone
-        @container.style.transform = "translate(0, #{height}px) "
-        @container.style.oTransform = "translate(0, #{height}px)"
-        @container.style.msTransform = "translate(0, #{height}px)"
-        @container.style.mozTransform = "translate(0, #{height}px)"
-        @container.style.webkitTransform = "translate(0, #{height}px)"
-      else
-        height -= 511
-        @pullrefresh.style.transform = "translate(0, #{height}px) "
-        @pullrefresh.style.oTransform = "translate(0, #{height}px)"
-        @pullrefresh.style.msTransform = "translate(0, #{height}px)"
-        @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
-        @pullrefresh.style.webkitTransform = "translate(0, #{height}px)"
-        @pullrefresh.style.marginBottom = "#{height}px"
+      height -= 511
+      @pullrefresh.style.transform = "translate(0, #{height}px) "
+      @pullrefresh.style.oTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.msTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.webkitTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.marginBottom = "#{height}px"
 
     setRotation: (angle) =>
       @icon[0].style.transform = "rotate(#{angle}deg)"
@@ -132,18 +122,6 @@ Tako.Pull_Refresh = (container, options={})->
       @_anim = requestAnimationFrame(=>
         @updateHeight()
       )
-
-    _setUp: =>
-      width = if window.innerWidth > 0 then window.innerWidth else screen.width
-      height = if window.innerHeight > 0 then window.innerHeight else screen.height
-      if ((width > 768) and (width > height)) or (@container.nodeName isnt "ARTICLE")
-          @phone = false
-          @scroller = @container
-          @scroll_string = "scrollTop"
-        else
-          @phone = true
-          @scroller = window
-          @scroll_string = "scrollY"
 
 
   new PullToRefresh(container, options)
