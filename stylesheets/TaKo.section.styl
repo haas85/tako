@@ -7,6 +7,16 @@ section
   opacity 0
   position absolute
 
+  display -webkit-box
+  display -ms-box
+  display -o-box
+  display -moz-box
+  display box
+
+  box-align stretch
+  box-orient vertical
+  box-pack justify
+
   transition-duration SECTION_TRANSITION_TIME
 
   &.active
@@ -17,13 +27,13 @@ section
     display none
 
   &.footer > article
-    padding-bottom FOOTER_HEIGHT
+    padding-bottom -2px
 
   &.no_header > article
     top 0
 
   &.extended_header > article
-    top HEADER_HEIGHT * 2
+    margin-top HEADER_HEIGHT
 
   &.asided
     & header
@@ -57,7 +67,9 @@ section
       transition-duration 0ms !important
 
   & header
-    position fixed
+    position relative
+    ordinal-group(1)
+    box-flex 0
     top 0
     left 0
     right 0
@@ -88,7 +100,7 @@ section
       max-height HEADER_HEIGHT
 
       &.right
-        position fixed
+        position absolute
         z-index HEADER_NAV_INDEX
         right 0
 
@@ -96,7 +108,7 @@ section
           margin-right 5px
 
       &.left
-        position fixed
+        position absolute
         z-index HEADER_NAV_INDEX
         left 0
 
@@ -105,6 +117,8 @@ section
 
       &:not(.right)
         &:not(.left)
+          position relative
+          top HEADER_HEIGHT
           font-size 1.2em
           width 100%
           margin HEADER_HEIGHT 0 0 0
@@ -133,10 +147,12 @@ section
             font-size 1em
 
 footer
-  position fixed
+  position relative
   bottom 0
   left 0
   right 0
+  box-flex 0
+  ordinal-group(3)
   margin 0 0 -2px 0
   width 100%
   height FOOTER_HEIGHT
@@ -191,10 +207,12 @@ article
   width 100%
   display none
   margin 0
-  position absolute
   top HEADER_HEIGHT
   overflow visible
-  z-index ARTICLE_INDEX
+  height inherit
+  overflow-y scroll
+  box-flex 1
+  ordinal-group(2)
 
   &.horizontal
     width auto

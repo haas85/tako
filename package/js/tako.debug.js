@@ -102,15 +102,9 @@
   Tako.Article = (function(TK) {
     var current, goTo, _current;
     goTo = function(article_id) {
-      var new_article, new_section, viewType, _current, _current_article, _current_section;
+      var new_article, new_section, _current, _current_article, _current_section;
       _current_article = current();
       _current_section = _current_article.parent();
-      viewType = Tako.viewType();
-      if (viewType === "PHONE") {
-        _current_article.attr("data-scroll", window.scrollY);
-      } else {
-        _current_article.attr("data-scroll", _current_article.scrollTop());
-      }
       new_article = $("article#" + article_id);
       new_section = new_article.parent();
       if (_current_article[0].id !== new_article[0].id) {
@@ -122,11 +116,6 @@
       } else {
         _current_article.trigger("unload");
         _current = new_article.trigger("load");
-      }
-      if (viewType === "PHONE") {
-        window.scrollTo(0, _current.attr("data-scroll") || 0);
-      } else {
-        _current.scrollTop(_current.attr("data-scroll") || 0);
       }
       $(".current[data-article]").removeClass("current");
       $("[data-article=" + article_id + "]").addClass("current");
@@ -377,7 +366,7 @@
     style = "<style>";
     height = $(window).height();
     _SECTION = "body>section";
-    style += "body>section > article{min-height:" + (height - 50) + "px}\nbody>section.extended_header > article{min-height:" + (height - 100) + "px}\nbody>section.footer > article{min-height:" + (height - 115) + "px}\nbody>section.extended_header.footer > article{min-height:" + (height - 165) + "px}\nbody>section.no_header > article{min-height:" + height + "px}\nbody>section.no_header.footer > article{min-height:" + (height - 65) + "px}";
+    style += "";
     _android = function() {
       return this;
     };
