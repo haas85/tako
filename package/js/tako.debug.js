@@ -710,12 +710,12 @@
 
       PullToRefresh.prototype.setHeight = function(height) {
         height -= 511;
-        this.pullrefresh.style.transform = "translate(0, " + height + "px) ";
-        this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.transform = "translate(0, " + height + "px)";
         this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
-        return this.pullrefresh.style.marginBottom = "" + height + "px";
+        this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.marginBottom = "" + height + "px";
+        return this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
       };
 
       PullToRefresh.prototype.setRotation = function(angle) {
@@ -760,11 +760,15 @@
       };
 
       PullToRefresh.prototype.updateHeight = function() {
-        var _this = this;
-        this.setHeight(this._slidedown_height);
-        return this._anim = requestAnimationFrame(function() {
-          return _this.updateHeight();
-        });
+        var height;
+        height = this._slidedown_height - 511;
+        this.pullrefresh.style.transform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.marginBottom = "" + height + "px";
+        this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
+        return this._anim = requestAnimationFrame(this.updateHeight);
       };
 
       return PullToRefresh;

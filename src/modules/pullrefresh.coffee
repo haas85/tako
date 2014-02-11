@@ -74,12 +74,12 @@ Tako.Pull_Refresh = (container, options={})->
 
     setHeight: (height) =>
       height -= 511
-      @pullrefresh.style.transform = "translate(0, #{height}px) "
-      @pullrefresh.style.oTransform = "translate(0, #{height}px)"
-      @pullrefresh.style.msTransform = "translate(0, #{height}px)"
-      @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.transform = "translate(0, #{height}px)"
       @pullrefresh.style.webkitTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.msTransform = "translate(0, #{height}px)"
       @pullrefresh.style.marginBottom = "#{height}px"
+      @pullrefresh.style.oTransform = "translate(0, #{height}px)"
 
     setRotation: (angle) =>
       @icon[0].style.transform = "rotate(#{angle}deg)"
@@ -118,10 +118,15 @@ Tako.Pull_Refresh = (container, options={})->
       @refreshing = false
 
     updateHeight: =>
-      @setHeight @_slidedown_height
-      @_anim = requestAnimationFrame(=>
-        @updateHeight()
-      )
+      height = @_slidedown_height - 511
+      @pullrefresh.style.transform = "translate(0, #{height}px)"
+      @pullrefresh.style.webkitTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.msTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.marginBottom = "#{height}px"
+      @pullrefresh.style.oTransform = "translate(0, #{height}px)"
+      @_anim = requestAnimationFrame @updateHeight
+
 
 
   new PullToRefresh(container, options)
