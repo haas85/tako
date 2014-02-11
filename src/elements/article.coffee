@@ -4,6 +4,13 @@ Tako.Article = do (TK = Tako) ->
     _current_article = current()
     _current_section = _current_article.parent()
 
+    viewType = Tako.viewType()
+
+    if viewType is "PHONE"
+        _current_article.attr "data-scroll", window.scrollY
+    else
+      _current_article.attr "data-scroll", _current_article.scrollTop()
+
     new_article = $("article##{article_id}")
     new_section = new_article.parent()
 
@@ -11,13 +18,17 @@ Tako.Article = do (TK = Tako) ->
       new_section.children().removeClass "active"
       _current = new_article.addClass "active"
 
-    window.scrollTo 0, 0
-
     if _current_section[0].id isnt new_section[0].id
       Tako.Section new_section[0].id
     else
       _current_article.trigger "unload"
       _current = new_article.trigger "load"
+
+    if viewType is "PHONE"
+      window.scrollTo(0, _current.attr("data-scroll") or 0)
+    else
+      _current.scrollTop(_current.attr("data-scroll") or 0)
+
 
     $(".current[data-article]").removeClass "current"
     $("[data-article=#{article_id}]").addClass "current"

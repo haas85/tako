@@ -7,17 +7,17 @@
 // Phone mode
 @media screen and (min-device-width : 320px) and (max-device-width : 768px)
   [data-device="tablet"]
-    display none
+    display none!important
 
 // Tablet portrait mode
 @media screen and (min-device-width : 768px) and (orientation : portrait)
   [data-device="tablet"]
-    display none
+    display none!important
 
 // Tablet landscape & Desktop mode
 @media screen and (min-device-width : 768px) and (orientation : landscape)
   [data-device="phone"]
-    display none
+    display none!important
 
   body, html
     display -webkit-box

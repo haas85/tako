@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/9/2014
+/* TaKo v0.1.0 - 2/11/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -102,21 +102,31 @@
   Tako.Article = (function(TK) {
     var current, goTo, _current;
     goTo = function(article_id) {
-      var new_article, new_section, _current, _current_article, _current_section;
+      var new_article, new_section, viewType, _current, _current_article, _current_section;
       _current_article = current();
       _current_section = _current_article.parent();
+      viewType = Tako.viewType();
+      if (viewType === "PHONE") {
+        _current_article.attr("data-scroll", window.scrollY);
+      } else {
+        _current_article.attr("data-scroll", _current_article.scrollTop());
+      }
       new_article = $("article#" + article_id);
       new_section = new_article.parent();
       if (_current_article[0].id !== new_article[0].id) {
         new_section.children().removeClass("active");
         _current = new_article.addClass("active");
       }
-      window.scrollTo(0, 0);
       if (_current_section[0].id !== new_section[0].id) {
         Tako.Section(new_section[0].id);
       } else {
         _current_article.trigger("unload");
         _current = new_article.trigger("load");
+      }
+      if (viewType === "PHONE") {
+        window.scrollTo(0, _current.attr("data-scroll") || 0);
+      } else {
+        _current.scrollTop(_current.attr("data-scroll") || 0);
       }
       $(".current[data-article]").removeClass("current");
       $("[data-article=" + article_id + "]").addClass("current");
