@@ -670,7 +670,8 @@ div[data-element="notification"] > div > section.window.custom .close + article{
 }@keyframes animated-spin{0%{-moz-transform:rotate(0);-o-transform:rotate(0);-webkit-transform:rotate(0);-webkit-transform:rotate(0);-moz-transform:rotate(0);-ms-transform:rotate(0);-o-transform:rotate(0);transform:rotate(0)}
 100%{-moz-transform:rotate(359deg);-o-transform:rotate(359deg);-webkit-transform:rotate(359deg);-webkit-transform:rotate(359deg);-moz-transform:rotate(359deg);-ms-transform:rotate(359deg);-o-transform:rotate(359deg);transform:rotate(359deg)}
 }
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px){header h1{font-size:17px}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){[data-device="tablet"]{display:none !important}
+header h1{font-size:17px}
 }@media screen and (min-device-width : 320px) and (max-device-width : 768px){[data-device="tablet"]{display:none !important}
 }@media screen and (min-device-width : 768px) and (orientation : portrait){[data-device="tablet"]{display:none !important}
 }@media screen and (min-device-width : 768px) and (orientation : landscape){[data-device="phone"]{display:none !important}

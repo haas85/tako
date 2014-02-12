@@ -44,33 +44,31 @@ Tako.Pull_Refresh = (container, options={})->
       @_anim = null
       @_dragged_down = false
       @showRelease = false
-      Hammer(@container).on "touch dragdown release", @onPull
-
-    onPull: (ev) =>
-      switch ev.type
-        when "touch"
-          @hide() if not @refreshing
-        when "release"
-          return unless @_dragged_down
-          cancelAnimationFrame @_anim
-          if @_slidedown_height >= @breakpoint
-            if @options.onRefresh
-              do @onRefresh
-            else
-              do @hide
+      Hammer(@container).on "touch",  =>
+        @hide() if not @refreshing
+      Hammer(@container).on "dragdown", @onPull
+      Hammer(@container).on "release", =>
+        return unless @_dragged_down
+        cancelAnimationFrame @_anim
+        if @_slidedown_height >= @breakpoint
+          if @options.onRefresh
+            do @onRefresh
           else
             do @hide
-        when "dragdown"
-          @_dragged_down = true
-          return if @container.scrollTop > 5
-          @updateHeight() unless @_anim
-          ev.gesture.preventDefault()
-          ev.gesture.stopPropagation()
-          if @_slidedown_height >= @breakpoint
-            @onArrived()
-          else
-            @onUp() if @showRelease
-          @_slidedown_height = ev.gesture.deltaY * 0.4
+        else
+          do @hide
+
+    onPull: (ev) =>
+      @_dragged_down = true
+      return if @container.scrollTop > 5
+      @updateHeight() unless @_anim
+      ev.gesture.preventDefault()
+      ev.gesture.stopPropagation()
+      if @_slidedown_height >= @breakpoint
+        @onArrived()
+      else
+        @onUp() if @showRelease
+      @_slidedown_height = ev.gesture.deltaY * 0.4
 
     setHeight: (height) =>
       height -= 511

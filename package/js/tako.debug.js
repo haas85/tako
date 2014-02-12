@@ -643,7 +643,8 @@
     container = document.getElementById(container);
     PullToRefresh = (function() {
       function PullToRefresh(container, options) {
-        var PULLREFRESH;
+        var PULLREFRESH,
+          _this = this;
         this.options = options;
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
@@ -660,50 +661,47 @@
         this._anim = null;
         this._dragged_down = false;
         this.showRelease = false;
-        Hammer(this.container).on("touch dragdown release", this.onPull);
+        Hammer(this.container).on("touch", function() {
+          if (!_this.refreshing) {
+            return _this.hide();
+          }
+        });
+        Hammer(this.container).on("dragdown", this.onPull);
+        Hammer(this.container).on("release", function() {
+          if (!_this._dragged_down) {
+            return;
+          }
+          cancelAnimationFrame(_this._anim);
+          if (_this._slidedown_height >= _this.breakpoint) {
+            if (_this.options.onRefresh) {
+              return _this.onRefresh();
+            } else {
+              return _this.hide();
+            }
+          } else {
+            return _this.hide();
+          }
+        });
       }
 
       PullToRefresh.prototype.onPull = function(ev) {
-        switch (ev.type) {
-          case "touch":
-            if (!this.refreshing) {
-              return this.hide();
-            }
-            break;
-          case "release":
-            if (!this._dragged_down) {
-              return;
-            }
-            cancelAnimationFrame(this._anim);
-            if (this._slidedown_height >= this.breakpoint) {
-              if (this.options.onRefresh) {
-                return this.onRefresh();
-              } else {
-                return this.hide();
-              }
-            } else {
-              return this.hide();
-            }
-            break;
-          case "dragdown":
-            this._dragged_down = true;
-            if (this.container.scrollTop > 5) {
-              return;
-            }
-            if (!this._anim) {
-              this.updateHeight();
-            }
-            ev.gesture.preventDefault();
-            ev.gesture.stopPropagation();
-            if (this._slidedown_height >= this.breakpoint) {
-              this.onArrived();
-            } else {
-              if (this.showRelease) {
-                this.onUp();
-              }
-            }
-            return this._slidedown_height = ev.gesture.deltaY * 0.4;
+        this._dragged_down = true;
+        if (this.container.scrollTop > 5) {
+          return;
         }
+        if (!this._anim) {
+          this.updateHeight();
+        }
+        ev.gesture.preventDefault();
+        ev.gesture.stopPropagation();
+        if (this._slidedown_height >= this.breakpoint) {
+          this.onArrived();
+        } else {
+          if (this.showRelease) {
+            this.onUp();
+          }
+        }
+        return this._slidedown_height = ev.gesture.deltaY * 0.4;
       };
 
       PullToRefresh.prototype.setHeight = function(height) {
