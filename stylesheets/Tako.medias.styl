@@ -76,13 +76,7 @@
       margin-top HEADER_HEIGHT
 
   section > header
-    position relative
-    top 0
-    box-flex 0
-    margin 0
     text-align left
-    max-height HEADER_HEIGHT
-    ordinal-group(1)
 
     & > h1
       position static
@@ -119,14 +113,12 @@
       &:not(.right)
         &:not(.left)
           position relative
-          top - (HEADER_HEIGHT + 3)
+          top -3px
 
       & button, & .button
         position static
 
   article
-    position static
-    height inherit
     overflow-y scroll
     box-flex 1
     ordinal-group(2)

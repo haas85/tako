@@ -362,10 +362,9 @@
   })();
 
   _fallback = function() {
-    var height, style, _SECTION, _android, _firefox, _ios;
+    var height, style, _android, _firefox, _ios;
     style = "<style>";
     height = $(window).height();
-    _SECTION = "body>section";
     style += "";
     _android = function() {
       return this;
@@ -374,7 +373,7 @@
       return this;
     };
     _firefox = function() {
-      return style += "@media screen and (min-width: 768px) and (orientation: landscape){\n  section.active.extended_header > article {\n    margin-top: 0;\n  }\n}";
+      return style += "section > footer{bottom:6px;}";
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();

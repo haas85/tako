@@ -26,9 +26,6 @@ section
   &:not(.active) > article
     display none
 
-  // &.footer > article
-  //   padding-bottom -2px
-
   &.no_header > article
     top 0
 
@@ -74,6 +71,7 @@ section
     left 0
     right 0
     height HEADER_HEIGHT
+    max-height HEADER_HEIGHT
     line-height HEADER_HEIGHT
     width 100%
     z-index HEADER_INDEX
@@ -121,7 +119,6 @@ section
           top HEADER_HEIGHT
           font-size 1.2em
           width 100%
-          margin HEADER_HEIGHT 0 0 0
           line-height HEADER_HEIGHT
           padding 0
           display -webkit-box
@@ -147,7 +144,7 @@ section
             font-size 1em
 
 footer
-  position relative
+  position absolute
   bottom 2px
   left 0
   right 0

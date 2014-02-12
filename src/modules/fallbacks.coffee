@@ -3,19 +3,13 @@ _fallback = ->
 
   height = $(window).height()
 
-  _SECTION = "body>section"
-
   style += """"""
 
   _android = -> @
   _ios = -> @
   _firefox = ->
     style += """
-        @media screen and (min-width: 768px) and (orientation: landscape){
-          section.active.extended_header > article {
-            margin-top: 0;
-          }
-        }
+      section > footer{bottom:6px;}
     """
 
   # Firefox
