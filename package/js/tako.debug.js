@@ -373,7 +373,7 @@
       return this;
     };
     _firefox = function() {
-      return style += "section > footer{bottom:6px;}";
+      return style += "section > footer{bottom:6px;}\nbody>section > article{height:" + (height - 50) + "px}\nbody>section.extended_header > article{height:" + (height - 100) + "px}\nbody>section.footer > article{height:" + (height - 115) + "px}\nbody>section.extended_header.footer > article{height:" + (height - 165) + "px}\nbody>section.no_header > article{height:" + height + "px}\nbody>section.no_header.footer > article{height:" + (height - 65) + "px}";
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();

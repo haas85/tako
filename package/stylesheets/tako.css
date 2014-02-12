@@ -60,6 +60,7 @@ section.active{opacity:1;z-index:100}
 section:not(.active) > article{display:none}
 section.no_header > article{top:0}
 section.extended_header > article{margin-top:50px}
+section.footer > article{margin-bottom:65px}
 section.asided header{margin-left:268px !important;}
 section.asided header > nav.right{-webkit-transition-duration:300ms;-moz-transition-duration:300ms;-ms-transition-duration:300ms;-o-transition-duration:300ms;transition-duration:300ms;position:fixed;z-index:103;right:-268px !important;}
 section.asided header > nav.right > button{margin-right:5px}
