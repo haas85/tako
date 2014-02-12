@@ -15,7 +15,6 @@ body, html
   -moz-user-select none
   -ms-user-select none
   user-select none
-  oveflow hidden
 
   -webkit-backface-visibility hidden
 
@@ -141,3 +140,9 @@ small
 
 [data-visible]:not(.show)
   display none
+
+// Overthrow
+.overthrow-enabled
+  & .scroll, & article
+    overflow auto
+    -webkit-overflow-scrolling touch

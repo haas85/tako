@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/11/2014
+/* TaKo v0.1.0 - 2/12/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -648,7 +648,6 @@
         this.options = options;
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
-        this.setRotation = __bind(this.setRotation, this);
         this.setHeight = __bind(this.setHeight, this);
         this.onPull = __bind(this.onPull, this);
         PULLREFRESH = "<div class=\"pulltorefresh\">\n<span class=\"icon down-big\"></span><span class=\"text\">" + this.options.pullLabel + "</span>\n</div>";
@@ -718,32 +717,24 @@
         return this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
       };
 
-      PullToRefresh.prototype.setRotation = function(angle) {
-        this.icon[0].style.transform = "rotate(" + angle + "deg)";
-        this.icon[0].style.oTransform = "rotate(" + angle + "deg)";
-        this.icon[0].style.msTransform = "rotate(" + angle + "deg)";
-        this.icon[0].style.mozTransform = "rotate(" + angle + "deg)";
-        return this.icon[0].style.webkitTransform = "rotate(" + angle + "deg)";
-      };
-
       PullToRefresh.prototype.onRefresh = function() {
         this.icon[0].className = "icon spin6 animated";
         this.text.html(this.options.refreshLabel);
         this.setHeight(this.breakpoint - 10);
         this.refreshing = true;
-        this.setRotation(0);
+        this.icon.removeClass("rotated");
         return this.options.onRefresh.call(this.options.onRefresh);
       };
 
       PullToRefresh.prototype.onArrived = function() {
         this.showRelease = true;
-        this.setRotation(180);
+        this.icon.addClass("rotated");
         return this.text.html(this.options.releaseLabel);
       };
 
       PullToRefresh.prototype.onUp = function() {
         this.showRelease = false;
-        this.setRotation(0);
+        this.icon.removeClass("rotated");
         return this.text.html(this.options.pullLabel);
       };
 
@@ -752,7 +743,7 @@
         this.text.html(this.options.pullLabel);
         this._slidedown_height = 0;
         this.setHeight(0);
-        this.setRotation(0);
+        this.icon.removeClass("rotated");
         cancelAnimationFrame(this._anim);
         this._anim = null;
         this._dragged_down = false;

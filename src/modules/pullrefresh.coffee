@@ -81,29 +81,22 @@ Tako.Pull_Refresh = (container, options={})->
       @pullrefresh.style.marginBottom = "#{height}px"
       @pullrefresh.style.oTransform = "translate(0, #{height}px)"
 
-    setRotation: (angle) =>
-      @icon[0].style.transform = "rotate(#{angle}deg)"
-      @icon[0].style.oTransform = "rotate(#{angle}deg)"
-      @icon[0].style.msTransform = "rotate(#{angle}deg)"
-      @icon[0].style.mozTransform = "rotate(#{angle}deg)"
-      @icon[0].style.webkitTransform = "rotate(#{angle}deg)"
-
     onRefresh: ->
       @icon[0].className = "icon spin6 animated"
       @text.html @options.refreshLabel
       @setHeight @breakpoint - 10
       @refreshing = true
-      @setRotation 0
+      @icon.removeClass("rotated")
       @options.onRefresh.call @options.onRefresh
 
     onArrived: ->
       @showRelease = true
-      @setRotation 180
+      @icon.addClass("rotated")
       @text.html @options.releaseLabel
 
     onUp: ->
       @showRelease = false
-      @setRotation 0
+      @icon.removeClass("rotated")
       @text.html @options.pullLabel
 
     hide: =>
@@ -111,7 +104,7 @@ Tako.Pull_Refresh = (container, options={})->
       @text.html @options.pullLabel
       @_slidedown_height = 0
       @setHeight 0
-      @setRotation 0
+      @icon.removeClass("rotated")
       cancelAnimationFrame @_anim
       @_anim = null
       @_dragged_down = false
