@@ -16,6 +16,8 @@ _fallback = ->
       body>section.extended_header.footer > article{height:#{height-165}px}
       body>section.no_header > article{height:#{height}px}
       body>section.no_header.footer > article{height:#{height-65}px}
+      div[data-element="notification"] section.window.confirm > article .icon {margin-top:25px;}
+      div[data-element="notification"] section.window.confirm > article div {margin-top:25px;}
     """
 
   # Firefox
