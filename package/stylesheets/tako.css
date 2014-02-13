@@ -271,6 +271,7 @@ div[data-element="notification"] > div > section.window.confirm > article{displa
 div[data-element="notification"] > div > section.window.confirm > article .title{font-weight:bold}
 div[data-element="notification"] > div > section.window.confirm > article .icon{display:block;height:70px;line-height:70px;width:70px;font-size:3.5em;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;margin-right:10px;}
 div[data-element="notification"] > div > section.window.confirm > article .icon + div{display:block;-webkit-box-flex:0;-moz-box-flex:0;-ms-box-flex:0;-o-box-flex:0;box-flex:0;text-align:left}
+div[data-element="notification"] > div > section.window.confirm > article .content{margin-left:0;margin-right:0}
 div[data-element="notification"] > div > section.window.confirm .accept{float:left;width:50%}
 div[data-element="notification"] > div > section.window.confirm .cancel{float:right;width:50%}
 div[data-element="notification"] > div > section.window.show{opacity:1}
@@ -281,10 +282,10 @@ div[data-element="notification"] > div > section.window.success > header > span.
 div[data-element="notification"] > div > section.window.success > header > span.icon:before,div[data-element="notification"] > div > section.window.error > header > span.icon:before{height:100px;line-height:100px}
 div[data-element="notification"] > div > section.window.success > article,div[data-element="notification"] > div > section.window.error > article{display:block;position:static;height:125px;padding-top:10px;color:#000;}
 div[data-element="notification"] > div > section.window.success > article > .title,div[data-element="notification"] > div > section.window.error > article > .title{font-weight:bold}
-div[data-element="notification"] > div > section.window.success > article > span,div[data-element="notification"] > div > section.window.error > article > span{display:block;width:100%;text-align:center}
+div[data-element="notification"] > div > section.window.success > article > span,div[data-element="notification"] > div > section.window.error > article > span{display:block;text-align:center}
 div[data-element="notification"] > div > section.window.success .title,div[data-element="notification"] > div > section.window.error .title{padding-top:.3em}
 div[data-element="notification"] > div > section.window .title{line-height:40px;font-size:1.2em}
-div[data-element="notification"] > div > section.window .content{padding-top:.5em}
+div[data-element="notification"] > div > section.window .content{padding-top:.5em;margin-left:10px;margin-right:10px}
 div[data-element="notification"] > div > section.window.loading,div[data-element="notification"] > div > section.window.progress{min-width:250px;}
 div[data-element="notification"] > div > section.window.loading > header,div[data-element="notification"] > div > section.window.progress > header{font-weight:bold;font-size:1.3em;}
 div[data-element="notification"] > div > section.window.loading > header > .icon,div[data-element="notification"] > div > section.window.progress > header > .icon{font-size:2em;display:inline-block;height:50px;width:50px;line-height:49px;margin-left:10px;margin-right:10px;}
