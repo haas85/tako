@@ -293,14 +293,15 @@ div[data-element="notification"] > div > section.window.loading > header > .icon
 div[data-element="notification"] > div > section.window.loading > header span:nth-child(1):not(.icon),div[data-element="notification"] > div > section.window.progress > header span:nth-child(1):not(.icon){display:inline-block;width:100%;text-align:center}
 div[data-element="notification"] > div > section.window.loading > article,div[data-element="notification"] > div > section.window.progress > article{display:block;height:100px;line-height:100px;width:100%;text-align:center;overflow:hidden;}
 div[data-element="notification"] > div > section.window.loading > article .icon,div[data-element="notification"] > div > section.window.progress > article .icon{font-size:5em;display:block;width:100px;height:100px;line-height:100px;text-align:center;margin-top:.15em;margin-left:auto;margin-right:auto}
-div[data-element="notification"] > div > section.window.loading > article #notification_progress,div[data-element="notification"] > div > section.window.progress > article #notification_progress{height:10px;position:relative;bottom:15px;width:90%;margin-left:auto;margin-right:auto}
+div[data-element="notification"] > div > section.window.loading > article #notification_progress,div[data-element="notification"] > div > section.window.progress > article #notification_progress{height:10px;width:90%;margin-left:auto;margin-right:auto}
 div[data-element="notification"] > div > section.window.loading > header{text-align:center !important}
 div[data-element="notification"] > div > section.window.loading > article{padding-bottom:1.5em}
 div[data-element="notification"] > div > section.window.loading.squared{min-width:100px;width:100px !important;height:100px !important;max-height:97px !important;background:none;}
 div[data-element="notification"] > div > section.window.loading.squared > article{overflow:hidden;width:100px !important;height:100px !important;max-height:100px !important;background:none}
 div[data-element="notification"] > div > section.window.loading.squared .icon{margin-top:0;font-size:5em;width:100px;height:100px;line-height:97px;margin-left:auto;margin-right:auto}
 div[data-element="notification"] > div > section.window.loading > article .icon{line-height:96px}
-div[data-element="notification"] > div > section.window.progress > article{height:150px}
+div[data-element="notification"] > div > section.window.progress > article{height:150px;line-height:20px}
+div[data-element="notification"] > div > section.window.progress span.content{display:inline-block;margin-top:25px;margin-bottom:25px}
 div[data-element="notification"] > div > section.window.custom > header{text-align:center;width:100%}
 div[data-element="notification"] > div > section.window.custom > article{width:100%;position:static;display:block;padding:10px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
 div[data-element="notification"] > div > section.window.custom > article .close{position:relative;top:-10px;right:-10px}
