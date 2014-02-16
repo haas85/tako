@@ -5,7 +5,7 @@ section
   padding 0
   z-index 0
   opacity 0
-  position absolute
+  position fixed
 
   display -webkit-box
   display -ms-box
@@ -33,7 +33,7 @@ section
     margin-top HEADER_HEIGHT
 
   &.footer > article
-    margin-bottom FOOTER_HEIGHT
+    margin-bottom 0
 
   &.asided
     & header
@@ -142,12 +142,13 @@ section
             height HEADER_HEIGHT
             font-size 1em!important
             margin-top 0!important
+            transition-duration 200ms
 
           & .icon
             font-size 1em
 
 footer
-  position absolute
+  position relative
   bottom 2px
   left 0
   right 0

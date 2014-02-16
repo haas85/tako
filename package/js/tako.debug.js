@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/13/2014
+/* TaKo v0.1.0 - 2/16/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -373,7 +373,8 @@
       return this;
     };
     _firefox = function() {
-      return style += "section > footer{bottom:6px;}\nbody>section > article{height:" + (height - 50) + "px}\nbody>section.extended_header > article{height:" + (height - 100) + "px}\nbody>section.footer > article{height:" + (height - 115) + "px}\nbody>section.extended_header.footer > article{height:" + (height - 165) + "px}\nbody>section.no_header > article{height:" + height + "px}\nbody>section.no_header.footer > article{height:" + (height - 65) + "px}\ndiv[data-element=\"notification\"] section.window.confirm > article .icon {margin-top:25px;}\ndiv[data-element=\"notification\"] section.window.confirm > article div {margin-top:25px;}";
+      style += "section > footer{bottom:6px;}\nbody>section > article{height:" + (height - 50) + "px}\nbody>section.extended_header > article{height:" + (height - 100) + "px}\nbody>section.footer > article{height:" + (height - 115) + "px}\nbody>section.extended_header.footer > article{height:" + (height - 165) + "px}\nbody>section.no_header > article{height:" + height + "px}\nbody>section.no_header.footer > article{height:" + (height - 65) + "px}\ndiv[data-element=\"notification\"] section.window.confirm > article .icon {margin-top:25px;}\ndiv[data-element=\"notification\"] section.window.confirm > article div {margin-top:25px;}";
+      return style += "@media screen and (min-device-width : 768px) and (orientation : landscape)\n  {\n    section > footer{bottom:6px;}\n    body>section > article{height:" + (height - 90) + "px}\n    body>section.extended_header > article{height:" + (height - 140) + "px}\n    body>section.footer > article{height:" + (height - 155) + "px}\n    body>section.extended_header.footer > article{height:" + (height - 205) + "px}\n    body>section.no_header > article{height:" + height + "px}\n    body>section.no_header.footer > article{height:" + (height - 65) + "px}\n    div[data-element=\"notification\"] section.window.confirm > article .icon {margin-top:25px;}\n    div[data-element=\"notification\"] section.window.confirm > article div {margin-top:25px;}\n  }";
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();

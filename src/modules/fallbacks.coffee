@@ -20,6 +20,20 @@ _fallback = ->
       div[data-element="notification"] section.window.confirm > article div {margin-top:25px;}
     """
 
+    style += """
+      @media screen and (min-device-width : 768px) and (orientation : landscape)
+        {
+          section > footer{bottom:6px;}
+          body>section > article{height:#{height-90}px}
+          body>section.extended_header > article{height:#{height-140}px}
+          body>section.footer > article{height:#{height-155}px}
+          body>section.extended_header.footer > article{height:#{height-205}px}
+          body>section.no_header > article{height:#{height}px}
+          body>section.no_header.footer > article{height:#{height-65}px}
+          div[data-element="notification"] section.window.confirm > article .icon {margin-top:25px;}
+          div[data-element="notification"] section.window.confirm > article div {margin-top:25px;}
+        }
+    """
   # Firefox
   _firefox() if navigator.userAgent.toLowerCase().indexOf("firefox") isnt -1
 
