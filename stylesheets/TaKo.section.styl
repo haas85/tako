@@ -27,15 +27,6 @@ section
     opacity 1
     z-index SECTION_INDEX
 
-  &.no_header article
-    top 0
-
-  &.extended_header article
-    margin-top HEADER_HEIGHT
-
-  &.footer article
-    margin-bottom 0
-
   & > section
     position relative
     opacity 1
@@ -153,12 +144,12 @@ section > nav
 
 footer
   position relative
-  bottom 2px
+  bottom 0
   left 0
   right 0
   box-flex 0
   ordinal-group(3)
-  margin 0 0 -2px 0
+  // margin 0 0 -2px 0
   width 100%
   height FOOTER_HEIGHT
   line-height FOOTER_HEIGHT
