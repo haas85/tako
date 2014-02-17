@@ -27,40 +27,39 @@ section
 .theme
   background-color lighten(THEME, 15%)!important
 
-section > header
-  background-color lighten(THEME, 15%)!important
-  background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image linear-gradient(lighten(THEME, 35%), THEME)!important
-  color SECONDARY_TEXT !important
+section
+  & > header
+    background-color lighten(THEME, 15%)!important
+    background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image linear-gradient(lighten(THEME, 35%), THEME)!important
+    color SECONDARY_TEXT !important
 
-  & .counter
-    background-color lighten(THEME, 30%)
+    & .counter
+      background-color lighten(THEME, 30%)
 
-  & .button
-    border 1px solid darken(THEME, 30%)
+    & .button
+      border 1px solid darken(THEME, 30%)
 
-  & .counter
-    background-color darken(THEME, 10%)
+    & .counter
+      background-color darken(THEME, 10%)
 
   & > nav
-    &:not(.right)
-      &:not(.left)
-        color SECONDARY_TEXT
-        background-color lighten(SECONDARY, 5%)!important
+    color SECONDARY_TEXT
+    background-color lighten(SECONDARY, 5%)!important
 
-        & .current
-          background-color SECONDARY_ACTIVE
-          border-bottom 4px solid THEME
-          box-sizing(border-box)
+    & .current
+      background-color SECONDARY_ACTIVE
+      border-bottom 4px solid THEME
+      box-sizing(border-box)
 
-        & > *
-          border-right 1px solid darken(SECONDARY, 15%)
+    & > *
+      border-right 1px solid darken(SECONDARY, 15%)
 
-          &:last-child
-            border-right none
+      &:last-child
+        border-right none
 
 footer
   background-color lighten(SECONDARY, 5%)!important

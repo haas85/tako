@@ -55,6 +55,21 @@
   section
     display none
 
+  section > section
+    display -webkit-box
+    display -ms-box
+    display -o-box
+    display -moz-box
+    display box
+
+    box-align stretch
+    box-orient vertical
+    box-pack justify
+
+    box-flex 1
+
+    height 100%
+
   section.active
     position static
     box-flex 1
@@ -71,14 +86,14 @@
     box-orient vertical
     box-pack justify
 
-    &.footer > article
+    &.footer article
       padding-bottom 2px!important
       margin-bottom 0
 
-    &.extended_header > article
+    &.extended_header article
       margin-top HEADER_HEIGHT
 
-  section > header
+  section header
     text-align left
 
     & > h1

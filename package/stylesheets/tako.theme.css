@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/16/2014
+/* TaKo v0.1.0 - 2/17/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 body{font:14px "lato";background-color:#e7e7e7;}
@@ -9,10 +9,10 @@ section > header{background-color:#ff7d26 !important;-webkit-background-image:-w
 section > header .counter{background-color:#ff944d}
 section > header .button{border:1px solid #b34700}
 section > header .counter{background-color:#e65c00}
-section > header > nav:not(.right):not(.left){color:#f4f4f4;background-color:#383838 !important;}
-section > header > nav:not(.right):not(.left) .current{background-color:#575757;border-bottom:4px solid #f60;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box}
-section > header > nav:not(.right):not(.left) > *{border-right:1px solid #262626;}
-section > header > nav:not(.right):not(.left) > *:last-child{border-right:none}
+section > nav{color:#f4f4f4;background-color:#383838 !important;}
+section > nav .current{background-color:#575757;border-bottom:4px solid #f60;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box}
+section > nav > *{border-right:1px solid #262626;}
+section > nav > *:last-child{border-right:none}
 footer{background-color:#383838 !important;color:#f4f4f4 !important;}
 footer button{background-color:#383838 !important;}
 footer button:active .counter,footer button:hover .counter{background-color:#2d2d2d}
