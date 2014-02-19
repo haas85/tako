@@ -26,12 +26,12 @@ window.Tako = Tako = do ->
     if (width > 768) and (width > height) then "TABLET/DESKTOP" else "PHONE"
 
   _setup = ->
-    if $("section.active").length is 0 then $("section").first().addClass "active"
+    if $("article.active").length is 0 then $("article").first().addClass "active"
     $("body").hammer()
-    $("section").each ->
-      if $(@).children("article.active").length is 0
-        $(@).children("article").first().addClass "active"
-    _current_art = $("section.active article.active")[0].id
+    $("article").each ->
+      if $(@).children("section.active").length is 0
+        $(@).children("section").first().addClass "active"
+    _current_art = $("article.active section.active")[0].id
     $("[data-visible=#{_current_art}]").addClass "show"
     do _fallback
     do _loaded
@@ -43,7 +43,7 @@ window.Tako = Tako = do ->
 
   _onError = (data) ->
     remaining--
-    console.error "Section not downloaded"
+    console.error "Article not downloaded"
     if remaining is 0 then do _setup
 
   _loaded = ->

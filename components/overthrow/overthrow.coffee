@@ -217,7 +217,7 @@
 
   # find closest overthrow (elem or a parent)
   o.closest = (target, ascend) ->
-    not ascend and ((target.className and target.className.indexOf(scrollIndicatorClassName) > -1) or (target.nodeName is "ARTICLE")) and target or o.closest(target.parentNode)
+    not ascend and ((target.className and target.className.indexOf(scrollIndicatorClassName) > -1) or (target.nodeName is "SECTION") or (target.nodeName is "ASIDE")) and target or o.closest(target.parentNode)
 
 
   # polyfill overflow

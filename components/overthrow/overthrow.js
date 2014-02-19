@@ -135,7 +135,7 @@
   forget = o.forget;
   scrollIndicatorClassName = o.scrollIndicatorClassName;
   o.closest = function(target, ascend) {
-    return !ascend && ((target.className && target.className.indexOf(scrollIndicatorClassName) > -1) || (target.nodeName === "ARTICLE")) && target || o.closest(target.parentNode);
+    return !ascend && ((target.className && target.className.indexOf(scrollIndicatorClassName) > -1) || (target.nodeName === "SECTION") || (target.nodeName === "ASIDE")) && target || o.closest(target.parentNode);
   };
   enabled = false;
   o.set = function() {

@@ -1,4 +1,4 @@
-section
+article
   height 100%
   width 100%
   margin 0
@@ -22,7 +22,7 @@ section
     opacity 1
     z-index SECTION_INDEX
 
-  & > section
+  & > article
     position relative
     opacity 1
 
@@ -107,7 +107,7 @@ section
         & > button
           margin-left 5px
 
-section > nav
+article > nav
   flexbox-weight(0)
   flexbox-order(2)
   font-size 1.2em
@@ -180,14 +180,15 @@ footer
       &.active
         background-color rgba(250,250,250,0.15)
 
-article
+section
   width 100%
   display none
   margin 0
   overflow-x hidden
   overflow-y scroll
   -webkit-overflow-scrolling touch
-  flexbox-weight(1)
+  box-flex 1
+  flex 1 9999999 auto
   flexbox-order(3)
 
   &.horizontal

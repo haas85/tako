@@ -48,10 +48,10 @@
     padding-right ASIDE_PADDING
     box-sizing border-box
 
-  section
+  article
     display none
 
-  section > section
+  article > article
     display-flexbox-vertical()
 
     box-align stretch
@@ -61,7 +61,7 @@
 
     height 100%
 
-  section.active
+  article.active
     position static
     flexbox-weight(1)
     flexbox-order(2)
@@ -72,7 +72,7 @@
     box-align stretch
     box-pack justify
 
-  section header
+  article header
     text-align left
 
     & > h1
@@ -110,7 +110,7 @@
       & button, & .button
         position static
 
-  article
+  section
     flexbox-weight(1)
     flexbox-order(2)
 

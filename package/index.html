@@ -23,16 +23,16 @@
             <h1>Tako trial</h1>
         </header>
         <ul>
-            <li class="icon box" data-article="forms">Forms <span class="counter">125</span></li>
-            <li class="icon box" data-article="lists">Lists</li>
-            <li data-article="buttons"><img class="small" src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><span>Buttons</span></li>
-            <li data-article="layouts"><img src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><span>Layouts</span></li>
-            <li data-article="notifications"><img class="big" src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><span>Notifications</span></li>
-            <li class="" data-article="colors">Colors</li>
+            <li class="icon box" data-section="forms">Forms <span class="counter">125</span></li>
+            <li class="icon box" data-section="lists">Lists</li>
+            <li data-section="buttons"><img class="small" src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><span>Buttons</span></li>
+            <li data-section="layouts"><img src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><span>Layouts</span></li>
+            <li data-section="notifications"><img class="big" src="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" alt=""><span>Notifications</span></li>
+            <li class="" data-section="colors">Colors</li>
         </ul>
     </aside>
 
-    <section id="section_1">
+    <article id="section_1">
         <header>
             <nav class="left">
                 <button class="icon ellipsis-vert" data-action="aside">Aside<span class="counter">5</span></button>
@@ -43,16 +43,16 @@
             <h1>TaKo!!</h1>
         </header>
         <nav>
-            <button data-article="forms" class="icon check">Forms</button>
-            <button data-article="buttons" class="icon tasks">Buttons</button>
-            <button data-article="lists" class="icon list">Lists</button>
+            <button data-section="forms" class="icon check">Forms</button>
+            <button data-section="buttons" class="icon tasks">Buttons</button>
+            <button data-section="lists" class="icon list">Lists</button>
         </nav>
-        <article id="main">
+        <section id="main">
             <p>This is an example of pull and refresh</p>
             <p data-device="phone">This is only seen in phone mode</p>
             <p data-device="tablet">This is only seen in tablet mode</p>
-        </article>
-        <article id="buttons" class="indented">
+        </section>
+        <section id="buttons" class="indented">
             <div>
                 <p>
                     <button class="wide">Wide</button>
@@ -129,8 +129,8 @@
                 </p>
 
             </div>
-        </article>
-        <article id="forms" class="indented">
+        </section>
+        <section id="forms" class="indented">
             <div>
                 <form>
                     <fieldset>
@@ -184,8 +184,8 @@
                     </fieldset>
                 </form>
             </div>
-        </article>
-        <article id="lists" class="indented">
+        </section>
+        <section id="lists" class="indented">
             <div>
                 <ul>
                     <li class="icon box"><strong>Elem 1</strong><small>small elem</small></li>
@@ -200,8 +200,8 @@
                     <li>Elem 5</li>
                 </ul>
             </div>
-        </article>
-        <article id="layouts" class="big indented">
+        </section>
+        <section id="layouts" class="big indented">
             <div>
                 <p>Columns per line</p>
                 <div class="line">
@@ -231,8 +231,8 @@
                     <div class="theme">none</div>
                 </div>
             </div>
-        </article>
-        <article id="notifications" class="indented">
+        </section>
+        <section id="notifications" class="indented">
             <div>
                 <button class="wide accept" id="show_success">Success</button>
                 <button class="wide cancel" id="show_error">Error</button>
@@ -241,8 +241,8 @@
                 <button class="wide grey" id="show_loading">Loading</button>
                 <button class="wide" id="show_progress">Progress</button>
             </div>
-        </article>
-        <article id="colors">
+        </section>
+        <section id="colors">
             <p class="align-center blue" style="padding: 10px">blue</p>
             <p class="align-center red" style="padding: 10px">red</p>
             <p class="align-center yellow" style="padding: 10px">yellow</p>
@@ -254,14 +254,14 @@
             <p class="align-center purple" style="padding: 10px">purple</p>
             <p class="align-center brown" style="padding: 10px">brown</p>
             <p class="align-center orange" style="padding: 10px">orange</p>
-        </article>
+        </section>
         <!-- <footer>
             <nav>
                 <div><button class="icon ok" id="show_success2">Success<span class="counter">5</span></button></div>
                 <div><button id="show_progress2">Progress<span class="counter">84</span></button></div>
             </nav>
         </footer> -->
-    </section>
+    </article>
 
     <script src="js/tako.components.js"></script>
     <script src="js/tako.debug.js"></script>
