@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/19/2014
+/* TaKo v0.1.0 - 2/20/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -360,18 +360,28 @@
   })();
 
   _fallback = function() {
-    var height, style, _android, _firefox, _ios;
+    var height, style, _android, _browser, _firefox, _ios, _moveChilds;
     style = "<style>";
     height = $(window).height();
     style += "";
+    _moveChilds = function(elements) {
+      return elements.each(function() {
+        return $(this).append($(document.createElement("div")).append($(this).children()));
+      });
+    };
     _android = function() {
-      return this;
+      return _moveChilds($("body > article > section"));
     };
     _ios = function() {
       return this;
     };
     _firefox = function() {
       return this;
+    };
+    _browser = function() {
+      if ($.os == null) {
+        return _moveChilds($("body > article > section.indented"));
+      }
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();
@@ -382,8 +392,9 @@
     if (($.os != null) && $.os.ios) {
       _ios();
     }
-    style += "</style>";
-    return $("head").append(style);
+    if ($.browser != null) {
+      return _browser();
+    }
   };
 
   Tako.Notification = (function(TK) {
@@ -660,8 +671,9 @@
         this._dragged_down = false;
         this.showRelease = false;
         Hammer(this.container).on("touch", function() {
+          $(_this.container).addClass("pulling");
           if (!_this.refreshing) {
-            return _this.hide();
+            return _this.hide(false);
           }
         });
         Hammer(this.container).on("dragdown", this.onPull);
@@ -733,7 +745,13 @@
         return this.text.html(this.options.pullLabel);
       };
 
-      PullToRefresh.prototype.hide = function() {
+      PullToRefresh.prototype.hide = function(remove_pulling) {
+        if (remove_pulling == null) {
+          remove_pulling = true;
+        }
+        if (remove_pulling) {
+          $(this.container).removeClass("pulling");
+        }
         this.icon[0].className = "icon down-big";
         this.text.html(this.options.pullLabel);
         this._slidedown_height = 0;

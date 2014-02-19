@@ -5,9 +5,15 @@ _fallback = ->
 
   style += """"""
 
-  _android = -> @
+  _moveChilds = (elements) ->
+    elements.each ->
+      $(@).append $(document.createElement("div")).append($(@).children())
+
+  _android = -> _moveChilds $("body > article > section")
   _ios = -> @
   _firefox = -> @
+  _browser = ->
+    _moveChilds($("body > article > section.indented")) if not $.os?
 
   # Firefox
   _firefox() if navigator.userAgent.toLowerCase().indexOf("firefox") isnt -1
@@ -18,5 +24,8 @@ _fallback = ->
   # IOS
   _ios() if $.os? and $.os.ios
 
-  style += """</style>"""
-  $("head").append style
+  # Browser
+  _browser() if $.browser?
+
+  # style += """</style>"""
+  # $("head").append style

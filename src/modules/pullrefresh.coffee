@@ -45,7 +45,9 @@ Tako.Pull_Refresh = (container, options={})->
       @_dragged_down = false
       @showRelease = false
       Hammer(@container).on "touch",  =>
-        @hide() if not @refreshing
+        $(@container).addClass "pulling"
+        @hide(false) if not @refreshing
+
       Hammer(@container).on "dragdown", @onPull
       Hammer(@container).on "release", =>
         return unless @_dragged_down
@@ -97,7 +99,8 @@ Tako.Pull_Refresh = (container, options={})->
       @icon.removeClass("rotated")
       @text.html @options.pullLabel
 
-    hide: =>
+    hide: (remove_pulling=true)=>
+      $(@container).removeClass "pulling" if remove_pulling
       @icon[0].className = "icon down-big"
       @text.html @options.pullLabel
       @_slidedown_height = 0
