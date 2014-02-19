@@ -21,16 +21,11 @@ div[data-element="notification"]
     width 100%
     height 100%
 
-    display -webkit-box
-    display -ms-box
-    display -moz-box
-    display -o-box
-    display box
+    display-flexbox-vertical()
 
-    box-orient vertical
     box-direction normal
-    box-pack center
-    box-align center
+    flexbox-pack-center()
+    flexbox-align-center()
 
   & > div > section.window
     display block
@@ -92,11 +87,11 @@ div[data-element="notification"]
         display block
 
     &:not(.center)
-      box-flex 0
+      flexbox-weight(0)
 
     &.center
       text-align center
-      box-flex 0
+      flexbox-weight(0)
       position relative
       top -10%
 
@@ -113,16 +108,11 @@ div[data-element="notification"]
     &.confirm
 
       & > article
-        display -webkit-box
-        display -ms-box
-        display -moz-box
-        display -o-box
-        display box
+        display-flexbox-horizontal()
 
-        box-orient horizontal
         box-direction normal
-        box-pack center
-        box-align center
+        flexbox-pack-center()
+        flexbox-align-center()
 
         position static
         height 125px
@@ -138,12 +128,12 @@ div[data-element="notification"]
           line-height 70px
           width 70px
           font-size 3.5em
-          box-flex 0
+          flexbox-weight(0)
           margin-right 10px
 
           & + div
             display block
-            box-flex 0
+            flexbox-weight(0)
             text-align left
 
         & .content
@@ -198,7 +188,6 @@ div[data-element="notification"]
 
         & > span
           display block
-          // width 100%
           text-align center
 
       & .title

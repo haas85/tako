@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/17/2014
+/* TaKo v0.1.0 - 2/19/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -371,12 +371,7 @@
       return this;
     };
     _firefox = function() {
-      return $("section").each(function() {
-        var _temp;
-        _temp = document.createElement("section");
-        $(_temp).append($(this).children());
-        return $(this).append(_temp);
-      });
+      return this;
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();

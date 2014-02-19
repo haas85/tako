@@ -11,15 +11,10 @@ section
   left 0
   right 0
 
-  display -webkit-box
-  display -ms-box
-  display -o-box
-  display -moz-box
-  display box
+  display-flexbox-vertical()
 
-  box-align stretch
-  box-orient vertical
-  box-pack justify
+  flexbox-align-stretch()
+  flexbox-pack-justify()
 
   transition-duration SECTION_TRANSITION_TIME
 
@@ -64,8 +59,8 @@ section
 
   & header
     position relative
-    ordinal-group(1)
-    box-flex 0
+    flexbox-order(1)
+    flexbox-weight(0)
     top 0
     left 0
     right 0
@@ -113,23 +108,20 @@ section
           margin-left 5px
 
 section > nav
-  box-flex 0
+  flexbox-weight(0)
+  flexbox-order(2)
   font-size 1.2em
   width 100%
   line-height HEADER_HEIGHT
   padding 0
-  display -webkit-box
-  display -ms-box
-  display -moz-box
-  display -o-box
-  display box
-  box-orient horizontal
+  display-flexbox-horizontal()
+
   box-direction normal
   box-pack justify
   box-align stretch
 
   & > *
-    box-flex 1
+    flexbox-weight(1)
     text-align center
     width 100%
     display block
@@ -147,20 +139,15 @@ footer
   bottom 0
   left 0
   right 0
-  box-flex 0
-  ordinal-group(3)
+  flexbox-weight(0)
+  flexbox-order(4)
   width 100%
   height FOOTER_HEIGHT
   line-height FOOTER_HEIGHT
   z-index FOOTER_INDEX
 
-  display -webkit-box
-  display -ms-box
-  display -moz-box
-  display -o-box
-  display box
+  display-flexbox-horizontal()
 
-  box-orient horizontal
   box-direction normal
   box-pack justify
   box-align stretch
@@ -168,24 +155,19 @@ footer
 
   & nav
     margin 0
-    box-flex 1
+    flexbox-weight(1)
     height FOOTER_HEIGHT
     line-height FOOTER_HEIGHT
     padding 0
-    display -webkit-box
-    display -ms-box
-    display -moz-box
-    display -o-box
-    display box
     width 100%
 
-    box-orient horizontal
+    display-flexbox-horizontal()
     box-direction normal
     box-pack justify
     box-align stretch
 
     & > *
-      box-flex 1
+      flexbox-weight(1)
       text-align center
       width 100%
       display block
@@ -205,8 +187,8 @@ article
   overflow-x hidden
   overflow-y scroll
   -webkit-overflow-scrolling touch
-  box-flex 1
-  ordinal-group(2)
+  flexbox-weight(1)
+  flexbox-order(3)
 
   &.horizontal
     width auto

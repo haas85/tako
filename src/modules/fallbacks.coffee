@@ -7,11 +7,7 @@ _fallback = ->
 
   _android = -> @
   _ios = -> @
-  _firefox = ->
-    $("section").each ->
-      _temp = document.createElement "section"
-      $(_temp).append $(@).children()
-      $(@).append _temp
+  _firefox = -> @
 
   # Firefox
   _firefox() if navigator.userAgent.toLowerCase().indexOf("firefox") isnt -1

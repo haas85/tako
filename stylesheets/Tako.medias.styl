@@ -22,15 +22,10 @@
     display none!important
 
   body, html
-    display -webkit-box
-    display -ms-box
-    display -o-box
-    display -moz-box
-    display box
+    display-flexbox-horizontal()
 
-    box-align stretch
-    box-orient horizontal
-    box-pack justify
+    flexbox-align-stretch()
+    flexbox-pack-justify()
 
   div[data-element="aside_background"]
     position static
@@ -40,7 +35,8 @@
     height 100%
     min-height 99%
     box-flex 0
-    ordinal-group(1)
+    flex 0 0 auto
+    flexbox-order(1)
     top 0
 
   aside
@@ -56,34 +52,24 @@
     display none
 
   section > section
-    display -webkit-box
-    display -ms-box
-    display -o-box
-    display -moz-box
-    display box
+    display-flexbox-vertical()
 
     box-align stretch
-    box-orient vertical
     box-pack justify
 
-    box-flex 1
+    flexbox-weight(1)
 
     height 100%
 
   section.active
     position static
-    box-flex 1
-    ordinal-group(2)
+    flexbox-weight(1)
+    flexbox-order(2)
     height 100%
 
-    display -webkit-box
-    display -ms-box
-    display -o-box
-    display -moz-box
-    display box
+    display-flexbox-vertical()
 
     box-align stretch
-    box-orient vertical
     box-pack justify
 
   section header
@@ -125,13 +111,13 @@
         position static
 
   article
-    box-flex 1
-    ordinal-group(2)
+    flexbox-weight(1)
+    flexbox-order(2)
 
   footer
     position relative
-    box-flex 0
-    ordinal-group(3)
+    flexbox-weight(0)
+    flexbox-order(3)
 
   [data-action=aside]
     display none!important

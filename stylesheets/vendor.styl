@@ -54,6 +54,84 @@ text-shadow()
 backface-visibility()
   vendor('backface-visibility', arguments)
 
+/*=====================FLEXBOX + BOXFLEX=============*/
+display-flexbox()
+  display -webkit-box
+  display -moz-box
+  display -ms-box
+  display -o-box
+  display box
+  display -webkit-flexbox
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+
+display-flexbox-vertical()
+  display-flexbox()
+  vendor(flex-direction, column)
+  box-orient vertical
+
+display-flexbox-horizontal()
+  display-flexbox()
+  vendor(flex-direction, row)
+  box-orient horizontal
+
+flexbox-weight(weight)
+  box-flex weight
+  flex weight 1 auto
+  // vendor(box-flex, weight)
+  // vendor(flex, weight)
+
+flexbox-order(args)
+  order args
+  // vendor('order', args)
+  vendor('box-ordinal-group', args)
+  -ms-flex-order args
+
+flexbox-vertical()
+  vendor(flex-direction, column)
+  box-orient vertical
+
+flexbox-horizontal()
+  vendor(flex-direction, row)
+  box-orient horizontal
+
+flexbox-pack-start()
+  vendor('box-pack', start)
+  vendor('justify-content', flex-start)
+  // vendor('flex-pack', start)
+
+flexbox-pack-end()
+  vendor('box-pack', end)
+  vendor('justify-content', flex-end)
+  // vendor('flex-pack', end)
+
+flexbox-pack-center()
+  vendor('box-pack', center)
+  vendor('justify-content', center)
+  // vendor('flex-pack', cented)
+
+flexbox-pack-justify()
+  vendor('box-pack', justify)
+  // vendor('justify-content', space-between)
+  // vendor('flex-pack', justify)
+
+flexbox-align-start()
+  box-align start
+  vendor('align-items', flex-start)
+
+flexbox-align-end()
+  box-align end
+  vendor('align-items', flex-end)
+
+flexbox-align-center()
+  box-align center
+  vendor('align-items', center)
+
+flexbox-align-stretch()
+  box-align stretch
+  vendor('align-items', stretch)
+
 /* ====================== FLEXBOX ====================== */
 display-box()
   vendorValue('display', box)

@@ -74,49 +74,45 @@
 
 .grid
   width 100%
-  display -webkit-box
-  display -ms-box
-  display -o-box
-  display -moz-box
-  display box
+  display-flexbox()
 
   &.vertical
     height inherit
-    box-orient vertical
+    flexbox-vertical()
     box-align stretch
 
   &.horizontal
-    box-orient horizontal
+    flexbox-horizontal()
 
   & > *
-    box-flex 1
+    flexbox-weight(1)
 
 .box_0
-  box-flex 0
+  flexbox-weight(0)
 
 .box_2
-  box-flex 2
+  flexbox-weight(2)
 
 .box_3
-  box-flex 3
+  flexbox-weight(3)
 
 .box_4
-  box-flex 4
+  flexbox-weight(4)
 
 .box_5
-  box-flex 5
+  flexbox-weight(5)
 
 .box_6
-  box-flex 6
+  flexbox-weight(6)
 
 .box_7
-  box-flex 7
+  flexbox-weight(7)
 
 .box_8
-  box-flex 8
+  flexbox-weight(8)
 
 .box_9
-  box-flex 9
+  flexbox-weight(9)
 
 
 
