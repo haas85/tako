@@ -384,7 +384,7 @@
       return $(inputs).on("focus", function() {
         var _this = this;
         return setTimeout((function() {
-          return _softKeyboard(_this);
+          return _softKeyboard(_this, 20);
         }), 400);
       });
     };
@@ -410,7 +410,7 @@
       }
     };
     _browser = function() {
-      if ($.os == null) {
+      if ((!$.os.tablet) && (!$.os.phone)) {
         return _moveChilds($("body > article > section.indented"));
       }
     };

@@ -19,7 +19,7 @@ _fallback = ->
   _android = ->
     _moveChilds $("body > article > section")
     $(inputs).on "focus", ->
-      setTimeout (=> _softKeyboard(@)), 400
+      setTimeout (=> _softKeyboard(@, 20)), 400
 
   _ios = ->
     _moveChilds $("body > article > section")
@@ -35,7 +35,8 @@ _fallback = ->
     _moveChilds($("body > article > section.indented")) if $.os? and $.os.phone
 
   _browser = ->
-    _moveChilds($("body > article > section.indented")) if not $.os?
+    if (not $.os.tablet) and (not $.os.phone)
+      _moveChilds($("body > article > section.indented"))
 
   # Firefox
   _firefox() if navigator.userAgent.toLowerCase().indexOf("firefox") isnt -1
