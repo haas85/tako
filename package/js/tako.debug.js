@@ -432,7 +432,7 @@
     var active, callback, confirm, custom, error, hide, loading, notification, notification_window, progress, success, timeout, _close, _hide, _iconHtml, _ontap, _show;
     active = false;
     notification = $("<div data-element=\"notification\"><div></div</div>");
-    notification_window = $("<section class=\"window\"></section>");
+    notification_window = $("<article class=\"window\"></article>");
     notification.find("div").append(notification_window);
     $("body").append(notification);
     timeout = null;
@@ -464,7 +464,7 @@
       } else {
         classes += " squared";
       }
-      html += "<article>\n  <span class=\"icon " + icon + " animated\"></span>\n</article>";
+      html += "<section>\n  <span class=\"icon " + icon + " animated\"></span>\n</section>";
       return _show(html, classes, time_out, cb);
     };
     progress = function(icon, title, content, time_out, cb) {
@@ -473,7 +473,7 @@
       if (icon != null) {
         html += "<span class=\"icon " + icon + "\"></span>";
       }
-      html += "<span>" + title + "</span>\n</header>\n<article>\n  <span class=\"content\">" + content + "</span>\n  <div id=\"notification_progress\"></div><div style=\"clear:both\"></div>\n</article>";
+      html += "<span>" + title + "</span>\n</header>\n<section>\n  <span class=\"content\">" + content + "</span>\n  <div id=\"notification_progress\"></div><div style=\"clear:both\"></div>\n</section>";
       _show(html, "center progress not_clickable", time_out, cb);
       progress = TK.ProgressBar("notification_progress", 0);
       return {
@@ -491,7 +491,7 @@
     };
     confirm = function(icon, title, content, accept, cancel, cb) {
       var buttons, html;
-      html = "<article>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</article>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
+      html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
       buttons = notification_window.find("button");
       return buttons.bind("tap", function(element) {
@@ -518,11 +518,11 @@
       } else if (title != null) {
         header = "<header><h1>\n  <span>" + title + "</span>\n</h1></header>";
       }
-      html = "" + header + "\n<article>";
+      html = "" + header + "\n<section>";
       if (closable && (title == null)) {
         html += "<span class=\"close black icon cancel\"></span>";
       }
-      html += "" + content + "\n</article>";
+      html += "" + content + "\n</section>";
       _show(html, "center custom not_clickable " + classes, timeout, cb);
       return notification.find(".close").on("tap", _close);
     };
@@ -534,7 +534,7 @@
       return setTimeout(_hide, 500);
     };
     _iconHtml = function(icon, title, content) {
-      return "<header>\n  <span class=\"icon " + icon + "\"></span>\n</header>\n<article>\n  <span class=\"title\">" + title + "</span>\n  <span class=\"content\">" + content + "</span>\n</article>";
+      return "<header>\n  <span class=\"icon " + icon + "\"></span>\n</header>\n<section>\n  <span class=\"title\">" + title + "</span>\n  <span class=\"content\">" + content + "</span>\n</section>";
     };
     _show = function(html, classes, time_out, cb) {
       var original_cb;

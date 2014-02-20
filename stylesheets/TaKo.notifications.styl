@@ -27,7 +27,7 @@ div[data-element="notification"]
     flexbox-pack-center()
     flexbox-align-center()
 
-  & > div > section.window
+  & > div > article.window
     display block
     margin-left auto
     margin-right auto
@@ -38,6 +38,11 @@ div[data-element="notification"]
     padding 0
     transition-duration NOTIFICATION_TRANSITION_TIME
     background-color NOTIFICATION_WHITE
+
+    & > section > div
+      position static
+      height auto
+      width auto
 
     & > header
       position static
@@ -107,7 +112,7 @@ div[data-element="notification"]
 
     &.confirm
 
-      & > article
+      & > section
         display-flexbox-horizontal()
 
         box-direction normal
@@ -151,7 +156,7 @@ div[data-element="notification"]
     &.show
       opacity 1
 
-    & > header, & > article
+    & > header, & > section
       position static
       background-color NOTIFICATION_WHITE
 
@@ -176,7 +181,7 @@ div[data-element="notification"]
             height 100px
             line-height 100px
 
-      & > article
+      & > section
         display block
         position static
         height 125px
@@ -228,7 +233,7 @@ div[data-element="notification"]
             width 100%
             text-align center
 
-      & > article
+      & > section
         display block
         height 100px
         line-height 100px
@@ -257,7 +262,7 @@ div[data-element="notification"]
       & > header
         text-align center!important
 
-      & > article
+      & > section
         padding-bottom 1.5em
 
       &.squared
@@ -267,7 +272,7 @@ div[data-element="notification"]
         max-height 97px!important
         background none
 
-        & > article
+        & > section
           overflow hidden
           width 100px!important
           height 100px!important
@@ -283,11 +288,11 @@ div[data-element="notification"]
           margin-left auto
           margin-right auto
 
-      & > article
+      & > section
         & .icon
           line-height 96px
     &.progress
-      & > article
+      & > section
         height 150px
         line-height 20px
 
@@ -301,7 +306,7 @@ div[data-element="notification"]
         text-align center
         width 100%
 
-      & > article
+      & > section
         width 100%
         position static
         display block
@@ -337,7 +342,7 @@ div[data-element="notification"]
           padding-right 55px
           padding-left 55px
 
-        & + article
+        & + section
           display block
           position relative
           top 30px

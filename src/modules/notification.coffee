@@ -3,7 +3,7 @@ Tako.Notification = do (TK = Tako) ->
 
 
   notification = $ """<div data-element="notification"><div></div</div>"""
-  notification_window = $ """<section class="window"></section>"""
+  notification_window = $ """<article class="window"></article>"""
 
   notification.find("div").append notification_window
   $("body").append notification
@@ -37,9 +37,9 @@ Tako.Notification = do (TK = Tako) ->
     else
       classes += " squared"
     html += """
-    <article>
+    <section>
       <span class="icon #{icon} animated"></span>
-    </article>
+    </section>
     """
     _show html, classes, time_out, cb
 
@@ -49,10 +49,10 @@ Tako.Notification = do (TK = Tako) ->
     html +=  """
     <span>#{title}</span>
     </header>
-    <article>
+    <section>
       <span class="content">#{content}</span>
       <div id="notification_progress"></div><div style="clear:both"></div>
-    </article>
+    </section>
     """
     _show html, "center progress not_clickable", time_out, cb
     progress = TK.ProgressBar "notification_progress", 0
@@ -62,13 +62,13 @@ Tako.Notification = do (TK = Tako) ->
       val
 
   confirm = (icon, title, content, accept, cancel, cb) ->
-    html = """<article>
+    html = """<section>
                 <span class="icon #{icon}"></span>
                 <div>
                   <span class="title">#{title}</span><br>
                   <span class="content padding bottom clear">#{content}</span>
                 </div>
-              </article>
+              </section>
               <footer>
                 <button class="button accept">#{accept}</button>
                 <button class="button cancel">#{cancel}</button>
@@ -101,10 +101,10 @@ Tako.Notification = do (TK = Tako) ->
       </h1></header>"""
     html = """
     #{header}
-    <article>"""
+    <section>"""
     html += """<span class="close black icon cancel"></span>""" if closable and not title?
     html += """#{content}
-    </article>
+    </section>
     """
 
     _show html, "center custom not_clickable #{classes}", timeout, cb
@@ -122,10 +122,10 @@ Tako.Notification = do (TK = Tako) ->
     <header>
       <span class="icon #{icon}"></span>
     </header>
-    <article>
+    <section>
       <span class="title">#{title}</span>
       <span class="content">#{content}</span>
-    </article>
+    </section>
     """
 
 
