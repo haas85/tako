@@ -360,23 +360,54 @@
   })();
 
   _fallback = function() {
-    var height, style, _android, _browser, _firefox, _ios, _moveChilds;
+    var height, inputs, style, _android, _browser, _firefox, _ios, _moveChilds, _softKeyboard;
     style = "<style>";
     height = $(window).height();
     style += "";
+    inputs = "input[type=\"text\"], input[type=\"password\"], input[type=\"date\"], input[type=\"datetime\"], input[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"tel\"], input[type=\"time\"], input[type=\"url\"], textarea";
     _moveChilds = function(elements) {
       return elements.each(function() {
         return $(this).append($(document.createElement("div")).append($(this).children()));
       });
     };
+    _softKeyboard = function(elem, offset) {
+      var container, top;
+      if (offset == null) {
+        offset = 0;
+      }
+      top = elem.getBoundingClientRect().top;
+      container = $(elem).parents(["section.active"]);
+      return container.scrollTop(top - container[0].getBoundingClientRect().top - offset);
+    };
     _android = function() {
-      return _moveChilds($("body > article > section"));
+      _moveChilds($("body > article > section"));
+      return $(inputs).on("focus", function() {
+        var _this = this;
+        return setTimeout((function() {
+          return _softKeyboard(_this);
+        }), 400);
+      });
     };
     _ios = function() {
-      return this;
+      _moveChilds($("body > article > section"));
+      $(inputs).on("tap", function() {
+        return $(this).focus();
+      });
+      $(inputs).on("focus", function() {
+        var _this = this;
+        $("body").height($(window).height());
+        return setTimeout((function() {
+          return _softKeyboard(_this, 50);
+        }), 700);
+      });
+      return $(inputs).on("blur", function() {
+        return $("body").height("100%");
+      });
     };
     _firefox = function() {
-      return this;
+      if (($.os != null) && $.os.phone) {
+        return _moveChilds($("body > article > section.indented"));
+      }
     };
     _browser = function() {
       if ($.os == null) {
