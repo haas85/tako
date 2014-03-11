@@ -12,11 +12,11 @@ Tako.Notification = do (TK = Tako) ->
   callback = null
 
 
-  success = (icon, title, content, time_out, cb) ->
+  success = (icon="ok", title, content, time_out, cb) ->
     html = _iconHtml icon, title, content
     _show html, "success center upwards", time_out, cb
 
-  error = (icon, title, content, time_out, cb) ->
+  error = (icon="cancel", title, content, time_out, cb) ->
     html = _iconHtml icon, title, content
     _show html, "error center downwards", time_out, cb
 
@@ -61,7 +61,7 @@ Tako.Notification = do (TK = Tako) ->
       setTimeout (-> do hide), 150 if val is 100
       val
 
-  confirm = (icon, title, content, accept, cancel, cb) ->
+  confirm = (icon="help-circled", title, content, accept, cancel, cb) ->
     html = """<section>
                 <span class="icon #{icon}"></span>
                 <div>

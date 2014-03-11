@@ -439,11 +439,17 @@
     callback = null;
     success = function(icon, title, content, time_out, cb) {
       var html;
+      if (icon == null) {
+        icon = "ok";
+      }
       html = _iconHtml(icon, title, content);
       return _show(html, "success center upwards", time_out, cb);
     };
     error = function(icon, title, content, time_out, cb) {
       var html;
+      if (icon == null) {
+        icon = "cancel";
+      }
       html = _iconHtml(icon, title, content);
       return _show(html, "error center downwards", time_out, cb);
     };
@@ -491,6 +497,9 @@
     };
     confirm = function(icon, title, content, accept, cancel, cb) {
       var buttons, html;
+      if (icon == null) {
+        icon = "help-circled";
+      }
       html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
       buttons = notification_window.find("button");
