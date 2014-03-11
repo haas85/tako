@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 2/20/2014
+/* TaKo v0.1.0 - 3/11/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -11,19 +11,19 @@
     remaining = 0;
     callbacks = [];
     init = function(options) {
-      var exception, section, _i, _len, _ref, _results;
+      var article, exception, _i, _len, _ref, _results;
       if (options == null) {
         options = {};
       }
       try {
-        if (options.sections != null) {
-          remaining = options.sections.length;
-          _ref = options.sections;
+        if (options.articles != null) {
+          remaining = options.articles.length;
+          _ref = options.articles;
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            section = _ref[_i];
+            article = _ref[_i];
             _results.push($.ajax({
-              url: section,
+              url: article,
               crossDomain: true,
               success: _onReceive,
               error: _onError

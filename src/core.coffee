@@ -5,11 +5,11 @@ window.Tako = Tako = do ->
 
   init = (options={})->
     try
-      if options.sections?
-        remaining = options.sections.length
-        for section in options.sections
+      if options.articles?
+        remaining = options.articles.length
+        for article in options.articles
           $.ajax
-            url           : section
+            url           : article
             crossDomain   : true
             success       : _onReceive
             error         : _onError
