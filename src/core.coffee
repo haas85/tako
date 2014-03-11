@@ -33,6 +33,8 @@ window.Tako = Tako = do ->
         $(@).children("section").first().addClass "active"
     _current_art = $("article.active section.active")[0].id
     $("[data-visible=#{_current_art}]").addClass "show"
+    $("[data-section=#{$("article.active section.active").attr("id")}]").addClass "current"
+    $("[data-article=#{$("article.active").attr("id")}]").addClass "current"
     do _fallback
     do _loaded
 

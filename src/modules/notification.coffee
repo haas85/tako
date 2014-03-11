@@ -61,7 +61,7 @@ Tako.Notification = do (TK = Tako) ->
       setTimeout (-> do hide), 150 if val is 100
       val
 
-  confirm = (icon="help-circled", title, content, accept, cancel, cb) ->
+  confirm = (icon="help-circled", title, content, accept="Accept", cancel="Cancel", cb) ->
     html = """<section>
                 <span class="icon #{icon}"></span>
                 <div>

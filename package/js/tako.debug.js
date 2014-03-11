@@ -1,4 +1,4 @@
-/* TaKo v0.1.0 - 3/11/2014
+/* TaKo v0.1.0 - 3/12/2014
    http://
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -64,6 +64,8 @@
       });
       _current_art = $("article.active section.active")[0].id;
       $("[data-visible=" + _current_art + "]").addClass("show");
+      $("[data-section=" + ($("article.active section.active").attr("id")) + "]").addClass("current");
+      $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
       _fallback();
       return _loaded();
     };
@@ -499,6 +501,12 @@
       var buttons, html;
       if (icon == null) {
         icon = "help-circled";
+      }
+      if (accept == null) {
+        accept = "Accept";
+      }
+      if (cancel == null) {
+        cancel = "Cancel";
       }
       html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
