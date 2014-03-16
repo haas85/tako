@@ -9,7 +9,7 @@ module.exports = (grunt) ->
       package : "package",
       temp   : "build",
       banner : """
-        /* <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("m/d/yyyy") %>
+        /* <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("dd/mm/yyyy") %>
            <%= pkg.homepage %>
            Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> - Under <%= pkg.license %> License */
 

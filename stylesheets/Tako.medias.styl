@@ -29,7 +29,7 @@
 
   div[data-element="aside_background"]
     position static
-    display block
+    display none
     width ASIDE_WIDTH!important
     z-index ASIDE_BCK_INDEX
     height 100%
@@ -44,9 +44,12 @@
     top 0
     left 0
     z-index FULL_ASIDE_INDEX
-    position absolute
+    position static
     padding-right ASIDE_PADDING
     box-sizing border-box
+    box-flex 0
+    flex 0 0 auto
+    flexbox-order(1)
 
   article
     display none

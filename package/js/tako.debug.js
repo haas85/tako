@@ -1,5 +1,5 @@
-/* TaKo v0.1.0 - 3/12/2014
-   http://
+/* TaKo v1.0.1 - 14/03/2014
+   http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
   var Tako, _fallback,
@@ -123,22 +123,24 @@
       }
     };
     $("[data-article]").each(function(element) {
-      var _this = this;
       if (this.nodeName === "LI") {
         $(this).children().each(function() {
-          var _this = this;
-          return $(this).bind("tap", function(ev) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            return goTo($(_this).parent().attr("data-article"));
-          });
+          return $(this).bind("tap", (function(_this) {
+            return function(ev) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              return goTo($(_this).parent().attr("data-article"));
+            };
+          })(this));
         });
       }
-      return $(this).bind("tap", function(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        return goTo($(_this).attr("data-article"));
-      });
+      return $(this).bind("tap", (function(_this) {
+        return function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return goTo($(_this).attr("data-article"));
+        };
+      })(this));
     });
     _current = null;
     return function(id) {
@@ -176,7 +178,6 @@
       if (aside.hasClass("full")) {
         bck.addClass("full");
       }
-      bck.append(aside);
       show = function() {
         bck.removeClass("hide").addClass("show");
         return aside.addClass("show");
@@ -256,22 +257,24 @@
       }
     };
     $("[data-section]").each(function(element) {
-      var _this = this;
       if (this.nodeName === "LI") {
         $(this).children().each(function() {
-          var _this = this;
-          return $(this).bind("tap", function(ev) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            return goTo($(_this).parent().attr("data-section"));
-          });
+          return $(this).bind("tap", (function(_this) {
+            return function(ev) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              return goTo($(_this).parent().attr("data-section"));
+            };
+          })(this));
         });
       }
-      return $(this).bind("tap", function(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        return goTo($(_this).attr("data-section"));
-      });
+      return $(this).bind("tap", (function(_this) {
+        return function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return goTo($(_this).attr("data-section"));
+        };
+      })(this));
     });
     _current = null;
     return function(id) {
@@ -282,6 +285,43 @@
       }
     };
   })(Tako);
+
+  Tako.ProgressBar = function(container, value) {
+    var Progress;
+    Progress = (function() {
+      Progress.prototype.el = null;
+
+      Progress.prototype.fill = null;
+
+      function Progress(container, value) {
+        var PROGRESS;
+        this.value = value != null ? value : 0;
+        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
+        this.el = $(PROGRESS);
+        $("#" + container).append(this.el);
+        this.fill = this.el.children(".percent");
+      }
+
+      Progress.prototype.percent = function(value) {
+        if (value != null) {
+          if (value < 0 || value > 100) {
+            throw "Invalid value";
+          }
+          this.value = value;
+          this.fill.css("width", "" + this.value + "%");
+        }
+        return this.value;
+      };
+
+      Progress.prototype.remove = function() {
+        return this.el.remove();
+      };
+
+      return Progress;
+
+    })();
+    return new Progress(container, value);
+  };
 
   Tako.Connection = (function() {
     var _callbacks, _state, _stateChange;
@@ -384,10 +424,11 @@
     _android = function() {
       _moveChilds($("body > article > section"));
       return $(inputs).on("focus", function() {
-        var _this = this;
-        return setTimeout((function() {
-          return _softKeyboard(_this, 20);
-        }), 400);
+        return setTimeout(((function(_this) {
+          return function() {
+            return _softKeyboard(_this, 20);
+          };
+        })(this)), 400);
       });
     };
     _ios = function() {
@@ -396,11 +437,12 @@
         return $(this).focus();
       });
       $(inputs).on("focus", function() {
-        var _this = this;
         $("body").height($(window).height());
-        return setTimeout((function() {
-          return _softKeyboard(_this, 50);
-        }), 700);
+        return setTimeout(((function(_this) {
+          return function() {
+            return _softKeyboard(_this, 50);
+          };
+        })(this)), 700);
       });
       return $(inputs).on("blur", function() {
         return $("body").height("100%");
@@ -622,43 +664,6 @@
     };
   })(Tako);
 
-  Tako.ProgressBar = function(container, value) {
-    var Progress;
-    Progress = (function() {
-      Progress.prototype.el = null;
-
-      Progress.prototype.fill = null;
-
-      function Progress(container, value) {
-        var PROGRESS;
-        this.value = value != null ? value : 0;
-        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
-        this.el = $(PROGRESS);
-        $("#" + container).append(this.el);
-        this.fill = this.el.children(".percent");
-      }
-
-      Progress.prototype.percent = function(value) {
-        if (value != null) {
-          if (value < 0 || value > 100) {
-            throw "Invalid value";
-          }
-          this.value = value;
-          this.fill.css("width", "" + this.value + "%");
-        }
-        return this.value;
-      };
-
-      Progress.prototype.remove = function() {
-        return this.el.remove();
-      };
-
-      return Progress;
-
-    })();
-    return new Progress(container, value);
-  };
-
   (function() {
     var lastTime, vendors, x;
     lastTime = 0;
@@ -700,8 +705,7 @@
     container = document.getElementById(container);
     PullToRefresh = (function() {
       function PullToRefresh(container, options) {
-        var PULLREFRESH,
-          _this = this;
+        var PULLREFRESH;
         this.options = options;
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
@@ -718,28 +722,32 @@
         this._anim = null;
         this._dragged_down = false;
         this.showRelease = false;
-        Hammer(this.container).on("touch", function() {
-          $(_this.container).addClass("pulling");
-          if (!_this.refreshing) {
-            return _this.hide(false);
-          }
-        });
+        Hammer(this.container).on("touch", (function(_this) {
+          return function() {
+            $(_this.container).addClass("pulling");
+            if (!_this.refreshing) {
+              return _this.hide(false);
+            }
+          };
+        })(this));
         Hammer(this.container).on("dragdown", this.onPull);
-        Hammer(this.container).on("release", function() {
-          if (!_this._dragged_down) {
-            return;
-          }
-          cancelAnimationFrame(_this._anim);
-          if (_this._slidedown_height >= _this.breakpoint) {
-            if (_this.options.onRefresh) {
-              return _this.onRefresh();
+        Hammer(this.container).on("release", (function(_this) {
+          return function() {
+            if (!_this._dragged_down) {
+              return;
+            }
+            cancelAnimationFrame(_this._anim);
+            if (_this._slidedown_height >= _this.breakpoint) {
+              if (_this.options.onRefresh) {
+                return _this.onRefresh();
+              } else {
+                return _this.hide();
+              }
             } else {
               return _this.hide();
             }
-          } else {
-            return _this.hide();
-          }
-        });
+          };
+        })(this));
       }
 
       PullToRefresh.prototype.onPull = function(ev) {

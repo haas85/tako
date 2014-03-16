@@ -1,8 +1,8 @@
 {
   "name"            : "TaKo",
-  "version"         : "0.1.0",
+  "version"         : "1.0.1",
   "description"     : "Mobile Apps Web Framework",
-  "homepage"        : "http://",
+  "homepage"        : "http://takojs.com",
   "author"          : "Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85)",
   "license"         : "MIT",
   "dependencies": {

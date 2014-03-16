@@ -7,7 +7,7 @@ Tako.Aside = do (TK = Tako) ->
     bck = $ '<div data-element="aside_background"></div>'
     $("body").append bck
     bck.addClass "full" if aside.hasClass "full"
-    bck.append aside
+    # bck.append aside
 
     show = ->
       bck.removeClass("hide").addClass "show"

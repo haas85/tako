@@ -1,13 +1,16 @@
 aside
   display block
   width ASIDE_WIDTH
-  top 0
+  top HEADER_HEIGHT
   bottom 0
-  height 100%
   left - ASIDE_TRANSITION
   position absolute
   z-index ASIDE_INDEX
   transition-duration ASIDE_TRANSITION_TIME
+
+  &.full
+    top 0
+    height 100%
 
   & .counter
     margin-top -3px
@@ -50,14 +53,15 @@ div[data-element="aside_background"]
   position absolute
   top HEADER_HEIGHT
   left 0
+  bottom 0
   width 100%
-  height 100%
   z-index 0
   background-color rgba(0, 0, 0, 0)
   transition(background-color ASIDE_TRANSITION_TIME linear)
 
   &.full
-    background-color rgba(0, 0, 0, 0)!important
+    // background-color rgba(0, 0, 0, 0)!important
+    height 100%
     top 0
 
   &.show
