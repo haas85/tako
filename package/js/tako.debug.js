@@ -1,4 +1,4 @@
-/* TaKo v1.0.1 - 17/03/2014
+/* TaKo v1.0.1 - 18/03/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -7,7 +7,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = Tako = (function() {
-    var callbacks, init, onReady, remaining, viewType, _loaded, _onError, _onReceive, _setup;
+    var callbacks, init, onReady, remaining, viewType, _loaded, _onError, _onReceive, _setNavigation, _setup;
     remaining = 0;
     callbacks = [];
     init = function(options) {
@@ -66,8 +66,35 @@
       $("[data-visible=" + _current_art + "]").addClass("show");
       $("[data-section=" + ($("article.active section.active").attr("id")) + "]").addClass("current");
       $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
+      _setNavigation("data-article", Tako.Article);
+      _setNavigation("data-section", Tako.Section);
+      $("[data-action=aside]").each(function(element) {
+        return $(this).on("tap", function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return Tako.Aside.toggle();
+        });
+      });
       _fallback();
       return _loaded();
+    };
+    _setNavigation = function(query, action) {
+      return $("[" + query + "]").each(function(element) {
+        if (this.nodeName === "LI") {
+          $(this).children().each(function() {
+            return $(this).bind("tap", function(ev) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              return action($(this).parent().attr(query));
+            });
+          });
+        }
+        return $(this).bind("tap", function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return action($(ev.target).attr(query));
+        });
+      });
     };
     _onReceive = function(data) {
       remaining--;
@@ -122,28 +149,9 @@
         return _current = $("article.active");
       }
     };
-    $("[data-article]").each(function(element) {
-      if (this.nodeName === "LI") {
-        $(this).children().each(function() {
-          return $(this).bind("tap", (function(_this) {
-            return function(ev) {
-              ev.preventDefault();
-              ev.stopPropagation();
-              return goTo($(_this).parent().attr("data-article"));
-            };
-          })(this));
-        });
-      }
-      return $(this).bind("tap", (function(_this) {
-        return function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          return goTo($(_this).attr("data-article"));
-        };
-      })(this));
-    });
     _current = null;
     return function(id) {
+      console.log(id);
       if (id != null) {
         return goTo(id);
       } else {
@@ -198,13 +206,6 @@
           }
         }
       };
-      $("[data-action=aside]").each(function(element) {
-        return $(this).on("tap", function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          return toggle();
-        });
-      });
       $("aside *").each(function(element) {
         return $(this).on("tap", function(ev) {
           ev.preventDefault();
@@ -256,28 +257,9 @@
         return _current = $("article.active section.active");
       }
     };
-    $("[data-section]").each(function(element) {
-      if (this.nodeName === "LI") {
-        $(this).children().each(function() {
-          return $(this).bind("tap", (function(_this) {
-            return function(ev) {
-              ev.preventDefault();
-              ev.stopPropagation();
-              return goTo($(_this).parent().attr("data-section"));
-            };
-          })(this));
-        });
-      }
-      return $(this).bind("tap", (function(_this) {
-        return function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          return goTo($(_this).attr("data-section"));
-        };
-      })(this));
-    });
     _current = null;
     return function(id) {
+      console.log(id);
       if (id != null) {
         return goTo(id);
       } else {

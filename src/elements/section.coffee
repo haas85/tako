@@ -25,18 +25,8 @@ Tako.Section = do (TK = Tako) ->
   current = ->
     if _current? then _current else _current = $ "article.active section.active"
 
-  $("[data-section]").each (element) ->
-    if @.nodeName is "LI"
-      $(@).children().each ->
-        $(@).bind "tap", (ev) =>
-          do ev.preventDefault
-          do ev.stopPropagation
-          goTo $(@).parent().attr "data-section"
-    $(@).bind "tap", (ev) =>
-      do ev.preventDefault
-      do ev.stopPropagation
-      goTo $(@).attr "data-section"
-
   _current = null
 
-  (id) -> if id? then goTo id else current()
+  (id) ->
+    console.log id
+    if id? then goTo id else current()

@@ -14,21 +14,10 @@ Tako.Article = do (TK = Tako) ->
   current = ->
     if _current? then _current else _current = $ "article.active"
 
-  $("[data-article]").each (element) ->
-    if @.nodeName is "LI"
-      $(@).children().each ->
-        $(@).bind "tap", (ev) =>
-          do ev.preventDefault
-          do ev.stopPropagation
-          goTo $(@).parent().attr "data-article"
-    $(@).bind "tap", (ev)=>
-      do ev.preventDefault
-      do ev.stopPropagation
-      goTo $(@).attr "data-article"
-
   _current = null
 
   (id) ->
+    console.log id
     if id? then goTo id else current()
 
 Tako.Article.title = (html, article_id) ->

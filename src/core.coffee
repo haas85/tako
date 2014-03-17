@@ -35,8 +35,29 @@ window.Tako = Tako = do ->
     $("[data-visible=#{_current_art}]").addClass "show"
     $("[data-section=#{$("article.active section.active").attr("id")}]").addClass "current"
     $("[data-article=#{$("article.active").attr("id")}]").addClass "current"
+    _setNavigation "data-article", Tako.Article
+    _setNavigation "data-section", Tako.Section
+    $("[data-action=aside]").each (element) ->
+      $(@).on "tap", (ev)->
+        do ev.preventDefault
+        do ev.stopPropagation
+        do Tako.Aside.toggle
+
     do _fallback
     do _loaded
+
+  _setNavigation = (query, action) ->
+    $("[#{query}]").each (element) ->
+      if @.nodeName is "LI"
+        $(@).children().each ->
+          $(@).bind "tap", (ev) ->
+            do ev.preventDefault
+            do ev.stopPropagation
+            action $(@).parent().attr(query)
+      $(@).bind "tap", (ev) ->
+        do ev.preventDefault
+        do ev.stopPropagation
+        action $(ev.target).attr(query)
 
   _onReceive = (data) ->
       remaining--
