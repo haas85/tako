@@ -4,6 +4,12 @@ fieldset
   & [type="radio"], & [type="checkbox"]
     margin-top 8px
 
+label:not(.select)
+  line-height 32px
+  height 32px
+  margin-top 5px
+  float left
+
 input
   outline none
   -webkit-user-select text
@@ -156,11 +162,6 @@ fieldset
   box-sizing border-box
   margin-left 0
   margin-right 0
-  & label:not(.select)
-    line-height 32px
-    height 32px
-    margin-top 5px
-    float left
 
   &:after
     display block

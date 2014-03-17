@@ -1,4 +1,4 @@
-/* TaKo v1.0.1 - 14/03/2014
+/* TaKo v1.0.1 - 17/03/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
