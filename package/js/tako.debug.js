@@ -151,7 +151,6 @@
     };
     _current = null;
     return function(id) {
-      console.log(id);
       if (id != null) {
         return goTo(id);
       } else {
@@ -259,7 +258,6 @@
     };
     _current = null;
     return function(id) {
-      console.log(id);
       if (id != null) {
         return goTo(id);
       } else {

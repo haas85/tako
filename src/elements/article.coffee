@@ -17,7 +17,6 @@ Tako.Article = do (TK = Tako) ->
   _current = null
 
   (id) ->
-    console.log id
     if id? then goTo id else current()
 
 Tako.Article.title = (html, article_id) ->

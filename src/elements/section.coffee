@@ -28,5 +28,4 @@ Tako.Section = do (TK = Tako) ->
   _current = null
 
   (id) ->
-    console.log id
     if id? then goTo id else current()
