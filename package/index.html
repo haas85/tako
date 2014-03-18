@@ -273,7 +273,7 @@
             Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
         });
         $("#show_error").bind("tap", function(){
-            Tako.Notification.error("cancel", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
+            Tako.Notification.error("deny", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
         });
         $("#show_confirm").bind("tap", function(){
             Tako.Notification.confirm("help-circled", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
@@ -299,6 +299,5 @@
             setTimeout(function(){progress.percent(100)},4500);
         });
     </script>
-   <script src="http://192.168.2.102:8080/target/target-script-min.js"></script>
 </body>
 </html>

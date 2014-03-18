@@ -1,4 +1,4 @@
-/* TaKo v1.0.1 - 18/03/2014
+/* TaKo v1.1 - 18/03/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -472,7 +472,7 @@
     error = function(icon, title, content, time_out, cb) {
       var html;
       if (icon == null) {
-        icon = "cancel";
+        icon = "deny";
       }
       html = _iconHtml(icon, title, content);
       return _show(html, "error center downwards", time_out, cb);
@@ -553,13 +553,13 @@
       }
       header = "";
       if ((title != null) && closable) {
-        header = "<header>\n  <span class=\"close icon cancel\"></span>\n  <h1>\n    <span>" + title + "</span>\n  </h1>\n</header>";
+        header = "<header>\n  <span class=\"close icon deny\"></span>\n  <h1>\n    <span>" + title + "</span>\n  </h1>\n</header>";
       } else if (title != null) {
         header = "<header><h1>\n  <span>" + title + "</span>\n</h1></header>";
       }
       html = "" + header + "\n<section>";
       if (closable && (title == null)) {
-        html += "<span class=\"close black icon cancel\"></span>";
+        html += "<span class=\"close black icon deny\"></span>";
       }
       html += "" + content + "\n</section>";
       _show(html, "center custom not_clickable " + classes, timeout, cb);

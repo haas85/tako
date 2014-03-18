@@ -16,7 +16,7 @@ Tako.Notification = do (TK = Tako) ->
     html = _iconHtml icon, title, content
     _show html, "success center upwards", time_out, cb
 
-  error = (icon="cancel", title, content, time_out, cb) ->
+  error = (icon="deny", title, content, time_out, cb) ->
     html = _iconHtml icon, title, content
     _show html, "error center downwards", time_out, cb
 
@@ -90,7 +90,7 @@ Tako.Notification = do (TK = Tako) ->
     if title? and closable
       header = """
         <header>
-          <span class="close icon cancel"></span>
+          <span class="close icon deny"></span>
           <h1>
             <span>#{title}</span>
           </h1>
@@ -102,7 +102,7 @@ Tako.Notification = do (TK = Tako) ->
     html = """
     #{header}
     <section>"""
-    html += """<span class="close black icon cancel"></span>""" if closable and not title?
+    html += """<span class="close black icon deny"></span>""" if closable and not title?
     html += """#{content}
     </section>
     """
