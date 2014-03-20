@@ -26,8 +26,22 @@ _fallback = ->
       $(section_inputs).on "focus", ->
         setTimeout (=> _softKeyboard(@, 20)), 400
 
-  _ios = -> @
-    # _moveChilds $("body > article > section")
+      $("select").on "focus", (ev)->
+        ev.preventDefault()
+        ev.stopPropagation()
+        Select $(ev.target)
+
+    if android_23.test $.os.version
+      $("body").append $("<article data-selectbox><div></div></article>")
+      $("select").on "focus", (ev)->
+        ev.preventDefault()
+        ev.stopPropagation()
+        Select $(ev.target)
+
+
+
+  _ios = ->
+    _moveChilds $("body > article > section.indented")
     # $(inputs).on "tap", ->
     #   $(@).focus()
     # $(inputs).on "focus", ->

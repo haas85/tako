@@ -238,4 +238,58 @@ form, .form
 label.select select
   width 100%
 
+// Android 2.3 select-box
+
+article[data-selectbox]
+  display none
+
+  height 100%
+  width 100%
+  margin 0
+  padding 0
+  z-index 500
+  opacity 1
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  right 0
+
+  background-color rgba(0, 0, 0, 0.2)!important
+
+  &.show
+    display block
+
+  & > div
+    height 100%
+    width 100%
+    margin 0
+    padding 0
+    z-index 501
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    display-flexbox-vertical()
+    box-direction normal
+    flexbox-pack-center()
+    flexbox-align-center()
+
+
+    & > section[data-selectbox]
+      max-height 80%
+      width 90%
+      display block
+      position relative
+      overflow-x hidden
+      overflow-y scroll
+      -webkit-overflow-scrolling touch
+      text-align center
+      flexbox-weight(0)
+      position relative
+      top -10%
+
+
+
 

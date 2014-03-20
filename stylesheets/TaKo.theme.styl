@@ -26,6 +26,12 @@ article
 
 .theme
   background-color lighten(THEME, 15%)!important
+  background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)!important
+  background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)!important
+  background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)!important
+  background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
+  background-image linear-gradient(lighten(THEME, 35%), THEME)!important
+  color SECONDARY_TEXT !important
 
 article
   & > header
@@ -238,6 +244,9 @@ li.tapable:active
 
 div.pulltorefresh
   background-color darken(BACKGROUND, 15%)
+
+article[data-selectbox] section[data-selectbox]
+  border 2px solid darken(BACKGROUND, 15%)
 
 @media screen and (min-width : 768px) and (orientation : landscape)
   aside

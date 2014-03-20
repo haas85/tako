@@ -2,7 +2,7 @@
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Tako, _fallback,
+  var Select, Tako, _fallback,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -408,17 +408,32 @@
       android_4 = new RegExp("^4[\.]");
       android_23 = new RegExp("^2[\.]3[\.]");
       if (android_4.test($.os.version)) {
-        return $(inputs).on("focus", function() {
+        $(section_inputs).on("focus", function() {
           return setTimeout(((function(_this) {
             return function() {
               return _softKeyboard(_this, 20);
             };
           })(this)), 400);
         });
+        $("select").on("focus", function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return Select($(ev.target));
+        });
+      }
+      if (android_23.test($.os.version)) {
+        $("body").append($("<article data-selectbox><div></div></article>"));
+        return $("select").on("focus", function(ev) {
+          console.log("Hello");
+          console.log(ev);
+          ev.preventDefault();
+          ev.stopPropagation();
+          return Select($(ev.target));
+        });
       }
     };
     _ios = function() {
-      return this;
+      return _moveChilds($("body > article > section.indented"));
     };
     _firefox = function() {
       if (($.os != null) && $.os.phone) {
@@ -427,12 +442,8 @@
     };
     _browser = function() {
       if ((!$.os.tablet) && (!$.os.phone)) {
-        _moveChilds($("body > article > section.indented"));
+        return _moveChilds($("body > article > section.indented"));
       }
-      console.log("JIJI");
-      return $("section input[type=\"text\"]").on("focus", function() {
-        return console.log("HOLA");
-      });
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();
@@ -811,6 +822,39 @@
 
     })();
     return new PullToRefresh(container, options);
+  };
+
+  Select = function(element) {
+    var child, container, list, selectbox, _createElement, _i, _len, _ref, _selected;
+    _createElement = function(child) {
+      var elem;
+      elem = $("<li data-value=\"" + child.value + "\">" + child.text + "</li>");
+      if (child.value === selectbox[0].value) {
+        elem.addClass("theme");
+      }
+      elem.on("tap", function(ev) {
+        return _selected(ev.target);
+      });
+      return elem;
+    };
+    _selected = function(el) {
+      selectbox[0].value = el.getAttribute("data-value");
+      selectbox.hide();
+      setTimeout((function() {
+        return selectbox.show();
+      }), 1);
+      return $("article[data-selectbox]").removeClass("show").html("<div></div>");
+    };
+    selectbox = element;
+    container = $("<section data-selectbox=\"" + (selectbox.attr("id")) + "\"></section>");
+    list = $("<ul></ul>");
+    _ref = element.children();
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      child = _ref[_i];
+      list.append(_createElement(child));
+    }
+    container.append(list);
+    return $("article[data-selectbox]>div").append(container).parent().addClass("show");
   };
 
   (function() {
