@@ -382,11 +382,12 @@
   })();
 
   _fallback = function() {
-    var height, inputs, style, _android, _browser, _firefox, _ios, _moveChilds, _softKeyboard;
+    var height, inputs, section_inputs, style, _android, _browser, _firefox, _ios, _moveChilds, _softKeyboard;
     style = "<style>";
     height = $(window).height();
     style += "";
     inputs = "input[type=\"text\"], input[type=\"password\"], input[type=\"date\"], input[type=\"datetime\"], input[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"tel\"], input[type=\"time\"], input[type=\"url\"], textarea";
+    section_inputs = "section input[type=\"text\"], section input[type=\"password\"], section input[type=\"date\"], section input[type=\"datetime\"], section input[type=\"email\"], section input[type=\"number\"], section input[type=\"search\"], section input[type=\"tel\"], section input[type=\"time\"], section input[type=\"url\"], section textarea";
     _moveChilds = function(elements) {
       return elements.each(function() {
         return $(this).append($(document.createElement("div")).append($(this).children()));
@@ -402,9 +403,10 @@
       return container.scrollTop(top - container[0].getBoundingClientRect().top - offset);
     };
     _android = function() {
-      var android_4;
+      var android_23, android_4;
       _moveChilds($("body > article > section.indented"));
-      android_4 = new RegExp("^4[\.]+");
+      android_4 = new RegExp("^4[\.]");
+      android_23 = new RegExp("^2[\.]3[\.]");
       if (android_4.test($.os.version)) {
         return $(inputs).on("focus", function() {
           return setTimeout(((function(_this) {
@@ -425,8 +427,12 @@
     };
     _browser = function() {
       if ((!$.os.tablet) && (!$.os.phone)) {
-        return _moveChilds($("body > article > section.indented"));
+        _moveChilds($("body > article > section.indented"));
       }
+      console.log("JIJI");
+      return $("section input[type=\"text\"]").on("focus", function() {
+        return console.log("HOLA");
+      });
     };
     if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
       _firefox();

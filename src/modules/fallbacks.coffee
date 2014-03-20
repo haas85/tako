@@ -6,6 +6,7 @@ _fallback = ->
   style += """"""
 
   inputs = """input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea"""
+  section_inputs = """section input[type="text"], section input[type="password"], section input[type="date"], section input[type="datetime"], section input[type="email"], section input[type="number"], section input[type="search"], section input[type="tel"], section input[type="time"], section input[type="url"], section textarea"""
 
   _moveChilds = (elements) ->
     elements.each ->
@@ -18,10 +19,11 @@ _fallback = ->
 
   _android = ->
     _moveChilds $("body > article > section.indented")
-    android_4 = new RegExp("^4[\.]+")
+    android_4 = new RegExp("^4[\.]")
+    android_23 = new RegExp("^2[\.]3[\.]")
 
     if android_4.test $.os.version
-      $(inputs).on "focus", ->
+      $(section_inputs).on "focus", ->
         setTimeout (=> _softKeyboard(@, 20)), 400
 
   _ios = -> @
