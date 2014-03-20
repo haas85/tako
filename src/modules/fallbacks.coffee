@@ -17,19 +17,22 @@ _fallback = ->
     container.scrollTop(top - container[0].getBoundingClientRect().top - offset)
 
   _android = ->
-    _moveChilds $("body > article > section")
-    $(inputs).on "focus", ->
-      setTimeout (=> _softKeyboard(@, 20)), 400
+    _moveChilds $("body > article > section.indented")
+    android_4 = new RegExp("^4[\.]+")
 
-  _ios = ->
-    _moveChilds $("body > article > section")
-    $(inputs).on "tap", ->
-      $(@).focus()
-    $(inputs).on "focus", ->
-      $("body").height $(window).height()
-      setTimeout (=> _softKeyboard(@, 50)), 700
-    $(inputs).on "blur", ->
-      $("body").height("100%")
+    if android_4.test $.os.version
+      $(inputs).on "focus", ->
+        setTimeout (=> _softKeyboard(@, 20)), 400
+
+  _ios = -> @
+    # _moveChilds $("body > article > section")
+    # $(inputs).on "tap", ->
+    #   $(@).focus()
+    # $(inputs).on "focus", ->
+    #   $("body").height $(window).height()
+    #   setTimeout (=> _softKeyboard(@, 50)), 700
+    # $(inputs).on "blur", ->
+    #   $("body").height("100%")
 
   _firefox = ->
     _moveChilds($("body > article > section.indented")) if $.os? and $.os.phone

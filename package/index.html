@@ -48,6 +48,12 @@
             <button data-section="buttons" class="icon tasks">Buttons</button>
             <button data-section="lists" class="icon list">Lists</button>
         </nav>
+        <!-- <footer>
+            <nav>
+                <button class="icon ok" id="show_success2">Success<span class="counter">5</span></button>
+                <button id="show_progress2">Progress<span class="counter">84</span></button>
+            </nav>
+        </footer> -->
         <section id="main">
             <p>This is an example of pull and refresh</p>
             <p data-device="phone">This is only seen in phone mode</p>
@@ -142,6 +148,8 @@
                     <input type="text" id="border" class="no_border">
                     <label for="border">Textarea</label>
                     <textarea placeholder="The textarea can have the input texts' styles"></textarea>
+                    <label for="input">Default</label>
+                    <input type="text" id="input">
                 </fieldset>
                 <br>
                 <fieldset>
@@ -166,7 +174,7 @@
                 <fieldset>
                     <legend>Others</legend>
                     <label for="select_box">Select</label>
-                    <label class="select">
+                    <!-- <label class="select"> -->
                         <select name="" id="select_box">
                             <option value="elem1">Elem1</option>
                             <option value="elem2">Elem2</option>
@@ -174,7 +182,7 @@
                             <option value="elem4">Elem4</option>
                             <option value="elem5">Elem5</option>
                         </select>
-                    </label>
+                    <!-- </label> -->
                     <br>
                     <label for="range">Range</label>
                     <input type="range" id="range">
@@ -245,12 +253,6 @@
             <p class="align-center brown" style="padding: 10px">brown</p>
             <p class="align-center orange" style="padding: 10px">orange</p>
         </section>
-        <footer>
-            <nav>
-                <button class="icon ok" id="show_success2">Success<span class="counter">5</span></button>
-                <button id="show_progress2">Progress<span class="counter">84</span></button>
-            </nav>
-        </footer>
     </article>
 
     <script src="js/tako.components.js"></script>
@@ -299,5 +301,6 @@
             setTimeout(function(){progress.percent(100)},4500);
         });
     </script>
+    <script src="http://192.168.2.101:8080/target/target-script-min.js"></script>
 </body>
 </html>

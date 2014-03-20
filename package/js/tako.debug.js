@@ -1,4 +1,4 @@
-/* TaKo v1.1 - 19/03/2014
+/* TaKo v1.1 - 20/03/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -402,31 +402,21 @@
       return container.scrollTop(top - container[0].getBoundingClientRect().top - offset);
     };
     _android = function() {
-      _moveChilds($("body > article > section"));
-      return $(inputs).on("focus", function() {
-        return setTimeout(((function(_this) {
-          return function() {
-            return _softKeyboard(_this, 20);
-          };
-        })(this)), 400);
-      });
+      var android_4;
+      _moveChilds($("body > article > section.indented"));
+      android_4 = new RegExp("^4[\.]+");
+      if (android_4.test($.os.version)) {
+        return $(inputs).on("focus", function() {
+          return setTimeout(((function(_this) {
+            return function() {
+              return _softKeyboard(_this, 20);
+            };
+          })(this)), 400);
+        });
+      }
     };
     _ios = function() {
-      _moveChilds($("body > article > section"));
-      $(inputs).on("tap", function() {
-        return $(this).focus();
-      });
-      $(inputs).on("focus", function() {
-        $("body").height($(window).height());
-        return setTimeout(((function(_this) {
-          return function() {
-            return _softKeyboard(_this, 50);
-          };
-        })(this)), 700);
-      });
-      return $(inputs).on("blur", function() {
-        return $("body").height("100%");
-      });
+      return this;
     };
     _firefox = function() {
       if (($.os != null) && $.os.phone) {
