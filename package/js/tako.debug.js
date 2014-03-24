@@ -1,4 +1,4 @@
-/* TaKo v1.1 - 20/03/2014
+/* TaKo v1.1 - 24/03/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -424,8 +424,6 @@
       if (android_23.test($.os.version)) {
         $("body").append($("<article data-selectbox><div></div></article>"));
         return $("select").on("focus", function(ev) {
-          console.log("Hello");
-          console.log(ev);
           ev.preventDefault();
           ev.stopPropagation();
           return Select($(ev.target));
