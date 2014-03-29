@@ -284,8 +284,7 @@
             // Tako.Section("colors");
         });
 
-        Tako.init();
-        // Tako.init({"articles": ["article2.html"]});
+        Tako.init({"articles": ["article2.html"]});
         $("#show_success").bind("tap", function(){
             Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
         });

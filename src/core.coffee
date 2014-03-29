@@ -11,6 +11,7 @@ window.Tako = Tako = do ->
           $.ajax
             url           : article
             crossDomain   : true
+            dataType      : 'html'
             success       : _onReceive
             error         : _onError
       else
@@ -66,7 +67,7 @@ window.Tako = Tako = do ->
       $("body").append(data)
       if remaining is 0 then do _setup
 
-  _onError = (data) ->
+  _onError = () ->
     remaining--
     console.error "Article not downloaded"
     if remaining is 0 then do _setup

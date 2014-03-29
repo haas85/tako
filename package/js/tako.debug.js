@@ -25,6 +25,7 @@
             _results.push($.ajax({
               url: article,
               crossDomain: true,
+              dataType: 'html',
               success: _onReceive,
               error: _onError
             }));
@@ -106,7 +107,7 @@
         return _setup();
       }
     };
-    _onError = function(data) {
+    _onError = function() {
       remaining--;
       console.error("Article not downloaded");
       if (remaining === 0) {
