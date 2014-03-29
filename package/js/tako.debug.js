@@ -1,4 +1,4 @@
-/* TaKo v1.1 - 24/03/2014
+/* TaKo v1.1.1 - 29/03/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -57,6 +57,9 @@
         $("article").first().addClass("active");
       }
       $("body").hammer();
+      $("body > article > section.indented").each(function() {
+        return $(this).append($(document.createElement("div")).append($(this).children()));
+      });
       $("article").each(function() {
         if ($(this).children("section.active").length === 0) {
           return $(this).children("section").first().addClass("active");
@@ -382,17 +385,9 @@
   })();
 
   _fallback = function() {
-    var height, inputs, section_inputs, style, _android, _browser, _firefox, _ios, _moveChilds, _softKeyboard;
-    style = "<style>";
-    height = $(window).height();
-    style += "";
+    var inputs, section_inputs, _android, _browser, _firefox, _firefoxOs, _ios, _softKeyboard;
     inputs = "input[type=\"text\"], input[type=\"password\"], input[type=\"date\"], input[type=\"datetime\"], input[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"tel\"], input[type=\"time\"], input[type=\"url\"], textarea";
     section_inputs = "section input[type=\"text\"], section input[type=\"password\"], section input[type=\"date\"], section input[type=\"datetime\"], section input[type=\"email\"], section input[type=\"number\"], section input[type=\"search\"], section input[type=\"tel\"], section input[type=\"time\"], section input[type=\"url\"], section textarea";
-    _moveChilds = function(elements) {
-      return elements.each(function() {
-        return $(this).append($(document.createElement("div")).append($(this).children()));
-      });
-    };
     _softKeyboard = function(elem, offset) {
       var container, top;
       if (offset == null) {
@@ -404,7 +399,7 @@
     };
     _android = function() {
       var android_23, android_4;
-      _moveChilds($("body > article > section.indented"));
+      $("body").attr("data-os", "android");
       android_4 = new RegExp("^4[\.]");
       android_23 = new RegExp("^2[\.]3[\.]");
       if (android_4.test($.os.version)) {
@@ -431,26 +426,30 @@
       }
     };
     _ios = function() {
-      return _moveChilds($("body > article > section.indented"));
+      return $("body").attr("data-os", "ios");
+    };
+    _firefoxOs = function() {
+      return $("body").attr("data-os", "firefoxos");
     };
     _firefox = function() {
-      if (($.os != null) && $.os.phone) {
-        return _moveChilds($("body > article > section.indented"));
-      }
+      return $("body").attr("data-browser", "firefox");
     };
     _browser = function() {
-      if ((!$.os.tablet) && (!$.os.phone)) {
-        return _moveChilds($("body > article > section.indented"));
-      }
+      var browser;
+      browser = $.browser.webkit && $.browser.chrome ? "chrome" : "safari";
+      return $("body").attr("data-browser", browser);
     };
-    if (navigator.userAgent.toLowerCase().indexOf("firefox") !== -1) {
-      _firefox();
+    if ($.os.android) {
+      return _android();
     }
-    if (($.os != null) && $.os.android) {
-      _android();
+    if ($.os.ios) {
+      return _ios();
     }
-    if (($.os != null) && $.os.ios) {
-      _ios();
+    if ($.browser.firefox && ($.os.phone || $.os.tablet)) {
+      return _firefoxOs();
+    }
+    if ($.browser.firefox) {
+      return _firefox();
     }
     if ($.browser != null) {
       return _browser();

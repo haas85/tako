@@ -58,6 +58,12 @@
             <p>This is an example of pull and refresh</p>
             <p data-device="phone">This is only seen in phone mode</p>
             <p data-device="tablet">This is only seen in tablet mode</p>
+            <p data-os="android">This is only seen in android</p>
+            <p data-os="ios">This is only seen in ios</p>
+            <p data-os="firefoxos">This is only seen in firefoxos</p>
+            <p data-browser="chrome">This is only seen in chrome</p>
+            <p data-browser="safari">This is only seen in safari</p>
+            <p data-browser="firefox">This is only seen in firefox</p>
         </section>
         <section id="buttons" class="indented">
             <p>
@@ -174,15 +180,23 @@
                 <fieldset>
                     <legend>Others</legend>
                     <label for="select_box">Select</label>
-                    <!-- <label class="select"> -->
-                        <select name="" id="select_box">
+                    <select name="" id="select_box">
+                        <option value="elem1">Elem1</option>
+                        <option value="elem2">Elem2</option>
+                        <option value="elem3">Elem3</option>
+                        <option value="elem4">Elem4</option>
+                        <option value="elem5">Elem5</option>
+                    </select>
+                    <label for="select_box.select">Select.select</label>
+                    <label class="select">
+                        <select name="" id="select_box.select">
                             <option value="elem1">Elem1</option>
                             <option value="elem2">Elem2</option>
                             <option value="elem3">Elem3</option>
                             <option value="elem4">Elem4</option>
                             <option value="elem5">Elem5</option>
                         </select>
-                    <!-- </label> -->
+                    </label>
                     <br>
                     <label for="range">Range</label>
                     <input type="range" id="range">
@@ -270,7 +284,8 @@
             // Tako.Section("colors");
         });
 
-        Tako.init({"articles": ["article2.html"]});
+        Tako.init();
+        // Tako.init({"articles": ["article2.html"]});
         $("#show_success").bind("tap", function(){
             Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
         });

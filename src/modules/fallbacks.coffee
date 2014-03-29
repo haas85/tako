@@ -1,16 +1,6 @@
 _fallback = ->
-  style = """<style>"""
-
-  height = $(window).height()
-
-  style += """"""
-
   inputs = """input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea"""
   section_inputs = """section input[type="text"], section input[type="password"], section input[type="date"], section input[type="datetime"], section input[type="email"], section input[type="number"], section input[type="search"], section input[type="tel"], section input[type="time"], section input[type="url"], section textarea"""
-
-  _moveChilds = (elements) ->
-    elements.each ->
-      $(@).append $(document.createElement("div")).append($(@).children())
 
   _softKeyboard = (elem, offset=0) ->
     top = elem.getBoundingClientRect().top
@@ -18,7 +8,7 @@ _fallback = ->
     container.scrollTop(top - container[0].getBoundingClientRect().top - offset)
 
   _android = ->
-    _moveChilds $("body > article > section.indented")
+    $("body").attr("data-os", "android")
     android_4 = new RegExp("^4[\.]")
     android_23 = new RegExp("^2[\.]3[\.]")
 
@@ -38,10 +28,8 @@ _fallback = ->
         ev.stopPropagation()
         Select $(ev.target)
 
-
-
   _ios = ->
-    _moveChilds $("body > article > section.indented")
+    $("body").attr("data-os", "ios")
     # $(inputs).on "tap", ->
     #   $(@).focus()
     # $(inputs).on "focus", ->
@@ -50,24 +38,25 @@ _fallback = ->
     # $(inputs).on "blur", ->
     #   $("body").height("100%")
 
-  _firefox = ->
-    _moveChilds($("body > article > section.indented")) if $.os? and $.os.phone
+  _firefoxOs = -> $("body").attr("data-os", "firefoxos")
+
+  _firefox = -> $("body").attr("data-browser", "firefox")
 
   _browser = ->
-    if (not $.os.tablet) and (not $.os.phone)
-      _moveChilds($("body > article > section.indented"))
-
-  # Firefox
-  _firefox() if navigator.userAgent.toLowerCase().indexOf("firefox") isnt -1
+    browser = if $.browser.webkit and $.browser.chrome then "chrome" else "safari"
+    $("body").attr("data-browser", browser)
 
   # Android
-  _android() if $.os? and $.os.android
+  return _android() if $.os.android
 
   # IOS
-  _ios() if $.os? and $.os.ios
+  return _ios() if $.os.ios
+
+  #Firefox
+  return _firefoxOs() if $.browser.firefox and ($.os.phone or $.os.tablet)
+
+  # Firefox
+  return _firefox() if $.browser.firefox
 
   # Browser
-  _browser() if $.browser?
-
-  # style += """</style>"""
-  # $("head").append style
+  return _browser() if $.browser?
