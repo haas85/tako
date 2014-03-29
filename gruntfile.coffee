@@ -23,18 +23,19 @@ module.exports = (grunt) ->
           ]
 
       stylus:[
-        "stylesheets/Tako.base.styl",
-        "stylesheets/Tako.aside.styl",
-        "stylesheets/Tako.article.styl",
-        "stylesheets/Tako.lists.styl",
-        "stylesheets/Tako.forms.styl",
-        "stylesheets/Tako.layouts.styl",
-        "stylesheets/Tako.buttons.styl",
-        "stylesheets/Tako.pullrefresh.styl",
-        "stylesheets/Tako.notifications.styl",
-        "stylesheets/Tako.colors.styl",
-        "stylesheets/Tako.icons.styl",
-        "stylesheets/Tako.medias.styl"
+        "stylesheets/Tako.**.styl",
+        # "stylesheets/Tako.base.styl",
+        # "stylesheets/Tako.aside.styl",
+        # "stylesheets/Tako.article.styl",
+        # "stylesheets/Tako.lists.styl",
+        # "stylesheets/Tako.forms.styl",
+        # "stylesheets/Tako.layouts.styl",
+        # "stylesheets/Tako.buttons.styl",
+        # "stylesheets/Tako.pullrefresh.styl",
+        # "stylesheets/Tako.notifications.styl",
+        # "stylesheets/Tako.colors.styl",
+        # "stylesheets/Tako.icons.styl",
+        # "stylesheets/Tako.medias.styl"
       ]
       theme: [
         "stylesheets/Tako.theme.styl"
@@ -67,10 +68,10 @@ module.exports = (grunt) ->
 
     stylus:
       core:
-        options: compress: true, import: [ 'Tako.constants']
+        options: compress: true, import: [ 'constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.css': '<%=source.stylus%>'
       theme:
-        options: compress: true, import: [ 'Tako.constants']
+        options: compress: true, import: [ 'constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
 
     usebanner:
