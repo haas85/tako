@@ -22,6 +22,7 @@ _fallback = ->
         Select $(ev.target)
 
     if android_23.test $.os.version
+      $("body").attr("data-version", "2.3")
       $("body").append $("<article data-selectbox><div></div></article>")
       $("select").on "focus", (ev)->
         ev.preventDefault()
