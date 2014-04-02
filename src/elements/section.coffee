@@ -12,7 +12,7 @@ Tako.Section = do (TK = Tako) ->
       _current = new_section.addClass "active"
 
     if _current_article[0].id isnt new_article[0].id
-      Tako.Section new_article[0].id
+      Tako.Article new_article[0].id
     else
       _current_section.trigger "unload"
       _current = new_section.trigger "load"

@@ -1,4 +1,4 @@
-/* TaKo v1.1.1 - 01/04/2014
+/* TaKo v1.1.1 - 03/04/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -242,7 +242,7 @@
         _current = new_section.addClass("active");
       }
       if (_current_article[0].id !== new_article[0].id) {
-        Tako.Section(new_article[0].id);
+        Tako.Article(new_article[0].id);
       } else {
         _current_section.trigger("unload");
         _current = new_section.trigger("load");
