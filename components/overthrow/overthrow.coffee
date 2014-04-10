@@ -217,7 +217,7 @@
 
   # find closest overthrow (elem or a parent)
   o.closest = (target, ascend) ->
-    not ascend and ((target.className and target.className.indexOf(scrollIndicatorClassName) > -1) or (target.nodeName is "SECTION") or (target.nodeName is "ASIDE")) and target or o.closest(target.parentNode)
+    not ascend and target? and ((target.className and target.className.indexOf(scrollIndicatorClassName) > -1) or (target.nodeName is "SECTION") or (target.nodeName is "ASIDE")) and target or (target? and o.closest(target.parentNode))
 
 
   # polyfill overflow
@@ -311,7 +311,6 @@
       resetVertTracking()
       resetHorTracking()
       elem = o.closest(e.target)
-      console.log elem
       return  if not elem or elem is docElem or e.touches.length > 1
       setPointers "none"
       touchStartE = e
