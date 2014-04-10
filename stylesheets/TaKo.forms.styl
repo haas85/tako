@@ -128,7 +128,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   appearance none
   -webkit-transform translate3d(0,0,0)
   display inline-block
-  box-sizing border-box
+  box-sizing(border-box)
   width 100%
   padding 5px
   font-size FONT_SIZE_BIG
@@ -149,9 +149,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   &.line
     background transparent
     border none
-    -webkit-box-sizing border-box
-    -moz-box-sizing border-box
-    box-sizing border-box
+    box-sizing(border-box)
 
 li
   & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"]
@@ -168,7 +166,7 @@ fieldset
   border none
   width 100%
   display block
-  box-sizing border-box
+  box-sizing(border-box)
   margin-left 0
   margin-right 0
 
@@ -182,7 +180,7 @@ fieldset
     font-weight bold
     border none
     display block
-    box-sizing border-box
+    box-sizing(border-box)
     background-color rgba(255,255,255,0.4)
     padding-left 5px
     padding-right 5px
