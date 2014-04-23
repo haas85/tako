@@ -100,16 +100,6 @@ div[data-element="notification"]
       position relative
       top -10%
 
-    & .icon
-      display block
-      text-align center
-      height 100%
-      width 80px
-      font-size 3em
-
-    &:not(.progress) .icon
-      line-height 80px
-
     &.confirm
 
       & > section
@@ -172,10 +162,13 @@ div[data-element="notification"]
 
         & > span.icon
           text-align center
-          width 100%
+          width 100%!important
           color NOTIFICATION_WHITE!important
           height 100px
           line-height 100px
+          display block
+          text-align center
+          font-size 3em
 
           &:before
             height 100px
