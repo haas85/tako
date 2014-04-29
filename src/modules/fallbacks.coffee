@@ -39,13 +39,22 @@ _fallback = ->
     # $(inputs).on "blur", ->
     #   $("body").height("100%")
 
+
+  _blackberry = ->
+    $("body").attr("data-os", "blackberry")
+
   _firefoxOs = -> $("body").attr("data-os", "firefoxos")
 
-  _firefox = -> $("body").attr("data-browser", "firefox")
-
   _browser = ->
-    browser = if $.browser.webkit and $.browser.chrome then "chrome" else "safari"
-    $("body").attr("data-browser", browser)
+    if $.browser.firefox
+      return $("body").attr("data-browser", "firefox")
+
+    if $.browser.ie
+      return $("body").attr("data-browser", "ie")
+    if $.browser.chrome
+      return $("body").attr("data-browser", "chrome")
+    if $.browser.safari
+      return $("body").attr("data-browser", "safari")
 
   # Android
   return _android() if $.os.android
@@ -53,11 +62,11 @@ _fallback = ->
   # IOS
   return _ios() if $.os.ios
 
-  #Firefox
-  return _firefoxOs() if $.browser.firefox and ($.os.phone or $.os.tablet)
+  # BB
+  return _blackberry() if $.os.blackberry or $.os.bb10 or $.os.playbook
 
-  # Firefox
-  return _firefox() if $.browser.firefox
+  #FirefoxOs
+  return _firefoxOs() if $.browser.firefox and ($.os.phone or $.os.tablet)
 
   # Browser
   return _browser() if $.browser?
