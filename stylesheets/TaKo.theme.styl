@@ -261,8 +261,20 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
       background bottom left -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -webkit-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
       background bottom left -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -moz-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
       background bottom left -o-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -o-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -o-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
+      background bottom left -ms-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center -ms-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right -ms-linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
       background bottom left linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat, bottom center linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) repeat-x, bottom right linear-gradient(LINE_COLOR_FOCUS, LINE_COLOR_FOCUS) no-repeat
       background-size 1px 6px, 1px 1px, 1px 6px
+
+body[data-browser="ie"], body[data-os="wp"]
+  & input.line
+    border solid LINE_COLOR
+    border-width 0
+    border-bottom-width 1px
+
+    &:focus, &:hover
+      border solid LINE_COLOR_FOCUS
+      border-width 0
+      border-bottom-width 1px
 
 label.select
   color #b9b9b9
