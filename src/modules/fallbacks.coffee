@@ -40,6 +40,9 @@ _fallback = ->
     #   $("body").height("100%")
 
 
+  _wp = ->
+    $("body").attr("data-os", "wp")
+
   _blackberry = ->
     $("body").attr("data-os", "blackberry")
 
@@ -61,6 +64,9 @@ _fallback = ->
 
   # IOS
   return _ios() if $.os.ios
+
+  # WP
+  return _wp() if $.os.wp
 
   # BB
   return _blackberry() if $.os.blackberry or $.os.bb10 or $.os.playbook

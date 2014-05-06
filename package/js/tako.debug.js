@@ -386,7 +386,7 @@
   })();
 
   _fallback = function() {
-    var inputs, section_inputs, _android, _blackberry, _browser, _firefoxOs, _ios, _softKeyboard;
+    var inputs, section_inputs, _android, _blackberry, _browser, _firefoxOs, _ios, _softKeyboard, _wp;
     inputs = "input[type=\"text\"], input[type=\"password\"], input[type=\"date\"], input[type=\"datetime\"], input[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"tel\"], input[type=\"time\"], input[type=\"url\"], textarea";
     section_inputs = "section input[type=\"text\"], section input[type=\"password\"], section input[type=\"date\"], section input[type=\"datetime\"], section input[type=\"email\"], section input[type=\"number\"], section input[type=\"search\"], section input[type=\"tel\"], section input[type=\"time\"], section input[type=\"url\"], section textarea";
     _softKeyboard = function(elem, offset) {
@@ -430,6 +430,9 @@
     _ios = function() {
       return $("body").attr("data-os", "ios");
     };
+    _wp = function() {
+      return $("body").attr("data-os", "wp");
+    };
     _blackberry = function() {
       return $("body").attr("data-os", "blackberry");
     };
@@ -455,6 +458,9 @@
     }
     if ($.os.ios) {
       return _ios();
+    }
+    if ($.os.wp) {
+      return _wp();
     }
     if ($.os.blackberry || $.os.bb10 || $.os.playbook) {
       return _blackberry();
