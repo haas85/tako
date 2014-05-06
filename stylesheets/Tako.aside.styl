@@ -3,7 +3,8 @@ aside
   width ASIDE_WIDTH
   top HEADER_HEIGHT
   bottom 0
-  left - ASIDE_TRANSITION
+  // left - ASIDE_TRANSITION
+  transform(translateX(- ASIDE_TRANSITION))
   position absolute
   z-index ASIDE_INDEX
   transition-duration ASIDE_TRANSITION_TIME
@@ -20,7 +21,7 @@ aside
     font-size .7em
 
   &.show
-    transform(translateX(ASIDE_WIDTH + 8 + ASIDE_PADDING * 2))
+    transform(translateX(0))
 
   &.show
     z-index ASIDE_INDEX!important
