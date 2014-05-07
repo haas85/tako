@@ -1,7 +1,6 @@
 Tako.Notification = do (TK = Tako) ->
   active = false
 
-
   notification = $ """<div data-element="notification"><div></div</div>"""
   notification_window = $ """<article class="window"></article>"""
 
@@ -77,8 +76,8 @@ Tako.Notification = do (TK = Tako) ->
     _show html, "center confirm not_clickable", null, null
 
     buttons = notification_window.find("button")
-    buttons.bind "tap", (element) ->
-      buttons.unbind "tap"
+    buttons.bind Tako.tap, (element) ->
+      buttons.unbind Tako.tap
       do hide
       if $(@).hasClass("accept")
         cb.call cb, true
@@ -108,7 +107,7 @@ Tako.Notification = do (TK = Tako) ->
     """
 
     _show html, "center custom not_clickable #{classes}", timeout, cb
-    notification.find(".close").on "tap", _close
+    notification.find(".close").on Tako.tap, _close
 
   hide = ->
     active = false
@@ -174,7 +173,7 @@ Tako.Notification = do (TK = Tako) ->
     cb.call cb if cb?
 
 
-  notification.on "tap", _ontap
+  notification.on Tako.tap, _ontap
 
   success: success
   error: error

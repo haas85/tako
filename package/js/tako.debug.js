@@ -1,4 +1,4 @@
-/* TaKo v1.1.2 - 06/05/2014
+/* TaKo v1.1.2 - 07/05/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -7,7 +7,8 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = Tako = (function() {
-    var callbacks, init, onReady, remaining, viewType, _loaded, _onError, _onReceive, _setNavigation, _setup;
+    var callbacks, init, onReady, remaining, viewType, _loaded, _onError, _onReceive, _setNavigation, _setup, _tap_action;
+    _tap_action = $.os.wp ? "click" : "tap";
     remaining = 0;
     callbacks = [];
     init = function(options) {
@@ -73,7 +74,7 @@
       _setNavigation("data-article", Tako.Article);
       _setNavigation("data-section", Tako.Section);
       $("[data-action=aside]").each(function(element) {
-        return $(this).on("tap", function(ev) {
+        return $(this).on(_tap_action, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return Tako.Aside.toggle();
@@ -86,14 +87,14 @@
       return $("[" + query + "]").each(function(element) {
         if (this.nodeName === "LI") {
           $(this).children().each(function() {
-            return $(this).bind("tap", function(ev) {
+            return $(this).bind(_tap_action, function(ev) {
               ev.preventDefault();
               ev.stopPropagation();
               return action($(this).parent().attr(query));
             });
           });
         }
-        return $(this).bind("tap", function(ev) {
+        return $(this).bind(_tap_action, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return action($(ev.target).attr(query));
@@ -126,7 +127,8 @@
     return {
       init: init,
       onReady: onReady,
-      viewType: viewType
+      viewType: viewType,
+      tap: _tap_action
     };
   })();
 
@@ -210,13 +212,13 @@
         }
       };
       $("aside *").each(function(element) {
-        return $(this).on("tap", function(ev) {
+        return $(this).on(Tako.tap, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return hide();
         });
       });
-      bck.on("tap", function(ev) {
+      bck.on(Tako.tap, function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return hide();
@@ -554,8 +556,8 @@
       html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
       buttons = notification_window.find("button");
-      return buttons.bind("tap", function(element) {
-        buttons.unbind("tap");
+      return buttons.bind(Tako.tap, function(element) {
+        buttons.unbind(Tako.tap);
         hide();
         if ($(this).hasClass("accept")) {
           return cb.call(cb, true);
@@ -584,7 +586,7 @@
       }
       html += "" + content + "\n</section>";
       _show(html, "center custom not_clickable " + classes, timeout, cb);
-      return notification.find(".close").on("tap", _close);
+      return notification.find(".close").on(Tako.tap, _close);
     };
     hide = function() {
       active = false;
@@ -653,7 +655,7 @@
         return cb.call(cb);
       }
     };
-    notification.on("tap", _ontap);
+    notification.on(Tako.tap, _ontap);
     return {
       success: success,
       error: error,
