@@ -1,6 +1,12 @@
 window.Tako = Tako = do ->
 
-  _tap_action = if $.os.wp then "click" else "tap"
+  if $.os.wp
+    _tap = "click"
+    _doubletap = "dblclick"
+
+  else
+    _tap = "tap"
+    _doubletap = "doubletap"
 
   remaining = 0
   callbacks = []
@@ -43,7 +49,7 @@ window.Tako = Tako = do ->
     _setNavigation "data-article", Tako.Article
     _setNavigation "data-section", Tako.Section
     $("[data-action=aside]").each (element) ->
-      $(@).on _tap_action, (ev)->
+      $(@).on _tap, (ev)->
         do ev.preventDefault
         do ev.stopPropagation
         do Tako.Aside.toggle
@@ -55,11 +61,11 @@ window.Tako = Tako = do ->
     $("[#{query}]").each (element) ->
       if @.nodeName is "LI"
         $(@).children().each ->
-          $(@).bind _tap_action, (ev) ->
+          $(@).bind _tap, (ev) ->
             do ev.preventDefault
             do ev.stopPropagation
             action $(@).parent().attr(query)
-      $(@).bind _tap_action, (ev) ->
+      $(@).bind _tap, (ev) ->
         do ev.preventDefault
         do ev.stopPropagation
         action $(ev.target).attr(query)
@@ -77,8 +83,9 @@ window.Tako = Tako = do ->
   _loaded = ->
     cb.call cb for cb in callbacks
 
-  init      : init
-  onReady   : onReady
-  viewType  : viewType
-  tap       : _tap_action
+  init        : init
+  onReady     : onReady
+  viewType    : viewType
+  tap         : _tap
+  double_tap  : _doubletap
 

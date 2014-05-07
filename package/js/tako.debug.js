@@ -7,8 +7,14 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = Tako = (function() {
-    var callbacks, init, onReady, remaining, viewType, _loaded, _onError, _onReceive, _setNavigation, _setup, _tap_action;
-    _tap_action = $.os.wp ? "click" : "tap";
+    var callbacks, init, onReady, remaining, viewType, _doubletap, _loaded, _onError, _onReceive, _setNavigation, _setup, _tap;
+    if ($.os.wp) {
+      _tap = "click";
+      _doubletap = "dblclick";
+    } else {
+      _tap = "tap";
+      _doubletap = "doubletap";
+    }
     remaining = 0;
     callbacks = [];
     init = function(options) {
@@ -74,7 +80,7 @@
       _setNavigation("data-article", Tako.Article);
       _setNavigation("data-section", Tako.Section);
       $("[data-action=aside]").each(function(element) {
-        return $(this).on(_tap_action, function(ev) {
+        return $(this).on(_tap, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return Tako.Aside.toggle();
@@ -87,14 +93,14 @@
       return $("[" + query + "]").each(function(element) {
         if (this.nodeName === "LI") {
           $(this).children().each(function() {
-            return $(this).bind(_tap_action, function(ev) {
+            return $(this).bind(_tap, function(ev) {
               ev.preventDefault();
               ev.stopPropagation();
               return action($(this).parent().attr(query));
             });
           });
         }
-        return $(this).bind(_tap_action, function(ev) {
+        return $(this).bind(_tap, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return action($(ev.target).attr(query));
@@ -128,7 +134,8 @@
       init: init,
       onReady: onReady,
       viewType: viewType,
-      tap: _tap_action
+      tap: _tap,
+      double_tap: _doubletap
     };
   })();
 
