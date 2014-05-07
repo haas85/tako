@@ -98,38 +98,46 @@ flexbox-horizontal()
 
 flexbox-pack-start()
   vendor('box-pack', start)
+  -ms-flex-pack start
   vendor('justify-content', flex-start)
   // vendor('flex-pack', start)
 
 flexbox-pack-end()
   vendor('box-pack', end)
+  -ms-flex-pack end
   vendor('justify-content', flex-end)
   // vendor('flex-pack', end)
 
 flexbox-pack-center()
   vendor('box-pack', center)
+  -ms-flex-pack center
   vendor('justify-content', center)
   // vendor('flex-pack', cented)
 
 flexbox-pack-justify()
   vendor('box-pack', justify)
+  -ms-flex-pack justify
   // vendor('justify-content', space-between)
   // vendor('flex-pack', justify)
 
 flexbox-align-start()
   box-align start
+  -ms-flex-align start
   vendor('align-items', flex-start)
 
 flexbox-align-end()
   box-align end
+  -ms-flex-align end
   vendor('align-items', flex-end)
 
 flexbox-align-center()
   box-align center
+  -ms-flex-align center
   vendor('align-items', center)
 
 flexbox-align-stretch()
   box-align stretch
+  -ms-flex-align stretch
   vendor('align-items', stretch)
 
 /* ====================== FLEXBOX ====================== */
