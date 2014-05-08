@@ -238,11 +238,18 @@ body[data-browser="ie"], body[data-os="wp"]
     margin 0
     background-color transparent
 
-  label.select
+  & input[type="radio"], & input[type="checkbox"]
+    &.circle
+      border-radius 20px
+
+    &.square
+      border-radius 0
+
+body[data-browser="ie"], body[data-os="wp"]
+  & label.select
     &:before
       top 2px
-      right 8px
-
+      right 7px
     &:after
       top 3px
 
