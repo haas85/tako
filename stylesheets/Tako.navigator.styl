@@ -1,0 +1,53 @@
+body[data-os=android]
+  & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+    display none
+  & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
+    display none
+
+
+body[data-version="2.3"]
+  & article section
+    & input[type="text"], & input[type="password"], & input[type="date"], & input[type="datetime"], & input[type="email"], & input[type="number"], & input[type="search"], & input[type="tel"], & input[type="time"], & input[type="url"], & label > select, & textarea
+      -webkit-user-modify read-write-plaintext-only
+
+body[data-os=ios]
+  & [data-os=android], & [data-os=firefoxos], & [data-os=wp]
+    display none
+  & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
+    display none
+
+body[data-os=wp]
+  & [data-os=android], & [data-os=firefoxos], & [data-os=ios]
+    display none
+  & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
+    display none
+
+body[data-os=firefoxos]
+  & [data-os=android], & [data-os=ios], & [data-os=wp]
+    display none
+  & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
+    display none
+
+body[data-browser=chrome]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+    display none
+  & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
+    display none
+
+body[data-browser=safari]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+    display none
+  & [data-browser=chrome], & [data-browser=firefox], & [data-browser=ie]
+    display none
+
+body[data-browser=firefox]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+    display none
+  & [data-browser=safari], & [data-browser=chrome], & [data-browser=ie]
+    display none
+
+body[data-browser=ie]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+    display none
+  & [data-browser=safari], & [data-browser=chrome], & [data-browser=firefox]
+    display none

@@ -1,0 +1,332 @@
+fieldset
+  min-height 54px
+
+  & [type="radio"], & [type="checkbox"]
+    margin-top 8px
+
+label:not(.select)
+  line-height 32px
+  height 32px
+  margin-top 5px
+  float left
+
+label.input
+  display block
+  width 100%
+  min-height 35px
+
+input
+  outline none
+  -webkit-user-select text
+  -khtml-user-select text
+  -moz-user-select text
+  -ms-user-select text
+  user-select text
+
+  &[type="radio"], &[type="checkbox"]
+    &:not(.switch)
+      &.circle, &.square
+        -webkit-appearance none
+        -moz-appearance none
+        appearance none
+        cursor pointer
+        border-width 1px
+        border-style solid
+        width 20px
+        height 20px
+
+      &.circle
+        border-radius 10px
+
+      &.square
+        border-radius 1px
+
+    &.switch
+      border-radius 0
+      border-width 1px
+      border-style solid
+      appearance none
+      -webkit-appearance none
+      -moz-appearance none
+      appearance none
+      cursor pointer
+      height 24px
+      width 44px
+      position relative
+      transition-duration .25s
+
+      &:after
+        content ''
+        display block
+        height 22px
+        width 22px
+        transition-duration .25s
+        position absolute
+        top -1px
+        left -1px
+
+      &:checked
+        transition-duration .25s
+
+        &:after
+          transform(translateX(20px))
+          transition-duration .25s
+
+      &.circle
+        border-radius 20px
+
+        &:after
+          border-radius 26px
+
+  &[type="range"]
+    -webkit-user-select none
+    -khtml-user-select none
+    -moz-user-select none
+    -ms-user-select none
+    user-select none
+    float none
+    -webkit-appearance none
+    -moz-appearance none
+    appearance none
+    width 100%
+    height 7px
+    margin-top 10px
+    margin-bottom 10px
+    border-radius 3.5px
+    border-width 1px
+    border-style solid
+    margin-left 0
+
+    &::-moz-range-track
+      width 100%
+      height 7px
+      margin-top 10px
+      margin-bottom 10px
+      border-radius 3.5px
+      border-width 1px
+      border-style solid
+
+    &::-webkit-slider-thumb
+      -webkit-appearance none
+      height 26px
+      width 26px
+      border-radius 13px
+
+    &::-moz-range-thumb
+      height 26px
+      width 26px
+      border-radius 13px
+
+    &::-ms-thumb
+      width 26px
+
+
+select
+  width 100%
+
+label
+  & + input[type="text"], & + input[type="password"], & + input[type="date"], & + input[type="datetime"], & + input[type="email"], & + input[type="number"], & + input[type="search"], & + input[type="tel"], & + input[type="time"], & + input[type="url"], & + label.select, & + textarea
+    margin-top -5px
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+  -webkit-appearance none
+  -moz-appearance none
+  appearance none
+  -webkit-transform translate3d(0,0,0)
+  display inline-block
+  box-sizing(border-box)
+  width 100%
+  padding 5px
+  font-size FONT_SIZE_BIG
+  box-shadow(none)
+  border-style solid
+  border-width 0.15em
+  margin-top 2.5px
+  margin-bottom 2.5px
+  border-radius 0
+
+  &.no_border
+    border-color rgba(0,0,0,0)!important
+    background-size 0
+
+  &.no_background
+    background-color rgba(0,0,0,0)
+
+  &.line
+    background transparent
+    border none
+    box-sizing(border-box)
+
+li
+  & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"]
+    margin-top 0
+    margin-bottom 0
+
+  & fieldset
+    margin-top -8px
+    margin-bottom -8px
+    padding-left 0
+    padding-right 0
+
+fieldset
+  border none
+  width 100%
+  display block
+  box-sizing(border-box)
+  margin-left 0
+  margin-right 0
+
+  &:after
+    display block
+    content ""
+    clear both
+
+  & > legend
+    font-size 1.2em
+    font-weight bold
+    border none
+    display block
+    box-sizing(border-box)
+    background-color rgba(255,255,255,0.4)
+    padding-left 5px
+    padding-right 5px
+
+  & > input
+    float right
+
+label.select
+  margin-top 2.5px
+  margin-bottom 2.5px
+  position relative
+  display inline-block
+  width 100%
+
+body:not([data-os=firefoxos]) label.select
+
+  &:before
+    content ''
+    right 2px
+    top 0px
+    width 20px
+    margin 2px 0
+    height 28px
+    background white
+    position absolute
+    pointer-events none
+    display block
+
+  &:after
+    content "▼"
+    position absolute
+    font-size 18px
+    top 0
+    right 0
+    bottom 0
+    line-height 32px
+    padding 0 7px
+    background rgba(0,0,0,0)
+    pointer-events none
+
+  & > select
+    border-radius 0
+    margin 0
+
+body[data-browser="ie"], body[data-os="wp"]
+  & input[type="range"]
+    border none
+    padding 10px 0
+    margin 0
+    background-color transparent
+
+  & input[type="radio"], & input[type="checkbox"]
+    &.circle
+      border-radius 20px
+
+    &.square
+      border-radius 0
+
+body[data-browser="ie"], body[data-os="wp"]
+  & label.select
+    &:before
+      top 2px
+      right 7px
+    &:after
+      top 3px
+
+textarea
+  line-height 1.2em
+  min-height 3em
+  height 3.5em
+
+form, .form
+
+  & fieldset
+    position relative
+    background-color white
+    border-bottom 1px solid rgba(0, 0, 0, 0.1)
+    padding 8px 10px 8px 10px
+
+    &:first-child
+      border-top 1px solid rgba(0, 0, 0, 0.1)
+
+  &.indented > fieldset
+    margin INDENT
+
+label.select select
+  width 100%
+
+// Android 2.3 select-box
+
+article[data-selectbox]
+  display none
+
+  height 100%
+  width 100%
+  margin 0
+  padding 0
+  z-index 500
+  opacity 1
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  right 0
+
+  background-color rgba(0, 0, 0, 0.2)!important
+
+  &.show
+    display block
+
+  & > div
+    height 100%
+    width 100%
+    margin 0
+    padding 0
+    z-index 501
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    display-flexbox-vertical()
+    box-direction normal
+    flexbox-pack-center()
+    flexbox-align-center()
+
+
+    & > section[data-selectbox]
+      max-height 80%
+      width 90%
+      display block
+      position relative
+      overflow-x hidden
+      overflow-y scroll
+      -webkit-overflow-scrolling touch
+      text-align center
+      flexbox-weight(0)
+      position relative
+      top -10%
+
+
+
+

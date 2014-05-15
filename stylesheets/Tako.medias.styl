@@ -1,0 +1,130 @@
+// Small phones
+@media only screen and (max-device-width : 480px)
+  [data-device="tablet"]
+    display none!important
+  header
+    font-size 12px !important
+
+  article > nav
+    font-size 1em
+
+// Phone mode
+@media screen and (min-device-width : 320px) and (max-device-width : 768px)
+  [data-device="tablet"]
+    display none!important
+
+// Tablet portrait mode
+@media screen and (min-device-width : 768px) and (orientation : portrait)
+  [data-device="tablet"]
+    display none!important
+
+// Tablet landscape & Desktop mode
+@media screen and (min-device-width : 768px) and (orientation : landscape)
+  [data-device="phone"]
+    display none!important
+
+  body, html
+    display-flexbox-horizontal()
+
+    flexbox-align-stretch()
+    flexbox-pack-justify()
+
+  div[data-element="aside_background"]
+    position static
+    display none
+    width ASIDE_WIDTH!important
+    z-index ASIDE_BCK_INDEX
+    height 100%
+    min-height 99%
+    box-flex 0
+    flex 0 0 auto
+    flexbox-order(1)
+    top 0
+
+  aside
+    height 100%
+    top 0
+    left 0
+    transform(translateX(0))
+    z-index FULL_ASIDE_INDEX
+    position static
+    padding-right ASIDE_PADDING
+    box-sizing(border-box)
+    box-flex 0
+    flex 0 0 auto
+    flexbox-order(1)
+
+  article
+    display none
+
+  article > article
+    display-flexbox-vertical()
+
+    box-align stretch
+    box-pack justify
+
+    flexbox-weight(1)
+
+    height 100%
+
+  article.active
+    position static
+    flexbox-weight(1)
+    flexbox-order(2)
+    height 100%
+
+    display-flexbox-vertical()
+
+    box-align stretch
+    box-pack justify
+
+  article header
+    text-align left
+
+    & > h1
+      position static
+      text-align left
+      width auto
+      padding 0 1em
+      margin 0
+
+      & > img
+        width auto
+
+    & > nav
+      &:after
+        display block
+        content ""
+        clear both
+
+      &.right
+        position relative
+        z-index HEADER_NAV_INDEX
+        float right
+
+        & > button
+          margin-right 5px
+
+      &.left
+        position relative
+        z-index HEADER_NAV_INDEX
+        float left
+
+        & > button
+          margin-left 5px
+
+      & button, & .button
+        position static
+
+  section
+    box-flex 1
+    flex 1 9999999 auto
+    flexbox-order(2)
+
+  footer
+    position relative
+    flexbox-weight(0)
+    flexbox-order(3)
+
+  [data-action=aside]
+    display none!important

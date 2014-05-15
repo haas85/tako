@@ -8,7 +8,7 @@
   "dependencies": {
     "grunt-contrib-coffee": "*",
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-stylus": "*",
+    "grunt-contrib-stylus": "0.13.2",
     "grunt-contrib-concat": "*",
     "grunt-contrib-watch": "*",
     "grunt-banner": "*"
