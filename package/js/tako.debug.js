@@ -1,6 +1,6 @@
-/* TaKo v1.1.2 - 19/05/2014
+/* app v1.1.2 - 20/05/2014
    http://takojs.com
-   Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
+   Copyright (c) 2014 Joseba Legarreta | @josebaseba - Under MIT License */
 (function() {
   var Select, Tako, _fallback,
     __slice = [].slice,
