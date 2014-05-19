@@ -20,19 +20,18 @@
 
 <body>
     <aside class="full">
-    <!-- <aside> -->
-        <header>
-            <h1>Tako trial</h1>
-        </header>
-        <ul>
-            <li class="icon box" data-section="forms">Forms <span class="counter">125</span></li>
-            <li class="icon box" data-section="lists">Lists</li>
-            <li data-section="buttons"><img class="small" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Buttons</span></li>
-            <li data-section="layouts"><img src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Layouts</span></li>
-            <li data-section="notifications"><img class="big" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Notifications</span></li>
-            <li class="" data-section="colors">Colors</li>
-            <li class="" data-article="article_2">Asynchronous Article</li>
-        </ul>
+      <header>
+          <h1>Tako trial</h1>
+      </header>
+      <ul>
+          <li class="icon box" data-section="forms">Forms <span class="counter">125</span></li>
+          <li class="icon box" data-section="lists">Lists</li>
+          <li data-section="buttons"><img class="small" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Buttons</span></li>
+          <li data-section="layouts"><img src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Layouts</span></li>
+          <li data-section="notifications"><img class="big" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Notifications</span></li>
+          <li class="" data-section="colors">Colors</li>
+          <li class="" data-article="article_2">Asynchronous Article</li>
+      </ul>
     </aside>
 
     <article id="article_1">
@@ -46,16 +45,17 @@
             <h1>TaKo!!</h1>
         </header>
         <nav>
+          <button data-section="forms" class="icon check">Forms</button>
+          <button data-section="buttons" class="icon tasks">Buttons</button>
+          <button data-section="lists" class="icon list">Lists</button>
+        </nav>
+        <footer>
+          <nav>
             <button data-section="forms" class="icon check">Forms</button>
             <button data-section="buttons" class="icon tasks">Buttons</button>
             <button data-section="lists" class="icon list">Lists</button>
-        </nav>
-        <!-- <footer>
-            <nav>
-                <button class="icon ok" id="show_success2">Success<span class="counter">5</span></button>
-                <button id="show_progress2">Progress<span class="counter">84</span></button>
-            </nav>
-        </footer> -->
+          </nav>
+        </footer>
         <section id="main">
             <p>This is an example of pull and refresh</p>
             <p data-device="phone">This is only seen in phone mode</p>
@@ -275,50 +275,6 @@
 
     <script src="js/tako.components.js"></script>
     <script src="js/tako.debug.js"></script>
-    <script>
-        Tako.onReady(function(){
-            console.log("LOADED");
-            window.puller = Tako.Pull_Refresh("main", {onRefresh:function(){
-                setTimeout(function(){
-                    alert("Refresh finished");
-                    puller.hide()}, 3000);
-            }});
-            // Tako.Section("notifications");
-            // Tako.Section("buttons");
-            // Tako.Section("colors");
-        });
-
-        Tako.init({"articles": ["article2.html"]});
-        $("#show_success").bind("tap", function(){
-            Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
-        });
-        $("#show_error").bind("tap", function(){
-            Tako.Notification.error("deny", "Error!!","Something went wrong", null, function(){console.log("ERROR CB");})
-        });
-        $("#show_confirm").bind("tap", function(){
-            Tako.Notification.confirm("help-circled", "Question", "Do you like TaKos", "Of course", "Not much", function(result){
-                if(result){
-                    alert("I know you like them!!");
-                    console.log("I know you like them!!");
-                }else{
-                    alert("Well, I hope at least you like our TaKo");
-                    console.log("Well, I hope at least you like our TaKo");
-                }
-            })
-        });
-        $("#show_custom").bind("tap", function(){
-            Tako.Notification.custom("Custom", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus auctor convallis. Aliquam eget ipsum a velit pulvinar elementum vitae non dolor. Nullam dui metus, tincidunt non dolor eu, laoreet auctor tellus. Suspendisse vestibulum scelerisque nibh non scelerisque. Cras eget lobortis orci. Vestibulum ultrices enim mattis fermentum tristique. Nunc ultricies feugiat tellus, ut facilisis est dignissim nec. Vivamus molestie sem vel euismod vestibulum.", true, "", null, function(){console.log("Fin de custom")});
-        });
-        $("#show_loading").bind("tap", function(){
-            Tako.Notification.loading("Loading", 5, function(){console.log("LOADING CB");})
-        });
-        $("#show_progress").bind("tap", function(){
-            var progress = Tako.Notification.progress("spin1 animated", "Downloading", "Please wait until your download is completed");
-            setTimeout(function(){progress.percent(20)},1000);
-            setTimeout(function(){progress.percent(60)},2500);
-            setTimeout(function(){progress.percent(100)},4500);
-        });
-    </script>
-    <!-- <script src="http://192.168.2.143:8080/target/target-script-min.js"></script> -->
+    <script src="js/app.js"></script>
 </body>
 </html>

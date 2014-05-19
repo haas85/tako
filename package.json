@@ -1,9 +1,10 @@
 {
-  "name"            : "TaKo",
+  "name"            : "app",
   "version"         : "1.1.2",
   "description"     : "Mobile Apps Web Framework",
   "homepage"        : "http://takojs.com",
-  "author"          : "Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85)",
+  "author"          : "Joseba Legarreta | @josebaseba",
+  "framework-author": "Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85)",
   "license"         : "MIT",
   "dependencies": {
     "grunt-contrib-coffee": "*",
