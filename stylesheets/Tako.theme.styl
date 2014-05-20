@@ -79,11 +79,11 @@ footer
   color SECONDARY_TEXT !important
 
   & button
-    background-color lighten(SECONDARY, 5%)!important
-
     &:active, &:hover
       & .counter
         background-color SECONDARY
+    &.current
+      border-top: 4px solid THEME !important;
 
   & > nav > *
     border-right 1px solid darken(SECONDARY, 15%)
