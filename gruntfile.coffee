@@ -4,12 +4,11 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON "package.json"
 
     meta:
-      file    : "tako",
-      assets  : "assets",
+      file   : 'tako'
+      assets : "assets",
       package : "package",
-      temp    : "build",
-      backbone_app : "<%= pkg.name %>",
-      banner  : """
+      temp   : "build",
+      banner : """
         /* <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("dd/mm/yyyy") %>
            <%= pkg.homepage %>
            Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> - Under <%= pkg.license %> License */
@@ -22,13 +21,6 @@ module.exports = (grunt) ->
             "src/elements/**.coffee",
             "src/modules/**.coffee"
           ]
-
-      backbone: [
-        "backbone/**.js",
-        "backbone/model/**.js",
-        "backbone/collection/**.js",
-        "backbone/view/**.js"
-      ],
 
       stylus:[
         "stylesheets/Tako.**.styl",
@@ -55,9 +47,7 @@ module.exports = (grunt) ->
         "components/hammer/hammer.js",
         "components/hammer/jquery.hammer.js",
         "components/overthrow/overthrow.js",
-        "components/webdb/webdb.js",
-        "components/backbone/underscore-min.js",
-        "components/backbone/backbone.min.js"
+        "components/webdb/webdb.js"
       ]
 
 
@@ -70,8 +60,6 @@ module.exports = (grunt) ->
         src: "<%= source.components %>",  dest: "<%=meta.temp%>/<%=meta.file%>.components.js"
       core:
         src: "<%= source.coffee %>",  dest: "<%=meta.temp%>/<%=meta.file%>.coffee"
-      app:
-        src: "<%= source.backbone %>",  dest: "<%=meta.package%>/js/<%= meta.backbone_app %>.js"
 
     uglify:
       options: compress: false
@@ -80,10 +68,10 @@ module.exports = (grunt) ->
 
     stylus:
       core:
-        options: compress: true, import: ['constants']
+        options: compress: true, import: [ 'constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.css': '<%=source.stylus%>'
       theme:
-        options: compress: true, import: ['constants']
+        options: compress: true, import: [ 'constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
 
     usebanner:
@@ -112,14 +100,11 @@ module.exports = (grunt) ->
         ]
 
     watch:
-      backbone:
-        files: ["<%= source.backbone %>"]
-        tasks: ["concat:app"]
       coffee:
         files: ["<%= source.coffee %>"]
         tasks: [ "concat:core", "coffee:core_debug", "uglify:engine", "usebanner:js"]
       stylus:
-        files: ["<%= source.stylus %>", "<%= source.theme %>", ["stylesheets/constants.styl"]]
+        files: ["<%= source.stylus %>"]
         tasks: ["stylus:core", "usebanner:css"]
       theme:
         files: ["<%= source.theme %>"]
