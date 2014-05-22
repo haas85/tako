@@ -274,7 +274,7 @@
     # Toggling pointer events at the right moments seems to do the trick
     # Thanks Thomas Bachem http://stackoverflow.com/a/5798681 for the following
     setPointers = (val) ->
-      inputs = elem.querySelectorAll("textarea, input")
+      inputs = if elem then elem.querySelectorAll("textarea, input") else []
       i = 0
       il = inputs.length
 

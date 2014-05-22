@@ -169,7 +169,7 @@
     inputs = void 0;
     setPointers = function(val) {
       var i, il;
-      inputs = elem.querySelectorAll("textarea, input");
+      inputs = elem ? elem.querySelectorAll("textarea, input") : [];
       i = 0;
       il = inputs.length;
       while (i < il) {
