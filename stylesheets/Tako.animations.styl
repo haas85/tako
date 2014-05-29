@@ -1,8 +1,7 @@
-article, section
+article
   transform-origin 100% 100%
   vendor(animation-duration, 500ms)
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
-  vendor(transform, translate3d(0,0,0))
 
   &:not([data-direction])
     &:not(.active)
@@ -76,6 +75,101 @@ article, section
       vendor(animation-name, cube_back_out)
       vendor(transform-origin, 0 50%)
 
+section
+  transform-origin 100% 100%
+  vendor(animation-duration, 500ms)
+  vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
+
+  &:not([data-direction])
+    &:not(.active)
+      display none
+
+  &[data-direction]
+    position absolute
+    left 0
+    right 0
+    display block
+
+  &:not([data-animation]), &[data-animation=fade]
+    &:not([data-direction])
+      &:not(.active)
+        opacity 0
+    &[data-direction="out"], &[data-direction="back-out"]
+      vendor(animation-name, fade_out)
+    &[data-direction="in"], &[data-direction="back-in"]
+      vendor(animation-name, fade_in)
+    &.active
+      opacity 1
+
+  // Animation SLIDE
+  &[data-animation="slide"]
+    &[data-direction="in"]
+      vendor(animation-name, slide_in)
+    &[data-direction="out"]
+      vendor(animation-name, slide_out)
+    &[data-direction="back-in"]
+      vendor(animation-name, slide_back_in)
+    &[data-direction="back-out"]
+      vendor(animation-name, slide_back_out)
+
+  &[data-animation="cover"]
+    &[data-direction="in"]
+      vendor(animation-name, cover_in)
+      z-index ARTICLE_INDEX_ACTIVE
+    &[data-direction="out"]
+      vendor(animation-name, cover_out)
+      z-index ARTICLE_INDEX_OUT
+    &[data-direction="back-in"]
+      vendor(animation-name, cover_back_in)
+      z-index ARTICLE_INDEX_ACTIVE
+    &[data-direction="back-out"]
+      vendor(animation-name, cover_back_out)
+      z-index ARTICLE_INDEX_OUT
+
+  // Animation ROOM
+  &[data-animation="room"]
+    vendor(animation-duration, 1000ms)
+    &[data-direction="in"]
+      vendor(animation-name, room_in)
+      vendor(transform-origin, 0 50%)
+    &[data-direction="out"]
+      vendor(animation-name, room_out)
+      vendor(transform-origin, 100% 50%)
+    &[data-direction="back-in"]
+      vendor(animation-name, room_back_in)
+      vendor(transform-origin, 100% 50%)
+    &[data-direction="back-out"]
+      vendor(animation-name, room_back_out)
+      vendor(transform-origin, 0 50%)
+
+  // Animation CUBE
+  &[data-animation="cube"]
+    vendor(animation-duration, 1000ms)
+    &[data-direction="in"]
+      vendor(animation-name, cube_in)
+      vendor(transform-origin, 0 50%)
+    &[data-direction="out"]
+      vendor(animation-name, cube_out)
+      vendor(transform-origin, 100% 50%)
+    &[data-direction="back-in"]
+      vendor(animation-name, cube_back_in)
+      vendor(transform-origin, 100% 50%)
+    &[data-direction="back-out"]
+      vendor(animation-name, cube_back_out)
+      vendor(transform-origin, 0 50%)
+
+@media screen and (min-device-width : 768px) and (orientation : landscape)
+  section
+    &[data-animation=slide], &[data-animation=room], &[data-animation=cube]
+      &:not([data-direction])
+        &:not(.active)
+          opacity 0
+      &[data-direction="out"], &[data-direction="back-out"]
+        vendor(animation-name, fade_out)
+      &[data-direction="in"], &[data-direction="back-in"]
+        vendor(animation-name, fade_in)
+      &.active
+        opacity 1
 
 // Keyframes FADE
 @keyframes fade_in

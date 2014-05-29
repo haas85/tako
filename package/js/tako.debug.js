@@ -2,7 +2,7 @@
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Select, Tako, _articleListeners, _fallback,
+  var Select, Tako, _articleListeners, _fallback, _sectionListeners,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -88,6 +88,7 @@
       });
       _fallback();
       _articleListeners();
+      _sectionListeners();
       return _loaded();
     };
     _setNavigation = function(query, action) {
@@ -149,7 +150,6 @@
       }
       el = current();
       modifier = back ? "back-" : "";
-      console.log(modifier);
       if (el[0].id !== article_id) {
         width = el.offset().width;
         el.removeClass("active");
@@ -199,16 +199,18 @@
 
   _articleListeners = function() {
     return $("article").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
-      if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
-        event.target.classList.add("active");
-        $(event.target).trigger("load");
-      } else {
-        $(event.target).trigger("unload");
-      }
-      event.target.removeAttribute("data-direction");
-      if (Tako.viewType() === "TABLET/DESKTOP") {
-        event.target.classList.remove("asided");
-        return event.target.style.width = "auto";
+      if (event.target.nodeName.toUpperCase() === "ARTICLE") {
+        if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
+          event.target.classList.add("active");
+          $(event.target).trigger("load");
+        } else {
+          $(event.target).trigger("unload");
+        }
+        event.target.removeAttribute("data-direction");
+        if (Tako.viewType() === "TABLET/DESKTOP") {
+          event.target.classList.remove("asided");
+          return event.target.style.width = "auto";
+        }
       }
     });
   };
@@ -265,21 +267,26 @@
 
   Tako.Section = (function(TK) {
     var current, goTo, _current;
-    goTo = function(section_id) {
-      var new_article, new_section, _current, _current_article, _current_section;
+    goTo = function(section_id, back) {
+      var modifier, new_article, new_section, offset, _current, _current_article, _current_section;
+      if (back == null) {
+        back = false;
+      }
       _current_section = current();
       _current_article = _current_section.parent();
+      modifier = back ? "back-" : "";
       new_section = $("section#" + section_id);
       new_article = new_section.parent();
+      offset = _current_section.offset();
       if (_current_section[0].id !== new_section[0].id) {
-        new_article.children().removeClass("active");
-        _current = new_section.addClass("active");
+        new_article.children(".active").css("top", "" + offset.top + "px").css("height", "" + offset.height + "px").attr("data-direction", "" + modifier + "out").removeClass("active");
+        _current = new_section.attr("data-direction", "" + modifier + "in").css("top", "" + offset.top + "px").css("height", "" + offset.height + "px");
       }
+      $("footer").addClass("bottom");
       if (_current_article[0].id !== new_article[0].id) {
         Tako.Article(new_article[0].id);
       } else {
-        _current_section.trigger("unload");
-        _current = new_section.trigger("load");
+        _current = new_section;
       }
       $(".current[data-section]").removeClass("current");
       $("[data-section=" + section_id + "]").addClass("current");
@@ -295,14 +302,31 @@
       }
     };
     _current = null;
-    return function(id) {
+    return function(id, back) {
       if (id != null) {
-        return goTo(id);
+        return goTo(id, back);
       } else {
         return current();
       }
     };
   })(Tako);
+
+  _sectionListeners = function() {
+    return $("section").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
+      if (event.target.nodeName.toUpperCase() === "SECTION") {
+        if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
+          event.target.classList.add("active");
+          $(event.target).trigger("load");
+        } else if ((event.target.getAttribute("data-direction") === "out") || (event.target.getAttribute("data-direction") === "back-out")) {
+          $(event.target).trigger("unload");
+        }
+        event.target.style.top = "auto";
+        event.target.style.height = "auto";
+        event.target.removeAttribute("data-direction");
+        return $("footer").removeClass("bottom");
+      }
+    });
+  };
 
   Tako.ProgressBar = function(container, value) {
     var Progress;
