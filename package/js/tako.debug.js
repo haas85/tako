@@ -1,8 +1,8 @@
-/* TaKo v1.1.2 - 22/05/2014
+/* TaKo v1.1.2 - 29/05/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Select, Tako, _fallback,
+  var Select, Tako, _articleListeners, _fallback,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -87,6 +87,7 @@
         });
       });
       _fallback();
+      _articleListeners();
       return _loaded();
     };
     _setNavigation = function(query, action) {
@@ -142,14 +143,17 @@
   Tako.Article = (function(TK) {
     var current, goTo, _current;
     goTo = function(article_id) {
-      var el, _current;
+      var el, width, _current;
       el = current();
       if (el[0].id !== article_id) {
+        width = el.offset().width;
         el.removeClass("active");
-        el.children("article.active").trigger("unload");
-        window.scrollTo(0, 0);
-        _current = $("article#" + article_id).addClass("active");
-        _current.children("article.active").trigger("load");
+        el.attr("data-direction", "out");
+        _current = $("article#" + article_id).attr("data-direction", "in");
+        if (Tako.viewType() === "TABLET/DESKTOP") {
+          el.addClass("asided").css("width", "" + width + "px");
+          _current.addClass("asided").css("width", "" + width + "px");
+        }
         $(".current[data-article]").removeClass("current");
         return $("[data-article=" + article_id + "]").addClass("current");
       }
@@ -186,6 +190,19 @@
         return el.html();
       }
     }
+  };
+
+  _articleListeners = function() {
+    return $("article").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
+      if (event.target.getAttribute("data-direction") === "in") {
+        event.target.classList.add("active");
+        $(event.target).trigger("load");
+      } else {
+        $(event.target).trigger("unload");
+      }
+      event.target.removeAttribute("data-direction");
+      return event.target.classList.remove("asided");
+    });
   };
 
   Tako.Aside = (function(TK) {

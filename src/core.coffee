@@ -55,6 +55,7 @@ window.Tako = Tako = do ->
         do Tako.Aside.toggle
 
     do _fallback
+    do _articleListeners
     do _loaded
 
   _setNavigation = (query, action) ->

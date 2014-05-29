@@ -4,7 +4,6 @@ article
   margin 0
   padding 0
   z-index 0
-  opacity 0
   position absolute
   top 0
   bottom 0
@@ -16,41 +15,15 @@ article
   flexbox-align-stretch()
   flexbox-pack-justify()
 
-  transition-duration SECTION_TRANSITION_TIME
-
   &.active
-    opacity 1
-    z-index SECTION_INDEX
+    z-index ARTICLE_INDEX_ACTIVE
 
   & > article
     position relative
     opacity 1
 
   &.asided
-    & header
-      margin-left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
-
-      & > nav
-        &.right
-          transition-duration SECTION_TRANSITION_TIME
-          position fixed
-          z-index HEADER_NAV_INDEX
-          right - (ASIDE_WIDTH + ASIDE_PADDING * 2) !important
-
-          & > button
-            margin-right 5px
-
-        &.left
-          transition-duration SECTION_TRANSITION_TIME
-          position fixed
-          z-index HEADER_NAV_INDEX
-          margin-left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
-
-          & > button
-            margin-left 5px
-
-    & footer
-      margin-left ASIDE_WIDTH + ASIDE_PADDING * 2 !important
+    margin-left ASIDE_WIDTH !important
 
   &.non_animated
     transition-duration 0ms !important

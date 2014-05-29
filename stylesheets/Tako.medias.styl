@@ -8,6 +8,9 @@
   article > nav
     font-size 1em
 
+  footer > nav *
+    font-size 1em
+
 // Phone mode
 @media screen and (min-device-width : 320px) and (max-device-width : 768px)
   [data-device="tablet"]
@@ -54,8 +57,8 @@
     flex 0 0 auto
     flexbox-order(1)
 
-  article
-    display none
+  // article
+  //   display none
 
   article > article
     display-flexbox-vertical()
