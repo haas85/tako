@@ -155,7 +155,7 @@
         el.removeClass("active");
         el.attr("data-direction", "" + modifier + "out");
         _current = $("article#" + article_id).attr("data-direction", "" + modifier + "in");
-        if (Tako.viewType() === "TABLET/DESKTOP") {
+        if (Tako.viewType() === "TABLET/DESKTOP" && document.getElementsByTagName("aside").length !== 0) {
           el.addClass("asided").css("width", "" + width + "px");
           _current.addClass("asided").css("width", "" + width + "px");
         }

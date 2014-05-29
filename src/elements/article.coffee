@@ -8,7 +8,7 @@ Tako.Article = do (TK = Tako) ->
       el.removeClass("active")
       el.attr "data-direction","#{modifier}out"
       _current = $("article##{article_id}").attr "data-direction", "#{modifier}in"
-      if Tako.viewType() is "TABLET/DESKTOP"
+      if Tako.viewType() is "TABLET/DESKTOP" and document.getElementsByTagName("aside").length isnt 0
         el.addClass("asided").css "width", "#{width}px"
         _current.addClass("asided").css "width", "#{width}px"
       $(".current[data-article]").removeClass "current"
