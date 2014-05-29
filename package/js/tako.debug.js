@@ -142,14 +142,19 @@
 
   Tako.Article = (function(TK) {
     var current, goTo, _current;
-    goTo = function(article_id) {
-      var el, width, _current;
+    goTo = function(article_id, back) {
+      var el, modifier, width, _current;
+      if (back == null) {
+        back = false;
+      }
       el = current();
+      modifier = back ? "back-" : "";
+      console.log(modifier);
       if (el[0].id !== article_id) {
         width = el.offset().width;
         el.removeClass("active");
-        el.attr("data-direction", "out");
-        _current = $("article#" + article_id).attr("data-direction", "in");
+        el.attr("data-direction", "" + modifier + "out");
+        _current = $("article#" + article_id).attr("data-direction", "" + modifier + "in");
         if (Tako.viewType() === "TABLET/DESKTOP") {
           el.addClass("asided").css("width", "" + width + "px");
           _current.addClass("asided").css("width", "" + width + "px");
@@ -167,9 +172,9 @@
       }
     };
     _current = null;
-    return function(id) {
+    return function(id, back) {
       if (id != null) {
-        return goTo(id);
+        return goTo(id, back);
       } else {
         return current();
       }
@@ -194,7 +199,7 @@
 
   _articleListeners = function() {
     return $("article").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
-      if (event.target.getAttribute("data-direction") === "in") {
+      if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
         event.target.classList.add("active");
         $(event.target).trigger("load");
       } else {

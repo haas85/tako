@@ -1,12 +1,14 @@
 Tako.Article = do (TK = Tako) ->
 
-  goTo = (article_id)->
+  goTo = (article_id, back=false)->
     el = current()
+    modifier = if back then "back-" else ""
+    console.log modifier
     if el[0].id isnt article_id
       width = el.offset().width
       el.removeClass("active")
-      el.attr "data-direction","out"
-      _current = $("article##{article_id}").attr "data-direction", "in"
+      el.attr "data-direction","#{modifier}out"
+      _current = $("article##{article_id}").attr "data-direction", "#{modifier}in"
       if Tako.viewType() is "TABLET/DESKTOP"
         el.addClass("asided").css "width", "#{width}px"
         _current.addClass("asided").css "width", "#{width}px"
@@ -18,7 +20,7 @@ Tako.Article = do (TK = Tako) ->
 
   _current = null
 
-  (id) -> if id? then goTo id else current()
+  (id, back) -> if id? then goTo id, back else current()
 
 
 
@@ -32,7 +34,7 @@ Tako.Article.title = (html, article_id) ->
 
 _articleListeners = ->
   $("article").on "animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", (event) ->
-    if event.target.getAttribute("data-direction") is "in"
+    if (event.target.getAttribute("data-direction") is "in") or (event.target.getAttribute("data-direction") is "back-in")
       event.target.classList.add "active"
       $(event.target).trigger "load"
     else

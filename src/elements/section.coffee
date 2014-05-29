@@ -17,6 +17,7 @@ Tako.Section = do (TK = Tako) ->
       _current_section.trigger "unload"
       _current = new_section.trigger "load"
 
+
     $(".current[data-section]").removeClass "current"
     $("[data-section=#{section_id}]").addClass "current"
     $("[data-visible]").removeClass "show"
