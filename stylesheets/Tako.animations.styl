@@ -5,10 +5,13 @@ article
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
   vendor(transform, translate3d(0,0,0))
 
+  &:not([data-direction])
+    &:not(.active)
+      display none
+
   &:not([data-animation]), &[data-animation=fade]
     &:not([data-direction])
       &:not(.active)
-        display none
         opacity 0
     &[data-direction="out"]
       vendor(animation-name, fade_out)
@@ -19,9 +22,6 @@ article
 
   // Animation SLIDE
   &[data-animation="slide"]
-    &:not([data-direction])
-      &:not(.active)
-        display none
     &[data-direction="in"]
       vendor(animation-name, slide_in)
     &[data-direction="out"]
@@ -32,9 +32,6 @@ article
       vendor(animation-name, slide_back_out)
 
   &[data-animation="cover"]
-    &:not([data-direction])
-      &:not(.active)
-        display none
     &[data-direction="in"]
       vendor(animation-name, cover_in)
       z-index ARTICLE_INDEX_ACTIVE
@@ -50,9 +47,6 @@ article
 
   // Animation ROOM
   &[data-animation="room"]
-    &:not([data-direction])
-      &:not(.active)
-        display none
     &[data-direction="in"]
       vendor(animation-name, room_in)
       vendor(transform-origin, 0 50%)
@@ -68,9 +62,6 @@ article
 
   // Animation CUBE
   &[data-animation="cube"]
-    &:not([data-direction])
-      &:not(.active)
-        display none
     &[data-direction="in"]
       vendor(animation-name, cube_in)
       vendor(transform-origin, 0 50%)

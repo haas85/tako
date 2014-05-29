@@ -38,4 +38,6 @@ _articleListeners = ->
     else
       $(event.target).trigger "unload"
     event.target.removeAttribute "data-direction"
-    event.target.classList.remove "asided"
+    if Tako.viewType() is "TABLET/DESKTOP"
+      event.target.classList.remove "asided"
+      event.target.style.width = "auto"

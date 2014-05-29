@@ -201,7 +201,10 @@
         $(event.target).trigger("unload");
       }
       event.target.removeAttribute("data-direction");
-      return event.target.classList.remove("asided");
+      if (Tako.viewType() === "TABLET/DESKTOP") {
+        event.target.classList.remove("asided");
+        return event.target.style.width = "auto";
+      }
     });
   };
 
