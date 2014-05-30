@@ -1,6 +1,8 @@
+ANIMATION2D_TIME = 500ms
+ANIMATION3D_TIME = 1000ms
 article
   transform-origin 100% 100%
-  vendor(animation-duration, 500ms)
+  animation-duration ANIMATION2D_TIME
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
 
   &:not([data-direction])
@@ -12,72 +14,72 @@ article
       &:not(.active)
         opacity 0
     &[data-direction="out"], &[data-direction="back-out"]
-      vendor(animation-name, fade_out)
+      animation-name fade_out
     &[data-direction="in"], &[data-direction="back-in"]
-      vendor(animation-name, fade_in)
+      animation-name fade_in
     &.active
       opacity 1
 
   // Animation SLIDE
   &[data-animation="slide"]
     &[data-direction="in"]
-      vendor(animation-name, slide_in)
+      animation-name slide_in
     &[data-direction="out"]
-      vendor(animation-name, slide_out)
+      animation-name slide_out
     &[data-direction="back-in"]
-      vendor(animation-name, slide_back_in)
+      animation-name slide_back_in
     &[data-direction="back-out"]
-      vendor(animation-name, slide_back_out)
+      animation-name slide_back_out
 
   &[data-animation="cover"]
     &[data-direction="in"]
-      vendor(animation-name, cover_in)
+      animation-name cover_in
       z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
-      vendor(animation-name, cover_out)
+      animation-name cover_out
       z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
-      vendor(animation-name, cover_back_in)
+      animation-name cover_back_in
       z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
-      vendor(animation-name, cover_back_out)
+      animation-name cover_back_out
       z-index ARTICLE_INDEX_OUT
 
   // Animation ROOM
   &[data-animation="room"]
-    vendor(animation-duration, 1000ms)
+    animation-duration ANIMATION3D_TIME
     &[data-direction="in"]
-      vendor(animation-name, room_in)
-      vendor(transform-origin, 0 50%)
+      animation-name room_in
+      transform-origin 0 50%
     &[data-direction="out"]
-      vendor(animation-name, room_out)
-      vendor(transform-origin, 100% 50%)
+      animation-name room_out
+      transform-origin 100% 50%
     &[data-direction="back-in"]
-      vendor(animation-name, room_back_in)
-      vendor(transform-origin, 100% 50%)
+      animation-name room_back_in
+      transform-origin 100% 50%
     &[data-direction="back-out"]
-      vendor(animation-name, room_back_out)
-      vendor(transform-origin, 0 50%)
+      animation-name room_back_out
+      transform-origin 0 50%
 
   // Animation CUBE
   &[data-animation="cube"]
-    vendor(animation-duration, 1000ms)
+    vendor(animation-duration, ANIMATION3D_TIME)
     &[data-direction="in"]
-      vendor(animation-name, cube_in)
-      vendor(transform-origin, 0 50%)
+      animation-name cube_in
+      transform-origin 0 50%
     &[data-direction="out"]
-      vendor(animation-name, cube_out)
-      vendor(transform-origin, 100% 50%)
+      animation-name cube_out
+      transform-origin 100% 50%
     &[data-direction="back-in"]
-      vendor(animation-name, cube_back_in)
-      vendor(transform-origin, 100% 50%)
+      animation-name cube_back_in
+      transform-origin 100% 50%
     &[data-direction="back-out"]
-      vendor(animation-name, cube_back_out)
-      vendor(transform-origin, 0 50%)
+      animation-name cube_back_out
+      transform-origin 0 50%
 
 section
   transform-origin 100% 100%
-  vendor(animation-duration, 500ms)
+  vendor(animation-duration, ANIMATION2D_TIME)
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
 
   &:not([data-direction])
@@ -95,79 +97,95 @@ section
       &:not(.active)
         opacity 0
     &[data-direction="out"], &[data-direction="back-out"]
-      vendor(animation-name, fade_out)
+      animation-name fade_out
     &[data-direction="in"], &[data-direction="back-in"]
-      vendor(animation-name, fade_in)
+      animation-name fade_in
     &.active
       opacity 1
 
   // Animation SLIDE
   &[data-animation="slide"]
     &[data-direction="in"]
-      vendor(animation-name, slide_in)
+      animation-name slide_in
     &[data-direction="out"]
-      vendor(animation-name, slide_out)
+      animation-name slide_out
     &[data-direction="back-in"]
-      vendor(animation-name, slide_back_in)
+      animation-name slide_back_in
     &[data-direction="back-out"]
-      vendor(animation-name, slide_back_out)
+      animation-name slide_back_out
 
   &[data-animation="cover"]
     &[data-direction="in"]
-      vendor(animation-name, cover_in)
+      animation-name cover_in
       z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
-      vendor(animation-name, cover_out)
+      animation-name cover_out
       z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
-      vendor(animation-name, cover_back_in)
+      animation-name cover_back_in
       z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
-      vendor(animation-name, cover_back_out)
+      animation-name cover_back_out
       z-index ARTICLE_INDEX_OUT
 
   // Animation ROOM
   &[data-animation="room"]
-    vendor(animation-duration, 1000ms)
+    animation-duration ANIMATION3D_TIME
     &[data-direction="in"]
-      vendor(animation-name, room_in)
-      vendor(transform-origin, 0 50%)
+      animation-name room_in
+      transform-origin 0 50%
     &[data-direction="out"]
-      vendor(animation-name, room_out)
-      vendor(transform-origin, 100% 50%)
+      animation-name room_out
+      transform-origin 100% 50%
     &[data-direction="back-in"]
-      vendor(animation-name, room_back_in)
-      vendor(transform-origin, 100% 50%)
+      animation-name room_back_in
+      transform-origin 100% 50%
     &[data-direction="back-out"]
-      vendor(animation-name, room_back_out)
-      vendor(transform-origin, 0 50%)
+      animation-name room_back_out
+      transform-origin 0 50%
 
   // Animation CUBE
   &[data-animation="cube"]
-    vendor(animation-duration, 1000ms)
+    animation-duration ANIMATION3D_TIME
     &[data-direction="in"]
-      vendor(animation-name, cube_in)
-      vendor(transform-origin, 0 50%)
+      animation-name cube_in
+      transform-origin 0 50%
     &[data-direction="out"]
-      vendor(animation-name, cube_out)
-      vendor(transform-origin, 100% 50%)
+      animation-name cube_out
+      transform-origin 100% 50%
     &[data-direction="back-in"]
-      vendor(animation-name, cube_back_in)
-      vendor(transform-origin, 100% 50%)
+      animation-name cube_back_in
+      transform-origin 100% 50%
     &[data-direction="back-out"]
-      vendor(animation-name, cube_back_out)
-      vendor(transform-origin, 0 50%)
+      animation-name cube_back_out
+      transform-origin 0 50%
+
+//SPECIFIC CASES
+
+body[data-version="2.3"]
+  & article, & section
+    &[data-animation="room"], &[data-animation="cube"]
+      animation-duration ANIMATION2D_TIME
+      &[data-direction="in"]
+        animation-name slide_in
+      &[data-direction="out"]
+        animation-name slide_out
+      &[data-direction="back-in"]
+        animation-name slide_back_in
+      &[data-direction="back-out"]
+        animation-name slide_back_out
 
 @media screen and (min-device-width : 768px) and (orientation : landscape)
   section
     &[data-animation=slide], &[data-animation=room], &[data-animation=cube]
+      animation-duration ANIMATION2D_TIME
       &:not([data-direction])
         &:not(.active)
           opacity 0
       &[data-direction="out"], &[data-direction="back-out"]
-        vendor(animation-name, fade_out)
+        animation-name fade_out
       &[data-direction="in"], &[data-direction="back-in"]
-        vendor(animation-name, fade_in)
+        animation-name fade_in
       &.active
         opacity 1
 

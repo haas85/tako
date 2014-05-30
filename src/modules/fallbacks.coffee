@@ -10,7 +10,7 @@ _fallback = ->
   _android = ->
     $("body").attr("data-os", "android")
     android_4 = new RegExp("^4[\.]")
-    android_23 = new RegExp("^2[\.]3[\.]")
+    android_23 = new RegExp("^2[\.]3")
 
     if android_4.test $.os.version
       $(section_inputs).on "focus", ->

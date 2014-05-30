@@ -1,4 +1,4 @@
-/* TaKo v1.1.3 - 29/05/2014
+/* TaKo v1.1.3 - 30/05/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -266,9 +266,31 @@
   })(Tako);
 
   Tako.Section = (function(TK) {
-    var current, goTo, _current;
+    var current, goTo, _current, _getOffsets;
+    _getOffsets = function(article, section, screen_height) {
+      var footer, header, nav, _bottom, _top;
+      _top = 0;
+      console.log(arguments);
+      header = article.children("header");
+      if (header.length !== 0) {
+        _top = parseInt(getComputedStyle(header[0]).height);
+      }
+      nav = article.children("nav");
+      if (nav.length !== 0) {
+        _top += parseInt(getComputedStyle(nav[0]).height);
+      }
+      _bottom = 0;
+      footer = article.children("footer");
+      if (footer.length !== 0) {
+        _bottom = parseInt(getComputedStyle(footer[0]).height);
+      }
+      return {
+        top: _top,
+        height: screen_height - _top - _bottom
+      };
+    };
     goTo = function(section_id, back) {
-      var modifier, new_article, new_section, offset, _current, _current_article, _current_section;
+      var modifier, new_article, new_offset, new_section, screen_height, _current, _current_article, _current_section;
       if (back == null) {
         back = false;
       }
@@ -277,10 +299,11 @@
       modifier = back ? "back-" : "";
       new_section = $("section#" + section_id);
       new_article = new_section.parent();
-      offset = _current_section.offset();
+      screen_height = document.body.offsetHeight;
+      new_offset = _getOffsets(new_article, new_section, screen_height);
       if (_current_section[0].id !== new_section[0].id) {
-        new_article.children(".active").css("top", "" + offset.top + "px").css("height", "" + offset.height + "px").attr("data-direction", "" + modifier + "out").removeClass("active");
-        _current = new_section.attr("data-direction", "" + modifier + "in").css("top", "" + offset.top + "px").css("height", "" + offset.height + "px");
+        new_article.children(".active").css("top", "" + new_offset.top + "px").css("height", "" + new_offset.height + "px").attr("data-direction", "" + modifier + "out").removeClass("active");
+        _current = new_section.attr("data-direction", "" + modifier + "in").css("top", "" + new_offset.top + "px").css("height", "" + new_offset.height + "px");
       }
       $("footer").addClass("bottom");
       if (_current_article[0].id !== new_article[0].id) {
@@ -460,7 +483,7 @@
       var android_23, android_4;
       $("body").attr("data-os", "android");
       android_4 = new RegExp("^4[\.]");
-      android_23 = new RegExp("^2[\.]3[\.]");
+      android_23 = new RegExp("^2[\.]3");
       if (android_4.test($.os.version)) {
         $(section_inputs).on("focus", function() {
           return setTimeout(((function(_this) {
