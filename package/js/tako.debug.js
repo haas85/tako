@@ -1,8 +1,8 @@
-/* TaKo v1.1.3 - 30/05/2014
+/* TaKo v1.1.3 - 01/06/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Select, Tako, _articleListeners, _fallback, _sectionListeners,
+  var Select, Tako, _articleListeners, _e, _fallback, _sectionListeners,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -290,17 +290,17 @@
       };
     };
     goTo = function(section_id, back) {
-      var modifier, new_article, new_offset, new_section, screen_height, _current, _current_article, _current_section;
+      var modifier, new_article, new_offset, new_section, _current, _current_article, _current_section, _e;
       if (back == null) {
         back = false;
       }
+      _e = 2;
       _current_section = current();
       _current_article = _current_section.parent();
       modifier = back ? "back-" : "";
       new_section = $("section#" + section_id);
       new_article = new_section.parent();
-      screen_height = document.body.offsetHeight;
-      new_offset = _getOffsets(new_article, new_section, screen_height);
+      new_offset = _getOffsets(new_article, new_section, document.body.offsetHeight);
       if (_current_section[0].id !== new_section[0].id) {
         new_article.children(".active").css("top", "" + new_offset.top + "px").css("height", "" + new_offset.height + "px").attr("data-direction", "" + modifier + "out").removeClass("active");
         _current = new_section.attr("data-direction", "" + modifier + "in").css("top", "" + new_offset.top + "px").css("height", "" + new_offset.height + "px");
@@ -334,9 +334,12 @@
     };
   })(Tako);
 
+  _e = 0;
+
   _sectionListeners = function() {
     return $("section").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
       if (event.target.nodeName.toUpperCase() === "SECTION") {
+        _e -= 1;
         if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
           event.target.classList.add("active");
           $(event.target).trigger("load");
@@ -346,7 +349,9 @@
         event.target.style.top = "auto";
         event.target.style.height = "auto";
         event.target.removeAttribute("data-direction");
-        return $("footer").removeClass("bottom");
+        if (_e === 0) {
+          return $("footer").removeClass("bottom");
+        }
       }
     });
   };
