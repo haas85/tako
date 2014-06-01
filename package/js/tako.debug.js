@@ -270,7 +270,6 @@
     _getOffsets = function(article, section, screen_height) {
       var footer, header, nav, _bottom, _top;
       _top = 0;
-      console.log(arguments);
       header = article.children("header");
       if (header.length !== 0) {
         _top = parseInt(getComputedStyle(header[0]).height);

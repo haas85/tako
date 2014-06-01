@@ -1,7 +1,6 @@
 Tako.Section = do (TK = Tako) ->
   _getOffsets = (article, section, screen_height) ->
     _top = 0
-    console.log arguments
     header = article.children("header")
     if header.length isnt 0
       _top = parseInt(getComputedStyle(header[0]).height)
