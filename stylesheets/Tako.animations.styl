@@ -95,7 +95,19 @@ section
     right 0
     display block
 
-  &:not([data-animation]), &[data-animation=fade]
+  &:not([data-animation])
+    vendor(animation-duration, 0ms !important)
+    &:not([data-direction])
+      &:not(.active)
+        opacity 0
+    &[data-direction="out"], &[data-direction="back-out"]
+      animation-name fade_out
+    &[data-direction="in"], &[data-direction="back-in"]
+      animation-name fade_in
+    &.active
+      opacity 1
+
+  &[data-animation=fade]
     &:not([data-direction])
       &:not(.active)
         opacity 0
