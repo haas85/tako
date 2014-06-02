@@ -1,3 +1,4 @@
+_e = 0
 Tako.Section = do (TK = Tako) ->
   _getOffsets = (article, section, screen_height) ->
     _top = 0
@@ -50,7 +51,6 @@ Tako.Section = do (TK = Tako) ->
   (id, back) ->
     if id? then goTo id, back else current()
 
-_e = 0
 _sectionListeners = ->
   $("section").on "animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", (event) ->
     if event.target.nodeName.toUpperCase() is "SECTION"

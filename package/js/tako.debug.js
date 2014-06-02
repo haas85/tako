@@ -1,4 +1,4 @@
-/* TaKo v1.1.3 - 01/06/2014
+/* TaKo v1.1.3 - 02/06/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -265,6 +265,8 @@
     }
   })(Tako);
 
+  _e = 0;
+
   Tako.Section = (function(TK) {
     var current, goTo, _current, _getOffsets;
     _getOffsets = function(article, section, screen_height) {
@@ -289,7 +291,7 @@
       };
     };
     goTo = function(section_id, back) {
-      var modifier, new_article, new_offset, new_section, _current, _current_article, _current_section, _e;
+      var modifier, new_article, new_offset, new_section, _current, _current_article, _current_section;
       if (back == null) {
         back = false;
       }
@@ -332,8 +334,6 @@
       }
     };
   })(Tako);
-
-  _e = 0;
 
   _sectionListeners = function() {
     return $("section").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
