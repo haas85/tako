@@ -5,9 +5,9 @@ article
   animation-duration ANIMATION2D_TIME
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
 
-  &:not([data-direction])
-    &:not(.active)
-      display none
+  // &:not([data-direction])
+  //   &:not(.active)
+  //     display none
 
   &:not([data-animation]), &[data-animation=fade]
     &:not([data-direction])
@@ -81,6 +81,9 @@ section
   transform-origin 100% 100%
   vendor(animation-duration, ANIMATION2D_TIME)
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
+
+  &[data-timing="0"]
+    vendor(animation-duration, 0ms !important)
 
   &:not([data-direction])
     &:not(.active)
