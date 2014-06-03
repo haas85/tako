@@ -1,4 +1,4 @@
-/* TaKo v1.1.3 - 02/06/2014
+/* TaKo v1.1.3 - 03/06/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -270,15 +270,17 @@
   Tako.Section = (function(TK) {
     var current, goTo, _current, _getOffsets;
     _getOffsets = function(article, section, screen_height) {
-      var footer, header, nav, _bottom, _top;
+      var footer, header, nav, _bottom, _header, _nav, _top;
       _top = 0;
       header = article.children("header");
       if (header.length !== 0) {
         _top = parseInt(getComputedStyle(header[0]).height);
+        _header = _top;
       }
       nav = article.children("nav");
       if (nav.length !== 0) {
-        _top += parseInt(getComputedStyle(nav[0]).height);
+        _nav = parseInt(getComputedStyle(nav[0]).height);
+        _top += _nav;
       }
       _bottom = 0;
       footer = article.children("footer");
@@ -287,6 +289,8 @@
       }
       return {
         top: _top,
+        header: _header,
+        nav: _nav,
         height: screen_height - _top - _bottom
       };
     };
@@ -300,7 +304,7 @@
       _current_article = _current_section.parent();
       modifier = back ? "back-" : "";
       new_section = $("section#" + section_id);
-      new_article = new_section.parent();
+      new_article = new_section.parent().addClass("ontransition");
       new_offset = _getOffsets(new_article, new_section, document.body.offsetHeight);
       if (_current_article[0].id !== new_article[0].id) {
         new_article.children(".active").attr("data-timing", "0");
@@ -311,7 +315,6 @@
         new_article.children(".active").css("top", "" + new_offset.top + "px").css("height", "" + new_offset.height + "px").attr("data-direction", "" + modifier + "out").removeClass("active");
         _current = new_section.attr("data-direction", "" + modifier + "in").css("top", "" + new_offset.top + "px").css("height", "" + new_offset.height + "px");
       }
-      $("footer").addClass("bottom");
       $(".current[data-section]").removeClass("current");
       $("[data-section=" + section_id + "]").addClass("current");
       $("[data-visible]").removeClass("show");
@@ -339,6 +342,9 @@
     return $("section").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
       if (event.target.nodeName.toUpperCase() === "SECTION") {
         _e -= 1;
+        if (_e === 0) {
+          $("article.ontransition").removeClass("ontransition");
+        }
         if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
           event.target.classList.add("active");
           $(event.target).trigger("load");
@@ -348,10 +354,7 @@
         event.target.style.top = "auto";
         event.target.style.height = "auto";
         event.target.removeAttribute("data-direction");
-        event.target.removeAttribute("data-timing");
-        if (_e === 0) {
-          return $("footer").removeClass("bottom");
-        }
+        return event.target.removeAttribute("data-timing");
       }
     });
   };

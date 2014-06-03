@@ -25,10 +25,14 @@ article
   &.asided
     margin-left ASIDE_WIDTH !important
 
-  &.non_animated
-    transition-duration 0ms !important
-    & *
-      transition-duration 0ms !important
+  &.ontransition
+    display block
+
+    & footer
+      position absolute
+      left 0
+      right 0
+      bottom 0
 
   & header
     position relative
@@ -94,6 +98,8 @@ article > nav
   box-direction normal
   box-pack justify
   box-align stretch
+
+  z-index 1000000000
 
   & > *
     flexbox-weight(1)

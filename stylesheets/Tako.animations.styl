@@ -1,8 +1,12 @@
-ANIMATION2D_TIME = 500ms
-ANIMATION3D_TIME = 1000ms
+ARTICLE_ZERO_TIME        = 1ms
+ARTICLE_ANIMATION2D_TIME = 500ms
+ARTICLE_ANIMATION3D_TIME = 1000ms
+SECTION_ZERO_TIME        = 1ms
+SECTION_ANIMATION2D_TIME = 1500ms
+SECTION_ANIMATION3D_TIME = 1000ms
 article
   transform-origin 100% 100%
-  animation-duration ANIMATION2D_TIME
+  animation-duration ARTICLE_ANIMATION2D_TIME
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
 
   // &:not([data-direction])
@@ -47,7 +51,7 @@ article
 
   // Animation ROOM
   &[data-animation="room"]
-    animation-duration ANIMATION3D_TIME
+    animation-duration ARTICLE_ANIMATION3D_TIME
     &[data-direction="in"]
       animation-name room_in
       transform-origin 0 50%
@@ -63,7 +67,7 @@ article
 
   // Animation CUBE
   &[data-animation="cube"]
-    vendor(animation-duration, ANIMATION3D_TIME)
+    vendor(animation-duration, ARTICLE_ANIMATION3D_TIME)
     &[data-direction="in"]
       animation-name cube_in
       transform-origin 0 50%
@@ -79,11 +83,11 @@ article
 
 section
   transform-origin 100% 100%
-  vendor(animation-duration, ANIMATION2D_TIME)
-  vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
+  vendor(animation-duration, SECTION_ANIMATION2D_TIME)
+  // vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
 
   &[data-timing="0"]
-    vendor(animation-duration, 0ms !important)
+    vendor(animation-duration, SECTION_ZERO_TIME !important)
 
   &:not([data-direction])
     &:not(.active)
@@ -93,10 +97,10 @@ section
     position absolute
     left 0
     right 0
-    display block
+    display inline-block
 
   &:not([data-animation])
-    vendor(animation-duration, 0ms !important)
+    // vendor(animation-duration, SECTION_ZERO_TIME !important)
     &:not([data-direction])
       &:not(.active)
         opacity 0
@@ -145,7 +149,7 @@ section
 
   // Animation ROOM
   &[data-animation="room"]
-    animation-duration ANIMATION3D_TIME
+    animation-duration SECTION_ANIMATION3D_TIME
     &[data-direction="in"]
       animation-name room_in
       transform-origin 0 50%
@@ -161,7 +165,7 @@ section
 
   // Animation CUBE
   &[data-animation="cube"]
-    animation-duration ANIMATION3D_TIME
+    animation-duration SECTION_ANIMATION3D_TIME
     &[data-direction="in"]
       animation-name cube_in
       transform-origin 0 50%
@@ -178,9 +182,15 @@ section
 //SPECIFIC CASES
 
 body[data-version="2.3"]
+  & article
+    &[data-animation="room"], &[data-animation="cube"]
+      animation-duration ARTICLE_ANIMATION2D_TIME
+  & section
+    &[data-animation="room"], &[data-animation="cube"]
+      animation-duration SECTION_ANIMATION2D_TIME
   & article, & section
     &[data-animation="room"], &[data-animation="cube"]
-      animation-duration ANIMATION2D_TIME
+      animation-duration SECTION_ANIMATION2D_TIME
       &[data-direction="in"]
         animation-name slide_in
       &[data-direction="out"]
@@ -193,7 +203,7 @@ body[data-version="2.3"]
 @media screen and (min-device-width : 768px) and (orientation : landscape)
   section
     &[data-animation=slide], &[data-animation=room], &[data-animation=cube]
-      animation-duration ANIMATION2D_TIME
+      animation-duration SECTION_ANIMATION2D_TIME
       &:not([data-direction])
         &:not(.active)
           opacity 0
