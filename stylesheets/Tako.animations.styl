@@ -1,7 +1,7 @@
-ARTICLE_ZERO_TIME        = 1ms
+ARTICLE_ZERO_TIME        = 10ms
 ARTICLE_ANIMATION2D_TIME = 500ms
 ARTICLE_ANIMATION3D_TIME = 1000ms
-SECTION_ZERO_TIME        = 1ms
+SECTION_ZERO_TIME        = 10ms
 SECTION_ANIMATION2D_TIME = 1500ms
 SECTION_ANIMATION3D_TIME = 1000ms
 body > article
@@ -100,7 +100,7 @@ body > article > section
     display inline-block
 
   &:not([data-animation])
-    // vendor(animation-duration, SECTION_ZERO_TIME !important)
+    vendor(animation-duration, SECTION_ZERO_TIME !important)
     &:not([data-direction])
       &:not(.active)
         opacity 0
