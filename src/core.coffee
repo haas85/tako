@@ -56,7 +56,6 @@ window.Tako = Tako = do ->
 
     do _fallback
     do _articleListeners
-    do _sectionListeners
     do _loaded
 
   _setNavigation = (query, action) ->
