@@ -9,18 +9,21 @@ body > article
   animation-duration ARTICLE_ANIMATION2D_TIME
   vendor(animation-timing-function, cubic-bezier(0.465, 0.330, 0.440, 0.950))
 
-  // &:not([data-direction])
-  //   &:not(.active)
-  //     display none
+  &:not(.active)
+    opacity 0
+
+  &[data-direction]
+    &[data-animation]
+      &:not([data-animation=fade])
+        opacity 1
 
   &:not([data-animation]), &[data-animation=fade]
-    &:not([data-direction])
-      &:not(.active)
-        opacity 0
     &[data-direction="out"], &[data-direction="back-out"]
       animation-name fade_out
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="in"], &[data-direction="back-in"]
       animation-name fade_in
+      z-index ARTICLE_INDEX_OUT
     &.active
       opacity 1
 
