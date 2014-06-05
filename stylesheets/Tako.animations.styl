@@ -2,7 +2,7 @@ ARTICLE_ZERO_TIME        = 10ms
 ARTICLE_ANIMATION2D_TIME = 500ms
 ARTICLE_ANIMATION3D_TIME = 1000ms
 SECTION_ZERO_TIME        = 10ms
-SECTION_ANIMATION2D_TIME = 1500ms
+SECTION_ANIMATION2D_TIME = 500ms
 SECTION_ANIMATION3D_TIME = 1000ms
 body > article
   transform-origin 100% 100%
@@ -28,12 +28,16 @@ body > article
   &[data-animation="slide"]
     &[data-direction="in"]
       animation-name slide_in
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
       animation-name slide_out
+      z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
       animation-name slide_back_in
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
       animation-name slide_back_out
+      z-index ARTICLE_INDEX_OUT
 
   &[data-animation="cover"]
     &[data-direction="in"]
@@ -55,15 +59,19 @@ body > article
     &[data-direction="in"]
       animation-name room_in
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
       animation-name room_out
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
       animation-name room_back_in
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
       animation-name room_back_out
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_OUT
 
   // Animation CUBE
   &[data-animation="cube"]
@@ -71,15 +79,19 @@ body > article
     &[data-direction="in"]
       animation-name cube_in
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
       animation-name cube_out
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
       animation-name cube_back_in
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
       animation-name cube_back_out
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_OUT
 
 body > article > section
   transform-origin 100% 100%
@@ -126,12 +138,16 @@ body > article > section
   &[data-animation="slide"]
     &[data-direction="in"]
       animation-name slide_in
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
       animation-name slide_out
+      z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
       animation-name slide_back_in
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
       animation-name slide_back_out
+      z-index ARTICLE_INDEX_OUT
 
   &[data-animation="cover"]
     &[data-direction="in"]
@@ -153,15 +169,19 @@ body > article > section
     &[data-direction="in"]
       animation-name room_in
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
       animation-name room_out
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
       animation-name room_back_in
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
       animation-name room_back_out
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_OUT
 
   // Animation CUBE
   &[data-animation="cube"]
@@ -169,15 +189,19 @@ body > article > section
     &[data-direction="in"]
       animation-name cube_in
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="out"]
       animation-name cube_out
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_OUT
     &[data-direction="back-in"]
       animation-name cube_back_in
       transform-origin 100% 50%
+      z-index ARTICLE_INDEX_ACTIVE
     &[data-direction="back-out"]
       animation-name cube_back_out
       transform-origin 0 50%
+      z-index ARTICLE_INDEX_OUT
 
 //SPECIFIC CASES
 
@@ -193,12 +217,16 @@ body[data-version="2.3"]
       animation-duration SECTION_ANIMATION2D_TIME
       &[data-direction="in"]
         animation-name slide_in
+        z-index ARTICLE_INDEX_ACTIVE
       &[data-direction="out"]
         animation-name slide_out
+        z-index ARTICLE_INDEX_OUT
       &[data-direction="back-in"]
         animation-name slide_back_in
+        z-index ARTICLE_INDEX_ACTIVE
       &[data-direction="back-out"]
         animation-name slide_back_out
+        z-index ARTICLE_INDEX_OUT
 
 @media screen and (min-device-width : 768px) and (orientation : landscape)
   body > article > section
