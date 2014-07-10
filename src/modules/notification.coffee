@@ -144,7 +144,7 @@ Tako.Notification = do (TK = Tako) ->
       original_cb = callback
       callback = ->
         do original_cb if original_cb?
-        _show html, timeout, cb
+        _show(html, classes, timeout, cb)
       do hide
 
   _ontap = (ev) ->
