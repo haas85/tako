@@ -50,7 +50,7 @@ Tako.Pull_Refresh = (container, options={})->
 
       Hammer(@container).on "dragdown", @onPull
       Hammer(@container).on "release", =>
-        return unless @_dragged_down
+        return if @refreshing
         cancelAnimationFrame @_anim
         if @_slidedown_height >= @breakpoint
           if @options.onRefresh

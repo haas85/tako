@@ -12,6 +12,7 @@ div.pulltorefresh
   transition -webkit-transform 0ms
   transform(translate(0,- INITIAL_POS))
   margin-bottom - INITIAL_POS
+  position relative
 
   & span
     height CONTENT_HEIGHT
@@ -47,3 +48,7 @@ div.pulltorefresh
 
 .pulling > div
   position static!important
+
+section.indented > div.pulltorefresh
+  top - (INITIAL_POS + 10)
+  // transform(translate(0,- (INITIAL_POS + 10)))

@@ -1,4 +1,4 @@
-/* TaKo v1.1.4 - 10/07/2014
+/* TaKo v1.1.4 - 04/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -65,9 +65,6 @@
         $("article").first().addClass("active");
       }
       $("body").hammer();
-      $("body > article > section.indented").each(function() {
-        return $(this).append($(document.createElement("div")).append($(this).children()));
-      });
       $("article").each(function() {
         if ($(this).children("section.active").length === 0) {
           return $(this).children("section").first().addClass("active");
@@ -772,7 +769,7 @@
         Hammer(this.container).on("dragdown", this.onPull);
         Hammer(this.container).on("release", (function(_this) {
           return function() {
-            if (!_this._dragged_down) {
+            if (_this.refreshing) {
               return;
             }
             cancelAnimationFrame(_this._anim);

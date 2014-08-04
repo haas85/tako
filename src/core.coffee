@@ -37,8 +37,6 @@ window.Tako = Tako = do ->
   _setup = ->
     if $("article.active").length is 0 then $("article").first().addClass "active"
     $("body").hammer()
-    $("body > article > section.indented").each ->
-      $(@).append $(document.createElement("div")).append($(@).children())
     $("article").each ->
       if $(@).children("section.active").length is 0
         $(@).children("section").first().addClass "active"
