@@ -36,7 +36,7 @@ window.Tako = Tako = do ->
 
   _setup = ->
     if $("article.active").length is 0 then $("article").first().addClass "active"
-    $("body").hammer()
+    # $("body").hammer()
     $("article").each ->
       if $(@).children("section.active").length is 0
         $(@).children("section").first().addClass "active"
@@ -48,8 +48,12 @@ window.Tako = Tako = do ->
     _setNavigation "data-section", Tako.Section
     $("[data-action=aside]").each (element) ->
       $(@).on _tap, (ev)->
-        do ev.preventDefault
-        do ev.stopPropagation
+        if ev.srcEvent?
+          do ev.srcEvent.preventDefault
+          do ev.srcEvent.stopPropagation
+        else
+          do ev.preventDefault
+          do ev.stopPropagation
         do Tako.Aside.toggle
 
     do _fallback
@@ -60,13 +64,21 @@ window.Tako = Tako = do ->
     $("[#{query}]").each (element) ->
       if @.nodeName is "LI"
         $(@).children().each ->
-          $(@).bind _tap, (ev) ->
-            do ev.preventDefault
-            do ev.stopPropagation
+          $(@).on _tap, (ev) ->
+            if ev.srcEvent?
+              do ev.srcEvent.preventDefault
+              do ev.srcEvent.stopPropagation
+            else
+              do ev.preventDefault
+              do ev.stopPropagation
             action $(@).parent().attr(query)
-      $(@).bind _tap, (ev) ->
-        do ev.preventDefault
-        do ev.stopPropagation
+      $(@).on _tap, (ev) ->
+        if ev.srcEvent?
+          do ev.srcEvent.preventDefault
+          do ev.srcEvent.stopPropagation
+        else
+          do ev.preventDefault
+          do ev.stopPropagation
         action $(ev.target).attr(query)
 
   _onReceive = (data) ->

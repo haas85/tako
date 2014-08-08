@@ -1,115 +1,85 @@
-/*! jQuery plugin for Hammer.JS - v1.0.0 - 2013-11-03
- * http://eightmedia.github.com/hammer.js
- *
- * Copyright (c) 2013 Jorik Tangelder <j.tangelder@gmail.com>;
- * Licensed under the MIT license */
+(function(){
+    var EVENTS = "tap,doubletap,press,";
+    EVENTS += "pan,panstart,panmove,panend,pancancel,panleft,panright,panup,pandown,";
+    EVENTS += "swipe,swipeleft,swiperight,swipeup,swipedown,";
+    EVENTS += "pinch,pinchstart,pinchmove,pinchend,pinchcancel,pinchin,pinchout,";
+    EVENTS += "rotate,rotatestart,rotatemove,rotateend,rotatecancel";
 
-(function(window, undefined) {
-  'use strict';
+    $.fn.srcOn = $.fn.on;
+    $.fn.srcOff = $.fn.off;
+    $.fn.srcTrigger = $.fn.trigger;
 
-function setup(Hammer, $) {
-  /**
-   * bind dom events
-   * this overwrites addEventListener
-   * @param   {HTMLElement}   element
-   * @param   {String}        eventTypes
-   * @param   {Function}      handler
-   */
-  Hammer.event.bindDom = function(element, eventTypes, handler) {
-    $(element).on(eventTypes, function(ev) {
-      var data = ev.originalEvent || ev;
+    $.fn.on = function(event, selector, data, callback, one, options){
+    var $this = this;
+    if (event && !(typeof(event) == 'string')) {
+      $.each(event, function(type, fn){
+        $this.on(type, selector, data, fn, one);
+      });
+      return $this;
+    }
+    if (!(typeof(selector) == 'string') && !(typeof(callback) == "function") && callback !== false)
+      options = callback, callback = data, data = selector, selector = undefined
+    if ((typeof(data) == "function") || data === false)
+      options = callback, callback = data, data = undefined
 
-      if(data.pageX === undefined) {
-        data.pageX = ev.pageX;
-        data.pageY = ev.pageY;
-      }
+    if (callback === false) callback = function(){return false;};
+    if(!options){options = {};}
 
-      if(!data.target) {
-        data.target = ev.target;
-      }
-
-      if(data.which === undefined) {
-        data.which = data.button;
-      }
-
-      if(!data.preventDefault) {
-        data.preventDefault = ev.preventDefault;
-      }
-
-      if(!data.stopPropagation) {
-        data.stopPropagation = ev.stopPropagation;
-      }
-
-      handler.call(this, data);
-    });
+    if(EVENTS.indexOf(event) != -1){
+        if(this[0].hammer == null){
+            this[0].hammer = new Hammer(this[0]);
+        }
+        this[0].hammer.set(options);
+        if(one){
+          _callback = callback;
+          callback = function(){
+            $this.off(event);
+            _callback.apply(_callback, arguments);
+          };
+        }
+        this[0].hammer.on(event, callback);
+    }else{
+        $this.srcOn(event, selector, data, callback, one);
+    }
+    return $this;
   };
 
-  /**
-   * the methods are called by the instance, but with the jquery plugin
-   * we use the jquery event methods instead.
-   * @this    {Hammer.Instance}
-   * @return  {jQuery}
-   */
-  Hammer.Instance.prototype.on = function(types, handler) {
-    return $(this.element).on(types, handler);
-  };
-  Hammer.Instance.prototype.off = function(types, handler) {
-    return $(this.element).off(types, handler);
-  };
-
-
-  /**
-   * trigger events
-   * this is called by the gestures to trigger an event like 'tap'
-   * @this    {Hammer.Instance}
-   * @param   {String}    gesture
-   * @param   {Object}    eventData
-   * @return  {jQuery}
-   */
-  Hammer.Instance.prototype.trigger = function(gesture, eventData) {
-    var el = $(this.element);
-    if(el.has(eventData.target).length) {
-      el = $(eventData.target);
+  $.fn.off = function(event, selector, callback){
+    if (event && !(typeof(event) == 'string')) {
+      $.each(event, function(type, fn){
+        $this.off(event, selector, callback);
+      });
+      return $this;
     }
 
-    return el.trigger({
-      type   : gesture,
-      gesture: eventData
-    });
+    if (!(typeof(selector) == 'string') && !(typeof(callback) == "function") && callback !== false)
+      callback = selector, selector = undefined
+
+    if (callback === false) callback = function(){return false;};
+
+    if(EVENTS.indexOf(event) != -1){
+        this[0].hammer.off(event, callback);
+    }else{
+        $this.srcOff(event, selector, callback);
+    }
+    return $this;
   };
 
-
-  /**
-   * jQuery plugin
-   * create instance of Hammer and watch for gestures,
-   * and when called again you can change the options
-   * @param   {Object}    [options={}]
-   * @return  {jQuery}
-   */
-  $.fn.hammer = function(options) {
-    return this.each(function() {
-      var el = $(this);
-      var inst = el.data('hammer');
-      // start new hammer instance
-      if(!inst) {
-        el.data('hammer', new Hammer(this, options || {}));
-      }
-      // change the options
-      else if(inst && options) {
-        Hammer.utils.extend(inst.options, options);
-      }
-    });
+  $.fn.trigger = function(event, args){
+    if(args == null){args = {};};
+    if(EVENTS.indexOf(event) != -1){
+      this[0].hammer.emit(event, args);
+    }else{
+      this.srcTrigger(event, args);
+    }
+    return this;
   };
-}
 
-  // Based off Lo-Dash's excellent UMD wrapper (slightly modified) - https://github.com/bestiejs/lodash/blob/master/lodash.js#L5515-L5543
-  // some AMD build optimizers, like r.js, check for specific condition patterns like the following:
-  if(typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
-    // define as an anonymous module
-    define(['hammer', 'jquery'], setup);
+  $.fn.one = function(event, selector, data, callback, options){
+    return this.on(event, selector, data, callback, 1, options)
+  }
 
+  $.fn.bind = function(event, data, callback, options){
+    return this.on(event, data, callback, options)
   }
-  else {
-    setup(window.Hammer, window.jQuery || window.Zepto);
-  }
-})(this);
+})();

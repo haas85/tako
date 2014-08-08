@@ -1,4 +1,4 @@
-/* TaKo v1.1.4 - 04/08/2014
+/* TaKo v1.1.4 - 09/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -64,7 +64,6 @@
       if ($("article.active").length === 0) {
         $("article").first().addClass("active");
       }
-      $("body").hammer();
       $("article").each(function() {
         if ($(this).children("section.active").length === 0) {
           return $(this).children("section").first().addClass("active");
@@ -78,8 +77,13 @@
       _setNavigation("data-section", Tako.Section);
       $("[data-action=aside]").each(function(element) {
         return $(this).on(_tap, function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
+          if (ev.srcEvent != null) {
+            ev.srcEvent.preventDefault();
+            ev.srcEvent.stopPropagation();
+          } else {
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
           return Tako.Aside.toggle();
         });
       });
@@ -91,16 +95,26 @@
       return $("[" + query + "]").each(function(element) {
         if (this.nodeName === "LI") {
           $(this).children().each(function() {
-            return $(this).bind(_tap, function(ev) {
-              ev.preventDefault();
-              ev.stopPropagation();
+            return $(this).on(_tap, function(ev) {
+              if (ev.srcEvent != null) {
+                ev.srcEvent.preventDefault();
+                ev.srcEvent.stopPropagation();
+              } else {
+                ev.preventDefault();
+                ev.stopPropagation();
+              }
               return action($(this).parent().attr(query));
             });
           });
         }
-        return $(this).bind(_tap, function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
+        return $(this).on(_tap, function(ev) {
+          if (ev.srcEvent != null) {
+            ev.srcEvent.preventDefault();
+            ev.srcEvent.stopPropagation();
+          } else {
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
           return action($(ev.target).attr(query));
         });
       });
@@ -243,14 +257,24 @@
       };
       $("aside *").each(function(element) {
         return $(this).on(Tako.tap, function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
+          if (ev.srcEvent != null) {
+            ev.srcEvent.preventDefault();
+            ev.srcEvent.stopPropagation();
+          } else {
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
           return hide();
         });
       });
       bck.on(Tako.tap, function(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
+        if (ev.srcEvent != null) {
+          ev.srcEvent.preventDefault();
+          ev.srcEvent.stopPropagation();
+        } else {
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
         return hide();
       });
       return {
@@ -304,43 +328,6 @@
       }
     };
   })(Tako);
-
-  Tako.ProgressBar = function(container, value) {
-    var Progress;
-    Progress = (function() {
-      Progress.prototype.el = null;
-
-      Progress.prototype.fill = null;
-
-      function Progress(container, value) {
-        var PROGRESS;
-        this.value = value != null ? value : 0;
-        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
-        this.el = $(PROGRESS);
-        $("#" + container).append(this.el);
-        this.fill = this.el.children(".percent");
-      }
-
-      Progress.prototype.percent = function(value) {
-        if (value != null) {
-          if (value < 0 || value > 100) {
-            throw "Invalid value";
-          }
-          this.value = value;
-          this.fill.css("width", "" + this.value + "%");
-        }
-        return this.value;
-      };
-
-      Progress.prototype.remove = function() {
-        return this.el.remove();
-      };
-
-      return Progress;
-
-    })();
-    return new Progress(container, value);
-  };
 
   Tako.Connection = (function() {
     var _callbacks, _state, _stateChange;
@@ -700,6 +687,43 @@
     };
   })(Tako);
 
+  Tako.ProgressBar = function(container, value) {
+    var Progress;
+    Progress = (function() {
+      Progress.prototype.el = null;
+
+      Progress.prototype.fill = null;
+
+      function Progress(container, value) {
+        var PROGRESS;
+        this.value = value != null ? value : 0;
+        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
+        this.el = $(PROGRESS);
+        $("#" + container).append(this.el);
+        this.fill = this.el.children(".percent");
+      }
+
+      Progress.prototype.percent = function(value) {
+        if (value != null) {
+          if (value < 0 || value > 100) {
+            throw "Invalid value";
+          }
+          this.value = value;
+          this.fill.css("width", "" + this.value + "%");
+        }
+        return this.value;
+      };
+
+      Progress.prototype.remove = function() {
+        return this.el.remove();
+      };
+
+      return Progress;
+
+    })();
+    return new Progress(container, value);
+  };
+
   (function() {
     var lastTime, vendors, x;
     lastTime = 0;
@@ -741,7 +765,7 @@
     container = document.getElementById(container);
     PullToRefresh = (function() {
       function PullToRefresh(container, options) {
-        var PULLREFRESH;
+        var PULLREFRESH, mc;
         this.options = options;
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
@@ -758,7 +782,13 @@
         this._anim = null;
         this._dragged_down = false;
         this.showRelease = false;
-        Hammer(this.container).on("touch", (function(_this) {
+        mc = new Hammer.Manager($(this.container)[0]);
+        mc.add(new Hammer.Pan({
+          threshold: 0,
+          pointers: 0
+        }));
+        mc.on("panmove", this.onPull);
+        $(this.container).on("touchstart", (function(_this) {
           return function() {
             $(_this.container).addClass("pulling");
             if (!_this.refreshing) {
@@ -766,8 +796,7 @@
             }
           };
         })(this));
-        Hammer(this.container).on("dragdown", this.onPull);
-        Hammer(this.container).on("release", (function(_this) {
+        $(this.container).on("touchend", (function(_this) {
           return function() {
             if (_this.refreshing) {
               return;
@@ -794,8 +823,9 @@
         if (!this._anim) {
           this.updateHeight();
         }
-        ev.gesture.preventDefault();
-        ev.gesture.stopPropagation();
+        ev.srcEvent.preventDefault();
+        ev.srcEvent.stopPropagation();
+        ev.preventDefault();
         if (this._slidedown_height >= this.breakpoint) {
           this.onArrived();
         } else {
@@ -803,7 +833,9 @@
             this.onUp();
           }
         }
-        return this._slidedown_height = ev.gesture.deltaY * 0.4;
+        if (ev.deltaY > 0) {
+          return this._slidedown_height = ev.deltaY * 0.5;
+        }
       };
 
       PullToRefresh.prototype.setHeight = function(height) {

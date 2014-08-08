@@ -26,13 +26,21 @@ Tako.Aside = do (TK = Tako) ->
 
     $("aside *").each (element) ->
       $(@).on Tako.tap, (ev)->
-        do ev.preventDefault
-        do ev.stopPropagation
+        if ev.srcEvent?
+          do ev.srcEvent.preventDefault
+          do ev.srcEvent.stopPropagation
+        else
+          do ev.preventDefault
+          do ev.stopPropagation
         do hide
 
     bck.on Tako.tap, (ev)->
-      do ev.preventDefault
-      do ev.stopPropagation
+      if ev.srcEvent?
+        do ev.srcEvent.preventDefault
+        do ev.srcEvent.stopPropagation
+      else
+        do ev.preventDefault
+        do ev.stopPropagation
       do hide
 
     show    : show
