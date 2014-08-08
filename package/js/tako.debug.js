@@ -1,4 +1,4 @@
-/* TaKo v1.1.4 - 09/08/2014
+/* TaKo v1.2.1 (Anakin) - 09/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
