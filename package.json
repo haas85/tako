@@ -1,6 +1,6 @@
 {
   "name"            : "TaKo",
-  "version"         : "1.2.1 (Anakin)",
+  "version"         : "1.2.1",
   "description"     : "Mobile Apps Web Framework",
   "homepage"        : "http://takojs.com",
   "author"          : "Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85)",

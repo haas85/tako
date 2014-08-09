@@ -173,12 +173,13 @@ Tako.Notification = do (TK = Tako) ->
     cb.call cb if cb?
 
 
-  notification.on Tako.tap, _ontap
+  notification.on "click", _ontap
 
-  success: success
-  error: error
-  confirm: confirm
-  loading: loading
-  progress: progress
-  custom: custom
-  hide: hide
+  active      : -> active
+  success     : success
+  error       : error
+  confirm     : confirm
+  loading     : loading
+  progress    : progress
+  custom      : custom
+  hide        : hide
