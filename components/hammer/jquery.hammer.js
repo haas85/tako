@@ -25,26 +25,29 @@
     if (callback === false) callback = function(){return false;};
     if(!options){options = {};}
 
-    if(EVENTS.indexOf(event) != -1){
-        if(this[0].hammer == null){
-            this[0].hammer = new Hammer(this[0]);
+    event.split(/\s/).forEach(function(ev){
+      if(EVENTS.indexOf(ev) != -1){
+        if($this[0].hammer == null){
+            $this[0].hammer = new Hammer($this[0]);
         }
-        this[0].hammer.set(options);
+        $this[0].hammer.set(options);
         if(one){
           _callback = callback;
           callback = function(){
-            $this.off(event);
+            $this.off(ev);
             _callback.apply(_callback, arguments);
           };
         }
-        this[0].hammer.on(event, callback);
-    }else{
-        $this.srcOn(event, selector, data, callback, one);
-    }
+        $this[0].hammer.on(ev, callback);
+      }else{
+          $this.srcOn(ev, selector, data, callback, one);
+      }
+    });
     return $this;
   };
 
   $.fn.off = function(event, selector, callback){
+    var $this = this;
     if (event && !(typeof(event) == 'string')) {
       $.each(event, function(type, fn){
         $this.off(event, selector, callback);
@@ -57,11 +60,13 @@
 
     if (callback === false) callback = function(){return false;};
 
-    if(EVENTS.indexOf(event) != -1){
-        this[0].hammer.off(event, callback);
-    }else{
-        $this.srcOff(event, selector, callback);
-    }
+    event.split(/\s/).forEach(function(ev){
+      if(EVENTS.indexOf(event) != -1){
+        $this[0].hammer.off(event, callback);
+      }else{
+          $this.srcOff(event, selector, callback);
+      }
+    });
     return $this;
   };
 

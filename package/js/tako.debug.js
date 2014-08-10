@@ -7,7 +7,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = Tako = (function() {
-    var callbacks, init, onReady, remaining, viewType, _doubletap, _loaded, _onError, _onReceive, _setNavigation, _setup, _tap;
+    var callbacks, init, onReady, remaining, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
     if ($.os.wp) {
       _tap = "click";
       _doubletap = "dblclick";
@@ -76,8 +76,8 @@
       $("[data-visible=" + _current_art + "]").addClass("show");
       $("[data-section=" + ($("article.active section.active").attr("id")) + "]").addClass("current");
       $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
-      _setNavigation("data-article", Tako.Article);
-      _setNavigation("data-section", Tako.Section);
+      _setNavigation("data-article", Tako.Article, "click");
+      _setNavigation("data-section", Tako.Section, "click");
       _ref = document.querySelectorAll("[data-action=aside]");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         element = _ref[_i];
@@ -91,21 +91,12 @@
       _articleListeners();
       return _loaded();
     };
-    _setNavigation = function(query, action) {
+    _setNavigation = function(query, action, event) {
       return $("[" + query + "]").each(function(element) {
-        if (this.nodeName === "LI") {
-          $(this).children().each(function() {
-            return $(this).on(_tap, function(ev) {
-              ev.preventDefault();
-              ev.stopPropagation();
-              return action($(ev.target).parent().attr(query));
-            });
-          });
-        }
-        return $(this).on(_tap, function(ev) {
+        return $(this).on(event, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
-          return action($(ev.target).attr(query));
+          return _navigate(action, ev.target, query);
         });
       });
     };
@@ -131,6 +122,17 @@
         _results.push(cb.call(cb));
       }
       return _results;
+    };
+    _navigate = function(action, target, query) {
+      var nav;
+      if (target != null) {
+        nav = target.attributes.getNamedItem(query);
+        if (nav != null) {
+          return action(nav.value);
+        } else {
+          return _navigate(action, target.parentElement, query);
+        }
+      }
     };
     return {
       init: init,
@@ -245,14 +247,12 @@
           }
         }
       };
-      $("aside *").each(function(element) {
-        return $(this).on(Tako.tap, function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
+      $("aside *").each(function(index) {
+        return $(this).on("tap click", function(ev) {
           return hide();
         });
       });
-      bck.on(Tako.tap, function(ev) {
+      bck.on("tap click", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return hide();

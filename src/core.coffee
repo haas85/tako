@@ -45,8 +45,9 @@ window.Tako = Tako = do ->
     $("[data-visible=#{_current_art}]").addClass "show"
     $("[data-section=#{$("article.active section.active").attr("id")}]").addClass "current"
     $("[data-article=#{$("article.active").attr("id")}]").addClass "current"
-    _setNavigation "data-article", Tako.Article
-    _setNavigation "data-section", Tako.Section
+    _setNavigation "data-article", Tako.Article, "click"
+    _setNavigation "data-section", Tako.Section, "click"
+
     for element in document.querySelectorAll("[data-action=aside]")
       element.addEventListener "click", ((ev) ->
         do ev.preventDefault
@@ -58,18 +59,12 @@ window.Tako = Tako = do ->
     do _articleListeners
     do _loaded
 
-  _setNavigation = (query, action) ->
+  _setNavigation = (query, action, event) ->
     $("[#{query}]").each (element) ->
-      if @.nodeName is "LI"
-        $(@).children().each ->
-          $(@).on _tap, (ev) ->
-            do ev.preventDefault
-            do ev.stopPropagation
-            action $(ev.target).parent().attr(query)
-      $(@).on _tap, (ev) ->
+      $(@).on event, (ev) ->
         do ev.preventDefault
         do ev.stopPropagation
-        action $(ev.target).attr(query)
+        _navigate action, ev.target, query
 
   _onReceive = (data) ->
       remaining--
@@ -83,6 +78,14 @@ window.Tako = Tako = do ->
 
   _loaded = ->
     cb.call cb for cb in callbacks
+
+  _navigate = (action, target, query) ->
+    if target?
+      nav = target.attributes.getNamedItem query
+      if nav?
+        action nav.value
+      else
+        _navigate action, target.parentElement, query
 
   init        : init
   onReady     : onReady
