@@ -476,11 +476,11 @@
   };
 
   Tako.Notification = (function(TK) {
-    var active, callback, confirm, custom, error, hide, loading, notification, notification_window, progress, success, timeout, _close, _hide, _iconHtml, _ontap, _show;
+    var active, callback, confirm, custom, error, hide, loading, notification, notification_article, progress, success, timeout, _close, _hide, _iconHtml, _ontap, _show;
     active = false;
     notification = $("<div data-element=\"notification\"><div></div</div>");
-    notification_window = $("<article class=\"window\"></article>");
-    notification.find("div").append(notification_window);
+    notification_article = $("<article class=\"window\"></article>");
+    notification.find("div").append(notification_article);
     $("body").append(notification);
     timeout = null;
     callback = null;
@@ -555,7 +555,7 @@
       }
       html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
-      buttons = notification_window.find("button");
+      buttons = notification_article.find("button");
       return buttons.one("click", function(element) {
         hide();
         if ($(this).hasClass("accept")) {
@@ -591,7 +591,7 @@
       active = false;
       clearTimeout(timeout);
       timeout = null;
-      notification_window.removeClass("show");
+      notification_article.removeClass("show");
       return setTimeout(_hide, 500);
     };
     _iconHtml = function(icon, title, content) {
@@ -601,9 +601,9 @@
       var original_cb;
       if (!active) {
         active = true;
-        notification_window.removeClass();
-        notification_window.addClass("window " + classes);
-        notification_window.html(html);
+        notification_article.removeClass();
+        notification_article.addClass("window " + classes);
+        notification_article.html(html);
         if (cb != null) {
           callback = cb;
         }
@@ -614,12 +614,11 @@
           return function() {
             notification.addClass("show");
             return setTimeout((function() {
-              var header, header_height, height;
-              height = screen.height * 0.9;
-              header = notification_window.children("header");
+              var header, header_height;
+              header = notification_article.children("header");
               header_height = header.length ? header.offset().height : 0;
-              notification_window.children("section").css("maxHeight", "" + (height - header_height) + "px");
-              return notification_window.addClass("show");
+              notification_article.children("section").css("maxHeight", "" + ((screen.height * 0.9) - header_height) + "px");
+              return notification_article.addClass("show");
             }), 100);
           };
         })(this)), 10);
@@ -637,11 +636,11 @@
     _ontap = function(ev) {
       ev.preventDefault();
       ev.stopPropagation();
-      if (!notification_window.hasClass("not_clickable")) {
+      if (!notification_article.hasClass("not_clickable")) {
         active = false;
         clearTimeout(timeout);
         timeout = null;
-        notification_window.removeClass("show");
+        notification_article.removeClass("show");
         return setTimeout(_hide, 500);
       }
     };
@@ -651,7 +650,7 @@
       active = false;
       clearTimeout(timeout);
       timeout = null;
-      notification_window.removeClass("show");
+      notification_article.removeClass("show");
       return setTimeout(_hide, 500);
     };
     _hide = function() {
