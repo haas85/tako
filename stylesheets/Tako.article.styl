@@ -185,11 +185,10 @@ section
   &.active
     display block
 
-  &.indented
-    padding 10px 0
-    margin 0 INDENT
+  &.indented > div:not(.pulltorefresh)
+    width 100%
     box-sizing(border-box)
-    width auto
+    height 100%
 
 header > h1 > img + span
   position relative
