@@ -10,7 +10,6 @@ Tako.Notification = do (TK = Tako) ->
   timeout = null
   callback = null
 
-
   success = (icon="ok", title, content, time_out, cb) ->
     html = _iconHtml icon, title, content
     _show html, "success center upwards", time_out, cb
@@ -76,8 +75,7 @@ Tako.Notification = do (TK = Tako) ->
     _show html, "center confirm not_clickable", null, null
 
     buttons = notification_window.find("button")
-    buttons.bind Tako.tap, (element) ->
-      buttons.unbind Tako.tap
+    buttons.one "click", (element) ->
       do hide
       if $(@).hasClass("accept")
         cb.call cb, true
@@ -107,7 +105,7 @@ Tako.Notification = do (TK = Tako) ->
     """
 
     _show html, "center custom not_clickable #{classes}", timeout, cb
-    notification.find(".close").on Tako.tap, _close
+    notification.find(".close").on "click", _close
 
   hide = ->
     active = false
@@ -135,11 +133,19 @@ Tako.Notification = do (TK = Tako) ->
       do notification_window.removeClass
       notification_window.addClass "window " + classes
       notification_window.html html
-      notification.addClass "show"
-      setTimeout (-> notification_window.addClass("show")), 100
       callback = cb if cb?
       if time_out?
         timeout = setTimeout hide, time_out*1000
+      setTimeout (=>
+        notification.addClass "show"
+        setTimeout (->
+          # height = notification_window.offset().height
+          height = screen.height * 0.9
+          header = notification_window.children("header")
+          header_height = if header.length then header.offset().height else 0
+          notification_window.children("section").css "maxHeight", "#{height-header_height}px"
+          notification_window.addClass("show")), 100
+      ), 10
     else
       original_cb = callback
       callback = ->

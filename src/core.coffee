@@ -65,7 +65,7 @@ window.Tako = Tako = do ->
           $(@).on _tap, (ev) ->
             do ev.preventDefault
             do ev.stopPropagation
-            action $(@).parent().attr(query)
+            action $(ev.target).parent().attr(query)
       $(@).on _tap, (ev) ->
         do ev.preventDefault
         do ev.stopPropagation

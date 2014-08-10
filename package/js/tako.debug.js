@@ -98,7 +98,7 @@
             return $(this).on(_tap, function(ev) {
               ev.preventDefault();
               ev.stopPropagation();
-              return action($(this).parent().attr(query));
+              return action($(ev.target).parent().attr(query));
             });
           });
         }
@@ -556,8 +556,7 @@
       html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
       buttons = notification_window.find("button");
-      return buttons.bind(Tako.tap, function(element) {
-        buttons.unbind(Tako.tap);
+      return buttons.one("click", function(element) {
         hide();
         if ($(this).hasClass("accept")) {
           return cb.call(cb, true);
@@ -586,7 +585,7 @@
       }
       html += "" + content + "\n</section>";
       _show(html, "center custom not_clickable " + classes, timeout, cb);
-      return notification.find(".close").on(Tako.tap, _close);
+      return notification.find(".close").on("click", _close);
     };
     hide = function() {
       active = false;
@@ -605,16 +604,25 @@
         notification_window.removeClass();
         notification_window.addClass("window " + classes);
         notification_window.html(html);
-        notification.addClass("show");
-        setTimeout((function() {
-          return notification_window.addClass("show");
-        }), 100);
         if (cb != null) {
           callback = cb;
         }
         if (time_out != null) {
-          return timeout = setTimeout(hide, time_out * 1000);
+          timeout = setTimeout(hide, time_out * 1000);
         }
+        return setTimeout(((function(_this) {
+          return function() {
+            notification.addClass("show");
+            return setTimeout((function() {
+              var header, header_height, height;
+              height = screen.height * 0.9;
+              header = notification_window.children("header");
+              header_height = header.length ? header.offset().height : 0;
+              notification_window.children("section").css("maxHeight", "" + (height - header_height) + "px");
+              return notification_window.addClass("show");
+            }), 100);
+          };
+        })(this)), 10);
       } else {
         original_cb = callback;
         callback = function() {
