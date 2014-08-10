@@ -45,8 +45,10 @@ window.Tako = Tako = do ->
     $("[data-visible=#{_current_art}]").addClass "show"
     $("[data-section=#{$("article.active section.active").attr("id")}]").addClass "current"
     $("[data-article=#{$("article.active").attr("id")}]").addClass "current"
-    _setNavigation "data-article", Tako.Article, "click"
-    _setNavigation "data-section", Tako.Section, "click"
+    _setNavigation "aside", "data-article", Tako.Article, "tap"
+    _setNavigation "aside", "data-section", Tako.Section, "tap"
+    _setNavigation "article", "data-article", Tako.Article, "click"
+    _setNavigation "article", "data-section", Tako.Section, "click"
 
     for element in document.querySelectorAll("[data-action=aside]")
       element.addEventListener "click", ((ev) ->
@@ -59,8 +61,8 @@ window.Tako = Tako = do ->
     do _articleListeners
     do _loaded
 
-  _setNavigation = (query, action, event) ->
-    $("[#{query}]").each (element) ->
+  _setNavigation = (container, query, action, event) ->
+    $("#{container} [#{query}]").each (element) ->
       $(@).on event, (ev) ->
         do ev.preventDefault
         do ev.stopPropagation

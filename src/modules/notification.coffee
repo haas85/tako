@@ -75,12 +75,15 @@ Tako.Notification = do (TK = Tako) ->
     _show html, "center confirm not_clickable", null, null
 
     buttons = notification_article.find("button")
-    buttons.one "click", (element) ->
-      do hide
-      if $(@).hasClass("accept")
-        cb.call cb, true
-      else
-        cb.call cb, false
+    window.but = buttons
+    buttons.each (index, element) ->
+      $(@).on Tako.tap, (ev) =>
+        $(@).off Tako.tap
+        do hide
+        if $(@).hasClass("accept")
+          cb.call cb, true
+        else
+          cb.call cb, false
 
   custom = (title, content, closable=true, classes="", timeout, cb) ->
     header = ""
@@ -105,7 +108,7 @@ Tako.Notification = do (TK = Tako) ->
     """
 
     _show html, "center custom not_clickable #{classes}", timeout, cb
-    notification.find(".close").on "click", _close
+    notification.find(".close").on Tako.tap, _close
 
   hide = ->
     active = false
@@ -177,7 +180,7 @@ Tako.Notification = do (TK = Tako) ->
     cb.call cb if cb?
 
 
-  notification.on "click", _ontap
+  notification.on Tako.tap, _ontap
 
   active      : -> active
   success     : success

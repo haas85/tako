@@ -76,8 +76,10 @@
       $("[data-visible=" + _current_art + "]").addClass("show");
       $("[data-section=" + ($("article.active section.active").attr("id")) + "]").addClass("current");
       $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
-      _setNavigation("data-article", Tako.Article, "click");
-      _setNavigation("data-section", Tako.Section, "click");
+      _setNavigation("aside", "data-article", Tako.Article, "tap");
+      _setNavigation("aside", "data-section", Tako.Section, "tap");
+      _setNavigation("article", "data-article", Tako.Article, "click");
+      _setNavigation("article", "data-section", Tako.Section, "click");
       _ref = document.querySelectorAll("[data-action=aside]");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         element = _ref[_i];
@@ -91,8 +93,8 @@
       _articleListeners();
       return _loaded();
     };
-    _setNavigation = function(query, action, event) {
-      return $("[" + query + "]").each(function(element) {
+    _setNavigation = function(container, query, action, event) {
+      return $("" + container + " [" + query + "]").each(function(element) {
         return $(this).on(event, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
@@ -559,13 +561,19 @@
       html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
       buttons = notification_article.find("button");
-      return buttons.one("click", function(element) {
-        hide();
-        if ($(this).hasClass("accept")) {
-          return cb.call(cb, true);
-        } else {
-          return cb.call(cb, false);
-        }
+      window.but = buttons;
+      return buttons.each(function(index, element) {
+        return $(this).on(Tako.tap, (function(_this) {
+          return function(ev) {
+            $(_this).off(Tako.tap);
+            hide();
+            if ($(_this).hasClass("accept")) {
+              return cb.call(cb, true);
+            } else {
+              return cb.call(cb, false);
+            }
+          };
+        })(this));
       });
     };
     custom = function(title, content, closable, classes, timeout, cb) {
@@ -588,7 +596,7 @@
       }
       html += "" + content + "\n</section>";
       _show(html, "center custom not_clickable " + classes, timeout, cb);
-      return notification.find(".close").on("click", _close);
+      return notification.find(".close").on(Tako.tap, _close);
     };
     hide = function() {
       active = false;
@@ -665,7 +673,7 @@
         return cb.call(cb);
       }
     };
-    notification.on("click", _ontap);
+    notification.on(Tako.tap, _ontap);
     return {
       active: function() {
         return active;
