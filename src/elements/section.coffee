@@ -15,6 +15,9 @@ Tako.Section = do (TK = Tako) ->
     if _current_article[0].id isnt new_article[0].id
       Tako.Article new_article[0].id, back
 
+    if new_section.attr("data-scrolltop")?
+      new_section.scrollTop(0)
+
     _current_section.trigger "unload"
     new_section.trigger "load"
 
