@@ -35,6 +35,11 @@ article
   background-color lighten(THEME, 15%)!important
   color SECONDARY_TEXT !important
 
+button, .button
+  font-size FONT_SIZE
+  background-color lighten(THEME, 15%)
+  color SECONDARY_TEXT
+
 article
   & > header
     background-color lighten(THEME, 15%)!important
@@ -69,7 +74,7 @@ footer
   color SECONDARY_TEXT !important
 
   & button, & .button
-    background-color lighten(SECONDARY, 5%)!important
+    background-color lighten(SECONDARY, 5%)
     &:active, &:hover
       & .counter
         background-color SECONDARY
@@ -96,11 +101,6 @@ aside
 
   & .counter
     background-color lighten(SECONDARY, 30%)
-
-button, .button
-  font-size FONT_SIZE
-  background-color lighten(THEME, 15%)
-  color SECONDARY_TEXT
 
 .accept
   background-color lighten(SUCCESS, 15%)!important
