@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 (Anakin) - 09/08/2014
+/* TaKo v1.2.1 - 10/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -60,10 +60,13 @@
       }
     };
     _setup = function() {
-      var _current_art;
+      var element, _current_art, _i, _len, _ref;
       if ($("article.active").length === 0) {
         $("article").first().addClass("active");
       }
+      $("body > article > section.indented").each(function() {
+        return $(this).append($(document.createElement("div")).append($(this).children()));
+      });
       $("article").each(function() {
         if ($(this).children("section.active").length === 0) {
           return $(this).children("section").first().addClass("active");
@@ -75,18 +78,15 @@
       $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
       _setNavigation("data-article", Tako.Article);
       _setNavigation("data-section", Tako.Section);
-      $("[data-action=aside]").each(function(element) {
-        return $(this).on(_tap, function(ev) {
-          if (ev.srcEvent != null) {
-            ev.srcEvent.preventDefault();
-            ev.srcEvent.stopPropagation();
-          } else {
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
+      _ref = document.querySelectorAll("[data-action=aside]");
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        element = _ref[_i];
+        element.addEventListener("click", (function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
           return Tako.Aside.toggle();
-        });
-      });
+        }), false);
+      }
       _fallback();
       _articleListeners();
       return _loaded();
@@ -96,25 +96,15 @@
         if (this.nodeName === "LI") {
           $(this).children().each(function() {
             return $(this).on(_tap, function(ev) {
-              if (ev.srcEvent != null) {
-                ev.srcEvent.preventDefault();
-                ev.srcEvent.stopPropagation();
-              } else {
-                ev.preventDefault();
-                ev.stopPropagation();
-              }
+              ev.preventDefault();
+              ev.stopPropagation();
               return action($(this).parent().attr(query));
             });
           });
         }
         return $(this).on(_tap, function(ev) {
-          if (ev.srcEvent != null) {
-            ev.srcEvent.preventDefault();
-            ev.srcEvent.stopPropagation();
-          } else {
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
+          ev.preventDefault();
+          ev.stopPropagation();
           return action($(ev.target).attr(query));
         });
       });
@@ -257,24 +247,14 @@
       };
       $("aside *").each(function(element) {
         return $(this).on(Tako.tap, function(ev) {
-          if (ev.srcEvent != null) {
-            ev.srcEvent.preventDefault();
-            ev.srcEvent.stopPropagation();
-          } else {
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
+          ev.preventDefault();
+          ev.stopPropagation();
           return hide();
         });
       });
       bck.on(Tako.tap, function(ev) {
-        if (ev.srcEvent != null) {
-          ev.srcEvent.preventDefault();
-          ev.srcEvent.stopPropagation();
-        } else {
-          ev.preventDefault();
-          ev.stopPropagation();
-        }
+        ev.preventDefault();
+        ev.stopPropagation();
         return hide();
       });
       return {
@@ -675,8 +655,11 @@
         return cb.call(cb);
       }
     };
-    notification.on(Tako.tap, _ontap);
+    notification.on("click", _ontap);
     return {
+      active: function() {
+        return active;
+      },
       success: success,
       error: error,
       confirm: confirm,

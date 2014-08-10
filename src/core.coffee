@@ -36,7 +36,8 @@ window.Tako = Tako = do ->
 
   _setup = ->
     if $("article.active").length is 0 then $("article").first().addClass "active"
-    # $("body").hammer()
+    $("body > article > section.indented").each ->
+      $(@).append $(document.createElement("div")).append($(@).children())
     $("article").each ->
       if $(@).children("section.active").length is 0
         $(@).children("section").first().addClass "active"
@@ -46,15 +47,12 @@ window.Tako = Tako = do ->
     $("[data-article=#{$("article.active").attr("id")}]").addClass "current"
     _setNavigation "data-article", Tako.Article
     _setNavigation "data-section", Tako.Section
-    $("[data-action=aside]").each (element) ->
-      $(@).on _tap, (ev)->
-        if ev.srcEvent?
-          do ev.srcEvent.preventDefault
-          do ev.srcEvent.stopPropagation
-        else
-          do ev.preventDefault
-          do ev.stopPropagation
+    for element in document.querySelectorAll("[data-action=aside]")
+      element.addEventListener "click", ((ev) ->
+        do ev.preventDefault
+        do ev.stopPropagation
         do Tako.Aside.toggle
+        ), false
 
     do _fallback
     do _articleListeners
@@ -65,20 +63,12 @@ window.Tako = Tako = do ->
       if @.nodeName is "LI"
         $(@).children().each ->
           $(@).on _tap, (ev) ->
-            if ev.srcEvent?
-              do ev.srcEvent.preventDefault
-              do ev.srcEvent.stopPropagation
-            else
-              do ev.preventDefault
-              do ev.stopPropagation
+            do ev.preventDefault
+            do ev.stopPropagation
             action $(@).parent().attr(query)
       $(@).on _tap, (ev) ->
-        if ev.srcEvent?
-          do ev.srcEvent.preventDefault
-          do ev.srcEvent.stopPropagation
-        else
-          do ev.preventDefault
-          do ev.stopPropagation
+        do ev.preventDefault
+        do ev.stopPropagation
         action $(ev.target).attr(query)
 
   _onReceive = (data) ->
