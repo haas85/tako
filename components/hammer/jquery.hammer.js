@@ -61,10 +61,10 @@
     if (callback === false) callback = function(){return false;};
 
     event.split(/\s/).forEach(function(ev){
-      if(EVENTS.indexOf(event) != -1){
-        $this[0].hammer.off(event, callback);
+      if(EVENTS.indexOf(ev) != -1){
+        $this[0].hammer.off(ev, callback);
       }else{
-          $this.srcOff(event, selector, callback);
+          $this.srcOff(ev, selector, callback);
       }
     });
     return $this;
