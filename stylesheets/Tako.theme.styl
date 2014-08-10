@@ -33,21 +33,11 @@ article
 
 .theme
   background-color lighten(THEME, 15%)!important
-  background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
-  background-image linear-gradient(lighten(THEME, 35%), THEME)!important
   color SECONDARY_TEXT !important
 
 article
   & > header
     background-color lighten(THEME, 15%)!important
-    background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)!important
-    background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)!important
-    background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)!important
-    background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
-    background-image linear-gradient(lighten(THEME, 35%), THEME)!important
     color SECONDARY_TEXT !important
 
     & .counter
@@ -110,29 +100,14 @@ aside
 button, .button
   font-size FONT_SIZE
   background-color lighten(THEME, 15%)
-  background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
-  background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
-  background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
-  background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
-  background-image linear-gradient(lighten(THEME, 35%), THEME)
   color SECONDARY_TEXT
 
 .accept
   background-color lighten(SUCCESS, 15%)!important
-  background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-  background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-  background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-  background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-  background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
   color #FFF
 
 .cancel
   background-color lighten(FAIL, 15%)!important
-  background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-  background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-  background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-  background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-  background-image linear-gradient(lighten(FAIL, 15%), FAIL)!important
   color #FFF
 
 aside .current, footer .current
@@ -144,25 +119,14 @@ aside li, footer button
 
 div[data-element="notification"] > div > article.window
 
-
   & .icon
     font-weight bold
 
   &.success > header
     background-color lighten(SUCCESS, 15%)!important
-    background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-    background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-    background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-    background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
-    background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
 
   &.error > header
     background-color lighten(FAIL, 15%)!important
-    background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-    background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-    background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-    background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)!important
-    background-image linear-gradient(lighten(FAIL, 15%), FAIL)!important
 
 
 [data-element=notification] .loading .icon
@@ -295,6 +259,61 @@ div.pulltorefresh
 
 article[data-selectbox] section[data-selectbox]
   border 2px solid darken(BACKGROUND, 15%)
+
+body.noflat, body.no_flat
+  .theme
+    background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
+    background-image linear-gradient(lighten(THEME, 35%), THEME)!important
+
+  article
+    & > header
+      background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)!important
+      background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)!important
+      background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)!important
+      background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
+      background-image linear-gradient(lighten(THEME, 35%), THEME)!important
+
+  button, .button
+    background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image linear-gradient(lighten(THEME, 35%), THEME)
+
+  .accept
+    background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+    background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+    background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+    background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+    background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+
+  .cancel
+    background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+    background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+    background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+    background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+    background-image linear-gradient(lighten(FAIL, 15%), FAIL)!important
+
+  div[data-element="notification"] > div > article.window
+    &.success > header
+      background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+      background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+      background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+      background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+      background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)!important
+
+    &.error > header
+      background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+      background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+      background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+      background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)!important
+      background-image linear-gradient(lighten(FAIL, 15%), FAIL)!important
+
+article > nav *, article > footer *
+  background-image none !important
 
 @media screen and (min-width : 768px) and (orientation : landscape)
   aside
