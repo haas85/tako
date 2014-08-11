@@ -37,6 +37,7 @@ _articleListeners = ->
       if (event.target.getAttribute("data-direction") is "in") or (event.target.getAttribute("data-direction") is "back-in")
         event.target.classList.add "active"
         $(event.target).trigger "load"
+        document.location.hash = "##{document.querySelector("article.active").id}/#{document.querySelector("article.active section.active").id}"
       else
         $(event.target).trigger "unload"
       event.target.removeAttribute "data-direction"

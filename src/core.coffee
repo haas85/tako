@@ -42,7 +42,15 @@ window.Tako = window.tk = Tako = do ->
     if (width > 768) and (width > height) then "TABLET/DESKTOP" else "PHONE"
 
   _setup = ->
-    if $("article.active").length is 0 then $("article").first().addClass "active"
+    hash = document.location.hash
+    if hash isnt ""
+      hash = hash.replace "#", ""
+      hash = hash.split "/"
+      document.getElementById(hash[0]).classList.add "active"
+      document.getElementById(hash[1]).classList.add "active"
+    else
+      $("article").first().addClass "active"
+      # if $("article.active").length is 0 then $("article").first().addClass "active"
     $("body > article > section.indented").each ->
       $(@).append $(document.createElement("div")).append($(@).children())
     $("article").each ->

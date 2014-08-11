@@ -82,8 +82,14 @@
       }
     };
     _setup = function() {
-      var element, _current_art, _i, _len, _ref;
-      if ($("article.active").length === 0) {
+      var element, hash, _current_art, _i, _len, _ref;
+      hash = document.location.hash;
+      if (hash !== "") {
+        hash = hash.replace("#", "");
+        hash = hash.split("/");
+        document.getElementById(hash[0]).classList.add("active");
+        document.getElementById(hash[1]).classList.add("active");
+      } else {
         $("article").first().addClass("active");
       }
       $("body > article > section.indented").each(function() {
@@ -230,6 +236,7 @@
         if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
           event.target.classList.add("active");
           $(event.target).trigger("load");
+          document.location.hash = "#" + (document.querySelector("article.active").id) + "/" + (document.querySelector("article.active section.active").id);
         } else {
           $(event.target).trigger("unload");
         }
@@ -312,6 +319,7 @@
       if (new_section.attr("data-scrolltop") != null) {
         new_section.scrollTop(0);
       }
+      document.location.hash = "#" + new_article[0].id + "/" + section_id;
       _current_section.trigger("unload");
       new_section.trigger("load");
       $(".current[data-section]").removeClass("current");
