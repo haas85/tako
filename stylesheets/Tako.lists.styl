@@ -25,6 +25,39 @@ section ul
       height 40px
       font-size 3em
 
+    &.arrow
+      padding-right 40px
+      &:after
+        opacity 0.5
+        position absolute
+        top 0
+        bottom 0
+        right 0
+        line-height 60px
+        height 60px
+        width 40px
+        margin auto auto auto 0
+        font-family 'takoicons'
+        font-style normal
+        font-weight normal !important
+        font-size 1.8em
+        speak none
+        display inline-block
+        text-decoration inherit
+        text-align center
+        font-variant normal
+        text-transform none
+        content '\e895'
+      &.strong
+        &:after
+          font-size 1.2em
+          content '\e820'
+
+      &.circled
+        &:after
+          font-size 1.5em
+          content '\e82b'
+
     &:first-child
       border-top 1px solid rgba(0, 0, 0, 0.1)
 
@@ -35,6 +68,9 @@ section ul
 
     & small
       margin-top .2em
+      word-wrap break-word
+      white-space -moz-pre-wrap
+      white-space pre-wrap
 
     & .small:not(img)
       margin-top .2em
@@ -44,8 +80,9 @@ section ul
     & .strong
       font-weight bold
       font-size 1.1em
-
-
+      word-wrap break-word
+      white-space -moz-pre-wrap
+      white-space pre-wrap
 
     & > img
       width LIST_IMAGE
