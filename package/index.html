@@ -279,7 +279,6 @@
     <script src="js/tako.debug.js"></script>
     <script>
         Tako.onReady(function(){
-            console.log("LOADED");
             window.puller = Tako.Pull_Refresh("main", {onRefresh:function(){
                 setTimeout(function(){
                     alert("Refresh finished");
@@ -290,7 +289,10 @@
             // Tako.Section("colors");
         });
 
-        Tako.init({"articles": ["article2.html"]});
+        Tako.init({
+            articles: ["article2.html"],
+            logging : Tako.logging.LOG
+        });
         $("#show_success").bind("tap", function(){
             Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})
         });

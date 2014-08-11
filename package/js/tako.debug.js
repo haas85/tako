@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 10/08/2014
+/* TaKo v1.2.1 - 11/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -6,8 +6,29 @@
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  window.Tako = Tako = (function() {
-    var callbacks, init, onReady, remaining, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+  window.Tako = window.tk = Tako = (function() {
+    var callbacks, init, logging, onReady, remaining, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+    logging = {};
+    Object.defineProperty(logging, "LOG", {
+      get: function() {
+        return 4;
+      }
+    });
+    Object.defineProperty(logging, "INFO", {
+      get: function() {
+        return 3;
+      }
+    });
+    Object.defineProperty(logging, "WARN", {
+      get: function() {
+        return 2;
+      }
+    });
+    Object.defineProperty(logging, "ERROR", {
+      get: function() {
+        return 1;
+      }
+    });
     if ($.os.wp) {
       _tap = "click";
       _doubletap = "dblclick";
@@ -23,6 +44,7 @@
         options = {};
       }
       try {
+        Tako.logging.level = options.logging || false;
         if (options.articles != null) {
           remaining = options.articles.length;
           _ref = options.articles;
@@ -141,7 +163,8 @@
       onReady: onReady,
       viewType: viewType,
       tap: _tap,
-      double_tap: _doubletap
+      double_tap: _doubletap,
+      logging: logging
     };
   })();
 
@@ -477,6 +500,30 @@
     }
     if ($.browser != null) {
       return _browser();
+    }
+  };
+
+  Tako.log = function() {
+    if (Tako.logging.level >= 4) {
+      return console.log.apply(console, arguments);
+    }
+  };
+
+  Tako.info = function() {
+    if (Tako.logging.level >= 3) {
+      return console.info.apply(console, arguments);
+    }
+  };
+
+  Tako.warn = function() {
+    if (Tako.logging.level >= 2) {
+      return console.warn.apply(console, arguments);
+    }
+  };
+
+  Tako.error = function() {
+    if (Tako.logging.level >= 1) {
+      return console.error.apply(console, arguments);
     }
   };
 

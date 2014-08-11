@@ -1,4 +1,10 @@
-window.Tako = Tako = do ->
+window.Tako = window.tk = Tako = do ->
+
+  logging = {}
+  Object.defineProperty logging, "LOG",   {get: -> 4}
+  Object.defineProperty logging, "INFO",  {get: -> 3}
+  Object.defineProperty logging, "WARN",  {get: -> 2}
+  Object.defineProperty logging, "ERROR", {get: -> 1}
 
   if $.os.wp
     _tap = "click"
@@ -13,6 +19,7 @@ window.Tako = Tako = do ->
 
   init = (options={})->
     try
+      Tako.logging.level = options.logging or false
       if options.articles?
         remaining = options.articles.length
         for article in options.articles
@@ -94,4 +101,5 @@ window.Tako = Tako = do ->
   viewType    : viewType
   tap         : _tap
   double_tap  : _doubletap
+  logging     : logging
 
