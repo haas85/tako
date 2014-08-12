@@ -1,8 +1,8 @@
-/* TaKo v1.2.1 - 11/08/2014
+/* TaKo v1.2.1 - 12/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Select, Tako, _articleListeners, _fallback,
+  var Select, Tako, _articleListeners, _fallback, _navigate,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -83,10 +83,12 @@
     };
     _setup = function() {
       var element, hash, _current_art, _i, _len, _ref;
-      hash = document.location.hash;
-      if (hash !== "") {
+      hash = document.location.hash || "";
+      if (hash !== "" && hash !== "#") {
         hash = hash.replace("#", "");
         hash = hash.split("/");
+      }
+      if (hash.length === 2) {
         document.getElementById(hash[0]).classList.add("active");
         document.getElementById(hash[1]).classList.add("active");
       } else {
@@ -232,11 +234,14 @@
 
   _articleListeners = function() {
     return $("article").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
+      var _navigate;
       if (event.target.nodeName.toUpperCase() === "ARTICLE") {
         if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
           event.target.classList.add("active");
           $(event.target).trigger("load");
+          _navigate = false;
           document.location.hash = "#" + (document.querySelector("article.active").id) + "/" + (document.querySelector("article.active section.active").id);
+          _navigate = true;
         } else {
           $(event.target).trigger("unload");
         }
@@ -297,6 +302,22 @@
     }
   })(Tako);
 
+  _navigate = true;
+
+  $(window).on("hashchange", function() {
+    var hash;
+    if (_navigate) {
+      hash = document.location.hash || "";
+      if (hash !== "" && hash !== "#") {
+        hash = hash.replace("#", "");
+        hash = hash.split("/");
+        if (hash.length = 2) {
+          return Tako.Section(hash[1]);
+        }
+      }
+    }
+  });
+
   Tako.Section = (function(TK) {
     var current, goTo, _current;
     goTo = function(section_id, back) {
@@ -319,7 +340,9 @@
       if (new_section.attr("data-scrolltop") != null) {
         new_section.scrollTop(0);
       }
+      _navigate = false;
       document.location.hash = "#" + new_article[0].id + "/" + section_id;
+      _navigate = true;
       _current_section.trigger("unload");
       new_section.trigger("load");
       $(".current[data-section]").removeClass("current");

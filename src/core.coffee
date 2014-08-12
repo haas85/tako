@@ -42,10 +42,11 @@ window.Tako = window.tk = Tako = do ->
     if (width > 768) and (width > height) then "TABLET/DESKTOP" else "PHONE"
 
   _setup = ->
-    hash = document.location.hash
-    if hash isnt ""
+    hash = document.location.hash or ""
+    if hash isnt "" and hash isnt "#"
       hash = hash.replace "#", ""
       hash = hash.split "/"
+    if hash.length is 2
       document.getElementById(hash[0]).classList.add "active"
       document.getElementById(hash[1]).classList.add "active"
     else

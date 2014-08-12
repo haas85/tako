@@ -18,7 +18,9 @@ Tako.Section = do (TK = Tako) ->
     if new_section.attr("data-scrolltop")?
       new_section.scrollTop(0)
 
+    _navigate = false
     document.location.hash = "##{new_article[0].id}/#{section_id}"
+    _navigate = true
 
     _current_section.trigger "unload"
     new_section.trigger "load"
