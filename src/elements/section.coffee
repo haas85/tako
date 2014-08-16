@@ -6,7 +6,13 @@ Tako.Section = do (TK = Tako) ->
     modifier = if back then "back-" else ""
 
     new_section = $("section##{section_id}")
+    if new_section.length is 0
+      return false
+
     new_article = new_section.parent()
+
+    console.log new_section
+    console.log _current_section
 
     if _current_section[0].id isnt new_section[0].id
       new_article.children(".active").removeClass("active")
@@ -29,6 +35,8 @@ Tako.Section = do (TK = Tako) ->
     $("[data-section=#{section_id}]").addClass "current"
     $("[data-visible]").removeClass "show"
     $("[data-visible=#{section_id}]").addClass "show"
+
+    return true
 
   current = ->
     if _current? then _current else _current = $ "article.active section.active"

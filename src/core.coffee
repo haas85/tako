@@ -50,14 +50,17 @@ window.Tako = window.tk = Tako = do ->
       document.getElementById(hash[0]).classList.add "active"
       document.getElementById(hash[1]).classList.add "active"
     else
-      $("article").first().addClass "active"
-      # if $("article.active").length is 0 then $("article").first().addClass "active"
-    $("body > article > section.indented").each ->
-      $(@).append $(document.createElement("div")).append($(@).children())
+      if document.querySelectorAll("article.active").length is 0 then $("article").first().addClass "active"
+    Array::forEach.call document.getElementsByTagName("section"), (el, index) ->
+      el.appendChild $(document.createElement("div")).append($(el).children())[0]
     $("article").each ->
-      if $(@).children("section.active").length is 0
-        $(@).children("section").first().addClass "active"
-    _current_art = $("article.active section.active")[0].id
+      $this = $(@)
+      if @getElementsByTagName("header").length isnt 0 then @.setAttribute "data-header", ""
+      if $this.children("nav").length isnt 0 then @.setAttribute "data-nav", ""
+      if @getElementsByTagName("footer").length isnt 0 then @.setAttribute "data-footer", ""
+      if not @querySelector("section.active")?
+        $this.children("section").first().addClass "active"
+    _current_art = document.querySelector("article.active section.active").id
     $("[data-visible=#{_current_art}]").addClass "show"
     $("[data-section=#{$("article.active section.active").attr("id")}]").addClass "current"
     $("[data-article=#{$("article.active").attr("id")}]").addClass "current"

@@ -188,11 +188,12 @@ section
   &.indented
     &.active
       & > div:not(.pulltorefresh)
-        position absolute
-        top 0
-        right 0
-        left 0
-        bottom 0
+        position relative
+        min-height 100%
+        // top 0
+        // right 0
+        // left 0
+        // bottom 0
 
     & > div:not(.pulltorefresh)
       flexbox-weight(1)

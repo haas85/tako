@@ -1,8 +1,8 @@
-/* TaKo v1.2.1 - 12/08/2014
+/* TaKo v1.2.1 - 16/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Select, Tako, _articleListeners, _fallback, _navigate,
+  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, _articleListeners, _fallback, _navigate, _style,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -92,17 +92,30 @@
         document.getElementById(hash[0]).classList.add("active");
         document.getElementById(hash[1]).classList.add("active");
       } else {
-        $("article").first().addClass("active");
+        if (document.querySelectorAll("article.active").length === 0) {
+          $("article").first().addClass("active");
+        }
       }
-      $("body > article > section.indented").each(function() {
-        return $(this).append($(document.createElement("div")).append($(this).children()));
+      Array.prototype.forEach.call(document.getElementsByTagName("section"), function(el, index) {
+        return el.appendChild($(document.createElement("div")).append($(el).children())[0]);
       });
       $("article").each(function() {
-        if ($(this).children("section.active").length === 0) {
-          return $(this).children("section").first().addClass("active");
+        var $this;
+        $this = $(this);
+        if (this.getElementsByTagName("header").length !== 0) {
+          this.setAttribute("data-header", "");
+        }
+        if ($this.children("nav").length !== 0) {
+          this.setAttribute("data-nav", "");
+        }
+        if (this.getElementsByTagName("footer").length !== 0) {
+          this.setAttribute("data-footer", "");
+        }
+        if (this.querySelector("section.active") == null) {
+          return $this.children("section").first().addClass("active");
         }
       });
-      _current_art = $("article.active section.active")[0].id;
+      _current_art = document.querySelector("article.active section.active").id;
       $("[data-visible=" + _current_art + "]").addClass("show");
       $("[data-section=" + ($("article.active section.active").attr("id")) + "]").addClass("current");
       $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
@@ -185,7 +198,7 @@
       }
       el = current();
       modifier = back ? "back-" : "";
-      if (el[0].id !== article_id) {
+      if (el.length === 0 && el[0].id !== article_id) {
         width = el.offset().width;
         el.removeClass("active");
         el.attr("data-direction", "" + modifier + "out");
@@ -195,7 +208,10 @@
           _current.addClass("asided").css("width", "" + width + "px");
         }
         $(".current[data-article]").removeClass("current");
-        return $("[data-article=" + article_id + "]").addClass("current");
+        $("[data-article=" + article_id + "]").addClass("current");
+        return true;
+      } else {
+        return false;
       }
     };
     current = function() {
@@ -329,7 +345,12 @@
       _current_article = _current_section.parent();
       modifier = back ? "back-" : "";
       new_section = $("section#" + section_id);
+      if (new_section.length === 0) {
+        return false;
+      }
       new_article = new_section.parent();
+      console.log(new_section);
+      console.log(_current_section);
       if (_current_section[0].id !== new_section[0].id) {
         new_article.children(".active").removeClass("active");
         _current = new_section.addClass("active");
@@ -348,7 +369,8 @@
       $(".current[data-section]").removeClass("current");
       $("[data-section=" + section_id + "]").addClass("current");
       $("[data-visible]").removeClass("show");
-      return $("[data-visible=" + section_id + "]").addClass("show");
+      $("[data-visible=" + section_id + "]").addClass("show");
+      return true;
     };
     current = function() {
       var _current;
@@ -1016,6 +1038,32 @@
     container.append(list);
     return $("article[data-selectbox]>div").append(container).parent().addClass("show");
   };
+
+  HEADER_HEIGHT = 50;
+
+  NAV_HEIGHT = 50;
+
+  FOOTER_HEIGHT = 65;
+
+  _style = document.createElement("style");
+
+  document.body.appendChild(_style);
+
+  generateStyle = function(heights) {
+    var orientation, _code, _i, _len, _ref;
+    _code = "";
+    _ref = ["portrait", "landscape"];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      orientation = _ref[_i];
+      _code += "@media screen and (orientation: " + orientation + ") {\n  article[data-header] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT) + "px;\n  }\n  article[data-nav] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT) + "px;\n  }\n  article[data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT) + "px;\n  }\n  article[data-header][data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-nav][data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav][data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n}";
+    }
+    return _style.innerHTML = _code;
+  };
+
+  generateStyle({
+    portrait: screen.height,
+    landscape: screen.width
+  });
 
   (function() {
     var _clear, _get, _remove, _set;
