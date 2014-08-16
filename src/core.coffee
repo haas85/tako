@@ -51,19 +51,28 @@ window.Tako = window.tk = Tako = do ->
       document.getElementById(hash[1]).classList.add "active"
     else
       if document.querySelectorAll("article.active").length is 0 then $("article").first().addClass "active"
-    Array::forEach.call document.getElementsByTagName("section"), (el, index) ->
+    Array::forEach.call document.getElementsByTagName("section"), (el) ->
       el.appendChild $(document.createElement("div")).append($(el).children())[0]
     $("article").each ->
-      $this = $(@)
       if @getElementsByTagName("header").length isnt 0 then @.setAttribute "data-header", ""
-      if $this.children("nav").length isnt 0 then @.setAttribute "data-nav", ""
       if @getElementsByTagName("footer").length isnt 0 then @.setAttribute "data-footer", ""
       if not @querySelector("section.active")?
-        $this.children("section").first().addClass "active"
-    _current_art = document.querySelector("article.active section.active").id
-    $("[data-visible=#{_current_art}]").addClass "show"
-    $("[data-section=#{$("article.active section.active").attr("id")}]").addClass "current"
-    $("[data-article=#{$("article.active").attr("id")}]").addClass "current"
+        for el in @children
+          if el.nodeName is "SECTION"
+            el.classList.add "active"
+            break
+    Array::forEach.call document.querySelectorAll("article > nav"), (el) ->
+      el.parentElement.setAttribute "data-nav", ""
+
+    _current_section = document.querySelector("article.active section.active")
+    _current_art = _current_section.parentElement.id
+    _current_section = _current_section.id
+    Array::forEach.call document.querySelectorAll("[data-visible=#{_current_section}]"), (el) ->
+      el.classList.add "show"
+    Array::forEach.call document.querySelectorAll("[data-section=#{_current_section}]"), (el) ->
+      el.classList.add "current"
+    Array::forEach.call document.querySelectorAll("[data-article=#{_current_art}]"), (el) ->
+      el.classList.add "current"
     _setNavigation "aside", "data-article", Tako.Article, "tap"
     _setNavigation "aside", "data-section", Tako.Section, "tap"
     _setNavigation "article", "data-article", Tako.Article, "click"

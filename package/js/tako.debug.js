@@ -82,7 +82,7 @@
       }
     };
     _setup = function() {
-      var element, hash, _current_art, _i, _len, _ref;
+      var element, hash, _current_art, _current_section, _i, _len, _ref;
       hash = document.location.hash || "";
       if (hash !== "" && hash !== "#") {
         hash = hash.replace("#", "");
@@ -96,29 +96,47 @@
           $("article").first().addClass("active");
         }
       }
-      Array.prototype.forEach.call(document.getElementsByTagName("section"), function(el, index) {
+      Array.prototype.forEach.call(document.getElementsByTagName("section"), function(el) {
         return el.appendChild($(document.createElement("div")).append($(el).children())[0]);
       });
       $("article").each(function() {
-        var $this;
-        $this = $(this);
+        var el, _i, _len, _ref, _results;
         if (this.getElementsByTagName("header").length !== 0) {
           this.setAttribute("data-header", "");
-        }
-        if ($this.children("nav").length !== 0) {
-          this.setAttribute("data-nav", "");
         }
         if (this.getElementsByTagName("footer").length !== 0) {
           this.setAttribute("data-footer", "");
         }
         if (this.querySelector("section.active") == null) {
-          return $this.children("section").first().addClass("active");
+          _ref = this.children;
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            el = _ref[_i];
+            if (el.nodeName === "SECTION") {
+              el.classList.add("active");
+              break;
+            } else {
+              _results.push(void 0);
+            }
+          }
+          return _results;
         }
       });
-      _current_art = document.querySelector("article.active section.active").id;
-      $("[data-visible=" + _current_art + "]").addClass("show");
-      $("[data-section=" + ($("article.active section.active").attr("id")) + "]").addClass("current");
-      $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
+      Array.prototype.forEach.call(document.querySelectorAll("article > nav"), function(el) {
+        return el.parentElement.setAttribute("data-nav", "");
+      });
+      _current_section = document.querySelector("article.active section.active");
+      _current_art = _current_section.parentElement.id;
+      _current_section = _current_section.id;
+      Array.prototype.forEach.call(document.querySelectorAll("[data-visible=" + _current_section + "]"), function(el) {
+        return el.classList.add("show");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-section=" + _current_section + "]"), function(el) {
+        return el.classList.add("current");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-article=" + _current_art + "]"), function(el) {
+        return el.classList.add("current");
+      });
       _setNavigation("aside", "data-article", Tako.Article, "tap");
       _setNavigation("aside", "data-section", Tako.Section, "tap");
       _setNavigation("article", "data-article", Tako.Article, "click");
