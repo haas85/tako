@@ -1,13 +1,13 @@
-/* TaKo v1.2.1 - 16/08/2014
+/* TaKo v1.2.1 - 17/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, _articleListeners, _fallback, _navigate, _style,
+  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, _articleListeners, _createEvent, _fallback, _navigate, _style,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = window.tk = Tako = (function() {
-    var callbacks, init, logging, onReady, remaining, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+    var callbacks, init, logging, onReady, remaining, settings, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
     logging = {};
     Object.defineProperty(logging, "LOG", {
       get: function() {
@@ -38,13 +38,18 @@
     }
     remaining = 0;
     callbacks = [];
+    settings = {};
     init = function(options) {
       var article, exception, _i, _len, _ref, _results;
       if (options == null) {
         options = {};
       }
       try {
+        settings = options;
         Tako.logging.level = options.logging || false;
+        if (options.hashNavigation == null) {
+          options.hashNavigation = false;
+        }
         if (options.articles != null) {
           remaining = options.articles.length;
           _ref = options.articles;
@@ -84,7 +89,7 @@
     _setup = function() {
       var element, hash, _current_art, _current_section, _i, _len, _ref;
       hash = document.location.hash || "";
-      if (hash !== "" && hash !== "#") {
+      if (settings.urlNavigation && hash !== "" && hash !== "#") {
         hash = hash.replace("#", "");
         hash = hash.split("/");
       }
@@ -104,6 +109,9 @@
         if (this.getElementsByTagName("header").length !== 0) {
           this.setAttribute("data-header", "");
         }
+        if ($(this).children("nav").length !== 0) {
+          this.setAttribute("data-nav", "");
+        }
         if (this.getElementsByTagName("footer").length !== 0) {
           this.setAttribute("data-footer", "");
         }
@@ -122,11 +130,9 @@
           return _results;
         }
       });
-      Array.prototype.forEach.call(document.querySelectorAll("article > nav"), function(el) {
-        return el.parentElement.setAttribute("data-nav", "");
-      });
       _current_section = document.querySelector("article.active section.active");
       _current_art = _current_section.parentElement.id;
+      Tako.iScroll(_current_section);
       _current_section = _current_section.id;
       Array.prototype.forEach.call(document.querySelectorAll("[data-visible=" + _current_section + "]"), function(el) {
         return el.classList.add("show");
@@ -203,9 +209,21 @@
       viewType: viewType,
       tap: _tap,
       double_tap: _doubletap,
-      logging: logging
+      logging: logging,
+      settings: settings
     };
   })();
+
+  _createEvent = function(title, data) {
+    var event;
+    if (window.CustomEvent) {
+      event = new CustomEvent(title, data);
+    } else {
+      event = document.createEvent('CustomEvent');
+      event.initCustomEvent(title, true, true, data);
+    }
+    return event;
+  };
 
   Tako.Article = (function(TK) {
     var current, goTo, _current;
@@ -289,10 +307,23 @@
   };
 
   Tako.Aside = (function(TK) {
-    var aside, bck, hide, show, toggle;
+    var aside, bck, header, hide, show, toggle;
     aside = $("aside");
     if (aside.length > 0) {
       bck = null;
+      header = aside.children("header");
+      aside.append($(document.createElement("div")).append(aside.children()));
+      new IScroll(aside[0], {
+        probeType: 2,
+        mouseWheel: true,
+        scrollbars: false,
+        bounce: true,
+        click: false,
+        preventDefaultException: {
+          tagName: /.*/
+        }
+      });
+      aside.prepend(header);
       bck = $('<div data-element="aside_background"></div>');
       $("body").append(bck);
       if (aside.hasClass("full")) {
@@ -340,7 +371,7 @@
 
   $(window).on("hashchange", function() {
     var hash;
-    if (_navigate) {
+    if (_navigate && Tako.settings.urlNavigation) {
       hash = document.location.hash || "";
       if (hash !== "" && hash !== "#") {
         hash = hash.replace("#", "");
@@ -349,56 +380,62 @@
           return Tako.Section(hash[1]);
         }
       }
+    } else {
+      return _navigate = true;
     }
   });
 
   Tako.Section = (function(TK) {
-    var current, goTo, _current;
+    var current, goTo, _loadEvent, _unloadEvent;
+    _loadEvent = _createEvent("load", null);
+    _unloadEvent = _createEvent("unload", null);
     goTo = function(section_id, back) {
-      var modifier, new_article, new_section, _current, _current_article, _current_section;
+      var modifier, new_article, new_section, _current_article, _current_section;
       if (back == null) {
         back = false;
       }
       _current_section = current();
-      _current_article = _current_section.parent();
+      _current_article = _current_section.parentElement;
       modifier = back ? "back-" : "";
-      new_section = $("section#" + section_id);
-      if (new_section.length === 0) {
+      new_section = document.getElementById(section_id);
+      if ((new_section == null) && new_section.nodeName !== "SECTION") {
         return false;
       }
-      new_article = new_section.parent();
-      console.log(new_section);
-      console.log(_current_section);
-      if (_current_section[0].id !== new_section[0].id) {
-        new_article.children(".active").removeClass("active");
-        _current = new_section.addClass("active");
+      new_article = new_section.parentElement;
+      if (_current_section.id !== new_section.id) {
+        new_article.querySelector("section.active").classList.remove("active");
+        new_section.classList.add("active");
       }
-      if (_current_article[0].id !== new_article[0].id) {
-        Tako.Article(new_article[0].id, back);
+      if (_current_article.id !== new_article.id) {
+        Tako.Article(new_article.id, back);
       }
-      if (new_section.attr("data-scrolltop") != null) {
-        new_section.scrollTop(0);
+      if (!new_section.iscroll) {
+        Tako.iScroll(new_section);
+      }
+      if (new_section.attributes.getNamedItem("data-scrolltop") != null) {
+        new_section.scrollTop = 0;
       }
       _navigate = false;
-      document.location.hash = "#" + new_article[0].id + "/" + section_id;
-      _navigate = true;
-      _current_section.trigger("unload");
-      new_section.trigger("load");
-      $(".current[data-section]").removeClass("current");
-      $("[data-section=" + section_id + "]").addClass("current");
-      $("[data-visible]").removeClass("show");
-      $("[data-visible=" + section_id + "]").addClass("show");
+      document.location.hash = "#" + new_article.id + "/" + section_id;
+      _current_section.dispatchEvent(_unloadEvent);
+      new_section.dispatchEvent(_loadEvent);
+      Array.prototype.forEach.call(document.querySelectorAll(".current[data-section]"), function(el) {
+        return el.classList.remove("current");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-section=" + section_id + "]"), function(el) {
+        return el.classList.add("current");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-visible]"), function(el) {
+        return el.classList.remove("show");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-visible=" + section_id + "]"), function(el) {
+        return el.classList.add("show");
+      });
       return true;
     };
     current = function() {
-      var _current;
-      if (typeof _current !== "undefined" && _current !== null) {
-        return _current;
-      } else {
-        return _current = $("article.active section.active");
-      }
+      return document.querySelector("article.active section.active");
     };
-    _current = null;
     return function(id, back) {
       if (id != null) {
         return goTo(id, back);
@@ -572,6 +609,19 @@
     if ($.browser != null) {
       return _browser();
     }
+  };
+
+  Tako.iScroll = function(el) {
+    return new IScroll(el, {
+      probeType: 2,
+      mouseWheel: true,
+      scrollbars: false,
+      bounce: false,
+      click: false,
+      preventDefaultException: {
+        tagName: /.*/
+      }
+    });
   };
 
   Tako.log = function() {

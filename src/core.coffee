@@ -16,10 +16,13 @@ window.Tako = window.tk = Tako = do ->
 
   remaining = 0
   callbacks = []
+  settings = {}
 
   init = (options={})->
     try
+      settings = options
       Tako.logging.level = options.logging or false
+      options.hashNavigation = false if not options.hashNavigation?
       if options.articles?
         remaining = options.articles.length
         for article in options.articles
@@ -43,7 +46,7 @@ window.Tako = window.tk = Tako = do ->
 
   _setup = ->
     hash = document.location.hash or ""
-    if hash isnt "" and hash isnt "#"
+    if settings.urlNavigation and hash isnt "" and hash isnt "#"
       hash = hash.replace "#", ""
       hash = hash.split "/"
     if hash.length is 2
@@ -55,17 +58,18 @@ window.Tako = window.tk = Tako = do ->
       el.appendChild $(document.createElement("div")).append($(el).children())[0]
     $("article").each ->
       if @getElementsByTagName("header").length isnt 0 then @.setAttribute "data-header", ""
+      if $(@).children("nav").length isnt 0 then @.setAttribute "data-nav", ""
       if @getElementsByTagName("footer").length isnt 0 then @.setAttribute "data-footer", ""
       if not @querySelector("section.active")?
         for el in @children
           if el.nodeName is "SECTION"
             el.classList.add "active"
             break
-    Array::forEach.call document.querySelectorAll("article > nav"), (el) ->
-      el.parentElement.setAttribute "data-nav", ""
-
     _current_section = document.querySelector("article.active section.active")
     _current_art = _current_section.parentElement.id
+
+    Tako.iScroll _current_section
+
     _current_section = _current_section.id
     Array::forEach.call document.querySelectorAll("[data-visible=#{_current_section}]"), (el) ->
       el.classList.add "show"
@@ -123,4 +127,5 @@ window.Tako = window.tk = Tako = do ->
   tap         : _tap
   double_tap  : _doubletap
   logging     : logging
+  settings    : settings
 

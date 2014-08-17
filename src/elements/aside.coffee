@@ -3,6 +3,17 @@ Tako.Aside = do (TK = Tako) ->
 
   if aside.length > 0
     bck = null
+    header = aside.children("header")
+    aside.append $(document.createElement("div")).append(aside.children())
+    new IScroll(aside[0], {
+      probeType:  2
+      mouseWheel: true
+      scrollbars: false
+      bounce: true
+      click: false
+      preventDefaultException: { tagName:/.*/ }
+    })
+    aside.prepend header
 
     bck = $ '<div data-element="aside_background"></div>'
     $("body").append bck
