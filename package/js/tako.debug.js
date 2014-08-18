@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 17/08/2014
+/* TaKo v1.2.1 - 19/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -132,7 +132,16 @@
       });
       _current_section = document.querySelector("article.active section.active");
       _current_art = _current_section.parentElement.id;
-      Tako.iScroll(_current_section);
+      new IScroll(_current_section, {
+        probeType: 2,
+        mouseWheel: true,
+        scrollbars: false,
+        bounce: false,
+        click: false,
+        preventDefaultException: {
+          tagName: /.*/
+        }
+      });
       _current_section = _current_section.id;
       Array.prototype.forEach.call(document.querySelectorAll("[data-visible=" + _current_section + "]"), function(el) {
         return el.classList.add("show");
@@ -317,7 +326,7 @@
         probeType: 2,
         mouseWheel: true,
         scrollbars: false,
-        bounce: true,
+        bounce: false,
         click: false,
         preventDefaultException: {
           tagName: /.*/
@@ -413,7 +422,7 @@
         Tako.iScroll(new_section);
       }
       if (new_section.attributes.getNamedItem("data-scrolltop") != null) {
-        new_section.scrollTop = 0;
+        new_section.scrolltop = 0;
       }
       _navigate = false;
       document.location.hash = "#" + new_article.id + "/" + section_id;

@@ -9,7 +9,7 @@ Tako.Aside = do (TK = Tako) ->
       probeType:  2
       mouseWheel: true
       scrollbars: false
-      bounce: true
+      bounce: false
       click: false
       preventDefaultException: { tagName:/.*/ }
     })

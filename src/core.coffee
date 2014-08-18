@@ -68,7 +68,14 @@ window.Tako = window.tk = Tako = do ->
     _current_section = document.querySelector("article.active section.active")
     _current_art = _current_section.parentElement.id
 
-    Tako.iScroll _current_section
+    new IScroll(_current_section, {
+      probeType:  2
+      mouseWheel: true
+      scrollbars: false
+      bounce: false
+      click: false
+      preventDefaultException: { tagName:/.*/ }
+    })
 
     _current_section = _current_section.id
     Array::forEach.call document.querySelectorAll("[data-visible=#{_current_section}]"), (el) ->

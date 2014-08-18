@@ -25,7 +25,7 @@ Tako.Section = do (TK = Tako) ->
       Tako.iScroll new_section
 
     if new_section.attributes.getNamedItem("data-scrolltop")?
-      new_section.scrollTop = 0
+      new_section.scrolltop = 0
 
     _navigate = false
     document.location.hash = "##{new_article.id}/#{section_id}"

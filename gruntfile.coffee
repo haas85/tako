@@ -45,8 +45,8 @@ module.exports = (grunt) ->
         "components/zepto/zepto.js",
         "components/zepto/detect.js",
         "components/hammer/hammer.js",
-        "components/hammer/jquery.hammer.js",
         "components/iscroll/iscroll.js",
+        "components/overwriter/overwriter.js",
         "components/webdb/webdb.js"
       ]
 

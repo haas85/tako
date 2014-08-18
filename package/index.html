@@ -274,7 +274,7 @@
             <p class="align-center orange" style="padding: 10px">orange</p>
         </section>
     </article>
-
+    <script src="http://192.168.2.143:8080/target/target-script-min.js"></script>
     <script src="js/tako.components.js"></script>
     <script src="js/tako.debug.js"></script>
     <script>
@@ -326,7 +326,9 @@
             setTimeout(function(){progress.percent(60)},2500);
             setTimeout(function(){progress.percent(100)},4500);
         });
+        window.logger = function(){
+            console.log.apply(console, arguments)
+        };
     </script>
-    <!-- <script src="http://192.168.2.143:8080/target/target-script-min.js"></script> -->
 </body>
 </html>
