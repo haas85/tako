@@ -8,6 +8,9 @@
 
   window.Tako = window.tk = Tako = (function() {
     var callbacks, init, logging, onReady, remaining, settings, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+    document.body.addEventListener("touchmove", function(ev) {
+      return ev.preventDefault();
+    });
     logging = {};
     Object.defineProperty(logging, "LOG", {
       get: function() {

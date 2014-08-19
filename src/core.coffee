@@ -1,5 +1,8 @@
 window.Tako = window.tk = Tako = do ->
 
+  document.body.addEventListener "touchmove", (ev) ->
+    ev.preventDefault()
+
   logging = {}
   Object.defineProperty logging, "LOG",   {get: -> 4}
   Object.defineProperty logging, "INFO",  {get: -> 3}
