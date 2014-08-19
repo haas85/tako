@@ -33,5 +33,11 @@ generateStyle = (heights) ->
       }
     """
   _style.innerHTML = _code
-
-generateStyle {portrait: screen.height, landscape: screen.width}
+if window.innerHeight > window.innerWidth
+  height = window.innerHeight
+  width  = window.innerWidth
+else
+  height = window.innerWidth
+  width  = window.innerHeight
+generateStyle {portrait: height, landscape: width}
+# generateStyle {portrait: screen.height, landscape: screen.width}

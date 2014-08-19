@@ -2,7 +2,7 @@
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, _articleListeners, _createEvent, _fallback, _navigate, _style,
+  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, height, width, _articleListeners, _createEvent, _fallback, _navigate, _style,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -1137,9 +1137,17 @@
     return _style.innerHTML = _code;
   };
 
+  if (window.innerHeight > window.innerWidth) {
+    height = window.innerHeight;
+    width = window.innerWidth;
+  } else {
+    height = window.innerWidth;
+    width = window.innerHeight;
+  }
+
   generateStyle({
-    portrait: screen.height,
-    landscape: screen.width
+    portrait: height,
+    landscape: width
   });
 
   (function() {
