@@ -36,10 +36,16 @@ Tako.Aside = do (TK = Tako) ->
         if aside.hasClass "show" then hide() else show()
 
     $("aside *").each (index) ->
-      $(@).on "tap click", (ev)->
+      $(@).on "click", (ev)->
+        do ev.preventDefault
+        do ev.stopPropagation
         do hide
+      # $(@).on "tap", (ev)->
+      #   do hide
+      #   do ev.preventDefault
+      #   do ev.stopPropagation
 
-    bck.on "tap click", (ev)->
+    bck.on "click tap", (ev)->
       do ev.preventDefault
       do ev.stopPropagation
       do hide
