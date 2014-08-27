@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 26/08/2014
+/* TaKo v1.2.1 - 28/08/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -162,7 +162,7 @@
       _ref = document.querySelectorAll("[data-action=aside]");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         element = _ref[_i];
-        element.addEventListener("click", (function(ev) {
+        element.addEventListener("tap", (function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return Tako.Aside.toggle();
@@ -319,8 +319,9 @@
   };
 
   Tako.Aside = (function(TK) {
-    var aside, bck, header, hide, show, toggle;
+    var aside, bck, header, hide, show, toggle, _showing;
     aside = $("aside");
+    _showing = false;
     if (aside.length > 0) {
       bck = null;
       header = aside.children("header");
@@ -362,16 +363,21 @@
         }
       };
       $("aside *").each(function(index) {
-        return $(this).on("click", function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          return hide();
+        return $(this).on("click tap", function(ev) {
+          if (_showing) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            return hide();
+          }
         });
       });
       bck.on("click tap", function(ev) {
         ev.preventDefault();
         ev.stopPropagation();
         return hide();
+      });
+      aside.on("transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", function(event) {
+        return _showing = aside[0].classList.contains("show");
       });
       return {
         show: show,

@@ -93,7 +93,7 @@ window.Tako = window.tk = Tako = do ->
     _setNavigation "article", "data-section", Tako.Section, "click"
 
     for element in document.querySelectorAll("[data-action=aside]")
-      element.addEventListener "click", ((ev) ->
+      element.addEventListener "tap", ((ev) ->
         do ev.preventDefault
         do ev.stopPropagation
         do Tako.Aside.toggle
