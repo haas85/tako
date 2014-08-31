@@ -1,4 +1,4 @@
-button, .button
+button, .button, input[type=submit], input[type=reset], input[type=button]
   text-indent 0
   border 0
   display inline-block
@@ -106,7 +106,7 @@ header
   :not(.button)
     padding-top 0
 
-  & button, &.button
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
     min-width HEADER_HEIGHT - 4
     text-indent 0
     display inline-block
@@ -178,7 +178,7 @@ header
       margin-right 0.05em
 
 article > nav
-  & button, &.button
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
     font-weight bold
     font-style normal
     text-decoration none
@@ -191,7 +191,7 @@ footer
   & .icon:before
     font-size 1.4em
 
-  & button
+  & button, & .button, , & input[type=submit], & input[type=reset], & input[type=button]
     height inherit
     width 100%
     background-image none
@@ -208,7 +208,7 @@ footer
       font-size FONT_SIZE_SMALLEST
 
 section
-  & button, & .button
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
     padding-top 2px
     padding-bottom 3px
     margin 5px 0

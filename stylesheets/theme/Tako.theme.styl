@@ -46,7 +46,7 @@ article
   background-color THEME_COLOR !important
   color SECONDARY_TEXT !important
 
-button, .button
+button, .button, input[type=submit], input[type=reset], input[type=button]
   font-size FONT_SIZE
   background-color lighten(THEME, 15%)
   color SECONDARY_TEXT
@@ -84,7 +84,7 @@ footer
   background-color lighten(SECONDARY, 5%)!important
   color SECONDARY_TEXT !important
 
-  & button, & .button
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
     background-color lighten(SECONDARY, 5%)
     &:active, &:hover
       & .counter
@@ -106,7 +106,7 @@ section
   color TEXT
 
   &.centered > div > *:first-child
-    border 1px solid darken(BACKGROUND, 50%)
+    border 1px solid darken(BACKGROUND, 10%)
 
 aside
   background-color SECONDARY
@@ -130,7 +130,7 @@ aside
 aside .current, footer .current
   background-color SECONDARY_ACTIVE
 
-aside li, footer button
+aside li, footer button, footer input[type=submit], footer input[type=reset], footer input[type=button]
   &:active, &:hover
     background-color SECONDARY_ACTIVE
 
@@ -293,7 +293,7 @@ body.noflat, body.no_flat
       background-image -o-linear-gradient(lighten(THEME, 35%), THEME)!important
       background-image linear-gradient(lighten(THEME, 35%), THEME)!important
 
-  button, .button
+  button, .button, input[type=submit], input[type=reset], input[type=button]
     background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
     background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
     background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
