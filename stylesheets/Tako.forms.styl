@@ -329,6 +329,10 @@ article[data-selectbox]
       position relative
       top -10%
 
+body.noflat, body.no_flat
+  & fieldset, & legend
+    border-radius 5px
 
-
-
+  & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    &:not(.line)
+      border-radius 5px

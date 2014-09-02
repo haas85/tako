@@ -208,3 +208,12 @@ aside ul
       background-color rgba(0, 0, 0, 0.1)
       color white
       padding 1px 10px 1px 10px
+
+body.noflat, body.no_flat
+  & section.indented > div ul li
+    &:first-child
+      vendor('border-top-left-radius', 5px)
+      vendor('border-top-right-radius', 5px)
+    &:last-child
+      vendor('border-bottom-left-radius', 5px)
+      vendor('border-bottom-right-radius', 5px)
