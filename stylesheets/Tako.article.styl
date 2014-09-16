@@ -173,7 +173,7 @@ section
   // top 4px
   width 100%
   margin 0
-  overflow-x hidden
+  overflow hidden
   // overflow-y scroll
   // -webkit-overflow-scrolling touch
   box-flex 1
@@ -201,30 +201,21 @@ section
       & > *:last-child
         margin-bottom INDENT
 
-  &.centered > div > *:first-child
-    position absolute
-    top 0
-    right 0
-    left 0
-    bottom 0
-    margin auto
-    max-height 75%
-    max-width 75%
-    background-color #fff
-    box-sizing(border-box)
-    padding INDENT
-    overflow hidden
-  // &.centered
-  //   &.active > div
-  //     display-flexbox-vertical()
-  //     flexbox-align-stretch()
-  //     flexbox-pack-justify()
+  &.centered
+    &.active > div
+      display-flexbox-vertical()
+      flexbox-align-center()
+      flexbox-pack-center()
 
-  //     & > *:first-child
-  //       flexbox-weight 0
-  //       max-height 80%
-  //       max-width 80%
-  //       border 1px solid black
+      & > *:first-child
+        flexbox-weight 0
+        max-height 75%
+        max-width 75%
+        background-color #fff
+        box-sizing(border-box)
+        padding INDENT
+        overflow hidden
+        border 1px solid black
 
 header > h1 > img + span
   position relative

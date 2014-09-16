@@ -39,10 +39,13 @@ div[data-element="notification"]
     transition-duration NOTIFICATION_TRANSITION_TIME
     background-color NOTIFICATION_WHITE
 
-    & > section > div
-      position static
-      height auto
-      width auto
+    & > section
+      overflow-x hidden
+      overflow-y scroll
+      & > div
+        position static
+        height auto
+        width auto
 
     & > header
       position static

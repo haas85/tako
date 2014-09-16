@@ -71,14 +71,17 @@ window.Tako = window.tk = Tako = do ->
     _current_section = document.querySelector("article.active section.active")
     _current_art = _current_section.parentElement.id
 
-    new IScroll(_current_section, {
-      probeType:  2
-      mouseWheel: true
-      scrollbars: false
-      bounce: false
-      click: false
-      preventDefaultException: { tagName:/.*/ }
-    })
+    if not _current_section.classList.contains("centered") and not _current_section.classList.contains("noscroll")
+      new IScroll(_current_section, {
+        probeType:  2
+        mouseWheel: true
+        scrollbars: false
+        bounce: false
+        click: false
+        preventDefaultException: { tagName:/.*/ }
+      })
+    else
+      _current_section.iscroll = "none"
 
     _current_section = _current_section.id
     Array::forEach.call document.querySelectorAll("[data-visible=#{_current_section}]"), (el) ->

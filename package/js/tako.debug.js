@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 28/08/2014
+/* TaKo v1.2.1 - 16/09/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -135,16 +135,20 @@
       });
       _current_section = document.querySelector("article.active section.active");
       _current_art = _current_section.parentElement.id;
-      new IScroll(_current_section, {
-        probeType: 2,
-        mouseWheel: true,
-        scrollbars: false,
-        bounce: false,
-        click: false,
-        preventDefaultException: {
-          tagName: /.*/
-        }
-      });
+      if (!_current_section.classList.contains("centered") && !_current_section.classList.contains("noscroll")) {
+        new IScroll(_current_section, {
+          probeType: 2,
+          mouseWheel: true,
+          scrollbars: false,
+          bounce: false,
+          click: false,
+          preventDefaultException: {
+            tagName: /.*/
+          }
+        });
+      } else {
+        _current_section.iscroll = "none";
+      }
       _current_section = _current_section.id;
       Array.prototype.forEach.call(document.querySelectorAll("[data-visible=" + _current_section + "]"), function(el) {
         return el.classList.add("show");
@@ -429,8 +433,10 @@
       if (_current_article.id !== new_article.id) {
         Tako.Article(new_article.id, back);
       }
-      if (!new_section.iscroll) {
+      if (!new_section.iscroll && !new_section.classList.contains("centered") && !new_section.classList.contains("noscroll")) {
         Tako.iScroll(new_section);
+      } else {
+        new_section.iscroll = "none";
       }
       if (new_section.attributes.getNamedItem("data-scrolltop") != null) {
         new_section.scrolltop = 0;
@@ -816,7 +822,7 @@
               var header, header_height;
               header = notification_article.children("header");
               header_height = header.length ? header.offset().height : 0;
-              notification_article.children("section").css("maxHeight", "" + ((screen.height * 0.9) - header_height) + "px");
+              notification_article.children("section").css("maxHeight", "" + ((screen.height * 0.73) - header_height) + "px");
               return notification_article.addClass("show");
             }), 100);
           };

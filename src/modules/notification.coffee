@@ -144,7 +144,7 @@ Tako.Notification = do (TK = Tako) ->
         setTimeout (->
           header = notification_article.children("header")
           header_height = if header.length then header.offset().height else 0
-          notification_article.children("section").css "maxHeight", "#{(screen.height * 0.9)-header_height}px"
+          notification_article.children("section").css "maxHeight", "#{(screen.height * 0.73)-header_height}px"
           notification_article.addClass("show")), 100
       ), 10
     else

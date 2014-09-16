@@ -21,8 +21,10 @@ Tako.Section = do (TK = Tako) ->
     if _current_article.id isnt new_article.id
       Tako.Article new_article.id, back
 
-    if not new_section.iscroll
+    if not new_section.iscroll and !new_section.classList.contains("centered") and !new_section.classList.contains("noscroll")
       Tako.iScroll new_section
+    else
+      new_section.iscroll = "none"
 
     if new_section.attributes.getNamedItem("data-scrolltop")?
       new_section.scrolltop = 0

@@ -31,7 +31,7 @@
     HTMLElement.prototype.removeEventListener = function(event, fn, useCapture){
         if( HAMMER_EVENTS.indexOf(event.toLowerCase()) != -1 && this.hammer != null){
             this.hammer.off(event, fn);
-        }else if( EVENTS.indexOf(event.toLowerCase()) != -1 && this.iscroll ){
+        }else if( ISCROLL_EVENTS.indexOf(event.toLowerCase()) != -1 && this.iscroll ){
             this.iscroll.off(event, fn);
         }else{
             this.srcRemoveEventListener(event, fn, useCapture);
