@@ -36,6 +36,7 @@ Tako.Pull_Refresh = (container, options={})->
 
       @breakpoint = 90
       @container = container
+      @refreshing = false
       @pullrefresh = $(PULLREFRESH)[0]
       $(@container).prepend @pullrefresh
       @icon = $(@pullrefresh).find ".icon"
@@ -49,7 +50,8 @@ Tako.Pull_Refresh = (container, options={})->
       mc.on "panmove", @onPull
       $(@container).on "touchstart",  =>
         $(@container).addClass "pulling"
-        @hide(false) if not @refreshing
+        if not @refreshing
+          @hide(false)
 
       $(@container).on "touchend", =>
         return if @refreshing
@@ -66,9 +68,8 @@ Tako.Pull_Refresh = (container, options={})->
       @_dragged_down = true
       return if @container.scrollTop > 5
       @updateHeight() unless @_anim
-      do ev.srcEvent.preventDefault
-      do ev.srcEvent.stopPropagation
       do ev.preventDefault
+      do ev.stopPropagation
       if @_slidedown_height >= @breakpoint
         @onArrived()
       else
@@ -104,16 +105,17 @@ Tako.Pull_Refresh = (container, options={})->
       @text.html @options.pullLabel
 
     hide: (remove_pulling=true)=>
-      $(@container).removeClass "pulling" if remove_pulling
-      @icon[0].className = "icon down-big"
-      @text.html @options.pullLabel
-      @_slidedown_height = 0
-      @setHeight 0
-      @icon.removeClass("rotated")
-      cancelAnimationFrame @_anim
-      @_anim = null
-      @_dragged_down = false
-      @refreshing = false
+      if @_dragged_down
+        $(@container).removeClass "pulling" if remove_pulling
+        @icon[0].className = "icon down-big"
+        @text.html @options.pullLabel
+        @_slidedown_height = 0
+        @setHeight 0
+        @icon.removeClass("rotated")
+        cancelAnimationFrame @_anim
+        @_anim = null
+        @_dragged_down = false
+        @refreshing = false
 
     updateHeight: =>
       height = @_slidedown_height - 511

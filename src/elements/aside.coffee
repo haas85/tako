@@ -42,10 +42,10 @@ Tako.Aside = do (TK = Tako) ->
           do ev.preventDefault
           do ev.stopPropagation
           do hide
-      # $(@).on "tap", (ev)->
-      #   do hide
-      #   do ev.preventDefault
-      #   do ev.stopPropagation
+      $(@).on "tap", (ev)->
+        do hide
+        do ev.preventDefault
+        do ev.stopPropagation
 
     bck.on "click tap", (ev)->
       do ev.preventDefault
