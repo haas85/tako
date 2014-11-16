@@ -6,7 +6,7 @@
     $.fn.srcOn = $.fn.on;
 
     var ISCROLL_EVENTS = "beforescrollstart,scrollcancel,scrollstart,scroll,scrollend,flick,zoomstart,zoomend";
-    var HAMMER_EVENTS = "tap,doubletap,press,";
+    var HAMMER_EVENTS = "tap,doubletap,press,pressup,";
     HAMMER_EVENTS += "pan,panstart,panmove,panend,pancancel,panleft,panright,panup,pandown,";
     HAMMER_EVENTS += "swipe,swipeleft,swiperight,swipeup,swipedown,";
     HAMMER_EVENTS += "pinch,pinchstart,pinchmove,pinchend,pinchcancel,pinchin,pinchout,";
