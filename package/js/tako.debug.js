@@ -273,8 +273,9 @@
           el.addClass("asided").css("width", "" + width + "px");
           _current.addClass("asided").css("width", "" + width + "px");
         }
-        $(".current[data-article]").removeClass("current");
+        $(".current[data-article], .current[data-section]").removeClass("current");
         $("[data-article=" + article_id + "]").addClass("current");
+        $("[data-section=" + (_current.children(".active")[0].id) + "]").addClass("current");
         return true;
       } else {
         return false;
