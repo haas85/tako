@@ -38,7 +38,8 @@ module.exports = (grunt) ->
         # "stylesheets/Tako.medias.styl"
       ]
       theme: [
-        "stylesheets/theme/Tako.theme.styl"
+        "stylesheets/theme/tbase.styl",
+        "stylesheets/theme/Theme.**.styl"
       ],
 
       components: [
@@ -68,10 +69,10 @@ module.exports = (grunt) ->
 
     stylus:
       core:
-        options: compress: true, import: [ 'constants']
+        options: compress: true, import: ['constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.css': '<%=source.stylus%>'
       theme:
-        options: compress: true, import: [ '../constants']
+        options: compress: true, import: ['constants', '../constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
 
     usebanner:

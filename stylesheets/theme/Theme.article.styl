@@ -1,0 +1,95 @@
+article
+  background-color BACKGROUND
+
+.theme
+  background-color THEME_COLOR !important
+  color SECONDARY_TEXT !important
+
+button, .button, input[type=submit], input[type=reset], input[type=button]
+  font-size FONT_SIZE
+  background-color lighten(THEME, 15%)
+  color SECONDARY_TEXT
+
+article
+  & > header
+    background-color THEME_COLOR !important
+    color SECONDARY_TEXT !important
+
+    & .counter
+      background-color lighten(THEME, 30%)
+
+    & .button
+      border 1px solid darken(THEME, 30%)
+
+    & .counter
+      background-color darken(THEME, 10%)
+
+  & > nav
+    color SECONDARY_TEXT
+    background-color lighten(SECONDARY, 5%)!important
+
+    & .current
+      background-color SECONDARY_ACTIVE
+      border-bottom 4px solid THEME
+      box-sizing(border-box)
+
+    & > *
+      border-right 1px solid darken(SECONDARY, 15%)
+
+      &:last-child
+        border-right none
+
+footer
+  background-color lighten(SECONDARY, 5%)!important
+  color SECONDARY_TEXT !important
+
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+    background-color lighten(SECONDARY, 5%)
+    &:active, &:hover
+      & .counter
+        background-color SECONDARY
+    &.current
+      border-top: 4px solid THEME !important;
+
+  & > nav > *
+    border-right 1px solid darken(SECONDARY, 15%)
+
+    &:last-child
+      border-right none
+
+  & .counter
+    background-color darken(SECONDARY_ACTIVE, 50%)
+
+section
+  background-color BACKGROUND
+  color TEXT
+
+  &.centered > *:first-child
+    border 1px solid darken(BACKGROUND, 25%)
+
+aside
+  background-color SECONDARY
+  color SECONDARY_TEXT !important
+  box-shadow(4px 0 3px 1px darken(SECONDARY, 50%))
+
+  & .counter
+    background-color lighten(SECONDARY, 30%)
+
+  & > header
+    background-color SECONDARY
+
+aside .current, footer .current
+  background-color SECONDARY_ACTIVE
+
+aside li, footer button, footer input[type=submit], footer input[type=reset], footer input[type=button]
+  &:active, &:hover
+    background-color SECONDARY_ACTIVE
+
+div.pulltorefresh
+  background-color darken(BACKGROUND, 15%)
+
+article[data-selectbox] section[data-selectbox]
+  border 2px solid darken(BACKGROUND, 15%)
+
+article > nav *, article > footer *
+  background-image none !important

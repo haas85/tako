@@ -1,0 +1,20 @@
+div[data-element="notification"] > div > article.window
+
+  & .icon
+    font-weight bold
+
+  &.success > header
+    background-color lighten(SUCCESS, 15%)!important
+
+  &.error > header
+    background-color lighten(FAIL, 15%)!important
+
+
+[data-element=notification] .loading .icon
+  color THEME
+
+.progress_bar
+  background-color lighten(SECONDARY, 30%)
+
+  & .percent
+    background-color THEME
