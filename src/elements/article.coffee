@@ -12,7 +12,7 @@ Tako.Article = do (TK = Tako) ->
   goTo = (article_id, back=false)->
     el = current()
     modifier = if back then "back-" else ""
-    if el.length == 0 and el[0].id isnt article_id
+    if el.length != 0 and el[0].id isnt article_id
       width = el.offset().width
       el.removeClass("active")
       el.attr "data-direction","#{modifier}out"

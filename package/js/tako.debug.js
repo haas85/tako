@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 16/09/2014
+/* TaKo v1.2.1 - 16/11/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -7,7 +7,11 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = window.tk = Tako = (function() {
-    var callbacks, init, logging, onReady, remaining, settings, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+    var callbacks, init, logging, onReady, ready, remaining, settings, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+    remaining = 0;
+    callbacks = [];
+    settings = {};
+    ready = false;
     document.body.addEventListener("touchmove", function(ev) {
       return ev.preventDefault();
     });
@@ -39,9 +43,6 @@
       _tap = "tap";
       _doubletap = "doubletap";
     }
-    remaining = 0;
-    callbacks = [];
-    settings = {};
     init = function(options) {
       var article, exception, _i, _len, _ref, _results;
       if (options == null) {
@@ -77,7 +78,11 @@
       }
     };
     onReady = function(callback) {
-      return callbacks.push(callback);
+      if (!ready) {
+        return callbacks.push(callback);
+      } else {
+        return callback.call(callback);
+      }
     };
     viewType = function() {
       var height, width;
@@ -104,7 +109,7 @@
           $("article").first().addClass("active");
         }
       }
-      Array.prototype.forEach.call(document.getElementsByTagName("section"), function(el) {
+      Array.prototype.forEach.call(document.querySelectorAll("section.iscroll, section.indented"), function(el) {
         return el.appendChild($(document.createElement("div")).append($(el).children())[0]);
       });
       $("article").each(function() {
@@ -135,7 +140,7 @@
       });
       _current_section = document.querySelector("article.active section.active");
       _current_art = _current_section.parentElement.id;
-      if (!_current_section.classList.contains("centered") && !_current_section.classList.contains("noscroll")) {
+      if (_current_section.classList.contains("iscroll")) {
         new IScroll(_current_section, {
           probeType: 2,
           mouseWheel: true,
@@ -159,8 +164,8 @@
       Array.prototype.forEach.call(document.querySelectorAll("[data-article=" + _current_art + "]"), function(el) {
         return el.classList.add("current");
       });
-      _setNavigation("aside", "data-article", Tako.Article, "tap");
-      _setNavigation("aside", "data-section", Tako.Section, "tap");
+      _setNavigation("aside", "data-article", Tako.Article, "tap", true);
+      _setNavigation("aside", "data-section", Tako.Section, "tap", true);
       _setNavigation("article", "data-article", Tako.Article, "click");
       _setNavigation("article", "data-section", Tako.Section, "click");
       _ref = document.querySelectorAll("[data-action=aside]");
@@ -176,9 +181,17 @@
       _articleListeners();
       return _loaded();
     };
-    _setNavigation = function(container, query, action, event) {
-      return $("" + container + " [" + query + "]").each(function(element) {
+    _setNavigation = function(container, query, action, event, children) {
+      var total_query;
+      total_query = "" + container + " [" + query + "]";
+      if (children) {
+        total_query += ", " + container + " [" + query + "] *";
+      }
+      console.log(total_query);
+      console.log($(total_query));
+      return $(total_query).each(function(element) {
         return $(this).on(event, function(ev) {
+          console.log(ev, query);
           ev.preventDefault();
           ev.stopPropagation();
           return _navigate(action, ev.target, query);
@@ -200,18 +213,19 @@
       }
     };
     _loaded = function() {
-      var cb, _i, _len, _results;
-      _results = [];
+      var cb, _i, _len;
       for (_i = 0, _len = callbacks.length; _i < _len; _i++) {
         cb = callbacks[_i];
-        _results.push(cb.call(cb));
+        cb.call(cb);
       }
-      return _results;
+      return ready = true;
     };
     _navigate = function(action, target, query) {
       var nav;
+      console.log(arguments);
       if (target != null) {
         nav = target.attributes.getNamedItem(query);
+        console.log(nav);
         if (nav != null) {
           return action(nav.value);
         } else {
@@ -250,7 +264,7 @@
       }
       el = current();
       modifier = back ? "back-" : "";
-      if (el.length === 0 && el[0].id !== article_id) {
+      if (el.length !== 0 && el[0].id !== article_id) {
         width = el.offset().width;
         el.removeClass("active");
         el.attr("data-direction", "" + modifier + "out");
@@ -367,12 +381,17 @@
         }
       };
       $("aside *").each(function(index) {
-        return $(this).on("click tap", function(ev) {
+        $(this).on("click tap", function(ev) {
           if (_showing) {
             ev.preventDefault();
             ev.stopPropagation();
             return hide();
           }
+        });
+        return $(this).on("tap", function(ev) {
+          hide();
+          ev.preventDefault();
+          return ev.stopPropagation();
         });
       });
       bck.on("click tap", function(ev) {
@@ -969,6 +988,7 @@
         PULLREFRESH = "<div class=\"pulltorefresh\">\n<span class=\"icon down-big\"></span><span class=\"text\">" + this.options.pullLabel + "</span>\n</div>";
         this.breakpoint = 90;
         this.container = container;
+        this.refreshing = false;
         this.pullrefresh = $(PULLREFRESH)[0];
         $(this.container).prepend(this.pullrefresh);
         this.icon = $(this.pullrefresh).find(".icon");
@@ -1018,9 +1038,8 @@
         if (!this._anim) {
           this.updateHeight();
         }
-        ev.srcEvent.preventDefault();
-        ev.srcEvent.stopPropagation();
         ev.preventDefault();
+        ev.stopPropagation();
         if (this._slidedown_height >= this.breakpoint) {
           this.onArrived();
         } else {
@@ -1068,18 +1087,20 @@
         if (remove_pulling == null) {
           remove_pulling = true;
         }
-        if (remove_pulling) {
-          $(this.container).removeClass("pulling");
+        if (this._dragged_down) {
+          if (remove_pulling) {
+            $(this.container).removeClass("pulling");
+          }
+          this.icon[0].className = "icon down-big";
+          this.text.html(this.options.pullLabel);
+          this._slidedown_height = 0;
+          this.setHeight(0);
+          this.icon.removeClass("rotated");
+          cancelAnimationFrame(this._anim);
+          this._anim = null;
+          this._dragged_down = false;
+          return this.refreshing = false;
         }
-        this.icon[0].className = "icon down-big";
-        this.text.html(this.options.pullLabel);
-        this._slidedown_height = 0;
-        this.setHeight(0);
-        this.icon.removeClass("rotated");
-        cancelAnimationFrame(this._anim);
-        this._anim = null;
-        this._dragged_down = false;
-        return this.refreshing = false;
       };
 
       PullToRefresh.prototype.updateHeight = function() {
@@ -1149,7 +1170,7 @@
     _ref = ["portrait", "landscape"];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       orientation = _ref[_i];
-      _code += "@media screen and (orientation: " + orientation + ") {\n  article[data-header] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT) + "px;\n  }\n  article[data-nav] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT) + "px;\n  }\n  article[data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT) + "px;\n  }\n  article[data-header][data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-nav][data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav][data-footer] > section > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n}";
+      _code += "@media screen and (orientation: " + orientation + ") {\n  article[data-header] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT) + "px;\n  }\n  article[data-nav] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT) + "px;\n  }\n  article[data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT) + "px;\n  }\n  article[data-header][data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-nav][data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav][data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n}";
     }
     return _style.innerHTML = _code;
   };

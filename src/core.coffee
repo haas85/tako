@@ -1,5 +1,10 @@
 window.Tako = window.tk = Tako = do ->
 
+  remaining = 0
+  callbacks = []
+  settings = {}
+  ready = false
+
   document.body.addEventListener "touchmove", (ev) ->
     ev.preventDefault()
 
@@ -16,10 +21,6 @@ window.Tako = window.tk = Tako = do ->
   else
     _tap = "tap"
     _doubletap = "doubletap"
-
-  remaining = 0
-  callbacks = []
-  settings = {}
 
   init = (options={})->
     try
@@ -40,7 +41,11 @@ window.Tako = window.tk = Tako = do ->
     catch exception
       console.error exception
 
-  onReady = (callback) -> callbacks.push callback
+  onReady = (callback) ->
+    if not ready
+      callbacks.push callback
+    else
+      callback.call callback
 
   viewType = ->
     width = if window.innerWidth > 0 then window.innerWidth else screen.width
@@ -57,7 +62,7 @@ window.Tako = window.tk = Tako = do ->
       document.getElementById(hash[1]).classList.add "active"
     else
       if document.querySelectorAll("article.active").length is 0 then $("article").first().addClass "active"
-    Array::forEach.call document.getElementsByTagName("section"), (el) ->
+    Array::forEach.call document.querySelectorAll("section.iscroll, section.indented"), (el) ->
       el.appendChild $(document.createElement("div")).append($(el).children())[0]
     $("article").each ->
       if @getElementsByTagName("header").length isnt 0 then @.setAttribute "data-header", ""
@@ -71,7 +76,7 @@ window.Tako = window.tk = Tako = do ->
     _current_section = document.querySelector("article.active section.active")
     _current_art = _current_section.parentElement.id
 
-    if not _current_section.classList.contains("centered") and not _current_section.classList.contains("noscroll")
+    if _current_section.classList.contains("iscroll")
       new IScroll(_current_section, {
         probeType:  2
         mouseWheel: true
@@ -90,8 +95,8 @@ window.Tako = window.tk = Tako = do ->
       el.classList.add "current"
     Array::forEach.call document.querySelectorAll("[data-article=#{_current_art}]"), (el) ->
       el.classList.add "current"
-    _setNavigation "aside", "data-article", Tako.Article, "tap"
-    _setNavigation "aside", "data-section", Tako.Section, "tap"
+    _setNavigation "aside", "data-article", Tako.Article, "tap", true
+    _setNavigation "aside", "data-section", Tako.Section, "tap", true
     _setNavigation "article", "data-article", Tako.Article, "click"
     _setNavigation "article", "data-section", Tako.Section, "click"
 
@@ -106,9 +111,15 @@ window.Tako = window.tk = Tako = do ->
     do _articleListeners
     do _loaded
 
-  _setNavigation = (container, query, action, event) ->
-    $("#{container} [#{query}]").each (element) ->
+  _setNavigation = (container, query, action, event, children) ->
+    total_query = "#{container} [#{query}]"
+    if children
+      total_query += ", #{container} [#{query}] *"
+    console.log total_query
+    console.log $(total_query)
+    $(total_query).each (element) ->
       $(@).on event, (ev) ->
+        console.log ev, query
         do ev.preventDefault
         do ev.stopPropagation
         _navigate action, ev.target, query
@@ -125,10 +136,13 @@ window.Tako = window.tk = Tako = do ->
 
   _loaded = ->
     cb.call cb for cb in callbacks
+    ready = true
 
   _navigate = (action, target, query) ->
+    console.log arguments
     if target?
       nav = target.attributes.getNamedItem query
+      console.log nav
       if nav?
         action nav.value
       else

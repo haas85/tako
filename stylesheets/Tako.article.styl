@@ -174,11 +174,13 @@ section
   width 100%
   margin 0
   overflow hidden
-  // overflow-y scroll
-  // -webkit-overflow-scrolling touch
   box-flex 1
   flex 1 9999999 auto
   flexbox-order(3)
+
+  &:not(.centered):not(.iscroll):not(.noscroll)
+    overflow-y scroll
+    -webkit-overflow-scrolling touch
 
   &.horizontal
     width auto
@@ -190,8 +192,13 @@ section
   &.indented
     &.active
       & > div:not(.pulltorefresh)
-        position relative
-        min-height 100%
+        // position relative
+        // min-height 100%
+        position absolute
+        top 0
+        bottom 0
+        left 0
+        right 0
 
     & > div:not(.pulltorefresh)
       flexbox-weight(1)
@@ -202,7 +209,7 @@ section
         margin-bottom INDENT
 
   &.centered
-    &.active > div
+    &.active
       display-flexbox-vertical()
       flexbox-align-center()
       flexbox-pack-center()
@@ -215,7 +222,6 @@ section
         box-sizing(border-box)
         padding INDENT
         overflow hidden
-        border 1px solid black
 
 header > h1 > img + span
   position relative

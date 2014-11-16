@@ -9,25 +9,25 @@ generateStyle = (heights) ->
   for orientation in ["portrait", "landscape"]
     _code += """
       @media screen and (orientation: #{orientation}) {
-        article[data-header] > section > div:not(.pulltorefresh){
+        article[data-header] > section.iscroll > div:not(.pulltorefresh){
           min-height: #{heights[orientation]-HEADER_HEIGHT}px;
         }
-        article[data-nav] > section > div:not(.pulltorefresh){
+        article[data-nav] > section.iscroll > div:not(.pulltorefresh){
           min-height: #{heights[orientation]-NAV_HEIGHT}px;
         }
-        article[data-footer] > section > div:not(.pulltorefresh){
+        article[data-footer] > section.iscroll > div:not(.pulltorefresh){
           min-height: #{heights[orientation]-FOOTER_HEIGHT}px;
         }
-        article[data-header][data-nav] > section > div:not(.pulltorefresh){
+        article[data-header][data-nav] > section.iscroll > div:not(.pulltorefresh){
           min-height: #{heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT}px;
         }
-        article[data-header][data-footer] > section > div:not(.pulltorefresh){
+        article[data-header][data-footer] > section.iscroll > div:not(.pulltorefresh){
           min-height: #{heights[orientation] - HEADER_HEIGHT - FOOTER_HEIGHT}px;
         }
-        article[data-nav][data-footer] > section > div:not(.pulltorefresh){
+        article[data-nav][data-footer] > section.iscroll > div:not(.pulltorefresh){
           min-height: #{heights[orientation] - NAV_HEIGHT - FOOTER_HEIGHT}px;
         }
-        article[data-header][data-nav][data-footer] > section > div:not(.pulltorefresh){
+        article[data-header][data-nav][data-footer] > section.iscroll > div:not(.pulltorefresh){
           min-height: #{heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT - FOOTER_HEIGHT}px;
         }
       }
