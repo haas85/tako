@@ -453,7 +453,7 @@
       if (_current_article.id !== new_article.id) {
         Tako.Article(new_article.id, back);
       }
-      if (!new_section.iscroll && !new_section.classList.contains("centered") && !new_section.classList.contains("noscroll")) {
+      if (!new_section.iscroll && new_section.classList.contains("iscroll")) {
         Tako.iScroll(new_section);
       } else {
         new_section.iscroll = "none";

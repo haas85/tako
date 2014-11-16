@@ -21,7 +21,7 @@ Tako.Section = do (TK = Tako) ->
     if _current_article.id isnt new_article.id
       Tako.Article new_article.id, back
 
-    if not new_section.iscroll and !new_section.classList.contains("centered") and !new_section.classList.contains("noscroll")
+    if not new_section.iscroll and new_section.classList.contains("iscroll")
       Tako.iScroll new_section
     else
       new_section.iscroll = "none"
