@@ -308,6 +308,43 @@
     };
   })(Tako);
 
+  Tako.ProgressBar = function(container, value) {
+    var Progress;
+    Progress = (function() {
+      Progress.prototype.el = null;
+
+      Progress.prototype.fill = null;
+
+      function Progress(container, value) {
+        var PROGRESS;
+        this.value = value != null ? value : 0;
+        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
+        this.el = $(PROGRESS);
+        $("#" + container).append(this.el);
+        this.fill = this.el.children(".percent");
+      }
+
+      Progress.prototype.percent = function(value) {
+        if (value != null) {
+          if (value < 0 || value > 100) {
+            throw "Invalid value";
+          }
+          this.value = value;
+          this.fill.css("width", "" + this.value + "%");
+        }
+        return this.value;
+      };
+
+      Progress.prototype.remove = function() {
+        return this.el.remove();
+      };
+
+      return Progress;
+
+    })();
+    return new Progress(container, value);
+  };
+
   Tako.Connection = (function() {
     var _callbacks, _state, _stateChange;
     _state = navigator.onLine;
@@ -473,23 +510,6 @@
       return _browser();
     }
   };
-
-  (function() {
-    var templates;
-    templates = {};
-    return Tako.File = function(path, refresh) {
-      if ((templates[path] != null) && !refresh) {
-        return templates[path];
-      }
-      return templates[path] = $.ajax({
-        type: "GET",
-        dataType: 'text',
-        crossDomain: true,
-        url: path,
-        async: false
-      }).responseText;
-    };
-  })();
 
   Tako.Notification = (function(TK) {
     var active, callback, confirm, custom, error, hide, loading, notification, notification_window, progress, success, timeout, _close, _hide, _iconHtml, _ontap, _show;
@@ -682,43 +702,6 @@
       hide: hide
     };
   })(Tako);
-
-  Tako.ProgressBar = function(container, value) {
-    var Progress;
-    Progress = (function() {
-      Progress.prototype.el = null;
-
-      Progress.prototype.fill = null;
-
-      function Progress(container, value) {
-        var PROGRESS;
-        this.value = value != null ? value : 0;
-        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
-        this.el = $(PROGRESS);
-        $("#" + container).append(this.el);
-        this.fill = this.el.children(".percent");
-      }
-
-      Progress.prototype.percent = function(value) {
-        if (value != null) {
-          if (value < 0 || value > 100) {
-            throw "Invalid value";
-          }
-          this.value = value;
-          this.fill.css("width", "" + this.value + "%");
-        }
-        return this.value;
-      };
-
-      Progress.prototype.remove = function() {
-        return this.el.remove();
-      };
-
-      return Progress;
-
-    })();
-    return new Progress(container, value);
-  };
 
   (function() {
     var lastTime, vendors, x;
