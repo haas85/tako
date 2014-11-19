@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 16/11/2014
+/* TaKo v1.2.1 - 19/11/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -656,6 +656,23 @@
       return _browser();
     }
   };
+
+  (function() {
+    var templates;
+    templates = {};
+    return Tako.File = function(path, refresh) {
+      if ((templates[path] != null) && !refresh) {
+        return templates[path];
+      }
+      return templates[path] = $.ajax({
+        type: "GET",
+        dataType: 'text',
+        crossDomain: true,
+        url: path,
+        async: false
+      }).responseText;
+    };
+  })();
 
   Tako.iScroll = function(el) {
     return new IScroll(el, {
