@@ -38,6 +38,7 @@ module.exports = (grunt) ->
         # "stylesheets/Tako.medias.styl"
       ]
       theme: [
+        "stylesheets/theme/fonts.styl",
         "stylesheets/theme/tbase.styl",
         "stylesheets/theme/Theme.**.styl"
       ],
