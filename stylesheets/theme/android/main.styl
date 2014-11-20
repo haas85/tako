@@ -1,5 +1,15 @@
 body[data-os="android"]
+  background-image -webkit-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -moz-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -o-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -ms-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image linear-gradient(top, THEME_COLOR 52px,  BACKGROUND 0px, BACKGROUND 100%)
+
+  -webkit-box-shadow none !important
+  -moz-box-shadow none !important
+  box-shadow none !important
   font 14px "tako_android"
+
   & *
     font-family "tako_android" !important
 
@@ -11,21 +21,80 @@ body[data-os="android"]
     & button
       border none
       box-shadow none
+  & footer
+    background-color BACKGROUND !important
+    color lighten(TEXT, 25%) !important
+    border-top 2px solid darken(BACKGROUND, 15%) !important
+    height HEADER_HEIGHT
+
+    & *
+      height HEADER_HEIGHT
+
+    & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+      background-color BACKGROUND
+      &:active, &:hover
+        & .counter
+          background-color darken(BACKGROUND, 15%)
+      &.current
+        background-color BACKGROUND !important
+        border-top 8px solid THEME !important
+        padding-top 0
+        padding-bottom 20px
+
+    & > nav > *
+      border-right none
+
+    & button
+      &:active
+        box-shadow none !important
+
+    & *
+      color lighten(TEXT, 25%) !important
+
   & article
+    border-radius 0 !important
     & > nav
       background-color BACKGROUND !important
       color lighten(TEXT, 25%) !important
-      border-bottom 2px solid darken(BACKGROUND, 25%) !important
+      border-bottom 2px solid darken(BACKGROUND, 15%) !important
 
       & > *
-        border-right 2px solid darken(BACKGROUND, 15%) !important
+        position relative
+        border-right none
+
+        &.current
+          background-color BACKGROUND !important
+          border-bottom 8px solid THEME
+          box-sizing(border-box)
+
+        &:after
+          position absolute
+          right 0
+          top 30%
+          height 30%
+          width 2px
+          background-color darken(BACKGROUND, 15%)
 
         &:last-child
           border-right none
+          &:after
+            background-color transparent
+      & button
+        &:active
+          box-shadow none !important
+
 
       & *
         color lighten(TEXT, 25%) !important
 
   & button
     background-image none !important
-    box-shadow none
+    border-radius 0 !important
+
+  & ul, ol
+    border-radius 0 !important
+    & > li
+      border-radius 0 !important
+
+  & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    border-radius 0 !important
