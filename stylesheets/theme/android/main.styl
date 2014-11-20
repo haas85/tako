@@ -28,10 +28,10 @@ body[data-os="android"]
     height HEADER_HEIGHT
 
     & *
-      height HEADER_HEIGHT
-
+      height HEADER_HEIGH7
     & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
       background-color BACKGROUND
+      padding-bottom 15px
       &:active, &:hover
         & .counter
           background-color darken(BACKGROUND, 15%)
@@ -50,6 +50,20 @@ body[data-os="android"]
 
     & *
       color lighten(TEXT, 25%) !important
+
+  & aside
+    background-color BACKGROUND
+    color TEXT !important
+    box-shadow(4px 0 3px 1px darken(BACKGROUND, 50%))
+
+    & .counter
+      background-color darken(BACKGROUND, 18%)
+
+    & .current
+      background-color darken(BACKGROUND, 10%)
+
+    & > header
+      background-color BACKGROUND
 
   & article
     border-radius 0 !important
@@ -95,6 +109,10 @@ body[data-os="android"]
     border-radius 0 !important
     & > li
       border-radius 0 !important
+      &:first-child
+        border-top 0
+      &:last-child
+        border-bottom 0
 
   & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
     border-radius 0 !important

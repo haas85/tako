@@ -138,13 +138,13 @@ header
     & .counter
       position relative
       top -0.55em
-      margin-left 0.5em
-      margin-right 0.5em
+      margin-left 0.5em !important
+      margin-right 0.5em !important
       line-height 15px
       -webkit-border-radius 2px
       -moz-border-radius 2px
       border-radius 4px
-      padding 0.1em 0.2em 0.2em 0.3em
+      padding .1em .33em .2em .3em
       font-size FONT_SIZE_SMALLEST
 
     &>span.icon
@@ -189,6 +189,11 @@ footer
 
   & .icon:before
     font-size 1.4em
+
+  & .icon:empty
+    &:before
+      margin-right 0
+      font-size 1.8em !important
 
   & button, & .button, , & input[type=submit], & input[type=reset], & input[type=button]
     height inherit

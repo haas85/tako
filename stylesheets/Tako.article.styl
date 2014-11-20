@@ -113,8 +113,13 @@ article > nav
     margin-top 0!important
     transition-duration 200ms
 
-  & .icon, & .icon:before
-    font-size 1em
+  & .icon
+    &:before
+      font-size 1em
+    &:empty
+      &:before
+        margin-right 0
+        font-size 1.8em !important
 
 footer
   position relative
