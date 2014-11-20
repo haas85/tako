@@ -37,10 +37,15 @@ module.exports = (grunt) ->
         # "stylesheets/Tako.icons.styl",
         # "stylesheets/Tako.medias.styl"
       ]
-      theme: [
-        "stylesheets/theme/fonts.styl",
-        "stylesheets/theme/tbase.styl",
-        "stylesheets/theme/Theme.**.styl"
+      theme_generic: [
+        "stylesheets/theme/generic/fonts.styl",
+        "stylesheets/theme/generic/tbase.styl",
+        "stylesheets/theme/generic/Theme.**.styl"
+      ],
+
+      theme_android: [
+        "stylesheets/theme/android/fonts.styl",
+        "stylesheets/theme/android/main.styl"
       ],
 
       components: [
@@ -72,9 +77,12 @@ module.exports = (grunt) ->
       core:
         options: compress: true, import: ['constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.css': '<%=source.stylus%>'
-      theme:
-        options: compress: true, import: ['constants', '../constants']
-        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
+      theme_generic:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme_generic%>'
+      theme_android:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css': '<%=source.theme_android%>'
 
     usebanner:
       components:
@@ -98,7 +106,8 @@ module.exports = (grunt) ->
       theme:
         options: position: "top", banner: "<%= meta.banner %>", linebreak: false
         files: src: [
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css'
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css',
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css'
         ]
 
     watch:
@@ -108,9 +117,12 @@ module.exports = (grunt) ->
       stylus:
         files: ["<%= source.stylus %>"]
         tasks: ["stylus:core", "usebanner:css"]
-      theme:
-        files: ["<%= source.theme %>"]
-        tasks: ["stylus:theme", "usebanner:theme"]
+      theme_generic:
+        files: ["<%= source.theme_generic %>"]
+        tasks: ["stylus:theme_generic", "usebanner:theme"]
+      theme_android:
+        files: ["<%= source.theme_android %>"]
+        tasks: ["stylus:theme_android", "usebanner:theme"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"

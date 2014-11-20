@@ -1,0 +1,31 @@
+body[data-os="android"]
+  font 14px "tako_android"
+  & *
+    font-family "tako_android" !important
+
+  & header
+    background-color THEME_COLOR !important
+    color SECONDARY_TEXT !important
+    background-image none !important
+
+    & button
+      border none
+      box-shadow none
+  & article
+    & > nav
+      background-color BACKGROUND !important
+      color lighten(TEXT, 25%) !important
+      border-bottom 2px solid darken(BACKGROUND, 25%) !important
+
+      & > *
+        border-right 2px solid darken(BACKGROUND, 15%) !important
+
+        &:last-child
+          border-right none
+
+      & *
+        color lighten(TEXT, 25%) !important
+
+  & button
+    background-image none !important
+    box-shadow none
