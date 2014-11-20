@@ -218,7 +218,8 @@
         cb = callbacks[_i];
         cb.call(cb);
       }
-      return ready = true;
+      ready = true;
+      return $("body").attr("data-os", "android");
     };
     _navigate = function(action, target, query) {
       var nav;

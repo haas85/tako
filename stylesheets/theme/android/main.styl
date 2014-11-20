@@ -54,7 +54,7 @@ body[data-os="android"]
   & aside
     background-color BACKGROUND
     color TEXT !important
-    box-shadow(4px 0 3px 1px darken(BACKGROUND, 50%))
+    box-shadow(inset -8px -1px 6px -3px darken(BACKGROUND, 20%) !important)
 
     & .counter
       background-color darken(BACKGROUND, 18%)
@@ -64,6 +64,10 @@ body[data-os="android"]
 
     & > header
       background-color BACKGROUND
+    & ul
+      & > li
+        &:hover, &:active
+          background-color darken(BACKGROUND, 10%)
 
   & article
     border-radius 0 !important
