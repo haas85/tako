@@ -120,3 +120,35 @@ body[data-os="android"]
 
   & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
     border-radius 0 !important
+
+  & div[data-element="notification"]
+    & article.window
+      &.confirm
+        & span.title
+          font-size 1.5em
+        & > footer
+          background-color transparent !important
+          background-image none !important
+          color THEME !important
+          border none !important
+          & > button
+            background-color transparent !important
+            background-image none !important
+            width 35%
+            padding 7px
+            float right
+            &:hover
+              background-color transparent
+              box-shadow(none !important)
+            &.accept
+              color THEME !important
+            &.cancel
+              color TEXT !important
+      // &:not(.success), &:not(.error)
+      //   & > header
+      //     background-color transparent !important
+      //     background-image none !important
+      //     color TEXT !important
+
+      //     & > .close
+      //       color TEXT !important
