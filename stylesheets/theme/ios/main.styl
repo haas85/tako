@@ -1,22 +1,35 @@
-body[data-os="android"]
-  background-image -webkit-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -moz-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -o-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -ms-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image linear-gradient(top, THEME_COLOR 52px,  BACKGROUND 0px, BACKGROUND 100%)
+body[data-os="ios"]
+  background-image -webkit-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -moz-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -o-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -ms-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image linear-gradient(top, darken(BACKGROUND, 5%) 52px,  BACKGROUND 0px, BACKGROUND 100%)
 
   -webkit-box-shadow none !important
   -moz-box-shadow none !important
   box-shadow none !important
-  font 14px "tako_android"
+  font 14px "tako_ios"
 
   & *
-    font-family "tako_android" !important
+    font-family "tako_ios" !important
 
   & header
-    background-color THEME_COLOR !important
-    color SECONDARY_TEXT !important
+    background-color darken(BACKGROUND, 5%) !important
+    color THEME !important
     background-image none !important
+    border-bottom 2px solid darken(BACKGROUND, 20%)
+
+    & > h1
+      color TEXT
+
+    & *
+      color THEME
+
+    & *.counter
+      color THEME
+      background-color transparent !important
+      border 1px solid THEME
+      padding .2em .33em .1em .36em
 
     & button
       border none !important
@@ -37,9 +50,8 @@ body[data-os="android"]
           background-color darken(BACKGROUND, 15%)
       &.current
         background-color BACKGROUND !important
-        border-top 8px solid THEME !important
-        padding-top 0
-        padding-bottom 20px
+        border-top 0 solid THEME !important
+        color THEME !important
 
     & > nav > *
       border-right none
@@ -54,7 +66,7 @@ body[data-os="android"]
   & aside
     background-color BACKGROUND
     color TEXT !important
-    box-shadow(none !important)
+    box-shadow(none)
 
     & .counter
       background-color darken(BACKGROUND, 18%)
@@ -82,28 +94,20 @@ body[data-os="android"]
 
         &.current
           background-color BACKGROUND !important
-          border-bottom 8px solid THEME
+          border-bottom 0 solid THEME
+          color THEME !important
           box-sizing(border-box)
 
-        &:after
-          position absolute
-          right 0
-          top 30%
-          height 30%
-          width 2px
-          background-color darken(BACKGROUND, 15%)
-
         &:last-child
-          border-right none
           &:after
             background-color transparent
       & button
-        &:active
+        &:active, &:hover
           box-shadow none !important
 
 
       & *
-        color lighten(TEXT, 25%) !important
+        color lighten(TEXT, 35%) !important
 
   & button
     background-image none !important

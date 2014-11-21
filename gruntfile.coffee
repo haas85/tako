@@ -45,7 +45,14 @@ module.exports = (grunt) ->
 
       theme_android: [
         "stylesheets/theme/android/fonts.styl",
-        "stylesheets/theme/android/main.styl"
+        "stylesheets/theme/android/main.styl",
+        "stylesheets/theme/android/media.styl"
+      ],
+
+      theme_ios: [
+        "stylesheets/theme/ios/fonts.styl",
+        "stylesheets/theme/ios/main.styl",
+        "stylesheets/theme/ios/media.styl"
       ],
 
       components: [
@@ -83,6 +90,9 @@ module.exports = (grunt) ->
       theme_android:
         options: compress: true, import: ['../constants', '../../constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css': '<%=source.theme_android%>'
+      theme_ios:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css': '<%=source.theme_ios%>'
 
     usebanner:
       components:
@@ -107,7 +117,8 @@ module.exports = (grunt) ->
         options: position: "top", banner: "<%= meta.banner %>", linebreak: false
         files: src: [
           '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css',
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css'
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css',
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css'
         ]
 
     watch:
@@ -123,6 +134,9 @@ module.exports = (grunt) ->
       theme_android:
         files: ["<%= source.theme_android %>"]
         tasks: ["stylus:theme_android", "usebanner:theme"]
+      theme_ios:
+        files: ["<%= source.theme_ios %>"]
+        tasks: ["stylus:theme_ios", "usebanner:theme"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"
