@@ -130,10 +130,14 @@ body[data-os="ios"]
         border-bottom 0
 
   & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
-    border-radius 0 !important
+    border-radius 2px !important
 
   & div[data-element="notification"]
     & article.window
+      background-color darken(IOS_BACKGROUND, 5%) !important
+
+      & > section
+        background-color darken(IOS_BACKGROUND, 5%) !important
       &.custom > header
         & > h1 > span
           position relative
@@ -141,26 +145,26 @@ body[data-os="ios"]
         & > *
           color THEME
       &.confirm
+        border-radius 5px !important
         & span.title
           font-size 1.5em
         & > footer
-          background-color transparent !important
+          background-color darken(IOS_BACKGROUND, 5%) !important
           background-image none !important
           color THEME !important
-          border none !important
+          border-top 1px solid darken(IOS_BACKGROUND, 15%) !important
           & > button
             background-color transparent !important
             background-image none !important
-            width 35%
             padding 7px
+            color THEME !important
+            font-weight normal !important
             float right
             &:hover
               background-color transparent
               box-shadow(none !important)
             &.accept
-              color THEME !important
-            &.cancel
-              color TEXT !important
+              border-left 1px solid darken(IOS_BACKGROUND, 15%) !important
   & .progress_bar
     height 2px
 
