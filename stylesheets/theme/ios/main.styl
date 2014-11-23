@@ -1,9 +1,12 @@
+IOS_BACKGROUND = #ffffff
 body[data-os="ios"]
-  background-image -webkit-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -moz-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -o-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -ms-linear-gradient(top, darken(BACKGROUND, 5%) 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image linear-gradient(top, darken(BACKGROUND, 5%) 52px,  BACKGROUND 0px, BACKGROUND 100%)
+  background-image -webkit-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image -moz-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image -o-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image -ms-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px,  IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+
+  background-color IOS_BACKGROUND !important
 
   -webkit-box-shadow none !important
   -moz-box-shadow none !important
@@ -14,10 +17,10 @@ body[data-os="ios"]
     font-family "tako_ios" !important
 
   & header
-    background-color darken(BACKGROUND, 5%) !important
+    background-color darken(IOS_BACKGROUND, 5%) !important
     color THEME !important
     background-image none !important
-    border-bottom 2px solid darken(BACKGROUND, 20%)
+    border-bottom 2px solid darken(IOS_BACKGROUND, 20%)
 
     & > h1
       color TEXT
@@ -35,21 +38,21 @@ body[data-os="ios"]
       border none !important
       box-shadow none !important
   & footer
-    background-color BACKGROUND !important
+    background-color IOS_BACKGROUND !important
     color lighten(TEXT, 25%) !important
-    border-top 2px solid darken(BACKGROUND, 15%) !important
+    border-top 2px solid darken(IOS_BACKGROUND, 15%) !important
     height HEADER_HEIGHT
 
     & *
       height HEADER_HEIGHT
     & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
-      background-color BACKGROUND
+      background-color IOS_BACKGROUND
       padding-bottom 15px
       &:active, &:hover
         & .counter
-          background-color darken(BACKGROUND, 15%)
+          background-color darken(IOS_BACKGROUND, 15%)
       &.current
-        background-color BACKGROUND !important
+        background-color IOS_BACKGROUND !important
         border-top 0 solid THEME !important
         color THEME !important
 
@@ -63,40 +66,41 @@ body[data-os="ios"]
     & *
       color lighten(TEXT, 25%) !important
   & section
+    background-color IOS_BACKGROUND !important
     & button
       padding-top 5px !important
 
   & aside
-    background-color BACKGROUND
+    background-color IOS_BACKGROUND
     color TEXT !important
     box-shadow(none)
 
     & .counter
-      background-color darken(BACKGROUND, 18%)
+      background-color darken(IOS_BACKGROUND, 18%)
 
     & .current
-      background-color darken(BACKGROUND, 10%)
+      background-color darken(IOS_BACKGROUND, 10%)
 
     & > header
-      background-color BACKGROUND
+      background-color IOS_BACKGROUND
     & ul
       & > li
         &:hover, &:active
-          background-color darken(BACKGROUND, 10%)
+          background-color darken(IOS_BACKGROUND, 10%)
 
   & article
     border-radius 0 !important
     & > nav
-      background-color BACKGROUND !important
+      background-color IOS_BACKGROUND !important
       color lighten(TEXT, 25%) !important
-      border-bottom 2px solid darken(BACKGROUND, 15%) !important
+      border-bottom 2px solid darken(IOS_BACKGROUND, 15%) !important
 
       & > *
         position relative
         border-right none
 
         &.current
-          background-color BACKGROUND !important
+          background-color IOS_BACKGROUND !important
           border-bottom 0 solid THEME
           color THEME !important
           box-sizing(border-box)
