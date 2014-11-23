@@ -130,11 +130,15 @@ body[data-os="ios"]
         border-bottom 0
 
   & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
-    border-radius 2px !important
+    border-radius 4px !important
 
   & div[data-element="notification"]
     & article.window
       background-color darken(IOS_BACKGROUND, 5%) !important
+
+      & > header
+        & > span
+          color TEXT
 
       & > section
         background-color darken(IOS_BACKGROUND, 5%) !important
@@ -142,6 +146,7 @@ body[data-os="ios"]
         & > h1 > span
           position relative
           top 3px
+          color TEXT
         & > *
           color THEME
       &.confirm
