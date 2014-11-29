@@ -45,12 +45,12 @@ body[data-os="ios"]
 
     & *
       height HEADER_HEIGHT
+      font-weight 300
     & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
       background-color IOS_BACKGROUND
       padding-bottom 15px
       &:active, &:hover
-        & .counter
-          background-color darken(IOS_BACKGROUND, 15%)
+        background-color IOS_BACKGROUND !important
       &.current
         background-color IOS_BACKGROUND !important
         border-top 0 solid THEME !important
@@ -58,6 +58,7 @@ body[data-os="ios"]
 
     & > nav > *
       border-right none
+      font-weight 300
 
     & button
       &:active
@@ -97,6 +98,7 @@ body[data-os="ios"]
       & > *
         position relative
         border-right none
+        font-weight 300
 
         &.current
           background-color IOS_BACKGROUND !important
@@ -110,6 +112,8 @@ body[data-os="ios"]
       & button
         &:active, &:hover
           box-shadow none !important
+        &:hover
+          background-color darken(IOS_BACKGROUND, 10%)
 
 
       & *
