@@ -118,7 +118,7 @@ body[data-os="ios"]
 
   & button
     background-image none !important
-    border-radius 0 !important
+    border-radius 0
 
   & ul, ol
     border-radius 0 !important
@@ -150,7 +150,7 @@ body[data-os="ios"]
         & > *
           color THEME
       &.confirm
-        border-radius 5px !important
+        border-radius 4px !important
         & span.title
           font-size 1.5em
         & > footer
@@ -199,3 +199,45 @@ body[data-os="ios"]
     background-image none !important
   & .theme
     background-image none !important
+
+section
+  & button, & .button
+    background-image none !important
+    background-color IOS_BACKGROUND !important
+    border-radius 4px !important
+    border 1px solid darken(IOS_BACKGROUND, 15%)
+    color THEME
+    font-weight 300
+
+    &.accept
+      color SUCCESS
+      background-color IOS_BACKGROUND !important
+    &.cancel
+      color FAIL
+      background-color IOS_BACKGROUND !important
+    &.blue
+      color BLUE
+    &.red
+      color RED
+    &.yellow
+      color YELLOW
+    &.black
+      color BLACK
+    &.white
+      color WHITE
+    &.grey
+      color GREY
+    &.green
+      color GREEN
+    &.pink
+      color PINK
+    &.purple
+      color PURPLE
+    &.brown
+      color BROWN
+    &.orange
+      color ORANGE
+    &.firefox
+      color FIREFOX
+    &.theme
+      color THEME

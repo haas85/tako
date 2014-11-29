@@ -173,19 +173,21 @@ footer
       &.active
         background-color rgba(250,250,250,0.15)
 
+article.active > section.active
+  &:not(.centered):not(.iscroll):not(.noscroll)
+    overflow-y scroll
+    -webkit-overflow-scrolling touch
+
 section
   position relative
   // top 4px
   width 100%
   margin 0
-  overflow hidden
+  overflow-x hidden
+  overflow-y hidden
   box-flex 1
   flex 1 9999999 auto
   flexbox-order(3)
-
-  &:not(.centered):not(.iscroll):not(.noscroll)
-    overflow-y scroll
-    -webkit-overflow-scrolling touch
 
   &.horizontal
     width auto

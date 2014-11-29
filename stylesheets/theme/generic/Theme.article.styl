@@ -68,23 +68,24 @@ body[data-os], body[data-browser]
     &.centered > *:first-child
       border 1px solid darken(BACKGROUND, 25%)
 
-aside
-  background-color SECONDARY
-  color SECONDARY_TEXT !important
-  box-shadow(4px 0 3px 1px darken(SECONDARY, 50%))
-
-  & .counter
-    background-color lighten(SECONDARY, 30%)
-
-  & > header
+body[data-os], body[data-browser]
+  & aside
     background-color SECONDARY
+    color SECONDARY_TEXT !important
+    box-shadow(4px 0 3px 1px darken(SECONDARY, 50%))
 
-aside .current, footer .current
-  background-color SECONDARY_ACTIVE
+    & .counter
+      background-color lighten(SECONDARY, 30%)
 
-aside li, footer button, footer input[type=submit], footer input[type=reset], footer input[type=button]
-  &:active, &:hover
+    & > header
+      background-color SECONDARY
+
+  & aside .current, & footer .current
     background-color SECONDARY_ACTIVE
+
+  & aside li, & footer button, & footer input[type=submit], & footer input[type=reset], & footer input[type=button]
+    &:active, &:hover
+      background-color SECONDARY_ACTIVE
 
 div.pulltorefresh
   background-color darken(BACKGROUND, 15%)
