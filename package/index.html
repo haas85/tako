@@ -311,7 +311,7 @@
         Tako.init({
             articles     : ["article2.html"],
             logging      : Tako.logging.LOG,
-            urlNavigation: false
+            urlNavigation: true
         });
         $("#show_success").bind("tap", function(){
             Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");})

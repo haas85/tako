@@ -89,7 +89,6 @@ body[data-os="ios"]
           background-color darken(IOS_BACKGROUND, 10%)
 
   & article
-    border-radius 0 !important
     & > nav
       background-color IOS_BACKGROUND !important
       color lighten(TEXT, 25%) !important
@@ -135,6 +134,7 @@ body[data-os="ios"]
   & div[data-element="notification"]
     & article.window
       background-color darken(IOS_BACKGROUND, 5%) !important
+      border-radius 4px !important
 
       & > header
         & > span
@@ -150,7 +150,6 @@ body[data-os="ios"]
         & > *
           color THEME
       &.confirm
-        border-radius 4px !important
         & span.title
           font-size 1.5em
         & > footer
@@ -170,6 +169,22 @@ body[data-os="ios"]
               box-shadow(none !important)
             &.accept
               border-left 1px solid darken(IOS_BACKGROUND, 15%) !important
+      &.success, &.error
+        & > header
+          height 70px !important
+          background-color darken(IOS_BACKGROUND, 5%) !important
+          border-bottom 0
+      &.success
+        & > header
+          color SUCCESS !important
+          & > span
+            color SUCCESS !important
+      &.error
+        & > header
+          color FAIL !important
+          & > span
+            color FAIL !important
+
   & .progress_bar
     height 2px
 
