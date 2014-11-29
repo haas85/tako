@@ -115,11 +115,8 @@ window.Tako = window.tk = Tako = do ->
     total_query = "#{container} [#{query}]"
     if children
       total_query += ", #{container} [#{query}] *"
-    console.log total_query
-    console.log $(total_query)
     $(total_query).each (element) ->
       $(@).on event, (ev) ->
-        console.log ev, query
         do ev.preventDefault
         do ev.stopPropagation
         _navigate action, ev.target, query
@@ -140,10 +137,8 @@ window.Tako = window.tk = Tako = do ->
     # $("body").attr "data-os", "ios"
 
   _navigate = (action, target, query) ->
-    console.log arguments
     if target?
       nav = target.attributes.getNamedItem query
-      console.log nav
       if nav?
         action nav.value
       else

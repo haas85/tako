@@ -187,11 +187,8 @@
       if (children) {
         total_query += ", " + container + " [" + query + "] *";
       }
-      console.log(total_query);
-      console.log($(total_query));
       return $(total_query).each(function(element) {
         return $(this).on(event, function(ev) {
-          console.log(ev, query);
           ev.preventDefault();
           ev.stopPropagation();
           return _navigate(action, ev.target, query);
@@ -222,10 +219,8 @@
     };
     _navigate = function(action, target, query) {
       var nav;
-      console.log(arguments);
       if (target != null) {
         nav = target.attributes.getNamedItem(query);
-        console.log(nav);
         if (nav != null) {
           return action(nav.value);
         } else {
