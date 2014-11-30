@@ -46,6 +46,11 @@ body[data-os="ios"]
     & *
       height HEADER_HEIGHT
       font-weight 300
+
+      &.icon
+        &:empty
+          font-size 0.9em !important
+          margin-top 6px
     & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
       background-color IOS_BACKGROUND
       padding-bottom 15px
@@ -68,8 +73,47 @@ body[data-os="ios"]
       color lighten(TEXT, 25%) !important
   & section
     background-color IOS_BACKGROUND !important
-    & button
+    & button, & .button
+      background-image none !important
+      background-color IOS_BACKGROUND !important
+      border-radius 4px !important
+      border 1px solid darken(IOS_BACKGROUND, 15%)
+      color THEME
+      font-weight 300
       padding-top 5px !important
+
+      &.accept
+        color SUCCESS
+        background-color IOS_BACKGROUND !important
+      &.cancel
+        color FAIL
+        background-color IOS_BACKGROUND !important
+      &.blue
+        color BLUE
+      &.red
+        color RED
+      &.yellow
+        color YELLOW
+      &.black
+        color BLACK
+      &.white
+        color WHITE
+      &.grey
+        color GREY
+      &.green
+        color GREEN
+      &.pink
+        color PINK
+      &.purple
+        color PURPLE
+      &.brown
+        color BROWN
+      &.orange
+        color ORANGE
+      &.firefox
+        color FIREFOX
+      &.theme
+        color THEME
 
   & aside
     background-color IOS_BACKGROUND
@@ -218,45 +262,3 @@ body[data-os="ios"]
     background-image none !important
   & .theme
     background-image none !important
-
-section
-  & button, & .button
-    background-image none !important
-    background-color IOS_BACKGROUND !important
-    border-radius 4px !important
-    border 1px solid darken(IOS_BACKGROUND, 15%)
-    color THEME
-    font-weight 300
-
-    &.accept
-      color SUCCESS
-      background-color IOS_BACKGROUND !important
-    &.cancel
-      color FAIL
-      background-color IOS_BACKGROUND !important
-    &.blue
-      color BLUE
-    &.red
-      color RED
-    &.yellow
-      color YELLOW
-    &.black
-      color BLACK
-    &.white
-      color WHITE
-    &.grey
-      color GREY
-    &.green
-      color GREEN
-    &.pink
-      color PINK
-    &.purple
-      color PURPLE
-    &.brown
-      color BROWN
-    &.orange
-      color ORANGE
-    &.firefox
-      color FIREFOX
-    &.theme
-      color THEME
