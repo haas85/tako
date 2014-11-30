@@ -2,7 +2,7 @@ button, .button, input[type=submit], input[type=reset], input[type=button]
   text-indent 0
   border 0
   display inline-block
-  font-weight bold
+  font-weight 300
   font-style normal
   line-height 2.50em
   text-decoration none
@@ -33,6 +33,9 @@ button, .button, input[type=submit], input[type=reset], input[type=button]
 
       &+span
         font-size FONT_SIZE_SMALLEST
+    &.icon:empty
+      padding-top 7px
+      padding-bottom 6px
 
   &.small
     line-height 2.25em
@@ -43,6 +46,9 @@ button, .button, input[type=submit], input[type=reset], input[type=button]
 
       &+span
         font-size FONT_SIZE_SMALL
+    &.icon:empty
+      padding-top 7px
+      padding-bottom 6px
 
   &.big
     line-height 2.75em
@@ -110,7 +116,7 @@ header
     min-width HEADER_HEIGHT - 4
     text-indent 0
     display inline-block
-    font-weight bold
+    font-weight 300
     font-style normal
     text-decoration none
     text-align center
@@ -165,7 +171,7 @@ header
   & button.button
     text-indent 0
     display inline-block
-    font-weight bold
+    font-weight 300
     font-style normal
     line-height 35px
     text-decoration none
@@ -178,7 +184,7 @@ header
 
 article > nav
   & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
-    font-weight bold
+    // font-weight bold
     font-style normal
     text-decoration none
     text-align center
@@ -186,7 +192,6 @@ article > nav
     background-image none
 
 footer
-
   & .icon:before
     font-size 1.4em
 
