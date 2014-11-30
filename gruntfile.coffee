@@ -55,6 +55,12 @@ module.exports = (grunt) ->
         "stylesheets/theme/ios/media.styl"
       ],
 
+      theme_wp: [
+        "stylesheets/theme/wp/fonts.styl",
+        "stylesheets/theme/wp/main.styl",
+        "stylesheets/theme/wp/media.styl"
+      ],
+
       components: [
         "components/zepto/zepto.js",
         "components/zepto/detect.js",
@@ -93,6 +99,9 @@ module.exports = (grunt) ->
       theme_ios:
         options: compress: true, import: ['../constants', '../../constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css': '<%=source.theme_ios%>'
+      theme_wp:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css': '<%=source.theme_wp%>'
 
     usebanner:
       components:
@@ -118,7 +127,8 @@ module.exports = (grunt) ->
         files: src: [
           '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css',
           '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css',
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css'
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css',
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css'
         ]
 
     watch:
@@ -137,6 +147,9 @@ module.exports = (grunt) ->
       theme_ios:
         files: ["<%= source.theme_ios %>"]
         tasks: ["stylus:theme_ios", "usebanner:theme"]
+      theme_wp:
+        files: ["<%= source.theme_wp %>"]
+        tasks: ["stylus:theme_wp", "usebanner:theme"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"

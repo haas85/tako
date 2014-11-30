@@ -1,180 +1,108 @@
-body[data-os="android"]
-  background-image -webkit-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -moz-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -o-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image -ms-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
-  background-image linear-gradient(top, THEME_COLOR 52px,  BACKGROUND 0px, BACKGROUND 100%)
+// Fix nav flexbox
+// Reduce header height
+// Forms without background
+body[data-os="wp"]
+  background-image none !important
+  background-color BACKGROUND
 
   -webkit-box-shadow none !important
   -moz-box-shadow none !important
   box-shadow none !important
-  font 14px "tako_android"
+  font 14px "tako_wp"
 
   & *
-    font-family "tako_android" !important
-
-  & header
-    background-color THEME_COLOR !important
-    color SECONDARY_TEXT !important
-    background-image none !important
-
-    & button
-      border none !important
-      box-shadow none !important
-  & footer
-    background-color BACKGROUND !important
-    color lighten(TEXT, 25%) !important
-    border-top 2px solid darken(BACKGROUND, 15%) !important
-    height HEADER_HEIGHT
-
-    & *
-      height HEADER_HEIGHT
-    & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
-      background-color BACKGROUND
-      padding-bottom 15px
-      &:active, &:hover
-        & .counter
-          background-color darken(BACKGROUND, 15%)
-      &.current
-        background-color BACKGROUND !important
-        border-top 8px solid THEME !important
-        padding-top 0
-        padding-bottom 20px
-
-    & > nav > *
-      border-right none
-
-    & button
-      &:active
-        box-shadow none !important
-
-    & *
-      color lighten(TEXT, 25%) !important
-
-  & aside
-    background-color BACKGROUND
-    color TEXT !important
-    box-shadow(none !important)
-
-    & .counter
-      background-color darken(BACKGROUND, 18%)
-
-    & .current
-      background-color darken(BACKGROUND, 10%)
-
-    & > header
-      background-color BACKGROUND
-    & ul
-      & > li
-        &:hover, &:active
-          background-color darken(BACKGROUND, 10%)
+    font-family "tako_wp" !important
 
   & article
-    border-radius 0 !important
+    & > header
+      background-color BACKGROUND !important
+      color TEXT !important
+      background-image none !important
+      font-weight 300
+      & > h1
+        width auto
+        margin-left 10px
+        font-size 1.3em
+      & > nav
+        float right
+        position static
+        & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+          background-color transparent
+          background-image none!important
+          color TEXT
+          border-radius 0 !important
+          border 0
+          border-bottom 1px solid THEME
+        & .counter
+          background-color transparent
+
     & > nav
       background-color BACKGROUND !important
-      color lighten(TEXT, 25%) !important
-      border-bottom 2px solid darken(BACKGROUND, 15%) !important
-
-      & > *
-        position relative
-        border-right none
-
-        &.current
-          background-color BACKGROUND !important
-          border-bottom 8px solid THEME
-          box-sizing(border-box)
-
-        &:after
-          position absolute
-          right 0
-          top 30%
-          height 30%
-          width 2px
-          background-color darken(BACKGROUND, 15%)
-
-        &:last-child
-          border-right none
-          &:after
-            background-color transparent
-      & button
-        &:active
-          box-shadow none !important
-
-
+      color TEXT !important
+      background-image none !important
+      font-weight 300
+      border none !important
+      padding-left 10px
+      // flexbox-pack-start()
+      // vendor('align-items', flex-start)
+      display -webkit-box
+      display -moz-box
+      display -ms-flexbox
+      display -webkit-flex
+      display flex
+      -webkit-box-direction normal
+      -moz-box-direction normal
+      -webkit-box-orient horizontal
+      -moz-box-orient horizontal
+      -webkit-flex-direction row
+      -ms-flex-direction row
+      flex-direction row
+      -webkit-flex-wrap nowrap
+      -ms-flex-wrap nowrap
+      flex-wrap nowrap
+      -webkit-box-pack start
+      -moz-box-pack start
+      -webkit-justify-content flex-start
+      -ms-flex-pack start
+      justify-content flex-start
+      -webkit-align-content stretch
+      -ms-flex-line-pack stretch
+      align-content stretch
       & *
-        color lighten(TEXT, 25%) !important
-
-  & button
-    background-image none !important
-    border-radius 0 !important
-
-  & ul, ol
-    border-radius 0 !important
-    & > li
-      border-radius 0 !important
-      &:first-child
-        border-top 0
-      &:last-child
-        border-bottom 0
-
-  & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
-    border-radius 0 !important
-
-  & div[data-element="notification"]
-    & article.window
-      &.confirm
-        & span.title
-          font-size 1.5em
-        & > footer
+        flexbox-weight(0)
+        color TEXT !important
+        border none !important
+        font-size 1.1em !important
+        text-align left
+        padding-left 4px
+        padding-right 10px
+        -webkit-box-ordinal-group 1
+        -moz-box-ordinal-group 1
+        flexbox-order(9)
+        -webkit-align-self auto
+        -ms-flex-item-align auto
+        align-self auto
+        width auto
+        &:hover, &:active
           background-color transparent !important
-          background-image none !important
-          color THEME !important
-          border none !important
-          & > button
-            background-color transparent !important
-            background-image none !important
-            width 35%
-            padding 7px
-            float right
-            &:hover
-              background-color transparent
-              box-shadow(none !important)
-            &.accept
-              color THEME !important
-            &.cancel
-              color TEXT !important
-      // &:not(.success), &:not(.error)
-      //   & > header
-      //     background-color transparent !important
-      //     background-image none !important
-      //     color TEXT !important
-
-      //     & > .close
-      //       color TEXT !important
-  & .blue
-    background-image none !important
-  & .red
-    background-image none !important
-  & .yellow
-    background-image none !important
-  & .black
-    background-image none !important
-  & .white
-    background-image none !important
-  & .grey
-    background-image none !important
-  & .green
-    background-image none !important
-  & .pink
-    background-image none !important
-  & .purple
-    background-image none !important
-  & .brown
-    background-image none !important
-  & .orange
-    background-image none !important
-  & .firefox
-    background-image none !important
-  & .theme
-    background-image none !important
+          box-shadow none !important
+        &.current
+          background-color transparent !important
+          font-size 1.5em !important
+          flexbox-order(0)
+          & + *
+            flexbox-order(1)
+            & + *
+              flexbox-order(2)
+              & + *
+                flexbox-order(3)
+                & + *
+                  flexbox-order(4)
+                  & + *
+                    flexbox-order(5)
+                    & + *
+                      flexbox-order(6)
+                      & + *
+                        flexbox-order(7)
+                        & + *
+                          flexbox-order(8)
