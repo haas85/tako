@@ -1,6 +1,10 @@
 // Fix nav flexbox
 // Reduce header height
 // Forms without background
+
+BACKGROUND = #060606
+TEXT = #f4f4f4
+
 body[data-os="wp"]
   background-image none !important
   background-color BACKGROUND
@@ -23,6 +27,7 @@ body[data-os="wp"]
         width auto
         margin-left 10px
         font-size 1.3em
+        color TEXT
       & > nav
         float right
         position static
@@ -106,3 +111,31 @@ body[data-os="wp"]
                         flexbox-order(7)
                         & + *
                           flexbox-order(8)
+  & section
+    background-color BACKGROUND
+  & footer
+    background-color lighten(BACKGROUND, 15%) !important
+    & *
+      background-color lighten(BACKGROUND, 15%) !important
+      &.current
+        border-top 0 !important
+  & form, & .form
+    & fieldset
+      background-color transparent
+      border none
+      & legend
+        background-color transparent
+        color TEXT
+  & label
+    color TEXT
+  & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    border-radius 0 !important
+  & ul, & ol
+    background-color transparent
+    border none
+    border-radius 0
+    & li
+      border none
+      border-radius 0
+      color TEXT
+      background-color transparent
