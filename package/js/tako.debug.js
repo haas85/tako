@@ -215,8 +215,7 @@
         cb = callbacks[_i];
         cb.call(cb);
       }
-      ready = true;
-      return $("body").attr("data-os", "wp");
+      return ready = true;
     };
     _navigate = function(action, target, query) {
       var nav;
