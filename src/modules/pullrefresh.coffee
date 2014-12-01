@@ -53,7 +53,7 @@ Tako.Pull_Refresh = (container, options={})->
         if not @refreshing
           @hide(false)
 
-      $(@container).on "touchend", =>
+      $(@container).on "mouseup touchend", =>
         return if @refreshing
         cancelAnimationFrame @_anim
         if @_slidedown_height >= @breakpoint

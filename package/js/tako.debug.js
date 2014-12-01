@@ -1024,11 +1024,13 @@
             }
           };
         })(this));
-        $(this.container).on("touchend", (function(_this) {
+        $(this.container).on("mouseup touchend", (function(_this) {
           return function() {
+            console.log("SUELTA");
             if (_this.refreshing) {
               return;
             }
+            console.log("Not refreshing");
             cancelAnimationFrame(_this._anim);
             if (_this._slidedown_height >= _this.breakpoint) {
               if (_this.options.onRefresh) {
