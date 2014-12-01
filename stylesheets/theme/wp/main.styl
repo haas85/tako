@@ -216,9 +216,20 @@ body[data-os="wp"]
       color TEXT
       background-color transparent
   & div[data-element="notification"]
+    & > div
+      display block
     & article.window
+      top 0
       border-radius 0 !important
-      border 1px solid TEXT !important
+      background-color lighten(BACKGROUND, 15%)
+      max-width 100%
+      width 100%
+      transform rotateX(180deg)
+      &.show
+        transform rotateX(0deg)
+      & > header, & > section, & > footer
+        background-color lighten(BACKGROUND, 15%) !important
+        color TEXT
       &.custom > header
         & > h1 > span
           position relative
@@ -228,26 +239,28 @@ body[data-os="wp"]
         & span.title
           font-size 1.5em
         & > footer
-          background-color darken(BACKGROUND, 5%) !important
           background-image none !important
           color THEME !important
-          border-top 1px solid darken(BACKGROUND, 15%) !important
           & > button
             background-color transparent !important
             background-image none !important
-            padding 7px
-            color THEME !important
             font-weight normal !important
             float right
+            border-radius 0 !important
+            border 2px solid TEXT
+            color TEXT
+            padding 2px !important
+            width 35%
+            margin-bottom 25px
+            margin-left 10%
+            &.accept
+              margin-right 10%
             &:hover
               background-color transparent
               box-shadow(none !important)
-            &.accept
-              border-left 1px solid darken(BACKGROUND, 15%) !important
       &.success, &.error
         & > header
           height 70px !important
-          background-color darken(BACKGROUND, 5%) !important
           border-bottom 0
       &.success
         & > header
@@ -259,9 +272,6 @@ body[data-os="wp"]
           color FAIL !important
           & > span
             color FAIL !important
-      & > section
-        color TEXT
-        background-color BACKGROUND
 
   & .progress_bar
     height 2px
