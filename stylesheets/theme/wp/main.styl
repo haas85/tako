@@ -117,7 +117,7 @@ body[data-os="wp"]
       & > *:first-child
         background-color transparent
         color TEXT
-        border-color lighten(BACKGROUND, 40%)
+        border-color TEXT
     & button, & .button
       background-image none !important
       background-color transparent !important
@@ -215,3 +215,53 @@ body[data-os="wp"]
       border-radius 0
       color TEXT
       background-color transparent
+  & div[data-element="notification"]
+    & article.window
+      border-radius 0 !important
+      border 1px solid TEXT !important
+      &.custom > header
+        & > h1 > span
+          position relative
+          top 3px
+          color TEXT
+      &.confirm
+        & span.title
+          font-size 1.5em
+        & > footer
+          background-color darken(BACKGROUND, 5%) !important
+          background-image none !important
+          color THEME !important
+          border-top 1px solid darken(BACKGROUND, 15%) !important
+          & > button
+            background-color transparent !important
+            background-image none !important
+            padding 7px
+            color THEME !important
+            font-weight normal !important
+            float right
+            &:hover
+              background-color transparent
+              box-shadow(none !important)
+            &.accept
+              border-left 1px solid darken(BACKGROUND, 15%) !important
+      &.success, &.error
+        & > header
+          height 70px !important
+          background-color darken(BACKGROUND, 5%) !important
+          border-bottom 0
+      &.success
+        & > header
+          color SUCCESS !important
+          & > span
+            color SUCCESS !important
+      &.error
+        & > header
+          color FAIL !important
+          & > span
+            color FAIL !important
+      & > section
+        color TEXT
+        background-color BACKGROUND
+
+  & .progress_bar
+    height 2px
