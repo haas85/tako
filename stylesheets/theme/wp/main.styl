@@ -17,6 +17,24 @@ body[data-os="wp"]
   & *
     font-family "tako_wp" !important
 
+  & aside
+    background-color lighten(BACKGROUND, 10%)
+    box-shadow none
+    color TEXT
+
+    & header
+      background-color transparent
+    & *
+      box-shadow none
+      color TEXT
+      background-color transparent
+      &.current
+        background-color lighten(BACKGROUND, 18%)
+    & li
+      &:hover, &:active
+        background-color lighten(BACKGROUND, 18%)
+        box-shadow none
+
   & article
     & > header
       background-color BACKGROUND !important
@@ -32,11 +50,12 @@ body[data-os="wp"]
         float right
         position static
         & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
-          background-color transparent
+          background-color #252525
           background-image none!important
           color TEXT
           border-radius 0 !important
           border 0
+          box-shadow none
           // border-bottom 1px solid THEME
         & .counter
           background-color transparent
@@ -275,3 +294,30 @@ body[data-os="wp"]
 
   & .progress_bar
     height 2px
+
+  & .blue
+    background-image none !important
+  & .red
+    background-image none !important
+  & .yellow
+    background-image none !important
+  & .black
+    background-image none !important
+  & .white
+    background-image none !important
+  & .grey
+    background-image none !important
+  & .green
+    background-image none !important
+  & .pink
+    background-image none !important
+  & .purple
+    background-image none !important
+  & .brown
+    background-image none !important
+  & .orange
+    background-image none !important
+  & .firefox
+    background-image none !important
+  & .theme
+    background-image none !important
