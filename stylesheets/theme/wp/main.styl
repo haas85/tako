@@ -37,7 +37,7 @@ body[data-os="wp"]
           color TEXT
           border-radius 0 !important
           border 0
-          border-bottom 1px solid THEME
+          // border-bottom 1px solid THEME
         & .counter
           background-color transparent
 
@@ -113,12 +113,88 @@ body[data-os="wp"]
                           flexbox-order(8)
   & section
     background-color BACKGROUND
+    &.centered
+      & > *:first-child
+        background-color transparent
+        color TEXT
+        border-color lighten(BACKGROUND, 40%)
+    & button, & .button
+      background-image none !important
+      background-color transparent !important
+      border-radius 0 !important
+      border 2px solid TEXT
+      color TEXT
+      font-weight 300
+      padding-top 5px !important
+
+      &.accept
+        // color SUCCESS
+        border-color SUCCESS
+        background-color transparent !important
+      &.cancel
+        // color FAIL
+        border-color FAIL
+        background-color transparent !important
+      &.blue
+        // color BLUE
+        border-color BLUE
+        background-image none !important
+      &.red
+        // color RED
+        border-color RED
+        background-image none !important
+      &.yellow
+        // color YELLOW
+        border-color YELLOW
+        background-image none !important
+      &.black
+        // color BLACK
+        border-color BLACK
+        background-image none !important
+      &.white
+        // color WHITE
+        border-color WHITE
+        background-image none !important
+      &.grey
+        // color GREY
+        border-color GREY
+        background-image none !important
+      &.green
+        // color GREEN
+        border-color GREEN
+        background-image none !important
+      &.pink
+        // color PINK
+        border-color PINK
+        background-image none !important
+      &.purple
+        // color PURPLE
+        border-color PURPLE
+        background-image none !important
+      &.brown
+        // color BROWN
+        border-color BROWN
+        background-image none !important
+      &.orange
+        // color ORANGE
+        border-color ORANGE
+        background-image none !important
+      &.firefox
+        // color FIREFOX
+        border-color FIREFOX
+        background-image none !important
+      &.theme
+        // color THEME
+        border-color THEME
+        background-image none !important
+
   & footer
-    background-color lighten(BACKGROUND, 15%) !important
+    background-color lighten(BACKGROUND, 10%) !important
     & *
-      background-color lighten(BACKGROUND, 15%) !important
+      background-color lighten(BACKGROUND, 10%) !important
       &.current
         border-top 0 !important
+        font-size 1.4em
   & form, & .form
     & fieldset
       background-color transparent
