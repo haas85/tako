@@ -62,7 +62,7 @@ body[data-os="wp"]
 
     & > nav
       background-color BACKGROUND !important
-      color TEXT !important
+      color darken(TEXT, 20%)
       background-image none !important
       font-weight 300
       border none !important
@@ -94,7 +94,7 @@ body[data-os="wp"]
       align-content stretch
       & *
         flexbox-weight(0)
-        color TEXT !important
+        color darken(TEXT, 20%) !important
         border none !important
         font-size 1.1em !important
         text-align left
@@ -102,6 +102,8 @@ body[data-os="wp"]
         padding-right 10px
         -webkit-box-ordinal-group 1
         -moz-box-ordinal-group 1
+        font-size 1.4em !important
+        transition-duration 0ms
         flexbox-order(9)
         -webkit-align-self auto
         -ms-flex-item-align auto
@@ -112,7 +114,7 @@ body[data-os="wp"]
           box-shadow none !important
         &.current
           background-color transparent !important
-          font-size 1.5em !important
+          color TEXT !important
           flexbox-order(0)
           & + *
             flexbox-order(1)
@@ -211,9 +213,11 @@ body[data-os="wp"]
     background-color lighten(BACKGROUND, 10%) !important
     & *
       background-color lighten(BACKGROUND, 10%) !important
+      font-size 1.2em
+      color darken(TEXT, 20%) !important
       &.current
         border-top 0 !important
-        font-size 1.4em
+        color TEXT !important
   & form, & .form
     & fieldset
       background-color transparent
