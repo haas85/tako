@@ -1,4 +1,7 @@
 THEME_GRADIENT = lighten(THEME, 30%)
+FOOTER_HEIGHT = HEADER_HEIGHT
+FOOTER_BACKGROUND = darken(SECONDARY, 20%)
+FOOTER_SELECTION_COLOR = #22b1de
 
 body[data-os="firefoxos"]
   background-image none
@@ -34,6 +37,11 @@ body[data-os="firefoxos"]
             background-color BACKGROUND !important
             box-shadow none !important
     & > section
+      &.centered
+        & > *:first-child
+          background-color lighten(BACKGROUND, 60%)
+          & > *, & form, & .form, & fieldset
+            background-color lighten(BACKGROUND, 60%)
       & form, & .form
         & legend
           color THEME
@@ -59,6 +67,23 @@ body[data-os="firefoxos"]
             background-color darken(BACKGROUND, 25%)
           &:last-child
             border-bottom none
+
+    & > footer
+      height FOOTER_HEIGHT
+      background-color FOOTER_BACKGROUND
+      & > *
+        height FOOTER_HEIGHT
+        background-color FOOTER_BACKGROUND
+        border none
+        & > *
+          height FOOTER_HEIGHT
+          background-color FOOTER_BACKGROUND
+          border none
+          &.current
+            height FOOTER_HEIGHT
+            background-color FOOTER_BACKGROUND
+            border none
+            color FOOTER_SELECTION_COLOR
 
   & button, & .button, & input[type="button"], & input[type="submit"], & input[type="reset"]
     border-radius 0 !important
