@@ -61,6 +61,12 @@ module.exports = (grunt) ->
         "stylesheets/theme/wp/media.styl"
       ],
 
+      theme_firefoxos: [
+        "stylesheets/theme/firefoxos/fonts.styl",
+        "stylesheets/theme/firefoxos/main.styl",
+        "stylesheets/theme/firefoxos/media.styl"
+      ],
+
       components: [
         "components/zepto/zepto.js",
         "components/zepto/detect.js",
@@ -102,6 +108,9 @@ module.exports = (grunt) ->
       theme_wp:
         options: compress: true, import: ['../constants', '../../constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css': '<%=source.theme_wp%>'
+      theme_firefoxos:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.firefoxos.css': '<%=source.theme_firefoxos%>'
 
     usebanner:
       components:
@@ -128,7 +137,8 @@ module.exports = (grunt) ->
           '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css',
           '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css',
           '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css',
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css'
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css',
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.firefoxos.css'
         ]
 
     watch:
@@ -150,6 +160,9 @@ module.exports = (grunt) ->
       theme_wp:
         files: ["<%= source.theme_wp %>"]
         tasks: ["stylus:theme_wp", "usebanner:theme"]
+      theme_firefoxos:
+        files: ["<%= source.theme_firefoxos %>"]
+        tasks: ["stylus:theme_firefoxos", "usebanner:theme"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"

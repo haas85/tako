@@ -134,7 +134,7 @@ window.Tako = window.tk = Tako = do ->
   _loaded = ->
     cb.call cb for cb in callbacks
     ready = true
-    # $("body").attr "data-os", "wp"
+    # $("body").attr "data-os", "firefoxos"
 
   _navigate = (action, target, query) ->
     if target?
