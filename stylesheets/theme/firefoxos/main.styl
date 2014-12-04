@@ -21,10 +21,13 @@ body[data-os="firefoxos"]
     & > nav
       background-color BACKGROUND
       color TEXT
-      & *
+      & > *
         background-color darken(BACKGROUND, 5%)
         color TEXT
-        border-bottom 1px solid darken(SECONDARY, 15%)
+        border-bottom 1px solid darken(BACKGROUND, 25%)
+        border-right 1px solid darken(BACKGROUND, 25%)
+        &:last-child
+          border-right none
 
         &:active, &:hover
           background-color darken(BACKGROUND, 10%) !important
@@ -84,6 +87,9 @@ body[data-os="firefoxos"]
             background-color FOOTER_BACKGROUND
             border none
             color FOOTER_SELECTION_COLOR
+
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    border-radius 0 !important
 
   & button, & .button, & input[type="button"], & input[type="submit"], & input[type="reset"]
     border-radius 0 !important
