@@ -24,6 +24,7 @@ window.Tako = window.tk = Tako = do ->
 
   init = (options={})->
     try
+      do _fallback
       settings = options
       Tako.logging.level = options.logging or false
       options.hashNavigation = false if not options.hashNavigation?
@@ -107,7 +108,6 @@ window.Tako = window.tk = Tako = do ->
         do Tako.Aside.toggle
         ), false
 
-    do _fallback
     do _articleListeners
     do _loaded
 

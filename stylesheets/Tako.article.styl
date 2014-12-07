@@ -36,7 +36,6 @@ article
       bottom 0
 
   & header
-    display-flexbox-horizontal()
     position relative
     flexbox-order(1)
     flexbox-weight(0)
@@ -53,16 +52,15 @@ article
     transition-duration SECTION_TRANSITION_TIME
 
     & > h1
-      flexbox-weight(1)
-      flexbox-order(1)
       font-weight bold
       font-size 1.5em
       display inline-block
+      position absolute
       text-align center
+      width 100%
       left 0
       margin-top 0
       z-index HEADER_H1_INDEX
-      // overflow-x scroll
 
       & > img
         width auto
@@ -72,17 +70,19 @@ article
     & > nav
       height HEADER_HEIGHT
       max-height HEADER_HEIGHT
-      flexbox-weight(0)
-
 
       &.right
-        flexbox-order(2)
+        position absolute
+        z-index HEADER_NAV_INDEX
+        right 0
 
         & > button
           margin-right 5px
 
       &.left
-        flexbox-order(0)
+        position absolute
+        z-index HEADER_NAV_INDEX
+        left 0
 
         & > button
           margin-left 5px

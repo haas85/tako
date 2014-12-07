@@ -49,6 +49,7 @@
         options = {};
       }
       try {
+        _fallback();
         settings = options;
         Tako.logging.level = options.logging || false;
         if (options.hashNavigation == null) {
@@ -177,7 +178,6 @@
           return Tako.Aside.toggle();
         }), false);
       }
-      _fallback();
       _articleListeners();
       return _loaded();
     };
