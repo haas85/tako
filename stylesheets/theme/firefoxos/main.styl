@@ -18,6 +18,21 @@ body[data-os="firefoxos"]
       background-image -o-linear-gradient(THEME_GRADIENT, THEME)
       background-image linear-gradient(THEME_GRADIENT, THEME)
 
+      & > nav
+        &.left
+          border-right 2px solid darken(THEME, 7%)
+        &.right
+          border-left 2px solid darken(THEME, 7%)
+        & button, & .button
+          border none
+          box-shadow none
+          background-image -webkit-linear-gradient(THEME_GRADIENT, THEME)
+          background-image -moz-linear-gradient(THEME_GRADIENT, THEME)
+          background-image -ms-linear-gradient(THEME_GRADIENT, THEME)
+          background-image -o-linear-gradient(THEME_GRADIENT, THEME)
+          background-image linear-gradient(THEME_GRADIENT, THEME)
+
+
     & > nav
       background-color BACKGROUND
       color TEXT
@@ -88,7 +103,10 @@ body[data-os="firefoxos"]
             border none
             color FOOTER_SELECTION_COLOR
 
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+  & div.pulltorefresh
+    background-color darken(BACKGROUND, 3%)
+
+  & input[type="text"], & input[type="password"], & input[type="date"], & input[type="datetime"], & input[type="email"], & input[type="number"], & input[type="search"], & input[type="tel"], & input[type="time"], & input[type="url"], & label > select, & textarea
     border-radius 0 !important
 
   & button, & .button, & input[type="button"], & input[type="submit"], & input[type="reset"]

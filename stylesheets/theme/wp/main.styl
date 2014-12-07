@@ -13,9 +13,11 @@ body[data-os="wp"]
   -moz-box-shadow none !important
   box-shadow none !important
   font 14px "tako_wp"
+  color TEXT
 
   & *
     font-family "tako_wp" !important
+    color TEXT
 
   & aside
     background-color lighten(BACKGROUND, 10%)
@@ -67,8 +69,6 @@ body[data-os="wp"]
       font-weight 300
       border none !important
       padding-left 10px
-      // flexbox-pack-start()
-      // vendor('align-items', flex-start)
       display -webkit-box
       display -moz-box
       display -ms-flexbox
@@ -213,11 +213,16 @@ body[data-os="wp"]
     background-color lighten(BACKGROUND, 10%) !important
     & *
       background-color lighten(BACKGROUND, 10%) !important
-      font-size 1.2em
+      font-size 1.1em
       color darken(TEXT, 20%) !important
       &.current
         border-top 0 !important
         color TEXT !important
+
+  & div.pulltorefresh
+    background-color lighten(BACKGROUND, 7%)
+    border-bottom 1px solid TEXT
+
   & form, & .form
     & fieldset
       background-color transparent
