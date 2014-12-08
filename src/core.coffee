@@ -5,17 +5,6 @@ window.Tako = window.tk = Tako = do ->
   settings = {}
   ready = false
 
-  touch_init = 0
-  _body = $(document.body)
-  _body.on "touchstart", (ev) ->
-    touch_init = ev.touches[0].clientY
-  _body.on "touchend", (ev) ->
-    touch_init = 0
-  _body.on "touchmove", (ev) ->
-    section = $(ev.srcElement).closest("section")
-    if ((section.scrollTop() is 0 or section.length is 0) and (ev.touches[0].clientY > touch_init))
-      ev.preventDefault()
-
   logging = {}
   Object.defineProperty logging, "LOG",   {get: -> 4}
   Object.defineProperty logging, "INFO",  {get: -> 3}

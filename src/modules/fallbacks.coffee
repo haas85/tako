@@ -31,6 +31,16 @@ _fallback = ->
 
   _ios = ->
     $("body").attr("data-os", "ios")
+    touch_init = 0
+    _body = $(document.body)
+    _body.on "touchstart", (ev) ->
+      touch_init = ev.touches[0].clientY
+    _body.on "touchend", (ev) ->
+      touch_init = 0
+    _body.on "touchmove", (ev) ->
+      section = $(ev.srcElement).closest("section")
+      if ((section.scrollTop() is 0 or section.length is 0) and (ev.touches[0].clientY > touch_init))
+        ev.preventDefault()
     # $(inputs).on "tap", ->
     #   $(@).focus()
     # $(inputs).on "focus", ->
