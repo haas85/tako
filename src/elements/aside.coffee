@@ -28,9 +28,6 @@ Tako.Aside = do (TK = Tako) ->
     hide = ->
       aside.removeClass "show"
       bck.addClass "hide"
-      setTimeout ( ->
-        bck.removeClass "show"
-      ), 150
 
     toggle = ->
       if TK.viewType() is "PHONE"
@@ -43,17 +40,23 @@ Tako.Aside = do (TK = Tako) ->
           do ev.stopPropagation
           do hide
       $(@).on "tap", (ev)->
-        do hide
-        do ev.preventDefault
-        do ev.stopPropagation
+        if _showing
+          do hide
+          do ev.preventDefault
+          do ev.stopPropagation
 
     bck.on "click tap", (ev)->
-      do ev.preventDefault
-      do ev.stopPropagation
-      do hide
+      if _showing
+        do ev.preventDefault
+        do ev.stopPropagation
+        do hide
 
-    aside.on "transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", (event) ->
-      _showing = aside[0].classList.contains("show")
+    TK.onReady ->
+      aside.on "transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", (event) ->
+        _showing = aside[0].classList.contains("show")
+      bck.on "transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", (event) ->
+        if not aside[0].classList.contains("show")
+          bck.removeClass "show"
 
 
     show    : show

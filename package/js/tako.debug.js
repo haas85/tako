@@ -359,10 +359,7 @@
       };
       hide = function() {
         aside.removeClass("show");
-        bck.addClass("hide");
-        return setTimeout((function() {
-          return bck.removeClass("show");
-        }), 150);
+        return bck.addClass("hide");
       };
       toggle = function() {
         if (TK.viewType() === "PHONE") {
@@ -382,18 +379,29 @@
           }
         });
         return $(this).on("tap", function(ev) {
-          hide();
-          ev.preventDefault();
-          return ev.stopPropagation();
+          if (_showing) {
+            hide();
+            ev.preventDefault();
+            return ev.stopPropagation();
+          }
         });
       });
       bck.on("click tap", function(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        return hide();
+        if (_showing) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return hide();
+        }
       });
-      aside.on("transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", function(event) {
-        return _showing = aside[0].classList.contains("show");
+      TK.onReady(function() {
+        aside.on("transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", function(event) {
+          return _showing = aside[0].classList.contains("show");
+        });
+        return bck.on("transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", function(event) {
+          if (!aside[0].classList.contains("show")) {
+            return bck.removeClass("show");
+          }
+        });
       });
       return {
         show: show,
