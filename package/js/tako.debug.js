@@ -2,7 +2,7 @@
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, height, width, _articleListeners, _createEvent, _fallback, _navigate, _style,
+  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, height, width, _articleListeners, _fallback, _navigate, _style,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -236,17 +236,6 @@
     };
   })();
 
-  _createEvent = function(title, data) {
-    var event;
-    if (window.CustomEvent) {
-      event = new CustomEvent(title, data);
-    } else {
-      event = document.createEvent('CustomEvent');
-      event.initCustomEvent(title, true, true, data);
-    }
-    return event;
-  };
-
   Tako.Article = (function(TK) {
     var current, goTo, _current;
     goTo = function(article_id, back) {
@@ -430,9 +419,7 @@
   });
 
   Tako.Section = (function(TK) {
-    var current, goTo, _loadEvent, _unloadEvent;
-    _loadEvent = _createEvent("load", null);
-    _unloadEvent = _createEvent("unload", null);
+    var current, goTo;
     goTo = function(section_id, back) {
       var modifier, new_article, new_section, _current_article, _current_section;
       if (back == null) {
@@ -463,8 +450,8 @@
       }
       _navigate = false;
       document.location.hash = "#" + new_article.id + "/" + section_id;
-      _current_section.dispatchEvent(_unloadEvent);
-      new_section.dispatchEvent(_loadEvent);
+      $(_current_section).trigger("unload");
+      $(new_section).trigger("load");
       Array.prototype.forEach.call(document.querySelectorAll(".current[data-section]"), function(el) {
         return el.classList.remove("current");
       });

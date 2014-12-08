@@ -1,6 +1,6 @@
 Tako.Section = do (TK = Tako) ->
-  _loadEvent = _createEvent "load", null
-  _unloadEvent = _createEvent "unload", null
+  # _loadEvent = _createEvent "load", null
+  # _unloadEvent = _createEvent "unload", null
 
   goTo = (section_id, back=false)->
     _current_section = current()
@@ -33,8 +33,10 @@ Tako.Section = do (TK = Tako) ->
     document.location.hash = "##{new_article.id}/#{section_id}"
 
     # TODO use custom events
-    _current_section.dispatchEvent _unloadEvent
-    new_section.dispatchEvent _loadEvent
+    # _current_section.dispatchEvent _unloadEvent
+    # new_section.dispatchEvent _loadEvent
+    $(_current_section).trigger "unload"
+    $(new_section).trigger "load"
 
 
     Array::forEach.call document.querySelectorAll(".current[data-section]"), (el) ->

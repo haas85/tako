@@ -1,11 +1,11 @@
-_createEvent = (title, data) ->
-  if window.CustomEvent
-    event = new CustomEvent title, data
-  else
-    event = document.createEvent 'CustomEvent'
-    event.initCustomEvent title, true, true, data
+# _createEvent = (title, data) ->
+#   if window.CustomEvent
+#     event = new CustomEvent title, data
+#   else
+#     event = document.createEvent 'CustomEvent'
+#     event.initCustomEvent title, true, true, data
 
-  event
+#   event
 
 Tako.Article = do (TK = Tako) ->
 
