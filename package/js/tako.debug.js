@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 07/12/2014
+/* TaKo v1.2.1 - 08/12/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -7,13 +7,25 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.Tako = window.tk = Tako = (function() {
-    var callbacks, init, logging, onReady, ready, remaining, settings, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+    var callbacks, init, logging, onReady, ready, remaining, settings, touch_init, viewType, _body, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
     remaining = 0;
     callbacks = [];
     settings = {};
     ready = false;
-    document.body.addEventListener("touchmove", function(ev) {
-      return ev.preventDefault();
+    touch_init = 0;
+    _body = $(document.body);
+    _body.on("touchstart", function(ev) {
+      return touch_init = ev.touches[0].clientY;
+    });
+    _body.on("touchend", function(ev) {
+      return touch_init = 0;
+    });
+    _body.on("touchmove", function(ev) {
+      var section;
+      section = $(ev.srcElement).closest("section");
+      if ((section.scrollTop() === 0 || section.length === 0) && (ev.touches[0].clientY > touch_init)) {
+        return ev.preventDefault();
+      }
     });
     logging = {};
     Object.defineProperty(logging, "LOG", {
