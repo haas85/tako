@@ -1,5 +1,5 @@
 body[data-os=android]
-  & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+  & [data-os=ios], & [data-os=firefoxos], & [data-os=wp], & [data-os=blackberry]
     display none
   & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
     display none
@@ -11,43 +11,49 @@ body[data-version="2.3"]
       -webkit-user-modify read-write-plaintext-only
 
 body[data-os=ios]
-  & [data-os=android], & [data-os=firefoxos], & [data-os=wp]
+  & [data-os=android], & [data-os=firefoxos], & [data-os=wp], & [data-os=blackberry]
     display none
   & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
     display none
 
 body[data-os=wp]
-  & [data-os=android], & [data-os=firefoxos], & [data-os=ios]
+  & [data-os=android], & [data-os=firefoxos], & [data-os=ios], & [data-os=blackberry]
     display none
   & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
     display none
 
 body[data-os=firefoxos]
-  & [data-os=android], & [data-os=ios], & [data-os=wp]
+  & [data-os=android], & [data-os=ios], & [data-os=wp], & [data-os=blackberry]
+    display none
+  & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
+    display none
+
+body[data-os=blackberry]
+  & [data-os=android], & [data-os=ios], & [data-os=wp], & [data-os=firefoxos]
     display none
   & [data-browser=chrome], & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
     display none
 
 body[data-browser=chrome]
-  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp], & [data-os=blackberry]
     display none
   & [data-browser=safari], & [data-browser=firefox], & [data-browser=ie]
     display none
 
 body[data-browser=safari]
-  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp], & [data-os=blackberry]
     display none
   & [data-browser=chrome], & [data-browser=firefox], & [data-browser=ie]
     display none
 
 body[data-browser=firefox]
-  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp], & [data-os=blackberry]
     display none
   & [data-browser=safari], & [data-browser=chrome], & [data-browser=ie]
     display none
 
 body[data-browser=ie]
-  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp]
+  & [data-os=android], & [data-os=ios], & [data-os=firefoxos], & [data-os=wp], & [data-os=blackberry]
     display none
   & [data-browser=safari], & [data-browser=chrome], & [data-browser=firefox]
     display none
