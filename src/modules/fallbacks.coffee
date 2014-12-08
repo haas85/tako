@@ -2,6 +2,19 @@ _fallback = ->
   inputs = """input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea"""
   section_inputs = """section input[type="text"], section input[type="password"], section input[type="date"], section input[type="datetime"], section input[type="email"], section input[type="number"], section input[type="search"], section input[type="tel"], section input[type="time"], section input[type="url"], section textarea"""
 
+  _preventScroll = ->
+    touch_init = 0
+    _body = $(document.body)
+    _body.on "touchstart", (ev) ->
+      touch_init = ev.touches[0].clientY
+    _body.on "touchend", (ev) ->
+      touch_init = 0
+    _body.on "touchmove", (ev) ->
+      section = $(ev.srcElement).closest("section")
+      if ((section.scrollTop() is 0 or section.length is 0) and (ev.touches[0].clientY > touch_init))
+        ev.preventDefault()
+
+
   _softKeyboard = (elem, offset=0) ->
     top = elem.getBoundingClientRect().top
     container = $(elem).parents(["section.active"])
@@ -31,16 +44,7 @@ _fallback = ->
 
   _ios = ->
     $("body").attr("data-os", "ios")
-    touch_init = 0
-    _body = $(document.body)
-    _body.on "touchstart", (ev) ->
-      touch_init = ev.touches[0].clientY
-    _body.on "touchend", (ev) ->
-      touch_init = 0
-    _body.on "touchmove", (ev) ->
-      section = $(ev.srcElement).closest("section")
-      if ((section.scrollTop() is 0 or section.length is 0) and (ev.touches[0].clientY > touch_init))
-        ev.preventDefault()
+    do _preventScroll
     # $(inputs).on "tap", ->
     #   $(@).focus()
     # $(inputs).on "focus", ->
@@ -52,6 +56,7 @@ _fallback = ->
 
   _wp = ->
     $("body").attr("data-os", "wp")
+    do _preventScroll
 
   _blackberry = ->
     $("body").attr("data-os", "blackberry")

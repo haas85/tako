@@ -557,9 +557,27 @@
   })();
 
   _fallback = function() {
-    var inputs, section_inputs, _android, _blackberry, _browser, _firefoxOs, _ios, _softKeyboard, _wp;
+    var inputs, section_inputs, _android, _blackberry, _browser, _firefoxOs, _ios, _preventScroll, _softKeyboard, _wp;
     inputs = "input[type=\"text\"], input[type=\"password\"], input[type=\"date\"], input[type=\"datetime\"], input[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"tel\"], input[type=\"time\"], input[type=\"url\"], textarea";
     section_inputs = "section input[type=\"text\"], section input[type=\"password\"], section input[type=\"date\"], section input[type=\"datetime\"], section input[type=\"email\"], section input[type=\"number\"], section input[type=\"search\"], section input[type=\"tel\"], section input[type=\"time\"], section input[type=\"url\"], section textarea";
+    _preventScroll = function() {
+      var touch_init, _body;
+      touch_init = 0;
+      _body = $(document.body);
+      _body.on("touchstart", function(ev) {
+        return touch_init = ev.touches[0].clientY;
+      });
+      _body.on("touchend", function(ev) {
+        return touch_init = 0;
+      });
+      return _body.on("touchmove", function(ev) {
+        var section;
+        section = $(ev.srcElement).closest("section");
+        if ((section.scrollTop() === 0 || section.length === 0) && (ev.touches[0].clientY > touch_init)) {
+          return ev.preventDefault();
+        }
+      });
+    };
     _softKeyboard = function(elem, offset) {
       var container, top;
       if (offset == null) {
@@ -599,26 +617,12 @@
       }
     };
     _ios = function() {
-      var touch_init, _body;
       $("body").attr("data-os", "ios");
-      touch_init = 0;
-      _body = $(document.body);
-      _body.on("touchstart", function(ev) {
-        return touch_init = ev.touches[0].clientY;
-      });
-      _body.on("touchend", function(ev) {
-        return touch_init = 0;
-      });
-      return _body.on("touchmove", function(ev) {
-        var section;
-        section = $(ev.srcElement).closest("section");
-        if ((section.scrollTop() === 0 || section.length === 0) && (ev.touches[0].clientY > touch_init)) {
-          return ev.preventDefault();
-        }
-      });
+      return _preventScroll();
     };
     _wp = function() {
-      return $("body").attr("data-os", "wp");
+      $("body").attr("data-os", "wp");
+      return _preventScroll();
     };
     _blackberry = function() {
       return $("body").attr("data-os", "blackberry");
