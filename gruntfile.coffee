@@ -131,13 +131,30 @@ module.exports = (grunt) ->
           '<%=meta.package%>/stylesheets/<%=meta.file%>.css'
         ]
 
-      theme:
+      theme_generic:
         options: position: "top", banner: "<%= meta.banner %>", linebreak: false
         files: src: [
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css',
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css',
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css',
-          '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css',
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css'
+        ]
+
+      theme_android:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css'
+        ]
+      theme_ios:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css'
+        ]
+      theme_wp:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css'
+        ]
+      theme_firefoxos:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
           '<%=meta.package%>/stylesheets/<%=meta.file%>.firefoxos.css'
         ]
 
@@ -150,19 +167,19 @@ module.exports = (grunt) ->
         tasks: ["stylus:core", "usebanner:css"]
       theme_generic:
         files: ["<%= source.theme_generic %>"]
-        tasks: ["stylus:theme_generic", "usebanner:theme"]
+        tasks: ["stylus:theme_generic", "usebanner:theme_generic"]
       theme_android:
         files: ["<%= source.theme_android %>"]
-        tasks: ["stylus:theme_android", "usebanner:theme"]
+        tasks: ["stylus:theme_android", "usebanner:theme_android"]
       theme_ios:
         files: ["<%= source.theme_ios %>"]
-        tasks: ["stylus:theme_ios", "usebanner:theme"]
+        tasks: ["stylus:theme_ios", "usebanner:theme_ios"]
       theme_wp:
         files: ["<%= source.theme_wp %>"]
-        tasks: ["stylus:theme_wp", "usebanner:theme"]
+        tasks: ["stylus:theme_wp", "usebanner:theme_wp"]
       theme_firefoxos:
         files: ["<%= source.theme_firefoxos %>"]
-        tasks: ["stylus:theme_firefoxos", "usebanner:theme"]
+        tasks: ["stylus:theme_firefoxos", "usebanner:theme_firefoxos"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"

@@ -9,6 +9,21 @@ div[data-element="notification"] > div > article.window
   &.error > header
     background-color lighten(FAIL, 15%)!important
 
+  & > header
+    background-color THEME_COLOR
+    color HEADER_TEXT
+
+    & .counter
+      background-color lighten(THEME, 30%)
+
+    & .button
+      border 1px solid darken(THEME, 30%)
+
+    & .counter
+      background-color darken(THEME, 10%)
+    & *
+      color HEADER_TEXT !important
+
 
 [data-element=notification] .loading .icon
   color THEME
