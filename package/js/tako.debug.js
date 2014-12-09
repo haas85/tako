@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 08/12/2014
+/* TaKo v1.2.1 - 09/12/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -41,17 +41,19 @@
       _doubletap = "doubletap";
     }
     init = function(options) {
-      var article, exception, _i, _len, _ref, _results;
+      var article, exception, key, _i, _len, _ref, _results;
       if (options == null) {
         options = {};
       }
       try {
         _fallback();
-        settings = options;
-        Tako.logging.level = options.logging || false;
-        if (options.hashNavigation == null) {
-          options.hashNavigation = false;
+        if (options.urlNavigation == null) {
+          options.urlNavigation = false;
         }
+        for (key in options) {
+          settings[key] = options[key];
+        }
+        Tako.logging.level = options.logging || false;
         if (options.articles != null) {
           remaining = options.articles.length;
           _ref = options.articles;
@@ -410,7 +412,8 @@
         hash = hash.replace("#", "");
         hash = hash.split("/");
         if (hash.length = 2) {
-          return Tako.Section(hash[1]);
+          Tako.Section(hash[1]);
+          return _navigate = true;
         }
       }
     } else {

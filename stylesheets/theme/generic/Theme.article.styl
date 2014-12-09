@@ -14,7 +14,7 @@ body
   & article
     & > header
       background-color THEME_COLOR
-      color SECONDARY_TEXT
+      color HEADER_TEXT
 
       & .counter
         background-color lighten(THEME, 30%)
@@ -24,6 +24,8 @@ body
 
       & .counter
         background-color darken(THEME, 10%)
+      & *
+        color HEADER_TEXT !important
 
     & > nav
       color SECONDARY_TEXT
@@ -78,7 +80,19 @@ body[data-os], body[data-browser]
       background-color lighten(SECONDARY, 30%)
 
     & > header
-      background-color SECONDARY
+      background-color THEME_COLOR
+      color HEADER_TEXT
+
+      & .counter
+        background-color lighten(THEME, 30%)
+
+      & .button
+        border 1px solid darken(THEME, 30%)
+
+      & .counter
+        background-color darken(THEME, 10%)
+      & *
+        color HEADER_TEXT !important
 
   & aside .current, & footer .current
     background-color SECONDARY_ACTIVE

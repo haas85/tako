@@ -22,9 +22,10 @@ window.Tako = window.tk = Tako = do ->
   init = (options={})->
     try
       do _fallback
-      settings = options
+      options.urlNavigation = false if not options.urlNavigation?
+      for key of options
+        settings[key] = options[key]
       Tako.logging.level = options.logging or false
-      options.hashNavigation = false if not options.hashNavigation?
       if options.articles?
         remaining = options.articles.length
         for article in options.articles

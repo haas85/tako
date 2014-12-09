@@ -7,5 +7,6 @@ $(window).on "hashchange", ->
       hash = hash.split "/"
       if hash.length = 2
         Tako.Section hash[1]
+        _navigate = true
   else
     _navigate = true
