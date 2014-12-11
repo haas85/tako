@@ -1,0 +1,55 @@
+body.noflat, body.no_flat
+  & .theme
+    background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image linear-gradient(lighten(THEME, 35%), THEME)
+
+  & article
+    & > header
+      background-image -webkit-linear-gradient(lighten(THEME, 20%), THEME)
+      background-image -moz-linear-gradient(lighten(THEME, 20%), THEME)
+      background-image -ms-linear-gradient(lighten(THEME, 20%), THEME)
+      background-image -o-linear-gradient(lighten(THEME, 20%), THEME)
+      background-image linear-gradient(lighten(THEME, 20%), THEME)
+
+  & button, .button, input[type=submit], input[type=reset], input[type=button]
+    background-image -webkit-linear-gradient(lighten(THEME, 20%), THEME)
+    background-image -moz-linear-gradient(lighten(THEME, 20%), THEME)
+    background-image -ms-linear-gradient(lighten(THEME, 20%), THEME)
+    background-image -o-linear-gradient(lighten(THEME, 20%), THEME)
+    background-image linear-gradient(lighten(THEME, 20%), THEME)
+
+  & .accept
+    background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+    background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+
+  & .cancel
+    background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)
+    background-image linear-gradient(lighten(FAIL, 15%), FAIL)
+
+  & div[data-element="notification"] > div > article.window
+    &.success > header
+      background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+      background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+      background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+      background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+      background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS)
+
+    &.error > header
+      background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL)
+      background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL)
+      background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL)
+      background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL)
+      background-image linear-gradient(lighten(FAIL, 15%), FAIL)
+  & .progress_bar
+    border-radius 5px
+    & > *
+      border-radius 5px

@@ -1,8 +1,8 @@
-button, .button
+button, .button, input[type=submit], input[type=reset], input[type=button]
   text-indent 0
   border 0
   display inline-block
-  font-weight bold
+  font-weight 300
   font-style normal
   line-height 2.50em
   text-decoration none
@@ -33,9 +33,16 @@ button, .button
 
       &+span
         font-size FONT_SIZE_SMALLEST
+    &.icon:empty
+      padding-top 7px
+      padding-bottom 6px
 
   &.small
     line-height 2.25em
+
+    &.icon:empty
+      padding-top 7px
+      padding-bottom 6px
 
     &>img
       height 1.55em
@@ -106,11 +113,11 @@ header
   :not(.button)
     padding-top 0
 
-  & button, &.button
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
     min-width HEADER_HEIGHT - 4
     text-indent 0
     display inline-block
-    font-weight bold
+    font-weight 300
     font-style normal
     text-decoration none
     text-align center
@@ -138,18 +145,18 @@ header
     & .counter
       position relative
       top -0.55em
-      margin-left 0.5em
-      margin-right 0.5em
+      margin-left 0.5em !important
+      margin-right 0.5em !important
       line-height 15px
       -webkit-border-radius 2px
       -moz-border-radius 2px
       border-radius 4px
-      padding 0.1em 0.2em 0.2em 0.3em
+      padding .1em .33em .2em .3em
       font-size FONT_SIZE_SMALLEST
 
     &>span.icon
       margin-right .4em
-      font-size 1em!important
+      font-size 1rem!important
 
     &>img
       position initial!important
@@ -164,9 +171,8 @@ header
 
   & button.button
     text-indent 0
-    border-radius(5px)
     display inline-block
-    font-weight bold
+    font-weight 300
     font-style normal
     line-height 35px
     text-decoration none
@@ -178,8 +184,8 @@ header
       margin-right 0.05em
 
 article > nav
-  & button, &.button
-    font-weight bold
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+    // font-weight bold
     font-style normal
     text-decoration none
     text-align center
@@ -187,11 +193,15 @@ article > nav
     background-image none
 
 footer
-
   & .icon:before
-    font-size 1.4em
+    font-size 1.4rem
 
-  & button
+  & .icon:empty
+    &:before
+      margin-right 0
+      font-size 1.8rem !important
+
+  & button, & .button, , & input[type=submit], & input[type=reset], & input[type=button]
     height inherit
     width 100%
     background-image none
@@ -208,7 +218,12 @@ footer
       font-size FONT_SIZE_SMALLEST
 
 section
-  & button, & .button
+  & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
     padding-top 2px
     padding-bottom 3px
     margin 5px 0
+
+body.noflat, body.no_flat
+  & section, & header
+    & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+      border-radius 5px

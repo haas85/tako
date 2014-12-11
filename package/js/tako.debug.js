@@ -1,13 +1,42 @@
+<<<<<<< HEAD
 /* TaKo v1.1.4 - 19/11/2014
+=======
+/* TaKo v1.2.1 - 11/12/2014
+>>>>>>> 1.2.1
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
-  var Select, Tako, _articleListeners, _fallback,
+  var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, height, width, _articleListeners, _fallback, _navigate, _style,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  window.Tako = Tako = (function() {
-    var callbacks, init, onReady, remaining, viewType, _doubletap, _loaded, _onError, _onReceive, _setNavigation, _setup, _tap;
+  window.Tako = window.tk = Tako = (function() {
+    var callbacks, init, logging, onReady, ready, remaining, settings, viewType, _doubletap, _loaded, _navigate, _onError, _onReceive, _setNavigation, _setup, _tap;
+    remaining = 0;
+    callbacks = [];
+    settings = {};
+    ready = false;
+    logging = {};
+    Object.defineProperty(logging, "LOG", {
+      get: function() {
+        return 4;
+      }
+    });
+    Object.defineProperty(logging, "INFO", {
+      get: function() {
+        return 3;
+      }
+    });
+    Object.defineProperty(logging, "WARN", {
+      get: function() {
+        return 2;
+      }
+    });
+    Object.defineProperty(logging, "ERROR", {
+      get: function() {
+        return 1;
+      }
+    });
     if ($.os.wp) {
       _tap = "click";
       _doubletap = "dblclick";
@@ -15,14 +44,20 @@
       _tap = "tap";
       _doubletap = "doubletap";
     }
-    remaining = 0;
-    callbacks = [];
     init = function(options) {
-      var article, exception, _i, _len, _ref, _results;
+      var article, exception, key, _i, _len, _ref, _results;
       if (options == null) {
         options = {};
       }
       try {
+        _fallback();
+        if (options.urlNavigation == null) {
+          options.urlNavigation = false;
+        }
+        for (key in options) {
+          settings[key] = options[key];
+        }
+        Tako.logging.level = options.logging || false;
         if (options.articles != null) {
           remaining = options.articles.length;
           _ref = options.articles;
@@ -47,7 +82,11 @@
       }
     };
     onReady = function(callback) {
-      return callbacks.push(callback);
+      if (!ready) {
+        return callbacks.push(callback);
+      } else {
+        return callback.call(callback);
+      }
     };
     viewType = function() {
       var height, width;
@@ -60,51 +99,108 @@
       }
     };
     _setup = function() {
-      var _current_art;
-      if ($("article.active").length === 0) {
-        $("article").first().addClass("active");
+      var element, hash, _current_art, _current_section, _i, _len, _ref;
+      hash = document.location.hash || "";
+      if (settings.urlNavigation && hash !== "" && hash !== "#") {
+        hash = hash.replace("#", "");
+        hash = hash.split("/");
       }
+<<<<<<< HEAD
       $("body").hammer();
       $("body > article > section.indented").each(function() {
         return $(this).append($(document.createElement("div")).append($(this).children()));
+=======
+      if (hash.length === 2) {
+        document.getElementById(hash[0]).classList.add("active");
+        document.getElementById(hash[1]).classList.add("active");
+      } else {
+        if (document.querySelectorAll("article.active").length === 0) {
+          $("article").first().addClass("active");
+        }
+      }
+      Array.prototype.forEach.call(document.querySelectorAll("section.iscroll, section.indented"), function(el) {
+        return el.appendChild($(document.createElement("div")).append($(el).children())[0]);
+>>>>>>> 1.2.1
       });
       $("article").each(function() {
-        if ($(this).children("section.active").length === 0) {
-          return $(this).children("section").first().addClass("active");
+        var el, _i, _len, _ref, _results;
+        if (this.getElementsByTagName("header").length !== 0) {
+          this.setAttribute("data-header", "");
+        }
+        if ($(this).children("nav").length !== 0) {
+          this.setAttribute("data-nav", "");
+        }
+        if (this.getElementsByTagName("footer").length !== 0) {
+          this.setAttribute("data-footer", "");
+        }
+        if (this.querySelector("section.active") == null) {
+          _ref = this.children;
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            el = _ref[_i];
+            if (el.nodeName === "SECTION") {
+              el.classList.add("active");
+              break;
+            } else {
+              _results.push(void 0);
+            }
+          }
+          return _results;
         }
       });
-      _current_art = $("article.active section.active")[0].id;
-      $("[data-visible=" + _current_art + "]").addClass("show");
-      $("[data-section=" + ($("article.active section.active").attr("id")) + "]").addClass("current");
-      $("[data-article=" + ($("article.active").attr("id")) + "]").addClass("current");
-      _setNavigation("data-article", Tako.Article);
-      _setNavigation("data-section", Tako.Section);
-      $("[data-action=aside]").each(function(element) {
-        return $(this).on(_tap, function(ev) {
+      _current_section = document.querySelector("article.active section.active");
+      _current_art = _current_section.parentElement.id;
+      if (_current_section.classList.contains("iscroll")) {
+        new IScroll(_current_section, {
+          probeType: 2,
+          mouseWheel: true,
+          scrollbars: false,
+          bounce: false,
+          click: false,
+          preventDefaultException: {
+            tagName: /.*/
+          }
+        });
+      } else {
+        _current_section.iscroll = "none";
+      }
+      _current_section = _current_section.id;
+      Array.prototype.forEach.call(document.querySelectorAll("[data-visible=" + _current_section + "]"), function(el) {
+        return el.classList.add("show");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-section=" + _current_section + "]"), function(el) {
+        return el.classList.add("current");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-article=" + _current_art + "]"), function(el) {
+        return el.classList.add("current");
+      });
+      _setNavigation("aside", "data-article", Tako.Article, "tap", true);
+      _setNavigation("aside", "data-section", Tako.Section, "tap", true);
+      _setNavigation("article", "data-article", Tako.Article, "click");
+      _setNavigation("article", "data-section", Tako.Section, "click");
+      _ref = document.querySelectorAll("[data-action=aside]");
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        element = _ref[_i];
+        element.addEventListener("tap", (function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return Tako.Aside.toggle();
-        });
-      });
-      _fallback();
+        }), false);
+      }
       _articleListeners();
       return _loaded();
     };
-    _setNavigation = function(query, action) {
-      return $("[" + query + "]").each(function(element) {
-        if (this.nodeName === "LI") {
-          $(this).children().each(function() {
-            return $(this).bind(_tap, function(ev) {
-              ev.preventDefault();
-              ev.stopPropagation();
-              return action($(this).parent().attr(query));
-            });
-          });
-        }
-        return $(this).bind(_tap, function(ev) {
+    _setNavigation = function(container, query, action, event, children) {
+      var total_query;
+      total_query = "" + container + " [" + query + "]";
+      if (children) {
+        total_query += ", " + container + " [" + query + "] *";
+      }
+      return $(total_query).each(function(element) {
+        return $(this).on(event, function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
-          return action($(ev.target).attr(query));
+          return _navigate(action, ev.target, query);
         });
       });
     };
@@ -123,20 +219,32 @@
       }
     };
     _loaded = function() {
-      var cb, _i, _len, _results;
-      _results = [];
+      var cb, _i, _len;
       for (_i = 0, _len = callbacks.length; _i < _len; _i++) {
         cb = callbacks[_i];
-        _results.push(cb.call(cb));
+        cb.call(cb);
       }
-      return _results;
+      return ready = true;
+    };
+    _navigate = function(action, target, query) {
+      var nav;
+      if (target != null) {
+        nav = target.attributes.getNamedItem(query);
+        if (nav != null) {
+          return action(nav.value);
+        } else {
+          return _navigate(action, target.parentElement, query);
+        }
+      }
     };
     return {
       init: init,
       onReady: onReady,
       viewType: viewType,
       tap: _tap,
-      double_tap: _doubletap
+      double_tap: _doubletap,
+      logging: logging,
+      settings: settings
     };
   })();
 
@@ -149,7 +257,7 @@
       }
       el = current();
       modifier = back ? "back-" : "";
-      if (el[0].id !== article_id) {
+      if (el.length !== 0 && el[0].id !== article_id) {
         width = el.offset().width;
         el.removeClass("active");
         el.attr("data-direction", "" + modifier + "out");
@@ -158,8 +266,12 @@
           el.addClass("asided").css("width", "" + width + "px");
           _current.addClass("asided").css("width", "" + width + "px");
         }
-        $(".current[data-article]").removeClass("current");
-        return $("[data-article=" + article_id + "]").addClass("current");
+        $(".current[data-article], .current[data-section]").removeClass("current");
+        $("[data-article=" + article_id + "]").addClass("current");
+        $("[data-section=" + (_current.children(".active")[0].id) + "]").addClass("current");
+        return true;
+      } else {
+        return false;
       }
     };
     current = function() {
@@ -198,10 +310,14 @@
 
   _articleListeners = function() {
     return $("article").on("animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd", function(event) {
+      var _navigate;
       if (event.target.nodeName.toUpperCase() === "ARTICLE") {
         if ((event.target.getAttribute("data-direction") === "in") || (event.target.getAttribute("data-direction") === "back-in")) {
           event.target.classList.add("active");
           $(event.target).trigger("load");
+          _navigate = false;
+          document.location.hash = "#" + (document.querySelector("article.active").id) + "/" + (document.querySelector("article.active section.active").id);
+          _navigate = true;
         } else {
           $(event.target).trigger("unload");
         }
@@ -215,10 +331,24 @@
   };
 
   Tako.Aside = (function(TK) {
-    var aside, bck, hide, show, toggle;
+    var aside, bck, header, hide, show, toggle, _showing;
     aside = $("aside");
+    _showing = false;
     if (aside.length > 0) {
       bck = null;
+      header = aside.children("header");
+      aside.append($(document.createElement("div")).append(aside.children()));
+      new IScroll(aside[0], {
+        probeType: 2,
+        mouseWheel: true,
+        scrollbars: false,
+        bounce: false,
+        click: false,
+        preventDefaultException: {
+          tagName: /.*/
+        }
+      });
+      aside.prepend(header);
       bck = $('<div data-element="aside_background"></div>');
       $("body").append(bck);
       if (aside.hasClass("full")) {
@@ -230,10 +360,7 @@
       };
       hide = function() {
         aside.removeClass("show");
-        bck.addClass("hide");
-        return setTimeout((function() {
-          return bck.removeClass("show");
-        }), 150);
+        return bck.addClass("hide");
       };
       toggle = function() {
         if (TK.viewType() === "PHONE") {
@@ -244,17 +371,38 @@
           }
         }
       };
-      $("aside *").each(function(element) {
-        return $(this).on(Tako.tap, function(ev) {
+      $("aside *").each(function(index) {
+        $(this).on("click tap", function(ev) {
+          if (_showing) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            return hide();
+          }
+        });
+        return $(this).on("tap", function(ev) {
+          if (_showing) {
+            hide();
+            ev.preventDefault();
+            return ev.stopPropagation();
+          }
+        });
+      });
+      bck.on("click tap", function(ev) {
+        if (_showing) {
           ev.preventDefault();
           ev.stopPropagation();
           return hide();
-        });
+        }
       });
-      bck.on(Tako.tap, function(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        return hide();
+      TK.onReady(function() {
+        aside.on("transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", function(event) {
+          return _showing = aside[0].classList.contains("show");
+        });
+        return bck.on("transitionend webkitTransitionEnd mozTransitionEnd otransitionend MSTransitionEnd", function(event) {
+          if (!aside[0].classList.contains("show")) {
+            return bck.removeClass("show");
+          }
+        });
       });
       return {
         show: show,
@@ -264,41 +412,76 @@
     }
   })(Tako);
 
+  _navigate = true;
+
+  $(window).on("hashchange", function() {
+    var hash;
+    if (_navigate && Tako.settings.urlNavigation) {
+      hash = document.location.hash || "";
+      if (hash !== "" && hash !== "#") {
+        hash = hash.replace("#", "");
+        hash = hash.split("/");
+        if (hash.length = 2) {
+          Tako.Section(hash[1]);
+          return _navigate = true;
+        }
+      }
+    } else {
+      return _navigate = true;
+    }
+  });
+
   Tako.Section = (function(TK) {
-    var current, goTo, _current;
+    var current, goTo;
     goTo = function(section_id, back) {
-      var modifier, new_article, new_section, _current, _current_article, _current_section;
+      var modifier, new_article, new_section, _current_article, _current_section;
       if (back == null) {
         back = false;
       }
       _current_section = current();
-      _current_article = _current_section.parent();
+      _current_article = _current_section.parentElement;
       modifier = back ? "back-" : "";
-      new_section = $("section#" + section_id);
-      new_article = new_section.parent();
-      if (_current_section[0].id !== new_section[0].id) {
-        new_article.children(".active").removeClass("active");
-        _current = new_section.addClass("active");
+      new_section = document.getElementById(section_id);
+      if ((new_section == null) && new_section.nodeName !== "SECTION") {
+        return false;
       }
-      if (_current_article[0].id !== new_article[0].id) {
-        Tako.Article(new_article[0].id, back);
+      new_article = new_section.parentElement;
+      if (_current_section.id !== new_section.id) {
+        new_article.querySelector("section.active").classList.remove("active");
+        new_section.classList.add("active");
       }
-      _current_section.trigger("unload");
-      new_section.trigger("load");
-      $(".current[data-section]").removeClass("current");
-      $("[data-section=" + section_id + "]").addClass("current");
-      $("[data-visible]").removeClass("show");
-      return $("[data-visible=" + section_id + "]").addClass("show");
+      if (_current_article.id !== new_article.id) {
+        Tako.Article(new_article.id, back);
+      }
+      if (!new_section.iscroll && new_section.classList.contains("iscroll")) {
+        Tako.iScroll(new_section);
+      } else {
+        new_section.iscroll = "none";
+      }
+      if (new_section.attributes.getNamedItem("data-scrolltop") != null) {
+        new_section.scrolltop = 0;
+      }
+      _navigate = false;
+      document.location.hash = "#" + new_article.id + "/" + section_id;
+      $(_current_section).trigger("unload");
+      $(new_section).trigger("load");
+      Array.prototype.forEach.call(document.querySelectorAll(".current[data-section]"), function(el) {
+        return el.classList.remove("current");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-section=" + section_id + "]"), function(el) {
+        return el.classList.add("current");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-visible]"), function(el) {
+        return el.classList.remove("show");
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-visible=" + section_id + "]"), function(el) {
+        return el.classList.add("show");
+      });
+      return true;
     };
     current = function() {
-      var _current;
-      if (typeof _current !== "undefined" && _current !== null) {
-        return _current;
-      } else {
-        return _current = $("article.active section.active");
-      }
+      return document.querySelector("article.active section.active");
     };
-    _current = null;
     return function(id, back) {
       if (id != null) {
         return goTo(id, back);
@@ -307,43 +490,6 @@
       }
     };
   })(Tako);
-
-  Tako.ProgressBar = function(container, value) {
-    var Progress;
-    Progress = (function() {
-      Progress.prototype.el = null;
-
-      Progress.prototype.fill = null;
-
-      function Progress(container, value) {
-        var PROGRESS;
-        this.value = value != null ? value : 0;
-        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
-        this.el = $(PROGRESS);
-        $("#" + container).append(this.el);
-        this.fill = this.el.children(".percent");
-      }
-
-      Progress.prototype.percent = function(value) {
-        if (value != null) {
-          if (value < 0 || value > 100) {
-            throw "Invalid value";
-          }
-          this.value = value;
-          this.fill.css("width", "" + this.value + "%");
-        }
-        return this.value;
-      };
-
-      Progress.prototype.remove = function() {
-        return this.el.remove();
-      };
-
-      return Progress;
-
-    })();
-    return new Progress(container, value);
-  };
 
   Tako.Connection = (function() {
     var _callbacks, _state, _stateChange;
@@ -424,9 +570,27 @@
   })();
 
   _fallback = function() {
-    var inputs, section_inputs, _android, _blackberry, _browser, _firefoxOs, _ios, _softKeyboard, _wp;
+    var inputs, section_inputs, _android, _blackberry, _browser, _firefoxOs, _ios, _preventScroll, _softKeyboard, _wp;
     inputs = "input[type=\"text\"], input[type=\"password\"], input[type=\"date\"], input[type=\"datetime\"], input[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"tel\"], input[type=\"time\"], input[type=\"url\"], textarea";
     section_inputs = "section input[type=\"text\"], section input[type=\"password\"], section input[type=\"date\"], section input[type=\"datetime\"], section input[type=\"email\"], section input[type=\"number\"], section input[type=\"search\"], section input[type=\"tel\"], section input[type=\"time\"], section input[type=\"url\"], section textarea";
+    _preventScroll = function() {
+      var touch_init, _body;
+      touch_init = 0;
+      _body = $(document.body);
+      _body.on("touchstart", function(ev) {
+        return touch_init = ev.touches[0].clientY;
+      });
+      _body.on("touchend", function(ev) {
+        return touch_init = 0;
+      });
+      return _body.on("touchmove", function(ev) {
+        var section;
+        section = $(ev.srcElement).closest("section");
+        if ((section.scrollTop() === 0 || section.length === 0) && (ev.touches[0].clientY > touch_init)) {
+          return ev.preventDefault();
+        }
+      });
+    };
     _softKeyboard = function(elem, offset) {
       var container, top;
       if (offset == null) {
@@ -466,10 +630,12 @@
       }
     };
     _ios = function() {
-      return $("body").attr("data-os", "ios");
+      $("body").attr("data-os", "ios");
+      return _preventScroll();
     };
     _wp = function() {
-      return $("body").attr("data-os", "wp");
+      $("body").attr("data-os", "wp");
+      return _preventScroll();
     };
     _blackberry = function() {
       return $("body").attr("data-os", "blackberry");
@@ -511,12 +677,66 @@
     }
   };
 
+  (function() {
+    var templates;
+    templates = {};
+    return Tako.File = function(path, refresh) {
+      if ((templates[path] != null) && !refresh) {
+        return templates[path];
+      }
+      return templates[path] = $.ajax({
+        type: "GET",
+        dataType: 'text',
+        crossDomain: true,
+        url: path,
+        async: false
+      }).responseText;
+    };
+  })();
+
+  Tako.iScroll = function(el) {
+    return new IScroll(el, {
+      probeType: 2,
+      mouseWheel: true,
+      scrollbars: false,
+      bounce: false,
+      click: false,
+      preventDefaultException: {
+        tagName: /.*/
+      }
+    });
+  };
+
+  Tako.log = function() {
+    if (Tako.logging.level >= 4) {
+      return console.log.apply(console, arguments);
+    }
+  };
+
+  Tako.info = function() {
+    if (Tako.logging.level >= 3) {
+      return console.info.apply(console, arguments);
+    }
+  };
+
+  Tako.warn = function() {
+    if (Tako.logging.level >= 2) {
+      return console.warn.apply(console, arguments);
+    }
+  };
+
+  Tako.error = function() {
+    if (Tako.logging.level >= 1) {
+      return console.error.apply(console, arguments);
+    }
+  };
+
   Tako.Notification = (function(TK) {
-    var active, callback, confirm, custom, error, hide, loading, notification, notification_window, progress, success, timeout, _close, _hide, _iconHtml, _ontap, _show;
+    var active, callback, confirm, custom, error, hide, loading, notification, notification_article, progress, success, timeout, _close, _hide, _iconHtml, _ontap, _show;
     active = false;
     notification = $("<div data-element=\"notification\"><div></div</div>");
-    notification_window = $("<article class=\"window\"></article>");
-    notification.find("div").append(notification_window);
+    notification_article = $("<article class=\"window\"></article>");
+    notification.find("div").append(notification_article);
     $("body").append(notification);
     timeout = null;
     callback = null;
@@ -591,15 +811,20 @@
       }
       html = "<section>\n  <span class=\"icon " + icon + "\"></span>\n  <div>\n    <span class=\"title\">" + title + "</span><br>\n    <span class=\"content padding bottom clear\">" + content + "</span>\n  </div>\n</section>\n<footer>\n  <button class=\"button accept\">" + accept + "</button>\n  <button class=\"button cancel\">" + cancel + "</button>\n</footer>";
       _show(html, "center confirm not_clickable", null, null);
-      buttons = notification_window.find("button");
-      return buttons.bind(Tako.tap, function(element) {
-        buttons.unbind(Tako.tap);
-        hide();
-        if ($(this).hasClass("accept")) {
-          return cb.call(cb, true);
-        } else {
-          return cb.call(cb, false);
-        }
+      buttons = notification_article.find("button");
+      window.but = buttons;
+      return buttons.each(function(index, element) {
+        return $(this).on(Tako.tap, (function(_this) {
+          return function(ev) {
+            $(_this).off(Tako.tap);
+            hide();
+            if ($(_this).hasClass("accept")) {
+              return cb.call(cb, true);
+            } else {
+              return cb.call(cb, false);
+            }
+          };
+        })(this));
       });
     };
     custom = function(title, content, closable, classes, timeout, cb) {
@@ -628,7 +853,7 @@
       active = false;
       clearTimeout(timeout);
       timeout = null;
-      notification_window.removeClass("show");
+      notification_article.removeClass("show");
       return setTimeout(_hide, 500);
     };
     _iconHtml = function(icon, title, content) {
@@ -638,19 +863,27 @@
       var original_cb;
       if (!active) {
         active = true;
-        notification_window.removeClass();
-        notification_window.addClass("window " + classes);
-        notification_window.html(html);
-        notification.addClass("show");
-        setTimeout((function() {
-          return notification_window.addClass("show");
-        }), 100);
+        notification_article.removeClass();
+        notification_article.addClass("window " + classes);
+        notification_article.html(html);
         if (cb != null) {
           callback = cb;
         }
         if (time_out != null) {
-          return timeout = setTimeout(hide, time_out * 1000);
+          timeout = setTimeout(hide, time_out * 1000);
         }
+        return setTimeout(((function(_this) {
+          return function() {
+            notification.addClass("show");
+            return setTimeout((function() {
+              var header, header_height;
+              header = notification_article.children("header");
+              header_height = header.length ? header.offset().height : 0;
+              notification_article.children("section").css("maxHeight", "" + ((screen.height * 0.73) - header_height) + "px");
+              return notification_article.addClass("show");
+            }), 100);
+          };
+        })(this)), 10);
       } else {
         original_cb = callback;
         callback = function() {
@@ -665,11 +898,11 @@
     _ontap = function(ev) {
       ev.preventDefault();
       ev.stopPropagation();
-      if (!notification_window.hasClass("not_clickable")) {
+      if (!notification_article.hasClass("not_clickable")) {
         active = false;
         clearTimeout(timeout);
         timeout = null;
-        notification_window.removeClass("show");
+        notification_article.removeClass("show");
         return setTimeout(_hide, 500);
       }
     };
@@ -679,7 +912,7 @@
       active = false;
       clearTimeout(timeout);
       timeout = null;
-      notification_window.removeClass("show");
+      notification_article.removeClass("show");
       return setTimeout(_hide, 500);
     };
     _hide = function() {
@@ -693,6 +926,9 @@
     };
     notification.on(Tako.tap, _ontap);
     return {
+      active: function() {
+        return active;
+      },
       success: success,
       error: error,
       confirm: confirm,
@@ -702,6 +938,43 @@
       hide: hide
     };
   })(Tako);
+
+  Tako.ProgressBar = function(container, value) {
+    var Progress;
+    Progress = (function() {
+      Progress.prototype.el = null;
+
+      Progress.prototype.fill = null;
+
+      function Progress(container, value) {
+        var PROGRESS;
+        this.value = value != null ? value : 0;
+        PROGRESS = "<span class=\"progress_bar\">\n  <span class=\"percent\" style=\"width:" + this.value + "%\"></span>\n</span>";
+        this.el = $(PROGRESS);
+        $("#" + container).append(this.el);
+        this.fill = this.el.children(".percent");
+      }
+
+      Progress.prototype.percent = function(value) {
+        if (value != null) {
+          if (value < 0 || value > 100) {
+            throw "Invalid value";
+          }
+          this.value = value;
+          this.fill.css("width", "" + this.value + "%");
+        }
+        return this.value;
+      };
+
+      Progress.prototype.remove = function() {
+        return this.el.remove();
+      };
+
+      return Progress;
+
+    })();
+    return new Progress(container, value);
+  };
 
   (function() {
     var lastTime, vendors, x;
@@ -744,7 +1017,7 @@
     container = document.getElementById(container);
     PullToRefresh = (function() {
       function PullToRefresh(container, options) {
-        var PULLREFRESH;
+        var PULLREFRESH, mc;
         this.options = options;
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
@@ -753,6 +1026,7 @@
         PULLREFRESH = "<div class=\"pulltorefresh\">\n<span class=\"icon down-big\"></span><span class=\"text\">" + this.options.pullLabel + "</span>\n</div>";
         this.breakpoint = 90;
         this.container = container;
+        this.refreshing = false;
         this.pullrefresh = $(PULLREFRESH)[0];
         $(this.container).prepend(this.pullrefresh);
         this.icon = $(this.pullrefresh).find(".icon");
@@ -761,7 +1035,13 @@
         this._anim = null;
         this._dragged_down = false;
         this.showRelease = false;
-        Hammer(this.container).on("touch", (function(_this) {
+        mc = new Hammer.Manager($(this.container)[0]);
+        mc.add(new Hammer.Pan({
+          threshold: 0,
+          pointers: 0
+        }));
+        mc.on("panmove", this.onPull);
+        $(this.container).on("touchstart", (function(_this) {
           return function() {
             $(_this.container).addClass("pulling");
             if (!_this.refreshing) {
@@ -769,8 +1049,7 @@
             }
           };
         })(this));
-        Hammer(this.container).on("dragdown", this.onPull);
-        Hammer(this.container).on("release", (function(_this) {
+        $(this.container).on("mouseup touchend", (function(_this) {
           return function() {
             if (_this.refreshing) {
               return;
@@ -797,8 +1076,8 @@
         if (!this._anim) {
           this.updateHeight();
         }
-        ev.gesture.preventDefault();
-        ev.gesture.stopPropagation();
+        ev.preventDefault();
+        ev.stopPropagation();
         if (this._slidedown_height >= this.breakpoint) {
           this.onArrived();
         } else {
@@ -806,7 +1085,9 @@
             this.onUp();
           }
         }
-        return this._slidedown_height = ev.gesture.deltaY * 0.4;
+        if (ev.deltaY > 0) {
+          return this._slidedown_height = ev.deltaY * 0.5;
+        }
       };
 
       PullToRefresh.prototype.setHeight = function(height) {
@@ -844,18 +1125,20 @@
         if (remove_pulling == null) {
           remove_pulling = true;
         }
-        if (remove_pulling) {
-          $(this.container).removeClass("pulling");
+        if (this._dragged_down) {
+          if (remove_pulling) {
+            $(this.container).removeClass("pulling");
+          }
+          this.icon[0].className = "icon down-big";
+          this.text.html(this.options.pullLabel);
+          this._slidedown_height = 0;
+          this.setHeight(0);
+          this.icon.removeClass("rotated");
+          cancelAnimationFrame(this._anim);
+          this._anim = null;
+          this._dragged_down = false;
+          return this.refreshing = false;
         }
-        this.icon[0].className = "icon down-big";
-        this.text.html(this.options.pullLabel);
-        this._slidedown_height = 0;
-        this.setHeight(0);
-        this.icon.removeClass("rotated");
-        cancelAnimationFrame(this._anim);
-        this._anim = null;
-        this._dragged_down = false;
-        return this.refreshing = false;
       };
 
       PullToRefresh.prototype.updateHeight = function() {
@@ -908,6 +1191,40 @@
     container.append(list);
     return $("article[data-selectbox]>div").append(container).parent().addClass("show");
   };
+
+  HEADER_HEIGHT = 50;
+
+  NAV_HEIGHT = 50;
+
+  FOOTER_HEIGHT = 50;
+
+  _style = document.createElement("style");
+
+  document.body.appendChild(_style);
+
+  generateStyle = function(heights) {
+    var orientation, _code, _i, _len, _ref;
+    _code = "";
+    _ref = ["portrait", "landscape"];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      orientation = _ref[_i];
+      _code += "@media screen and (orientation: " + orientation + ") {\n  article[data-header] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT) + "px;\n  }\n  article[data-nav] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT) + "px;\n  }\n  article[data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT) + "px;\n  }\n  article[data-header][data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-nav][data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n  article[data-header][data-nav][data-footer] > section.iscroll > div:not(.pulltorefresh){\n    min-height: " + (heights[orientation] - HEADER_HEIGHT - NAV_HEIGHT - FOOTER_HEIGHT) + "px;\n  }\n}";
+    }
+    return _style.innerHTML = _code;
+  };
+
+  if (window.innerHeight > window.innerWidth) {
+    height = window.innerHeight;
+    width = window.innerWidth;
+  } else {
+    height = window.innerWidth;
+    width = window.innerHeight;
+  }
+
+  generateStyle({
+    portrait: height,
+    landscape: width
+  });
 
   (function() {
     var _clear, _get, _remove, _set;

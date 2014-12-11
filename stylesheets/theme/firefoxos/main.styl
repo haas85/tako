@@ -1,0 +1,229 @@
+THEME_GRADIENT = lighten(THEME, 30%)
+FOOTER_HEIGHT = HEADER_HEIGHT
+FOOTER_BACKGROUND = darken(SECONDARY, 20%)
+FOOTER_SELECTION_COLOR = #22b1de
+
+body[data-os="firefoxos"]
+  background-image none
+  font 14px "tako_firefoxos"
+
+  & *
+    font-family "tako_firefoxos" !important
+
+  & article
+    & > header
+      background-image -webkit-linear-gradient(THEME_GRADIENT, THEME)
+      background-image -moz-linear-gradient(THEME_GRADIENT, THEME)
+      background-image -ms-linear-gradient(THEME_GRADIENT, THEME)
+      background-image -o-linear-gradient(THEME_GRADIENT, THEME)
+      background-image linear-gradient(THEME_GRADIENT, THEME)
+
+      & > nav
+        &.left
+          border-right 2px solid darken(THEME, 7%)
+        &.right
+          border-left 2px solid darken(THEME, 7%)
+        & button, & .button
+          border none
+          box-shadow none
+          background-image -webkit-linear-gradient(THEME_GRADIENT, THEME)
+          background-image -moz-linear-gradient(THEME_GRADIENT, THEME)
+          background-image -ms-linear-gradient(THEME_GRADIENT, THEME)
+          background-image -o-linear-gradient(THEME_GRADIENT, THEME)
+          background-image linear-gradient(THEME_GRADIENT, THEME)
+
+
+    & > nav
+      background-color BACKGROUND
+      color TEXT
+      & > *
+        background-color darken(BACKGROUND, 5%)
+        color TEXT
+        border-bottom 1px solid darken(BACKGROUND, 25%)
+        border-right 1px solid darken(BACKGROUND, 25%)
+        &:last-child
+          border-right none
+
+        &:active, &:hover
+          background-color darken(BACKGROUND, 10%) !important
+
+        &.current
+          background-color BACKGROUND !important
+          color TEXT !important
+          border-bottom none !important
+          &:active, &:hover
+            background-color BACKGROUND !important
+            box-shadow none !important
+    & > section
+      &.centered
+        & > *:first-child
+          background-color lighten(BACKGROUND, 60%)
+          & > *, & form, & .form, & fieldset
+            background-color lighten(BACKGROUND, 60%)
+      & form, & .form
+        & legend
+          color THEME
+          position relative
+          top -12px
+          border-bottom 1px solid THEME
+          border-radius 0
+
+        & fieldset
+          border none
+          border-top 1px solid THEME
+          border-radius 0
+          background-color BACKGROUND
+
+      & ol, & ul
+        border none
+        background-color BACKGROUND
+        & > li
+          background-color BACKGROUND
+          border-top none
+          border-bottom 1px solid darken(BACKGROUND, 35%)
+          &.separator
+            background-color darken(BACKGROUND, 25%)
+          &:last-child
+            border-bottom none
+
+    & > footer
+      height FOOTER_HEIGHT
+      background-color FOOTER_BACKGROUND
+      & > *
+        height FOOTER_HEIGHT
+        background-color FOOTER_BACKGROUND
+        border none
+        & > *
+          height FOOTER_HEIGHT
+          background-color FOOTER_BACKGROUND
+          border none
+          &.current
+            height FOOTER_HEIGHT
+            background-color FOOTER_BACKGROUND
+            border none
+            color FOOTER_SELECTION_COLOR
+
+  & div.pulltorefresh
+    background-color darken(BACKGROUND, 3%)
+
+  & input[type="text"], & input[type="password"], & input[type="date"], & input[type="datetime"], & input[type="email"], & input[type="number"], & input[type="search"], & input[type="tel"], & input[type="time"], & input[type="url"], & label > select, & textarea
+    border-radius 0 !important
+
+  & button, & .button, & input[type="button"], & input[type="submit"], & input[type="reset"]
+    border-radius 0 !important
+    background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image linear-gradient(lighten(THEME, 35%), THEME)
+
+  & .theme
+    background-image -webkit-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -moz-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -ms-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image -o-linear-gradient(lighten(THEME, 35%), THEME)
+    background-image linear-gradient(lighten(THEME, 35%), THEME)
+
+  & .accept
+    background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+    background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+    background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+    background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+    background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+
+  & .cancel
+    background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+    background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+    background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+    background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+    background-image linear-gradient(lighten(FAIL, 15%), FAIL) !important
+
+  & .blue
+    background-image -webkit-linear-gradient(lighten(BLUE, 35%), BLUE)!important !important
+    background-image -moz-linear-gradient(lighten(BLUE, 35%), BLUE)!important !important
+    background-image -ms-linear-gradient(lighten(BLUE, 35%), BLUE)!important !important
+    background-image -o-linear-gradient(lighten(BLUE, 35%), BLUE)!important !important
+    background-image linear-gradient(lighten(BLUE, 35%), BLUE)!important !important
+  & .red
+    background-image -webkit-linear-gradient(lighten(RED, 40%), RED)!important !important
+    background-image -moz-linear-gradient(lighten(RED, 40%), RED)!important !important
+    background-image -ms-linear-gradient(lighten(RED, 40%), RED)!important !important
+    background-image -o-linear-gradient(lighten(RED, 40%), RED)!important !important
+    background-image linear-gradient(lighten(RED, 40%), RED)!important !important
+  & .yellow
+    background-image -webkit-linear-gradient(lighten(YELLOW, 40%), YELLOW)!important !important
+    background-image -moz-linear-gradient(lighten(YELLOW, 40%), YELLOW)!important !important
+    background-image -ms-linear-gradient(lighten(YELLOW, 40%), YELLOW)!important !important
+    background-image -o-linear-gradient(lighten(YELLOW, 40%), YELLOW)!important !important
+    background-image linear-gradient(lighten(YELLOW, 40%), YELLOW)!important !important
+  & .black
+    background-image -webkit-linear-gradient(lighten(BLACK, 30%), BLACK)!important !important
+    background-image -moz-linear-gradient(lighten(BLACK, 30%), BLACK)!important !important
+    background-image -ms-linear-gradient(lighten(BLACK, 30%), BLACK)!important !important
+    background-image -o-linear-gradient(lighten(BLACK, 30%), BLACK)!important !important
+    background-image linear-gradient(lighten(BLACK, 30%), BLACK)!important !important
+  & .white
+    background-image -webkit-linear-gradient(WHITE, darken(WHITE, 5%))!important !important
+    background-image -moz-linear-gradient(WHITE, darken(WHITE, 5%))!important !important
+    background-image -ms-linear-gradient(WHITE, darken(WHITE, 5%))!important !important
+    background-image -o-linear-gradient(WHITE, darken(WHITE, 5%))!important !important
+    background-image linear-gradient(WHITE, darken(WHITE, 5%))!important !important
+  & .grey
+    background-image -webkit-linear-gradient(lighten(GREY, 30%), GREY)!important !important
+    background-image -moz-linear-gradient(lighten(GREY, 30%), GREY)!important !important
+    background-image -ms-linear-gradient(lighten(GREY, 30%), GREY)!important !important
+    background-image -o-linear-gradient(lighten(GREY, 30%), GREY)!important !important
+    background-image linear-gradient(lighten(GREY, 30%), GREY)!important !important
+  & .green
+    background-image -webkit-linear-gradient(lighten(GREEN, 15%), GREEN)!important !important
+    background-image -moz-linear-gradient(lighten(GREEN, 15%), GREEN)!important !important
+    background-image -ms-linear-gradient(lighten(GREEN, 15%), GREEN)!important !important
+    background-image -o-linear-gradient(lighten(GREEN, 15%), GREEN)!important !important
+    background-image linear-gradient(lighten(GREEN, 15%), GREEN)!important !important
+  & .pink
+    background-image -webkit-linear-gradient(lighten(PINK, 30%), PINK)!important !important
+    background-image -moz-linear-gradient(lighten(PINK, 30%), PINK)!important !important
+    background-image -ms-linear-gradient(lighten(PINK, 30%), PINK)!important !important
+    background-image -o-linear-gradient(lighten(PINK, 30%), PINK)!important !important
+    background-image linear-gradient(lighten(PINK, 30%), PINK)!important !important
+  & .purple
+    background-image -webkit-linear-gradient(lighten(PURPLE, 30%), PURPLE)!important !important
+    background-image -moz-linear-gradient(lighten(PURPLE, 30%), PURPLE)!important !important
+    background-image -ms-linear-gradient(lighten(PURPLE, 30%), PURPLE)!important !important
+    background-image -o-linear-gradient(lighten(PURPLE, 30%), PURPLE)!important !important
+    background-image linear-gradient(lighten(PURPLE, 30%), PURPLE)!important !important
+  & .brown
+    background-image -webkit-linear-gradient(lighten(BROWN, 15%), BROWN)!important !important
+    background-image -moz-linear-gradient(lighten(BROWN, 15%), BROWN)!important !important
+    background-image -ms-linear-gradient(lighten(BROWN, 15%), BROWN)!important !important
+    background-image -o-linear-gradient(lighten(BROWN, 15%), BROWN)!important !important
+    background-image linear-gradient(lighten(BROWN, 15%), BROWN)!important !important
+  & .orange
+    background-image -webkit-linear-gradient(lighten(ORANGE, 30%), ORANGE)!important !important
+    background-image -moz-linear-gradient(lighten(ORANGE, 30%), ORANGE)!important !important
+    background-image -ms-linear-gradient(lighten(ORANGE, 30%), ORANGE)!important !important
+    background-image -o-linear-gradient(lighten(ORANGE, 30%), ORANGE)!important !important
+    background-image linear-gradient(lighten(ORANGE, 30%), ORANGE)!important !important
+  & .firefox
+    background-image -webkit-linear-gradient(lighten(FIREFOX, 15%), FIREFOX)!important !important
+    background-image -moz-linear-gradient(lighten(FIREFOX, 15%), FIREFOX)!important !important
+    background-image -ms-linear-gradient(lighten(FIREFOX, 15%), FIREFOX)!important !important
+    background-image -o-linear-gradient(lighten(FIREFOX, 15%), FIREFOX)!important !important
+    background-image linear-gradient(lighten(FIREFOX, 15%), FIREFOX)!important !important
+
+  & div[data-element="notification"] > div > article.window
+    border-radius 0 !important
+    &.success > header
+      background-image -webkit-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+      background-image -moz-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+      background-image -ms-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+      background-image -o-linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+      background-image linear-gradient(lighten(SUCCESS, 15%), SUCCESS) !important
+
+    &.error > header
+      background-image -webkit-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+      background-image -moz-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+      background-image -ms-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+      background-image -o-linear-gradient(lighten(FAIL, 15%), FAIL) !important
+      background-image linear-gradient(lighten(FAIL, 15%), FAIL) !important
+

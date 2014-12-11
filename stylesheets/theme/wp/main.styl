@@ -1,0 +1,333 @@
+// Fix nav flexbox
+// Reduce header height
+// Forms without background
+
+BACKGROUND = #060606
+TEXT = #f4f4f4
+
+body[data-os="wp"]
+  background-image none !important
+  background-color BACKGROUND
+
+  -webkit-box-shadow none !important
+  -moz-box-shadow none !important
+  box-shadow none !important
+  font 14px "tako_wp"
+  color TEXT
+
+  & *
+    font-family "tako_wp" !important
+    color TEXT
+
+  & aside
+    background-color lighten(BACKGROUND, 10%)
+    box-shadow none
+    color TEXT
+
+    & header
+      background-color transparent
+    & *
+      box-shadow none
+      color TEXT
+      background-color transparent
+      &.current
+        background-color lighten(BACKGROUND, 18%)
+    & li
+      &:hover, &:active
+        background-color lighten(BACKGROUND, 18%)
+        box-shadow none
+
+  & article
+    & > header
+      background-color BACKGROUND !important
+      color TEXT !important
+      background-image none !important
+      font-weight 300
+      & > h1
+        width auto
+        margin-left 10px
+        font-size 1.3em
+        color TEXT
+      & > nav
+        float right
+        position static
+        & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+          background-color #252525
+          background-image none!important
+          color TEXT
+          border-radius 0 !important
+          border 0
+          box-shadow none
+          // border-bottom 1px solid THEME
+        & .counter
+          background-color transparent
+
+    & > nav
+      background-color BACKGROUND !important
+      color darken(TEXT, 20%)
+      background-image none !important
+      font-weight 300
+      border none !important
+      padding-left 10px
+      display -webkit-box
+      display -moz-box
+      display -ms-flexbox
+      display -webkit-flex
+      display flex
+      -webkit-box-direction normal
+      -moz-box-direction normal
+      -webkit-box-orient horizontal
+      -moz-box-orient horizontal
+      -webkit-flex-direction row
+      -ms-flex-direction row
+      flex-direction row
+      -webkit-flex-wrap nowrap
+      -ms-flex-wrap nowrap
+      flex-wrap nowrap
+      -webkit-box-pack start
+      -moz-box-pack start
+      -webkit-justify-content flex-start
+      -ms-flex-pack start
+      justify-content flex-start
+      -webkit-align-content stretch
+      -ms-flex-line-pack stretch
+      align-content stretch
+      & *
+        flexbox-weight(0)
+        color darken(TEXT, 20%) !important
+        border none !important
+        font-size 1.1em !important
+        text-align left
+        padding-left 4px
+        padding-right 10px
+        -webkit-box-ordinal-group 1
+        -moz-box-ordinal-group 1
+        font-size 1.4em !important
+        transition-duration 0ms
+        flexbox-order(9)
+        -webkit-align-self auto
+        -ms-flex-item-align auto
+        align-self auto
+        width auto
+        &:hover, &:active
+          background-color transparent !important
+          box-shadow none !important
+        &.current
+          background-color transparent !important
+          color TEXT !important
+          flexbox-order(0)
+          & + *
+            flexbox-order(1)
+            & + *
+              flexbox-order(2)
+              & + *
+                flexbox-order(3)
+                & + *
+                  flexbox-order(4)
+                  & + *
+                    flexbox-order(5)
+                    & + *
+                      flexbox-order(6)
+                      & + *
+                        flexbox-order(7)
+                        & + *
+                          flexbox-order(8)
+  & section
+    background-color BACKGROUND
+    &.centered
+      & > *:first-child
+        background-color transparent
+        color TEXT
+        border-color TEXT
+    & button, & .button, & input[type="button"], & input[type="submit"], & input[type="reset"]
+      background-image none !important
+      background-color transparent !important
+      border-radius 0 !important
+      border 2px solid TEXT
+      color TEXT
+      font-weight 300
+      padding-top 5px !important
+
+      &.accept
+        // color SUCCESS
+        border-color SUCCESS
+        background-color transparent !important
+      &.cancel
+        // color FAIL
+        border-color FAIL
+        background-color transparent !important
+      &.blue
+        // color BLUE
+        border-color BLUE
+        background-image none !important
+      &.red
+        // color RED
+        border-color RED
+        background-image none !important
+      &.yellow
+        // color YELLOW
+        border-color YELLOW
+        background-image none !important
+      &.black
+        // color BLACK
+        border-color BLACK
+        background-image none !important
+      &.white
+        // color WHITE
+        border-color WHITE
+        background-image none !important
+      &.grey
+        // color GREY
+        border-color GREY
+        background-image none !important
+      &.green
+        // color GREEN
+        border-color GREEN
+        background-image none !important
+      &.pink
+        // color PINK
+        border-color PINK
+        background-image none !important
+      &.purple
+        // color PURPLE
+        border-color PURPLE
+        background-image none !important
+      &.brown
+        // color BROWN
+        border-color BROWN
+        background-image none !important
+      &.orange
+        // color ORANGE
+        border-color ORANGE
+        background-image none !important
+      &.firefox
+        // color FIREFOX
+        border-color FIREFOX
+        background-image none !important
+      &.theme
+        // color THEME
+        border-color THEME
+        background-image none !important
+
+  & footer
+    background-color lighten(BACKGROUND, 10%) !important
+    & *
+      background-color lighten(BACKGROUND, 10%) !important
+      font-size 1.1em
+      color darken(TEXT, 20%) !important
+      &.current
+        border-top 0 !important
+        color TEXT !important
+
+  & div.pulltorefresh
+    background-color lighten(BACKGROUND, 7%)
+    border-bottom 1px solid TEXT
+
+  & form, & .form
+    & fieldset
+      background-color transparent
+      border none
+      & legend
+        background-color transparent
+        color TEXT
+  & label
+    color TEXT
+  & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    color TEXT !important
+    border-radius 0 !important
+  & ul, & ol
+    background-color transparent
+    border none
+    border-radius 0
+    & li
+      border none
+      border-radius 0
+      color TEXT
+      background-color transparent
+  & div[data-element="notification"]
+    & > div
+      display block
+    & article.window
+      top 0
+      border-radius 0 !important
+      background-color lighten(BACKGROUND, 15%)
+      max-width 100%
+      width 100%
+      transform rotateX(180deg)
+      &.show
+        transform rotateX(0deg)
+      & > header, & > section, & > footer
+        background-color lighten(BACKGROUND, 15%) !important
+        color TEXT
+      &.custom > header
+        & > h1 > span
+          position relative
+          top 3px
+          color TEXT
+      &.confirm
+        & span.title
+          font-size 1.5em
+        & > footer
+          background-image none !important
+          color THEME !important
+          & > button
+            background-color transparent !important
+            background-image none !important
+            font-weight normal !important
+            float right
+            border-radius 0 !important
+            border 2px solid TEXT
+            color TEXT
+            padding 2px !important
+            width 35%
+            margin-bottom 25px
+            margin-left 10%
+            &.accept
+              margin-right 10%
+            &:hover
+              background-color transparent
+              box-shadow(none !important)
+      &.success, &.error
+        & > header
+          height 70px !important
+          border-bottom 0
+      &.success
+        & > header
+          color SUCCESS !important
+          & > span
+            color SUCCESS !important
+      &.error
+        & > header
+          color FAIL !important
+          & > span
+            color FAIL !important
+
+  & .progress_bar
+    height 2px
+
+  & .blue
+    background-image none !important
+  & .red
+    background-image none !important
+  & .yellow
+    background-image none !important
+  & .black
+    background-image none !important
+  & .white
+    background-image none !important
+  & .grey
+    background-image none !important
+  & .green
+    background-image none !important
+  & .pink
+    background-image none !important
+  & .purple
+    background-image none !important
+  & .brown
+    background-image none !important
+  & .orange
+    background-image none !important
+  & .firefox
+    background-image none !important
+  & .theme
+    background-image none !important

@@ -1,0 +1,16 @@
+body:not([data-browser="ie"])
+  &:not([data-os="wp"])
+    & input[type="range"]:active
+      background-color lighten(THEME, 30%)
+
+
+body[data-browser="ie"], body[data-os="wp"]
+  & input.line
+    border solid LINE_COLOR
+    border-width 0
+    border-bottom-width 1px
+
+    &:focus, &:hover
+      border solid LINE_COLOR_FOCUS
+      border-width 0
+      border-bottom-width 1px

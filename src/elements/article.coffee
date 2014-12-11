@@ -1,9 +1,18 @@
+# _createEvent = (title, data) ->
+#   if window.CustomEvent
+#     event = new CustomEvent title, data
+#   else
+#     event = document.createEvent 'CustomEvent'
+#     event.initCustomEvent title, true, true, data
+
+#   event
+
 Tako.Article = do (TK = Tako) ->
 
   goTo = (article_id, back=false)->
     el = current()
     modifier = if back then "back-" else ""
-    if el[0].id isnt article_id
+    if el.length != 0 and el[0].id isnt article_id
       width = el.offset().width
       el.removeClass("active")
       el.attr "data-direction","#{modifier}out"
@@ -11,8 +20,12 @@ Tako.Article = do (TK = Tako) ->
       if Tako.viewType() is "TABLET/DESKTOP" and document.getElementsByTagName("aside").length isnt 0
         el.addClass("asided").css "width", "#{width}px"
         _current.addClass("asided").css "width", "#{width}px"
-      $(".current[data-article]").removeClass "current"
+      $(".current[data-article], .current[data-section]").removeClass "current"
       $("[data-article=#{article_id}]").addClass "current"
+      $("[data-section=#{_current.children(".active")[0].id}]").addClass "current"
+      return true
+    else
+      return false
 
   current = ->
     if _current? then _current else _current = $ "article.active"
@@ -20,8 +33,6 @@ Tako.Article = do (TK = Tako) ->
   _current = null
 
   (id, back) -> if id? then goTo id, back else current()
-
-
 
 Tako.Article.title = (html, article_id) ->
   unless article_id?
@@ -37,6 +48,9 @@ _articleListeners = ->
       if (event.target.getAttribute("data-direction") is "in") or (event.target.getAttribute("data-direction") is "back-in")
         event.target.classList.add "active"
         $(event.target).trigger "load"
+        _navigate = false
+        document.location.hash = "##{document.querySelector("article.active").id}/#{document.querySelector("article.active section.active").id}"
+        _navigate = true
       else
         $(event.target).trigger "unload"
       event.target.removeAttribute "data-direction"

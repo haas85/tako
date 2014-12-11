@@ -182,7 +182,7 @@ fieldset
     clear both
 
   & > legend
-    font-size 1.2em
+    font-size 1.2rem
     font-weight bold
     border none
     display block
@@ -263,10 +263,10 @@ form, .form
   & fieldset
     position relative
     background-color white
-    border-bottom 1px solid rgba(0, 0, 0, 0.1)
     padding 8px 10px 8px 10px
+    border-top 1px solid rgba(0, 0, 0, 0.1)
 
-    &:first-child
+    & + fieldset
       border-top 1px solid rgba(0, 0, 0, 0.1)
 
   &.indented > fieldset
@@ -327,6 +327,10 @@ article[data-selectbox]
       position relative
       top -10%
 
+body.noflat, body.no_flat
+  & fieldset, & legend
+    border-radius 5px
 
-
-
+  & input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    &:not(.line)
+      border-radius 5px

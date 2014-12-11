@@ -1,0 +1,191 @@
+body[data-os="android"]
+  background-image -webkit-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -moz-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -o-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image -ms-linear-gradient(top, THEME_COLOR 52px, BACKGROUND 0px, BACKGROUND 100%)
+  background-image linear-gradient(top, THEME_COLOR 52px,  BACKGROUND 0px, BACKGROUND 100%)
+
+  -webkit-box-shadow none !important
+  -moz-box-shadow none !important
+  box-shadow none !important
+  font 14px "tako_android"
+
+  & *
+    font-family "tako_android" !important
+
+  & header
+    background-color THEME_COLOR !important
+    color SECONDARY_TEXT !important
+    background-image none !important
+
+    & button, & .button
+      border none !important
+      box-shadow none !important
+  & section
+    & button, & .button
+      font-weight 300
+  & footer
+    background-color BACKGROUND !important
+    color lighten(TEXT, 25%) !important
+    border-top 2px solid darken(BACKGROUND, 15%) !important
+    height HEADER_HEIGHT
+
+    & *
+      height HEADER_HEIGHT
+      padding-bottom 0 !important
+      &.icon
+        &:empty
+          font-size 0.9em !important
+          margin-top 6px
+
+    & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+      background-color BACKGROUND
+      padding-bottom 15px
+      &:active, &:hover
+        background-color darken(BACKGROUND, 15%)
+      &.current
+        background-color BACKGROUND !important
+        border-top 4px solid THEME !important
+        padding-top 0
+        padding-bottom 20px
+
+    & > nav > *
+      border-right none
+
+    & button
+      &:active
+        box-shadow none !important
+
+    & *
+      color lighten(TEXT, 25%) !important
+
+  & aside
+    background-color BACKGROUND
+    color TEXT !important
+    box-shadow(none !important)
+
+    & .counter
+      background-color darken(BACKGROUND, 18%)
+
+    & .current
+      background-color darken(BACKGROUND, 10%)
+
+    & > header
+      background-color BACKGROUND
+    & ul
+      & > li
+        &:hover, &:active
+          background-color darken(BACKGROUND, 10%)
+
+  & article
+    border-radius 0 !important
+    & > nav
+      background-color BACKGROUND !important
+      color lighten(TEXT, 25%) !important
+      border-bottom 2px solid darken(BACKGROUND, 15%) !important
+
+      & > *
+        position relative
+        border-right none
+
+        &.current
+          background-color BACKGROUND !important
+          border-bottom 8px solid THEME
+          box-sizing(border-box)
+
+        &:after
+          position absolute
+          right 0
+          top 30%
+          height 30%
+          width 2px
+          background-color darken(BACKGROUND, 15%)
+
+        &:last-child
+          border-right none
+          &:after
+            background-color transparent
+      & button, & .button
+        &:active, &:hover
+          background-color darken(BACKGROUND, 15%)
+
+
+      & *
+        color lighten(TEXT, 25%) !important
+
+  & button
+    background-image none !important
+    border-radius 0 !important
+
+  & ul, ol
+    border-radius 0 !important
+    & > li
+      border-radius 0 !important
+      &:first-child
+        border-top 0
+      &:last-child
+        border-bottom 0
+
+  & div.pulltorefresh
+    background-color darken(BACKGROUND, 3%)
+
+  & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    border-radius 0 !important
+
+  & div[data-element="notification"]
+    & article.window
+      &.confirm
+        & span.title
+          font-size 1.5em
+        & > footer
+          background-color transparent !important
+          background-image none !important
+          color THEME !important
+          border none !important
+          & > button
+            background-color transparent !important
+            background-image none !important
+            width 35%
+            padding 7px
+            float right
+            &:hover
+              background-color transparent
+              box-shadow(none !important)
+            &.accept
+              color THEME !important
+            &.cancel
+              color TEXT !important
+      // &:not(.success), &:not(.error)
+      //   & > header
+      //     background-color transparent !important
+      //     background-image none !important
+      //     color TEXT !important
+
+      //     & > .close
+      //       color TEXT !important
+  & .blue
+    background-image none !important
+  & .red
+    background-image none !important
+  & .yellow
+    background-image none !important
+  & .black
+    background-image none !important
+  & .white
+    background-image none !important
+  & .grey
+    background-image none !important
+  & .green
+    background-image none !important
+  & .pink
+    background-image none !important
+  & .purple
+    background-image none !important
+  & .brown
+    background-image none !important
+  & .orange
+    background-image none !important
+  & .firefox
+    background-image none !important
+  & .theme
+    background-image none !important

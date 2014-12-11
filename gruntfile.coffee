@@ -37,16 +37,42 @@ module.exports = (grunt) ->
         # "stylesheets/Tako.icons.styl",
         # "stylesheets/Tako.medias.styl"
       ]
-      theme: [
-        "stylesheets/Tako.theme.styl"
+      theme_generic: [
+        "stylesheets/theme/generic/fonts.styl",
+        "stylesheets/theme/generic/tbase.styl",
+        "stylesheets/theme/generic/Theme.**.styl"
+      ],
+
+      theme_android: [
+        "stylesheets/theme/android/fonts.styl",
+        "stylesheets/theme/android/main.styl",
+        "stylesheets/theme/android/media.styl"
+      ],
+
+      theme_ios: [
+        "stylesheets/theme/ios/fonts.styl",
+        "stylesheets/theme/ios/main.styl",
+        "stylesheets/theme/ios/media.styl"
+      ],
+
+      theme_wp: [
+        "stylesheets/theme/wp/fonts.styl",
+        "stylesheets/theme/wp/main.styl",
+        "stylesheets/theme/wp/media.styl"
+      ],
+
+      theme_firefoxos: [
+        "stylesheets/theme/firefoxos/fonts.styl",
+        "stylesheets/theme/firefoxos/main.styl",
+        "stylesheets/theme/firefoxos/media.styl"
       ],
 
       components: [
         "components/zepto/zepto.js",
         "components/zepto/detect.js",
         "components/hammer/hammer.js",
-        "components/hammer/jquery.hammer.js",
-        "components/overthrow/overthrow.js",
+        "components/iscroll/iscroll.js",
+        "components/overwriter/overwriter.js",
         "components/webdb/webdb.js"
       ]
 
@@ -68,11 +94,23 @@ module.exports = (grunt) ->
 
     stylus:
       core:
-        options: compress: true, import: [ 'constants']
+        options: compress: true, import: ['constants']
         files: '<%=meta.package%>/stylesheets/<%=meta.file%>.css': '<%=source.stylus%>'
-      theme:
-        options: compress: true, import: [ 'constants']
-        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme%>'
+      theme_generic:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css': '<%=source.theme_generic%>'
+      theme_android:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css': '<%=source.theme_android%>'
+      theme_ios:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css': '<%=source.theme_ios%>'
+      theme_wp:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css': '<%=source.theme_wp%>'
+      theme_firefoxos:
+        options: compress: true, import: ['../constants', '../../constants']
+        files: '<%=meta.package%>/stylesheets/<%=meta.file%>.firefoxos.css': '<%=source.theme_firefoxos%>'
 
     usebanner:
       components:
@@ -93,10 +131,31 @@ module.exports = (grunt) ->
           '<%=meta.package%>/stylesheets/<%=meta.file%>.css'
         ]
 
-      theme:
+      theme_generic:
         options: position: "top", banner: "<%= meta.banner %>", linebreak: false
         files: src: [
           '<%=meta.package%>/stylesheets/<%=meta.file%>.theme.css'
+        ]
+
+      theme_android:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.android.css'
+        ]
+      theme_ios:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.ios.css'
+        ]
+      theme_wp:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.wp.css'
+        ]
+      theme_firefoxos:
+        options: position: "top", banner: "<%= meta.banner %>", linebreak: false
+        files: src: [
+          '<%=meta.package%>/stylesheets/<%=meta.file%>.firefoxos.css'
         ]
 
     watch:
@@ -106,9 +165,21 @@ module.exports = (grunt) ->
       stylus:
         files: ["<%= source.stylus %>"]
         tasks: ["stylus:core", "usebanner:css"]
-      theme:
-        files: ["<%= source.theme %>"]
-        tasks: ["stylus:theme", "usebanner:theme"]
+      theme_generic:
+        files: ["<%= source.theme_generic %>"]
+        tasks: ["stylus:theme_generic", "usebanner:theme_generic"]
+      theme_android:
+        files: ["<%= source.theme_android %>"]
+        tasks: ["stylus:theme_android", "usebanner:theme_android"]
+      theme_ios:
+        files: ["<%= source.theme_ios %>"]
+        tasks: ["stylus:theme_ios", "usebanner:theme_ios"]
+      theme_wp:
+        files: ["<%= source.theme_wp %>"]
+        tasks: ["stylus:theme_wp", "usebanner:theme_wp"]
+      theme_firefoxos:
+        files: ["<%= source.theme_firefoxos %>"]
+        tasks: ["stylus:theme_firefoxos", "usebanner:theme_firefoxos"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"

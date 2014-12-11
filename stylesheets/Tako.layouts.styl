@@ -72,7 +72,7 @@
   & > .ten_gap
     margin-left COLUMN * 10
 
-.grid
+.grid:not(.icon)
   width 100%
   display-flexbox()
 
@@ -114,7 +114,36 @@
 .box_9
   flexbox-weight(9)
 
+//Flex classes
+.flex-vertical
+  display-flexbox-vertical()
 
+.flex-horizontal
+  display-flexbox-horizontal()
+
+.flex-align-start
+  flexbox-align-start()
+
+.flex-align-center
+  flexbox-align-center()
+
+.flex-align-end
+  flexbox-align-end()
+
+.flex-align-stretch
+  flexbox-align-stretch()
+
+.flex-pack-start
+  flexbox-pack-start()
+
+.flex-pack-center
+  flexbox-pack-center()
+
+.flex-pack-end
+  flexbox-pack-end()
+
+.flex-pack-justify
+  flexbox-pack-justify()
 
 
 

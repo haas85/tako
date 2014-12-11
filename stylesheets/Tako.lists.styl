@@ -1,119 +1,157 @@
-section ul
-  list-style none
-  width 100%
-  padding 0
-  margin 0
+section
+  & ul, & ol
+    list-style none
+    width 100%
+    padding 0
+    margin 0
 
 
-  & > li
-    position relative
-    background-color white
-    border-bottom 1px solid rgba(0, 0, 0, 0.1)
-    padding .9em
+    & > li
+      position relative
+      background-color white
+      border-bottom 1px solid rgba(0, 0, 0, 0.1)
+      padding .9em
 
-    &.separator
-      background-color rgba(0, 0, 0, 0.1)
-      color white
-      padding 1px 10px 1px 10px
+      &.separator
+        background-color rgba(0, 0, 0, 0.1)
+        color white
+        padding 1px 10px 1px 10px
 
-    &.icon:before
-      display inline-block
-      float left
-      margin-right .3em
-      line-height 40px
-      width 40px
-      height 40px
-      font-size 3em
+      &.icon:before
+        display inline-block
+        float left
+        margin-right .3em
+        line-height 40px
+        width 40px
+        height 40px
+        font-size 3em
 
-    &:first-child
-      border-top 1px solid rgba(0, 0, 0, 0.1)
+      &.arrow
+        padding-right 40px
+        &:after
+          opacity 0.5
+          position absolute
+          top 0
+          bottom 0
+          right 0
+          line-height 60px
+          height 60px
+          width 40px
+          margin auto auto auto 0
+          font-family 'takoicons'
+          font-style normal
+          font-weight normal !important
+          font-size 1.8rem
+          speak none
+          display inline-block
+          text-decoration inherit
+          text-align center
+          font-variant normal
+          text-transform none
+          content '\e895'
+        &.strong
+          &:after
+            font-size 1.2rem
+            content '\e820'
 
-    & h1, h2, h3, h4, h5, h6, strong, small, .strong, .small
-      overflow hidden
-      white-space nowrap
-      display block
+        &.circled
+          &:after
+            font-size 1.5rem
+            content '\e82b'
 
-    & small
-      margin-top .2em
+      &:first-child
+        border-top 1px solid rgba(0, 0, 0, 0.1)
 
-    & .small:not(img)
-      margin-top .2em
-      opacity .6
-      font-size 1.1em!important
+      & h1, h2, h3, h4, h5, h6, strong, small, .strong, .small
+        overflow hidden
+        white-space nowrap
+        display block
 
-    & .strong
-      font-weight bold
-      font-size 1.1em
+      & small
+        margin-top .2em
+        word-wrap break-word
+        white-space -moz-pre-wrap
+        white-space pre-wrap
+
+      & .small:not(img)
+        margin-top .2em
+        opacity .6
+        font-size 1.1rem!important
+
+      & .strong
+        font-weight bold
+        font-size 1.1rem
+        word-wrap break-word
+        white-space -moz-pre-wrap
+        white-space pre-wrap
+
+      & > img
+        width LIST_IMAGE
+        height LIST_IMAGE
+        display inline
+        float left
+        margin-right .9em
+
+        &.big
+          width LIST_BIG_IMAGE
+          height LIST_BIG_IMAGE
+          margin-right .7em
+          margin-left -.75em
+          margin-top -.8em
+          margin-bottom -.9em
 
 
+        &.small
+          width LIST_SMALL_IMAGE
+          height LIST_SMALL_IMAGE
+          margin-right 1.1em
+          margin-top .4em
 
-    & > img
-      width LIST_IMAGE
-      height LIST_IMAGE
-      display inline
-      float left
-      margin-right .9em
+      & input
+        &[type="radio"], &[type="checkbox"]
+          &.onright
+            margin-top -0.1em
 
-      &.big
-        width LIST_BIG_IMAGE
-        height LIST_BIG_IMAGE
-        margin-right .7em
-        margin-left -.75em
-        margin-top -.8em
-        margin-bottom -.9em
+            &.switch
+              margin-top -0.4em
+      & .icon:before
+        display inline-block
+        float left
+        margin-right .4em
+        line-height 1em
+        width 24px
+        height 24px
+        font-size 1.4rem
 
+      & label:not(.select)
+        line-height 32px
+        height 32px
+        float left
+        margin-top 5px
 
-      &.small
-        width LIST_SMALL_IMAGE
-        height LIST_SMALL_IMAGE
-        margin-right 1.1em
-        margin-top .4em
+      & input, & select, & textarea, & label.select
+        float right
 
-    & input
-      &[type="radio"], &[type="checkbox"]
-        &.onright
-          margin-top -0.1em
+      &:after
+        display block
+        content ""
+        clear both
 
-          &.switch
-            margin-top -0.4em
-    & .icon:before
-      display inline-block
-      float left
-      margin-right .4em
-      line-height 1em
-      width 24px
-      height 24px
-      font-size 1.4em
+      & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea, & label.select
+        width 100%
 
-    & label:not(.select)
-      line-height 32px
-      height 32px
-      float left
-      margin-top 5px
+      & [type="range"]
+        width 100%
 
-    & input, & select, & textarea, & label.select
-      float right
+      & button, & .button
+        &.anchor
+          padding-left 0
+          padding-right 0
 
-    &:after
-      display block
-      content ""
-      clear both
+    &.indented > li
+      margin INDENT
 
-    & [type="text"], & [type="password"], & [type="date"], & [type="datetime"], & [type="email"], & [type="number"], & [type="search"], & [type="tel"], & [type="time"], & [type="url"], & select, & textarea, & label.select
-      width 100%
-
-    & [type="range"]
-      width 100%
-
-    & button, & .button
-      &.anchor
-        padding-left 0
-        padding-right 0
-
-  &.indented > li
-    margin INDENT
-
-aside ul
+aside ul, aside ol
   list-style none
   width 100%
   padding 0
@@ -122,7 +160,7 @@ aside ul
 
   & > li
     position relative
-    font-size 1.2em
+    font-size 1.2rem
     padding 11px 10px 11px 10px
     margin-bottom 2px
 
@@ -134,7 +172,7 @@ aside ul
         display inline-block
         margin-right .6em
         width 24px
-        font-size 1.6em
+        font-size 1.6rem
 
     & > img
       width LIST_IMAGE
@@ -171,3 +209,13 @@ aside ul
       background-color rgba(0, 0, 0, 0.1)
       color white
       padding 1px 10px 1px 10px
+
+body.noflat, body.no_flat
+  & section.indented div
+    & > ul li, & ol li
+      &:first-child
+        vendor('border-top-left-radius', 5px)
+        vendor('border-top-right-radius', 5px)
+      &:last-child
+        vendor('border-bottom-left-radius', 5px)
+        vendor('border-bottom-right-radius', 5px)

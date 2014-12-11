@@ -1,115 +1,55 @@
-/*! jQuery plugin for Hammer.JS - v1.0.0 - 2013-11-03
- * http://eightmedia.github.com/hammer.js
- *
- * Copyright (c) 2013 Jorik Tangelder <j.tangelder@gmail.com>;
- * Licensed under the MIT license */
+// (function(){
+//     var EVENTS = "tap,doubletap,press,";
+//     EVENTS += "pan,panstart,panmove,panend,pancancel,panleft,panright,panup,pandown,";
+//     EVENTS += "swipe,swipeleft,swiperight,swipeup,swipedown,";
+//     EVENTS += "pinch,pinchstart,pinchmove,pinchend,pinchcancel,pinchin,pinchout,";
+//     EVENTS += "rotate,rotatestart,rotatemove,rotateend,rotatecancel";
 
-(function(window, undefined) {
-  'use strict';
-
-function setup(Hammer, $) {
-  /**
-   * bind dom events
-   * this overwrites addEventListener
-   * @param   {HTMLElement}   element
-   * @param   {String}        eventTypes
-   * @param   {Function}      handler
-   */
-  Hammer.event.bindDom = function(element, eventTypes, handler) {
-    $(element).on(eventTypes, function(ev) {
-      var data = ev.originalEvent || ev;
-
-      if(data.pageX === undefined) {
-        data.pageX = ev.pageX;
-        data.pageY = ev.pageY;
-      }
-
-      if(!data.target) {
-        data.target = ev.target;
-      }
-
-      if(data.which === undefined) {
-        data.which = data.button;
-      }
-
-      if(!data.preventDefault) {
-        data.preventDefault = ev.preventDefault;
-      }
-
-      if(!data.stopPropagation) {
-        data.stopPropagation = ev.stopPropagation;
-      }
-
-      handler.call(this, data);
-    });
-  };
-
-  /**
-   * the methods are called by the instance, but with the jquery plugin
-   * we use the jquery event methods instead.
-   * @this    {Hammer.Instance}
-   * @return  {jQuery}
-   */
-  Hammer.Instance.prototype.on = function(types, handler) {
-    return $(this.element).on(types, handler);
-  };
-  Hammer.Instance.prototype.off = function(types, handler) {
-    return $(this.element).off(types, handler);
-  };
+//     $.fn.srcOn = $.fn.on;
+//     $.fn.srcOff = $.fn.off;
+//     $.fn.srcTrigger = $.fn.trigger;
 
 
-  /**
-   * trigger events
-   * this is called by the gestures to trigger an event like 'tap'
-   * @this    {Hammer.Instance}
-   * @param   {String}    gesture
-   * @param   {Object}    eventData
-   * @return  {jQuery}
-   */
-  Hammer.Instance.prototype.trigger = function(gesture, eventData) {
-    var el = $(this.element);
-    if(el.has(eventData.target).length) {
-      el = $(eventData.target);
-    }
 
-    return el.trigger({
-      type   : gesture,
-      gesture: eventData
-    });
-  };
+//   $.fn.off = function(event, selector, callback){
+//     var $this = this;
+//     if (event && !(typeof(event) == 'string')) {
+//       $.each(event, function(type, fn){
+//         $this.off(event, selector, callback);
+//       });
+//       return $this;
+//     }
 
+//     if (!(typeof(selector) == 'string') && !(typeof(callback) == "function") && callback !== false)
+//       callback = selector, selector = undefined
 
-  /**
-   * jQuery plugin
-   * create instance of Hammer and watch for gestures,
-   * and when called again you can change the options
-   * @param   {Object}    [options={}]
-   * @return  {jQuery}
-   */
-  $.fn.hammer = function(options) {
-    return this.each(function() {
-      var el = $(this);
-      var inst = el.data('hammer');
-      // start new hammer instance
-      if(!inst) {
-        el.data('hammer', new Hammer(this, options || {}));
-      }
-      // change the options
-      else if(inst && options) {
-        Hammer.utils.extend(inst.options, options);
-      }
-    });
-  };
-}
+//     if (callback === false) callback = function(){return false;};
 
-  // Based off Lo-Dash's excellent UMD wrapper (slightly modified) - https://github.com/bestiejs/lodash/blob/master/lodash.js#L5515-L5543
-  // some AMD build optimizers, like r.js, check for specific condition patterns like the following:
-  if(typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
-    // define as an anonymous module
-    define(['hammer', 'jquery'], setup);
+//     event.split(/\s/).forEach(function(ev){
+//       if(EVENTS.indexOf(ev) != -1){
+//         $this[0].hammer.off(ev, callback);
+//       }else{
+//           $this.srcOff(ev, selector, callback);
+//       }
+//     });
+//     return $this;
+//   };
 
-  }
-  else {
-    setup(window.Hammer, window.jQuery || window.Zepto);
-  }
-})(this);
+//   $.fn.trigger = function(event, args){
+//     if(args == null){args = {};};
+//     if(EVENTS.indexOf(event) != -1){
+//       this[0].hammer.emit(event, args);
+//     }else{
+//       this.srcTrigger(event, args);
+//     }
+//     return this;
+//   };
+
+//   $.fn.one = function(event, selector, data, callback, options){
+//     return this.on(event, selector, data, callback, 1, options)
+//   }
+
+//   $.fn.bind = function(event, data, callback, options){
+//     return this.on(event, data, callback, options)
+//   }
+// })();

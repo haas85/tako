@@ -1,0 +1,267 @@
+IOS_BACKGROUND = #ffffff
+body[data-os="ios"]
+  background-image -webkit-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image -moz-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image -o-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image -ms-linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px, IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+  background-image linear-gradient(top, darken(IOS_BACKGROUND, 5%) 52px,  IOS_BACKGROUND 0px, IOS_BACKGROUND 100%)
+
+  background-color IOS_BACKGROUND !important
+
+  -webkit-box-shadow none !important
+  -moz-box-shadow none !important
+  box-shadow none !important
+  font 14px "tako_ios"
+
+  & *
+    font-family "tako_ios" !important
+
+  & header
+    background-color darken(IOS_BACKGROUND, 5%) !important
+    color THEME !important
+    background-image none !important
+    border-bottom 2px solid darken(IOS_BACKGROUND, 20%)
+
+    & > h1
+      color TEXT !important
+
+    & *
+      color THEME !important
+
+    & *.counter
+      color THEME
+      background-color transparent !important
+      border 1px solid THEME
+      padding .2em .33em .1em .36em
+
+    & button
+      border none !important
+      box-shadow none !important
+  & footer
+    background-color IOS_BACKGROUND !important
+    color lighten(TEXT, 25%) !important
+    border-top 2px solid darken(IOS_BACKGROUND, 15%) !important
+    height HEADER_HEIGHT
+
+    & *
+      height HEADER_HEIGHT
+      font-weight 300
+      padding-bottom 0 !important
+      &.icon
+        &:empty
+          font-size 0.9em !important
+          margin-top 6px
+    & button, & .button, & input[type=submit], & input[type=reset], & input[type=button]
+      background-color IOS_BACKGROUND
+      padding-bottom 15px
+      &:active, &:hover
+        background-color IOS_BACKGROUND !important
+      &.current
+        background-color IOS_BACKGROUND !important
+        border-top 0 solid THEME !important
+        color THEME !important
+
+    & > nav > *
+      border-right none
+      font-weight 300
+
+    & button
+      &:active
+        box-shadow none !important
+
+    & *
+      color lighten(TEXT, 25%) !important
+  & section
+    background-color IOS_BACKGROUND !important
+    & button, & .button, & input[type="button"], & input[type="submit"], & input[type="reset"]
+      background-image none !important
+      background-color IOS_BACKGROUND !important
+      border-radius 4px !important
+      border 1px solid darken(IOS_BACKGROUND, 15%)
+      color THEME
+      font-weight 300
+      padding-top 5px !important
+
+      &.accept
+        color SUCCESS
+        background-color IOS_BACKGROUND !important
+      &.cancel
+        color FAIL
+        background-color IOS_BACKGROUND !important
+      &.blue
+        color BLUE
+      &.red
+        color RED
+      &.yellow
+        color YELLOW
+      &.black
+        color BLACK
+      &.white
+        color WHITE
+      &.grey
+        color GREY
+      &.green
+        color GREEN
+      &.pink
+        color PINK
+      &.purple
+        color PURPLE
+      &.brown
+        color BROWN
+      &.orange
+        color ORANGE
+      &.firefox
+        color FIREFOX
+      &.theme
+        color THEME
+
+  & div.pulltorefresh
+    background-color darken(IOS_BACKGROUND, 3%)
+
+  & aside
+    background-color IOS_BACKGROUND
+    color TEXT !important
+    box-shadow(none)
+
+    & .counter
+      background-color darken(IOS_BACKGROUND, 18%)
+
+    & .current
+      background-color darken(IOS_BACKGROUND, 10%)
+
+    & > header
+      background-color IOS_BACKGROUND
+    & ul
+      & > li
+        &:hover, &:active
+          background-color darken(IOS_BACKGROUND, 10%)
+
+  & article
+    & > nav
+      background-color IOS_BACKGROUND !important
+      color lighten(TEXT, 25%) !important
+      border-bottom 2px solid darken(IOS_BACKGROUND, 15%) !important
+
+      & > *
+        position relative
+        border-right none
+        font-weight 300
+
+        &.current
+          background-color IOS_BACKGROUND !important
+          border-bottom 0 solid THEME
+          color THEME !important
+          box-sizing(border-box)
+
+        &:last-child
+          &:after
+            background-color transparent
+      & button
+        &:active, &:hover
+          box-shadow none !important
+        &:hover
+          background-color darken(IOS_BACKGROUND, 10%)
+
+
+      & *
+        color lighten(TEXT, 35%) !important
+
+  & button
+    background-image none !important
+    border-radius 0
+
+  & ul, ol
+    border-radius 0 !important
+    & > li
+      border-radius 0 !important
+      &:first-child
+        border-top 0
+      &:last-child
+        border-bottom 0
+
+  & fieldset, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], label > select, textarea
+    border-radius 4px !important
+
+  & div[data-element="notification"]
+    & article.window
+      background-color darken(IOS_BACKGROUND, 5%) !important
+      border-radius 4px !important
+
+      & > header
+        & > span
+          color TEXT
+
+      & > section
+        background-color darken(IOS_BACKGROUND, 5%) !important
+      &.custom > header
+        & > h1 > span
+          position relative
+          top 3px
+          color TEXT
+        & > *
+          color THEME
+      &.confirm
+        & span.title
+          font-size 1.5em
+        & > footer
+          background-color darken(IOS_BACKGROUND, 5%) !important
+          background-image none !important
+          color THEME !important
+          border-top 1px solid darken(IOS_BACKGROUND, 15%) !important
+          & > button
+            background-color transparent !important
+            background-image none !important
+            padding 7px
+            color THEME !important
+            font-weight normal !important
+            float right
+            &:hover
+              background-color transparent
+              box-shadow(none !important)
+            &.accept
+              border-left 1px solid darken(IOS_BACKGROUND, 15%) !important
+      &.success, &.error
+        & > header
+          height 70px !important
+          background-color darken(IOS_BACKGROUND, 5%) !important
+          border-bottom 0
+      &.success
+        & > header
+          color SUCCESS !important
+          & > span
+            color SUCCESS !important
+      &.error
+        & > header
+          color FAIL !important
+          & > span
+            color FAIL !important
+
+  & .progress_bar
+    height 2px
+
+  & .blue
+    background-image none !important
+  & .red
+    background-image none !important
+  & .yellow
+    background-image none !important
+  & .black
+    background-image none !important
+  & .white
+    background-image none !important
+  & .grey
+    background-image none !important
+  & .green
+    background-image none !important
+  & .pink
+    background-image none !important
+  & .purple
+    background-image none !important
+  & .brown
+    background-image none !important
+  & .orange
+    background-image none !important
+  & .firefox
+    background-image none !important
+  & .theme
+    background-image none !important

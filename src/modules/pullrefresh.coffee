@@ -36,6 +36,7 @@ Tako.Pull_Refresh = (container, options={})->
 
       @breakpoint = 90
       @container = container
+      @refreshing = false
       @pullrefresh = $(PULLREFRESH)[0]
       $(@container).prepend @pullrefresh
       @icon = $(@pullrefresh).find ".icon"
@@ -44,12 +45,15 @@ Tako.Pull_Refresh = (container, options={})->
       @_anim = null
       @_dragged_down = false
       @showRelease = false
-      Hammer(@container).on "touch",  =>
+      mc = new Hammer.Manager $(@container)[0]
+      mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }))
+      mc.on "panmove", @onPull
+      $(@container).on "touchstart",  =>
         $(@container).addClass "pulling"
-        @hide(false) if not @refreshing
+        if not @refreshing
+          @hide(false)
 
-      Hammer(@container).on "dragdown", @onPull
-      Hammer(@container).on "release", =>
+      $(@container).on "mouseup touchend", =>
         return if @refreshing
         cancelAnimationFrame @_anim
         if @_slidedown_height >= @breakpoint
@@ -64,13 +68,14 @@ Tako.Pull_Refresh = (container, options={})->
       @_dragged_down = true
       return if @container.scrollTop > 5
       @updateHeight() unless @_anim
-      ev.gesture.preventDefault()
-      ev.gesture.stopPropagation()
+      do ev.preventDefault
+      do ev.stopPropagation
       if @_slidedown_height >= @breakpoint
         @onArrived()
       else
         @onUp() if @showRelease
-      @_slidedown_height = ev.gesture.deltaY * 0.4
+      if ev.deltaY  > 0
+        @_slidedown_height = ev.deltaY * 0.5
 
     setHeight: (height) =>
       height -= 511
@@ -100,16 +105,17 @@ Tako.Pull_Refresh = (container, options={})->
       @text.html @options.pullLabel
 
     hide: (remove_pulling=true)=>
-      $(@container).removeClass "pulling" if remove_pulling
-      @icon[0].className = "icon down-big"
-      @text.html @options.pullLabel
-      @_slidedown_height = 0
-      @setHeight 0
-      @icon.removeClass("rotated")
-      cancelAnimationFrame @_anim
-      @_anim = null
-      @_dragged_down = false
-      @refreshing = false
+      if @_dragged_down
+        $(@container).removeClass "pulling" if remove_pulling
+        @icon[0].className = "icon down-big"
+        @text.html @options.pullLabel
+        @_slidedown_height = 0
+        @setHeight 0
+        @icon.removeClass("rotated")
+        cancelAnimationFrame @_anim
+        @_anim = null
+        @_dragged_down = false
+        @refreshing = false
 
     updateHeight: =>
       height = @_slidedown_height - 511
