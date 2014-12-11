@@ -1,6 +1,6 @@
 HEADER_HEIGHT = 50
 NAV_HEIGHT    = 50
-FOOTER_HEIGHT = 65
+FOOTER_HEIGHT = 50
 _style = document.createElement "style"
 document.body.appendChild _style
 
