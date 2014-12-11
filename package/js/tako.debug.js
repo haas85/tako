@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-/* TaKo v1.1.4 - 19/11/2014
-=======
 /* TaKo v1.2.1 - 11/12/2014
->>>>>>> 1.2.1
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -105,11 +101,6 @@
         hash = hash.replace("#", "");
         hash = hash.split("/");
       }
-<<<<<<< HEAD
-      $("body").hammer();
-      $("body > article > section.indented").each(function() {
-        return $(this).append($(document.createElement("div")).append($(this).children()));
-=======
       if (hash.length === 2) {
         document.getElementById(hash[0]).classList.add("active");
         document.getElementById(hash[1]).classList.add("active");
@@ -120,7 +111,6 @@
       }
       Array.prototype.forEach.call(document.querySelectorAll("section.iscroll, section.indented"), function(el) {
         return el.appendChild($(document.createElement("div")).append($(el).children())[0]);
->>>>>>> 1.2.1
       });
       $("article").each(function() {
         var el, _i, _len, _ref, _results;

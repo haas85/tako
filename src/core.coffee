@@ -52,12 +52,6 @@ window.Tako = window.tk = Tako = do ->
     if (width > 768) and (width > height) then "TABLET/DESKTOP" else "PHONE"
 
   _setup = ->
-<<<<<<< HEAD
-    if $("article.active").length is 0 then $("article").first().addClass "active"
-    $("body").hammer()
-    $("body > article > section.indented").each ->
-      $(@).append $(document.createElement("div")).append($(@).children())
-=======
     hash = document.location.hash or ""
     if settings.urlNavigation and hash isnt "" and hash isnt "#"
       hash = hash.replace "#", ""
@@ -69,7 +63,6 @@ window.Tako = window.tk = Tako = do ->
       if document.querySelectorAll("article.active").length is 0 then $("article").first().addClass "active"
     Array::forEach.call document.querySelectorAll("section.iscroll, section.indented"), (el) ->
       el.appendChild $(document.createElement("div")).append($(el).children())[0]
->>>>>>> 1.2.1
     $("article").each ->
       if @getElementsByTagName("header").length isnt 0 then @.setAttribute "data-header", ""
       if $(@).children("nav").length isnt 0 then @.setAttribute "data-nav", ""
