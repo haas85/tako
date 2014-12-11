@@ -29,14 +29,18 @@
             <h1>Tako trial</h1>
         </header>
         <ul>
-            <li class="icon box" data-section="forms">Forms <span class="counter">125</span></li>
-            <li class="icon box" data-section="lists">Lists</li>
-            <li class="icon resize-full-alt" data-section="centered">Centered</li>
-            <li data-section="buttons"><img class="small" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Buttons</span></li>
-            <li data-section="layouts"><img src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Layouts</span></li>
-            <li data-section="notifications"><img class="big" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Notifications</span></li>
-            <li class="" data-section="colors">Colors</li>
-            <li class="" data-article="article_2">Asynchronous Article</li>
+            <li data-section="main" class="icon home">Main</li>
+            <li data-section="pullrefresh" class="icon download-cloud">Pull and refresh</li>
+            <li data-section="forms" class="icon check">Forms <span class="counter">125</span></li>
+            <li data-section="lists" class="icon list">Lists</li>
+            <li data-section="centered" class="icon resize-full-alt">Centered View</li>
+            <li data-section="buttons" class="icon up-hand">Buttons</li>
+            <li data-section="layouts" class="icon grid">Layouts</li>
+            <li data-section="views" class="icon eye">Views</li>
+            <li data-section="colors" class="icon pencil" >Colors</li>
+            <li data-section="notifications" class="icon bell">Notifications</li>
+            <li data-section="animations" class="icon move">Animations</li>
+            <li data-article="article_2"><img class="big" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><span>Asynchronous Article</span></li>
         </ul>
     </aside>
 
@@ -62,19 +66,104 @@
             <button data-section="lists" class="icon list">Lists</button>
           </nav>
         </footer>
-        <section id="main" class="" data-animation="slide">
-            <p>This is an example of pull and refresh</p>
-            <p data-device="phone">This is only seen in phone mode</p>
-            <p data-device="tablet">This is only seen in tablet mode</p>
-            <p data-os="android">This is only seen in android</p>
-            <p data-os="ios">This is only seen in ios</p>
-            <p data-os="firefoxos">This is only seen in firefoxos</p>
-            <p data-os="wp">This is only seen in windows phone</p>
-            <p data-browser="chrome">This is only seen in chrome</p>
-            <p data-browser="safari">This is only seen in safari</p>
-            <p data-browser="firefox">This is only seen in firefox</p>
-            <p data-browser="ie">This is only seen in Internet Explorer</p>
+
+
+        <section id="main" class="indented" data-animation="slide">
+            <h1 class="align-center">Tako is an opensource HTML5 framework designed to make easy creating awesome mobile apps.</h1>
+            <h3 class="align-center" style="font-weight: 300;">Do you want to create a web app? The existing frameworks doesn't fit to your needs? Or are they expensive? If you ever have experienced this, <strong>Tako</strong> is your solution.</h3>
         </section>
+
+        <section id="pullrefresh" class="" data-animation="slide">
+            <p class="wide align-center">This is an example of pull and refresh, pan down to try it</p>
+        </section>
+
+        <section id="forms" class="indented" data-animation="slide">
+            <form>
+                <fieldset>
+                    <legend>Text</legend>
+                    <label for="input">Default</label>
+                    <label class="input" for="input"><input type="text" id="input"></label>
+                    <label for="line">Line</label>
+                    <label class="input" for="line"><input type="text" id="line" class="line"></label>
+                    <label for="background">No back</label>
+                    <label class="input" for="background"><input type="text" id="background" class="no_background"></label>
+                    <label for="border">No border</label>
+                    <label class="input" for="border"><input type="text" id="border" class="no_border"></label>
+                    <label for="">Textarea</label>
+                    <textarea placeholder="The textarea can have the input texts' styles"></textarea>
+                    <label for="input">Default</label>
+                    <input type="text" id="input">
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Checkboxes & Radiobuttons</legend>
+                    <label for="square">Square</label>
+                    <input type="checkbox" id="square" class="square">
+                    <input type="radio" id="square_r" name="radio" class="square">
+                    <div class="clear"></div>
+                    <label for="circle">Circle</label>
+                    <input type="checkbox" id="circle" class="circle">
+                    <input type="radio" id="circle_r" name="radio" class="circle">
+                    <div class="clear"></div>
+                    <label for="switch">Switch</label>
+                    <input type="checkbox" id="switch" class="switch">
+                    <input type="radio" id="switch_r" name="radio" class="switch">
+                    <div class="clear"></div>
+                    <label for="switch_c">Circle Switch</label>
+                    <input type="checkbox" id="switch_c" class="switch circle">
+                    <input type="radio" id="switch_c_r" name="radio" class="switch circle">
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Others</legend>
+                    <label for="select_box">Select</label>
+                    <select name="" id="select_box">
+                        <option value="elem1">Elem1</option>
+                        <option value="elem2">Elem2</option>
+                        <option value="elem3">Elem3</option>
+                        <option value="elem4">Elem4</option>
+                        <option value="elem5">Elem5</option>
+                    </select>
+                    <label for="select_box.select">Select.select</label>
+                    <label class="select">
+                        <select name="" id="select_box.select">
+                            <option value="elem1">Elem1</option>
+                            <option value="elem2">Elem2</option>
+                            <option value="elem3">Elem3</option>
+                            <option value="elem4">Elem4</option>
+                            <option value="elem5">Elem5</option>
+                        </select>
+                    </label>
+                    <br>
+                    <label for="range">Range</label>
+                    <input type="range" id="range">
+                </fieldset>
+            </form>
+        </section>
+
+        <section id="lists" class="indented">
+            <ul>
+                <li class="separator" style="color:black;">Basic List</li>
+                <li>A li without nothing</li>
+                <li><strong>A li with a strong child</strong></li>
+                <li><small>A li with a small child</small></li>
+                <li><strong>A list with a strong child</strong><small>And a small one</small></li>
+                <li class="separator" style="color:black;">Icon List</li>
+                <!-- <li class="icon box">A li without nothing</li>
+                <li class="icon box"><strong>A li with a strong child</strong></li>
+                <li class="icon box"><small>A li with a small child</small></li> -->
+                <li class="icon box"><strong>A li</strong><small>with icon</small></li>
+                <li class="separator" style="color:black;">Right Arrow</li>
+                <li class="arrow">Simple arrow</li>
+                <li class="arrow strong">Strong arrow</li>
+                <li class="arrow circled">Circled arrow</li>
+                <li class="separator" style="color:black;">Image List</li>
+                <li class=""><img class="small" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><strong>Image</strong><small>with small class</small></li>
+                <li class=""><img src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><strong>Image</strong><small>without class</small></li>
+                <li><img class="big" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><strong>Image</strong><small>with big class</small></li>
+            </ul>
+        </section>
+
         <section id="centered" class="centered" data-animation="slide">
             <div>
                 <p>This is an example of centered screen</p>
@@ -89,6 +178,7 @@
                 </div>
             </div>
         </section>
+
         <section id="buttons" class="indented" data-animation="slide" data-scrolltop>
             <p>
                 <button class="wide">Wide</button>
@@ -164,83 +254,7 @@
                 <button class="button biggest" style="background-color:black;background-image:none;"><img src="http://www.takojs.com/assets/img/tako-logo.png" alt=""></button>
             </p>
         </section>
-        <section id="forms" class="indented" data-animation="slide">
-            <form>
-                <fieldset>
-                    <legend>Text</legend>
-                    <label for="input">Default</label>
-                    <label class="input" for="input"><input type="text" id="input"></label>
-                    <label for="line">Line</label>
-                    <label class="input" for="line"><input type="text" id="line" class="line"></label>
-                    <label for="background">No back</label>
-                    <label class="input" for="background"><input type="text" id="background" class="no_background"></label>
-                    <label for="border">No border</label>
-                    <label class="input" for="border"><input type="text" id="border" class="no_border"></label>
-                    <label for="">Textarea</label>
-                    <textarea placeholder="The textarea can have the input texts' styles"></textarea>
-                    <label for="input">Default</label>
-                    <input type="text" id="input">
-                </fieldset>
-                <br>
-                <fieldset>
-                    <legend>Checkboxes & Radiobuttons</legend>
-                    <label for="square">Square</label>
-                    <input type="checkbox" id="square" class="square">
-                    <input type="radio" id="square_r" name="radio" class="square">
-                    <div class="clear"></div>
-                    <label for="circle">Circle</label>
-                    <input type="checkbox" id="circle" class="circle">
-                    <input type="radio" id="circle_r" name="radio" class="circle">
-                    <div class="clear"></div>
-                    <label for="switch">Switch</label>
-                    <input type="checkbox" id="switch" class="switch">
-                    <input type="radio" id="switch_r" name="radio" class="switch">
-                    <div class="clear"></div>
-                    <label for="switch_c">Circle Switch</label>
-                    <input type="checkbox" id="switch_c" class="switch circle">
-                    <input type="radio" id="switch_c_r" name="radio" class="switch circle">
-                </fieldset>
-                <br>
-                <fieldset>
-                    <legend>Others</legend>
-                    <label for="select_box">Select</label>
-                    <select name="" id="select_box">
-                        <option value="elem1">Elem1</option>
-                        <option value="elem2">Elem2</option>
-                        <option value="elem3">Elem3</option>
-                        <option value="elem4">Elem4</option>
-                        <option value="elem5">Elem5</option>
-                    </select>
-                    <label for="select_box.select">Select.select</label>
-                    <label class="select">
-                        <select name="" id="select_box.select">
-                            <option value="elem1">Elem1</option>
-                            <option value="elem2">Elem2</option>
-                            <option value="elem3">Elem3</option>
-                            <option value="elem4">Elem4</option>
-                            <option value="elem5">Elem5</option>
-                        </select>
-                    </label>
-                    <br>
-                    <label for="range">Range</label>
-                    <input type="range" id="range">
-                </fieldset>
-            </form>
-        </section>
-        <section id="lists" class="indented">
-            <ul>
-                <li class="icon box arrow"><strong>Elem 1</strong><small>small elem</small></li>
-                <li class="arrow strong"><img class="small" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><strong>Elem 1</strong><small>small elem</small></li>
-                <li class="arrow circled"><img src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><strong>Elem 1</strong><small>small elem</small></li>
-                <li><img class="big" src="http://www.takojs.com/assets/img/tako-logo.png" alt=""><strong>Elem 1</strong><small>small elem</small></li>
-                <li><strong>Elem 1</strong><small>small elem</small></li>
-                <li><strong>Elem 1</strong><small>small elem</small></li>
-                <li><strong>Elem 2</strong></li>
-                <li class="separator">Elem3</li>
-                <li>Elem 4</li>
-                <li>Elem 5</li>
-            </ul>
-        </section>
+
         <section id="layouts" class="big indented">
             <p>Columns per line</p>
             <div class="line">
@@ -270,14 +284,21 @@
                 <div class="theme">none</div>
             </div>
         </section>
-        <section id="notifications" class="indented">
-            <button class="wide accept" id="show_success">Success</button>
-            <button class="wide cancel" id="show_error">Error</button>
-            <button class="wide" id="show_confirm">Confirm</button>
-            <button class="wide" id="show_custom">Custom</button>
-            <button class="wide grey" id="show_loading">Loading</button>
-            <button class="wide" id="show_progress">Progress</button>
+
+        <section id="views" class="indented" data-animation="slide">
+            <h3 class="wide align-center">This section shows how elements can be set to be shown only on some browsers/devices</h3>
+            <p class="wide align-center" data-device="phone">This is only seen in phone mode</p>
+            <p class="wide align-center" data-device="tablet">This is only seen in tablet mode</p>
+            <p class="wide align-center" data-os="android">This is only seen in android</p>
+            <p class="wide align-center" data-os="ios">This is only seen in ios</p>
+            <p class="wide align-center" data-os="firefoxos">This is only seen in firefoxos</p>
+            <p class="wide align-center" data-os="wp">This is only seen in windows phone</p>
+            <p class="wide align-center" data-browser="chrome">This is only seen in chrome</p>
+            <p class="wide align-center" data-browser="safari">This is only seen in safari</p>
+            <p class="wide align-center" data-browser="firefox">This is only seen in firefox</p>
+            <p class="wide align-center" data-browser="ie">This is only seen in Internet Explorer</p>
         </section>
+
         <section id="colors">
             <p class="align-center blue" style="padding: 10px">blue</p>
             <p class="align-center red" style="padding: 10px">red</p>
@@ -291,13 +312,70 @@
             <p class="align-center brown" style="padding: 10px">brown</p>
             <p class="align-center orange" style="padding: 10px">orange</p>
         </section>
+
+        <section id="notifications" class="indented">
+            <button class="wide accept" id="show_success">Success</button>
+            <button class="wide cancel" id="show_error">Error</button>
+            <button class="wide" id="show_confirm">Confirm</button>
+            <button class="wide" id="show_custom">Custom</button>
+            <button class="wide grey" id="show_loading">Loading</button>
+            <button class="wide" id="show_progress">Progress</button>
+        </section>
+
+        <section id="animations" class="indented">
+            <h2 class="wide">Transitions</h2>
+            <button class="wide" data-article="article_fade">Fade Animation</button>
+            <button class="wide" data-article="article_cover">Cover Animation</button>
+            <button class="wide" data-article="article_room">Room Animation</button>
+            <button class="wide" data-article="article_cube">Cube Animation</button>
+        </section>
     </article>
+
+    <article id="article_fade" data-animation="fade">
+        <header>
+            <h1>Fade Transition</h1>
+        </header>
+        <section id="article_fade_section">
+            <h2 class="wide">This article has been loaded using fade transition</h2>
+            <button class="wide icon left-open" data-back="article_1">Back</button>
+        </section>
+    </article>
+
+    <article id="article_cover" data-animation="cover">
+        <header>
+            <h1>Cover Transition</h1>
+        </header>
+        <section id="article_cover_section">
+            <h2 class="wide">This article has been loaded using cover transition</h2>
+            <button class="wide icon left-open" data-back="article_1">Back</button>
+        </section>
+    </article>
+
+    <article id="article_room" data-animation="room">
+        <header>
+            <h1>Room Transition</h1>
+        </header>
+        <section id="article_room_section">
+            <h2 class="wide">This article has been loaded using room transition</h2>
+            <button class="wide icon left-open" data-back="article_1">Back</button>
+        </section>
+    </article>
+    <article id="article_cube" data-animation="cube">
+        <header>
+            <h1>Cube Transition</h1>
+        </header>
+        <section id="article_cube_section">
+            <h2 class="wide">This article has been loaded using cube transition</h2>
+            <button class="wide icon left-open" data-back="article_1">Back</button>
+        </section>
+    </article>
+
     <script src="js/tako.components.js"></script>
     <script src="js/tako.debug.js"></script>
     <script>
         Tako.onReady(function(){
             console.log("READY");
-            window.puller = Tako.Pull_Refresh("main", {onRefresh:function(){
+            window.puller = Tako.Pull_Refresh("pullrefresh", {onRefresh:function(){
                 setTimeout(function(){
                     alert("Refresh finished");
                     puller.hide()}, 3000);
@@ -305,6 +383,10 @@
             $("#forms").on("load", function(){console.log("FORMS LOADED")});
             $("#buttons").on("load", function(){console.log("BUTTONS LOADED")});
             $("#forms").on("unload", function(){console.log("FORMS UNLOADED")});
+
+            $("[data-back]").on("click", function(){
+                Tako.Article("article_1", true);
+            });
             // Tako.Section("notifications");
             // Tako.Section("buttons");
             // Tako.Section("colors");
