@@ -180,7 +180,6 @@ article.active > section.active
 
 section
   position relative
-  // top 4px
   width 100%
   margin 0
   overflow-x hidden
@@ -189,8 +188,6 @@ section
   flex 1 9999999 auto
   flexbox-order(3)
 
-  // &::-webkit-scrollbar
-  //   width 0 !important
 
   &.horizontal
     width auto
@@ -202,8 +199,6 @@ section
   &.indented:not(.iscroll)
     &.active
       & > div:not(.pulltorefresh)
-        // position relative
-        // min-height 100%
         position absolute
         top 0
         bottom 0

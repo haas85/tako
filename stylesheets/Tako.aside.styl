@@ -3,7 +3,6 @@ aside
   width ASIDE_WIDTH
   top HEADER_HEIGHT
   bottom 0
-  // left - ASIDE_TRANSITION
   transform(translateX(- ASIDE_TRANSITION))
   position absolute
   z-index ASIDE_INDEX
@@ -52,13 +51,18 @@ aside
         width auto
         height HEADER_HEIGHT - 8
         margin-top 8px
+
     & + div
-      // margin-top HEADER_HEIGHT -10
-      position absolute
-      top HEADER_HEIGHT - 10
-      bottom 0
-      left 0
-      right 0
+      top HEADER_HEIGHT
+  & > div
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+  & ul
+    margin-top 0
+
 
 div[data-element="aside_background"]
   position absolute
@@ -71,7 +75,6 @@ div[data-element="aside_background"]
   transition(background-color ASIDE_TRANSITION_TIME linear)
 
   &.full
-    // background-color rgba(0, 0, 0, 0)!important
     height 100%
     top 0
 
