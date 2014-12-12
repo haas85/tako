@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 11/12/2014
+/* TaKo v1.2.1 - 12/12/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -328,16 +328,6 @@
       bck = null;
       header = aside.children("header");
       aside.append($(document.createElement("div")).append(aside.children()));
-      new IScroll(aside[0], {
-        probeType: 2,
-        mouseWheel: true,
-        scrollbars: false,
-        bounce: false,
-        click: false,
-        preventDefaultException: {
-          tagName: /.*/
-        }
-      });
       aside.prepend(header);
       bck = $('<div data-element="aside_background"></div>');
       $("body").append(bck);

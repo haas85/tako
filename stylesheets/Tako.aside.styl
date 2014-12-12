@@ -22,9 +22,9 @@ aside
 
   &.show
     transform(translateX(0))
-
-  &.show
-    z-index ASIDE_INDEX!important
+    z-index ASIDE_INDEX !important
+    & > div
+      overflow-y scroll
 
   & > header
     width 100%
@@ -53,7 +53,12 @@ aside
         height HEADER_HEIGHT - 8
         margin-top 8px
     & + div
-      margin-top HEADER_HEIGHT + 8
+      // margin-top HEADER_HEIGHT -10
+      position absolute
+      top HEADER_HEIGHT - 10
+      bottom 0
+      left 0
+      right 0
 
 div[data-element="aside_background"]
   position absolute
