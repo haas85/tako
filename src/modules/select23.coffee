@@ -2,7 +2,7 @@ Select = (element) ->
   _createElement = (child) ->
     elem = $ """<li data-value="#{child.value}">#{child.text}</li>"""
     elem.addClass("theme") if child.value is selectbox[0].value
-    elem.on "tap", (ev) ->
+    elem.on "click", (ev) ->
       _selected ev.target
     elem
 

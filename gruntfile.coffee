@@ -70,6 +70,7 @@ module.exports = (grunt) ->
       components: [
         "components/zepto/zepto.js",
         "components/zepto/detect.js",
+        "components/fastclick/fastclick.js",
         "components/hammer/hammer.js",
         "components/iscroll/iscroll.js",
         "components/overwriter/overwriter.js",

@@ -1,4 +1,4 @@
-/* TaKo v1.2.1 - 12/12/2014
+/* TaKo v1.2.1 - 30/12/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -37,7 +37,7 @@
       _tap = "click";
       _doubletap = "dblclick";
     } else {
-      _tap = "tap";
+      _tap = "click";
       _doubletap = "doubletap";
     }
     init = function(options) {
@@ -96,6 +96,7 @@
     };
     _setup = function() {
       var element, hash, _current_art, _current_section, _i, _len, _ref;
+      FastClick.attach(document.body);
       hash = document.location.hash || "";
       if (settings.urlNavigation && hash !== "" && hash !== "#") {
         hash = hash.replace("#", "");
@@ -164,14 +165,14 @@
       Array.prototype.forEach.call(document.querySelectorAll("[data-article=" + _current_art + "]"), function(el) {
         return el.classList.add("current");
       });
-      _setNavigation("aside", "data-article", Tako.Article, "tap", true);
-      _setNavigation("aside", "data-section", Tako.Section, "tap", true);
+      _setNavigation("aside", "data-article", Tako.Article, "click", true);
+      _setNavigation("aside", "data-section", Tako.Section, "click", true);
       _setNavigation("article", "data-article", Tako.Article, "click");
       _setNavigation("article", "data-section", Tako.Section, "click");
       _ref = document.querySelectorAll("[data-action=aside]");
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         element = _ref[_i];
-        element.addEventListener("tap", (function(ev) {
+        element.addEventListener("click", (function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           return Tako.Aside.toggle();
@@ -352,14 +353,14 @@
         }
       };
       $("aside *").each(function(index) {
-        $(this).on("click tap", function(ev) {
+        $(this).on("click", function(ev) {
           if (_showing) {
             ev.preventDefault();
             ev.stopPropagation();
             return hide();
           }
         });
-        return $(this).on("tap", function(ev) {
+        return $(this).on("click", function(ev) {
           if (_showing) {
             hide();
             ev.preventDefault();
@@ -367,7 +368,7 @@
           }
         });
       });
-      bck.on("click tap", function(ev) {
+      bck.on("click", function(ev) {
         if (_showing) {
           ev.preventDefault();
           ev.stopPropagation();
@@ -1147,7 +1148,7 @@
       if (child.value === selectbox[0].value) {
         elem.addClass("theme");
       }
-      elem.on("tap", function(ev) {
+      elem.on("click", function(ev) {
         return _selected(ev.target);
       });
       return elem;

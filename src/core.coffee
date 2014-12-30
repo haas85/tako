@@ -16,7 +16,7 @@ window.Tako = window.tk = Tako = do ->
     _doubletap = "dblclick"
 
   else
-    _tap = "tap"
+    _tap = "click"
     _doubletap = "doubletap"
 
   init = (options={})->
@@ -52,6 +52,7 @@ window.Tako = window.tk = Tako = do ->
     if (width > 768) and (width > height) then "TABLET/DESKTOP" else "PHONE"
 
   _setup = ->
+    FastClick.attach document.body
     hash = document.location.hash or ""
     if settings.urlNavigation and hash isnt "" and hash isnt "#"
       hash = hash.replace "#", ""
@@ -94,13 +95,13 @@ window.Tako = window.tk = Tako = do ->
       el.classList.add "current"
     Array::forEach.call document.querySelectorAll("[data-article=#{_current_art}]"), (el) ->
       el.classList.add "current"
-    _setNavigation "aside", "data-article", Tako.Article, "tap", true
-    _setNavigation "aside", "data-section", Tako.Section, "tap", true
+    _setNavigation "aside", "data-article", Tako.Article, "click", true
+    _setNavigation "aside", "data-section", Tako.Section, "click", true
     _setNavigation "article", "data-article", Tako.Article, "click"
     _setNavigation "article", "data-section", Tako.Section, "click"
 
     for element in document.querySelectorAll("[data-action=aside]")
-      element.addEventListener "tap", ((ev) ->
+      element.addEventListener "click", ((ev) ->
         do ev.preventDefault
         do ev.stopPropagation
         do Tako.Aside.toggle
