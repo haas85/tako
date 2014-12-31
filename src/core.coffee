@@ -53,6 +53,7 @@ window.Tako = window.tk = Tako = do ->
 
   _setup = ->
     FastClick.attach document.body
+    new Hammer.Manager(document.body).add(new Hammer.Pinch({ threshold: 0 }))
     hash = document.location.hash or ""
     if settings.urlNavigation and hash isnt "" and hash isnt "#"
       hash = hash.replace "#", ""

@@ -47,13 +47,16 @@ Tako.Pull_Refresh = (container, options={})->
       @showRelease = false
       mc = new Hammer.Manager $(@container)[0]
       mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }))
-      mc.on "panmove", @onPull
+      mc.add(new Hammer.Pinch({ threshold: 0 }))
+      mc.on "panstart panmove", @onPull
       $(@container).on "touchstart",  =>
+        do ev.preventDefault
+        do ev.stopPropagation
         $(@container).addClass "pulling"
         if not @refreshing
           @hide(false)
 
-      $(@container).on "mouseup touchend", =>
+      $(@container).on "mouseup touchend MSPointerUp", =>
         return if @refreshing
         cancelAnimationFrame @_anim
         if @_slidedown_height >= @breakpoint

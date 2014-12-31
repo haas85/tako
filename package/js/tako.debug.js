@@ -1,4 +1,4 @@
-/* TaKo v1.2.2 - 30/12/2014
+/* TaKo v1.2.2 - 31/12/2014
    http://takojs.com
    Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -97,6 +97,9 @@
     _setup = function() {
       var element, hash, _current_art, _current_section, _i, _len, _ref;
       FastClick.attach(document.body);
+      new Hammer.Manager(document.body).add(new Hammer.Pinch({
+        threshold: 0
+      }));
       hash = document.location.hash || "";
       if (settings.urlNavigation && hash !== "" && hash !== "#") {
         hash = hash.replace("#", "");
@@ -1021,16 +1024,21 @@
           threshold: 0,
           pointers: 0
         }));
-        mc.on("panmove", this.onPull);
+        mc.add(new Hammer.Pinch({
+          threshold: 0
+        }));
+        mc.on("panstart panmove", this.onPull);
         $(this.container).on("touchstart", (function(_this) {
           return function() {
+            ev.preventDefault();
+            ev.stopPropagation();
             $(_this.container).addClass("pulling");
             if (!_this.refreshing) {
               return _this.hide(false);
             }
           };
         })(this));
-        $(this.container).on("mouseup touchend", (function(_this) {
+        $(this.container).on("mouseup touchend MSPointerUp", (function(_this) {
           return function() {
             if (_this.refreshing) {
               return;
