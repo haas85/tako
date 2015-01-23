@@ -1,6 +1,6 @@
-/* TaKo v1.2.2 - 31/12/2014
+/* TaKo v1.2.2 - 23/01/2015
    http://takojs.com
-   Copyright (c) 2014 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
+   Copyright (c) 2015 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
   var FOOTER_HEIGHT, HEADER_HEIGHT, NAV_HEIGHT, Select, Tako, generateStyle, height, width, _articleListeners, _fallback, _navigate, _style,
     __slice = [].slice,
@@ -97,9 +97,6 @@
     _setup = function() {
       var element, hash, _current_art, _current_section, _i, _len, _ref;
       FastClick.attach(document.body);
-      new Hammer.Manager(document.body).add(new Hammer.Pinch({
-        threshold: 0
-      }));
       hash = document.location.hash || "";
       if (settings.urlNavigation && hash !== "" && hash !== "#") {
         hash = hash.replace("#", "");
