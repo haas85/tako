@@ -1000,7 +1000,6 @@
       function PullToRefresh(container, options) {
         var PULLREFRESH, mc;
         this.options = options;
-        this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
         this.setHeight = __bind(this.setHeight, this);
         this.onMobilePull = __bind(this.onMobilePull, this);
@@ -1010,7 +1009,11 @@
         this.container = container;
         this.refreshing = false;
         this.pullrefresh = $(PULLREFRESH)[0];
-        $(this.container).prepend(this.pullrefresh);
+        this.$container = $(this.container);
+        this.content = document.createElement("div");
+        $(this.content).prepend(this.pullrefresh).append($(document.createElement("div")).append(this.$container.children()));
+        this.container.appendChild(this.content);
+        this.setHeight(0);
         this.icon = $(this.pullrefresh).find(".icon");
         this.text = $(this.pullrefresh).find(".text");
         this._slidedown_height = 0;
@@ -1020,29 +1023,29 @@
         this.init_pos = 0;
         this.started = false;
         if (!$.os.tablet && !$.os.phone) {
-          mc = new Hammer.Manager($(this.container)[0]);
+          mc = new Hammer.Manager(this.$container[0]);
           mc.add(new Hammer.Pan({
             threshold: 0,
             pointers: 0
           }));
           mc.on("panstart panmove", this.onPcPull);
         } else {
-          $(this.container).on("touchmove", this.onMobilePull);
+          this.$container.on("touchmove", this.onMobilePull);
         }
-        $(this.container).on("touchstart", (function(_this) {
+        this.$container.on("touchstart", (function(_this) {
           return function(ev) {
             if (_this.container.scrollTop > 5) {
               return;
             }
             _this.started = true;
             _this.init_pos = ev.clientY || ev.touches[0].clientY;
-            $(_this.container).addClass("pulling");
+            _this.$container.addClass("pulling");
             if (!_this.refreshing) {
               return _this.hide(false);
             }
           };
         })(this));
-        $(this.container).on("mouseup touchend MSPointerUp", (function(_this) {
+        this.$container.on("mouseup touchend MSPointerUp", (function(_this) {
           return function() {
             if (_this.refreshing) {
               return;
@@ -1067,7 +1070,7 @@
           return;
         }
         if (!this._anim) {
-          this.updateHeight();
+          this.setHeight();
         }
         ev.preventDefault();
         ev.stopPropagation();
@@ -1095,7 +1098,7 @@
           return;
         }
         if (!this._anim) {
-          this.updateHeight();
+          this.setHeight();
         }
         ev.preventDefault();
         ev.stopPropagation();
@@ -1112,15 +1115,10 @@
       };
 
       PullToRefresh.prototype.setHeight = function(height) {
-        var transformation;
-        height -= 511;
-        transformation = "translate(0, " + height + "px)";
-        this.pullrefresh.style.transform = transformation;
-        this.pullrefresh.style.webkitTransform = transformation;
-        this.pullrefresh.style.mozTransform = transformation;
-        this.pullrefresh.style.msTransform = transformation;
-        this.pullrefresh.style.marginBottom = "" + height + "px";
-        return this.pullrefresh.style.oTransform = transformation;
+        if (height == null) {
+          height = this._slidedown_height;
+        }
+        return this.content.style.transform = this.content.style.webkitTransform = this.content.style.mozTransform = this.content.style.msTransform = this.content.style.oTransform = "translate(0, " + height + "px)";
       };
 
       PullToRefresh.prototype.onRefresh = function() {
@@ -1151,7 +1149,7 @@
         if (this._dragged_down) {
           this.started = false;
           if (remove_pulling) {
-            $(this.container).removeClass("pulling");
+            this.$container.removeClass("pulling");
           }
           this.icon[0].className = "icon down-big";
           this.text.html(this.options.pullLabel);
@@ -1163,19 +1161,6 @@
           this._dragged_down = false;
           return this.refreshing = false;
         }
-      };
-
-      PullToRefresh.prototype.updateHeight = function() {
-        var height, transformation;
-        height = this._slidedown_height - 511;
-        transformation = "translate(0, " + height + "px)";
-        this.pullrefresh.style.transform = transformation;
-        this.pullrefresh.style.webkitTransform = transformation;
-        this.pullrefresh.style.mozTransform = transformation;
-        this.pullrefresh.style.msTransform = transformation;
-        this.pullrefresh.style.marginBottom = "" + height + "px";
-        this.pullrefresh.style.oTransform = transformation;
-        return this._anim = requestAnimationFrame(this.updateHeight);
       };
 
       return PullToRefresh;
