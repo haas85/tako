@@ -45,13 +45,21 @@ Tako.Pull_Refresh = (container, options={})->
       @_anim = null
       @_dragged_down = false
       @showRelease = false
-      mc = new Hammer.Manager $(@container)[0]
-      mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }))
-      mc.add(new Hammer.Pinch({ threshold: 0 }))
-      mc.on "panstart panmove", @onPull
-      $(@container).on "touchstart",  =>
-        do ev.preventDefault
-        do ev.stopPropagation
+      @init_pos = 0
+      @started = false
+      if not $.os.tablet and not $.os.phone
+        mc = new Hammer.Manager $(@container)[0]
+        mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }))
+        mc.on "panstart panmove", @onPcPull
+      else
+        $(@container).on "touchmove",  @onMobilePull
+
+      $(@container).on "touchstart",  (ev)=>
+        return if @container.scrollTop > 5
+        # do ev.preventDefault
+        # do ev.stopPropagation
+        @started = true
+        @init_pos = ev.clientY or ev.touches[0].clientY
         $(@container).addClass "pulling"
         if not @refreshing
           @hide(false)
@@ -67,7 +75,7 @@ Tako.Pull_Refresh = (container, options={})->
         else
           do @hide
 
-    onPull: (ev) =>
+    onPcPull: (ev) =>
       @_dragged_down = true
       return if @container.scrollTop > 5
       @updateHeight() unless @_anim
@@ -80,14 +88,31 @@ Tako.Pull_Refresh = (container, options={})->
       if ev.deltaY  > 0
         @_slidedown_height = ev.deltaY * 0.5
 
+    onMobilePull: (ev) =>
+      @_dragged_down = true
+      return if @container.scrollTop > 5
+      posY = ev.clientY or ev.touches[0].clientY
+      deltaY = posY - @init_pos
+      return if deltaY < 0
+      @updateHeight() unless @_anim
+      do ev.preventDefault
+      do ev.stopPropagation
+      if @_slidedown_height >= @breakpoint
+        @onArrived()
+      else
+        @onUp() if @showRelease
+      if deltaY  > 0
+        @_slidedown_height = deltaY * 0.5
+
     setHeight: (height) =>
       height -= 511
-      @pullrefresh.style.transform = "translate(0, #{height}px)"
-      @pullrefresh.style.webkitTransform = "translate(0, #{height}px)"
-      @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
-      @pullrefresh.style.msTransform = "translate(0, #{height}px)"
+      transformation = "translate(0, #{height}px)"
+      @pullrefresh.style.transform = transformation
+      @pullrefresh.style.webkitTransform = transformation
+      @pullrefresh.style.mozTransform = transformation
+      @pullrefresh.style.msTransform = transformation
       @pullrefresh.style.marginBottom = "#{height}px"
-      @pullrefresh.style.oTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.oTransform = transformation
 
     onRefresh: ->
       @icon[0].className = "icon spin6 animated"
@@ -109,6 +134,7 @@ Tako.Pull_Refresh = (container, options={})->
 
     hide: (remove_pulling=true)=>
       if @_dragged_down
+        @started = false
         $(@container).removeClass "pulling" if remove_pulling
         @icon[0].className = "icon down-big"
         @text.html @options.pullLabel
@@ -122,12 +148,13 @@ Tako.Pull_Refresh = (container, options={})->
 
     updateHeight: =>
       height = @_slidedown_height - 511
-      @pullrefresh.style.transform = "translate(0, #{height}px)"
-      @pullrefresh.style.webkitTransform = "translate(0, #{height}px)"
-      @pullrefresh.style.mozTransform = "translate(0, #{height}px)"
-      @pullrefresh.style.msTransform = "translate(0, #{height}px)"
+      transformation = "translate(0, #{height}px)"
+      @pullrefresh.style.transform = transformation
+      @pullrefresh.style.webkitTransform = transformation
+      @pullrefresh.style.mozTransform = transformation
+      @pullrefresh.style.msTransform = transformation
       @pullrefresh.style.marginBottom = "#{height}px"
-      @pullrefresh.style.oTransform = "translate(0, #{height}px)"
+      @pullrefresh.style.oTransform = transformation
       @_anim = requestAnimationFrame @updateHeight
 
 
