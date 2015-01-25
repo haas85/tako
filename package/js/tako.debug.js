@@ -1,4 +1,4 @@
-/* TaKo v1.2.2 - 23/01/2015
+/* TaKo v1.2.3 - 25/01/2015
    http://takojs.com
    Copyright (c) 2015 Iñigo Gonzalez Vazquez <ingonza85@gmail.com> (@haas85) - Under MIT License */
 (function() {
@@ -1003,7 +1003,8 @@
         this.updateHeight = __bind(this.updateHeight, this);
         this.hide = __bind(this.hide, this);
         this.setHeight = __bind(this.setHeight, this);
-        this.onPull = __bind(this.onPull, this);
+        this.onMobilePull = __bind(this.onMobilePull, this);
+        this.onPcPull = __bind(this.onPcPull, this);
         PULLREFRESH = "<div class=\"pulltorefresh\">\n<span class=\"icon down-big\"></span><span class=\"text\">" + this.options.pullLabel + "</span>\n</div>";
         this.breakpoint = 90;
         this.container = container;
@@ -1016,19 +1017,25 @@
         this._anim = null;
         this._dragged_down = false;
         this.showRelease = false;
-        mc = new Hammer.Manager($(this.container)[0]);
-        mc.add(new Hammer.Pan({
-          threshold: 0,
-          pointers: 0
-        }));
-        mc.add(new Hammer.Pinch({
-          threshold: 0
-        }));
-        mc.on("panstart panmove", this.onPull);
+        this.init_pos = 0;
+        this.started = false;
+        if (!$.os.tablet && !$.os.phone) {
+          mc = new Hammer.Manager($(this.container)[0]);
+          mc.add(new Hammer.Pan({
+            threshold: 0,
+            pointers: 0
+          }));
+          mc.on("panstart panmove", this.onPcPull);
+        } else {
+          $(this.container).on("touchmove", this.onMobilePull);
+        }
         $(this.container).on("touchstart", (function(_this) {
-          return function() {
-            ev.preventDefault();
-            ev.stopPropagation();
+          return function(ev) {
+            if (_this.container.scrollTop > 5) {
+              return;
+            }
+            _this.started = true;
+            _this.init_pos = ev.clientY || ev.touches[0].clientY;
             $(_this.container).addClass("pulling");
             if (!_this.refreshing) {
               return _this.hide(false);
@@ -1054,7 +1061,7 @@
         })(this));
       }
 
-      PullToRefresh.prototype.onPull = function(ev) {
+      PullToRefresh.prototype.onPcPull = function(ev) {
         this._dragged_down = true;
         if (this.container.scrollTop > 5) {
           return;
@@ -1076,14 +1083,44 @@
         }
       };
 
+      PullToRefresh.prototype.onMobilePull = function(ev) {
+        var deltaY, posY;
+        this._dragged_down = true;
+        if (this.container.scrollTop > 5) {
+          return;
+        }
+        posY = ev.clientY || ev.touches[0].clientY;
+        deltaY = posY - this.init_pos;
+        if (deltaY < 0) {
+          return;
+        }
+        if (!this._anim) {
+          this.updateHeight();
+        }
+        ev.preventDefault();
+        ev.stopPropagation();
+        if (this._slidedown_height >= this.breakpoint) {
+          this.onArrived();
+        } else {
+          if (this.showRelease) {
+            this.onUp();
+          }
+        }
+        if (deltaY > 0) {
+          return this._slidedown_height = deltaY * 0.5;
+        }
+      };
+
       PullToRefresh.prototype.setHeight = function(height) {
+        var transformation;
         height -= 511;
-        this.pullrefresh.style.transform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
+        transformation = "translate(0, " + height + "px)";
+        this.pullrefresh.style.transform = transformation;
+        this.pullrefresh.style.webkitTransform = transformation;
+        this.pullrefresh.style.mozTransform = transformation;
+        this.pullrefresh.style.msTransform = transformation;
         this.pullrefresh.style.marginBottom = "" + height + "px";
-        return this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
+        return this.pullrefresh.style.oTransform = transformation;
       };
 
       PullToRefresh.prototype.onRefresh = function() {
@@ -1112,6 +1149,7 @@
           remove_pulling = true;
         }
         if (this._dragged_down) {
+          this.started = false;
           if (remove_pulling) {
             $(this.container).removeClass("pulling");
           }
@@ -1128,14 +1166,15 @@
       };
 
       PullToRefresh.prototype.updateHeight = function() {
-        var height;
+        var height, transformation;
         height = this._slidedown_height - 511;
-        this.pullrefresh.style.transform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.webkitTransform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.mozTransform = "translate(0, " + height + "px)";
-        this.pullrefresh.style.msTransform = "translate(0, " + height + "px)";
+        transformation = "translate(0, " + height + "px)";
+        this.pullrefresh.style.transform = transformation;
+        this.pullrefresh.style.webkitTransform = transformation;
+        this.pullrefresh.style.mozTransform = transformation;
+        this.pullrefresh.style.msTransform = transformation;
         this.pullrefresh.style.marginBottom = "" + height + "px";
-        this.pullrefresh.style.oTransform = "translate(0, " + height + "px)";
+        this.pullrefresh.style.oTransform = transformation;
         return this._anim = requestAnimationFrame(this.updateHeight);
       };
 

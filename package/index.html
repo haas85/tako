@@ -74,7 +74,23 @@
         </section>
 
         <section id="pullrefresh" class="" data-animation="slide">
-            <p class="wide align-center">This is an example of pull and refresh, pan down to try it</p>
+            <p class="wide align-center">This is an example of pull and refresh, pan down to add elements</p>
+            <ul>
+                <li class="separator" style="color:black;">New elements</li>
+                <li style="padding:0;">
+                    <ul id="newelements"></ul>
+                </li>
+                <li class="separator" style="color:black;">First elements</li>
+                <li>First element</li>
+                <li>Second element</li>
+                <li>Third element</li>
+                <li>Fourth element</li>
+                <li>Fifth element</li>
+                <li>Sixth element</li>
+                <li>Seventh element</li>
+                <li>Eighth element</li>
+                <li>Ninth element</li>
+            </ul>
         </section>
 
         <section id="forms" class="indented" data-animation="slide">
@@ -377,8 +393,10 @@
             console.log("READY");
             window.puller = Tako.Pull_Refresh("pullrefresh", {onRefresh:function(){
                 setTimeout(function(){
-                    alert("Refresh finished");
-                    puller.hide()}, 3000);
+                    puller.hide();
+                    var date = new Date().toString();
+                    $("#newelements").prepend('<li><strong>New element added at:</strong><small style="font-size:1rem;">' + date + '</small></li>');
+                }, 1000);
             }});
             $("#forms").on("load", function(){console.log("FORMS LOADED")});
             $("#buttons").on("load", function(){console.log("BUTTONS LOADED")});
