@@ -45,13 +45,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><b>TAKO</b></a>
+          <a class="navbar-brand" href="/tako/"><b>TAKO</b></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/documentation">Documentation</a></li>
-            <li><a href="/demo">Demo</a></li>
-            <li><a href="/download/tako.zip">Download</a></li>
+            <li><a href="/tako/documentation">Documentation</a></li>
+            <li><a href="/tako/demo">Demo</a></li>
+            <li><a href="/tako/download/tako.zip">Download</a></li>
             <li><a href="https://twitter.com/takojs" target="_blank">Twitter</a></li>
             <li><a href="https://groups.google.com/forum/#!forum/takojs" target="_blank">Community</a></li>
           </ul>
@@ -88,32 +88,32 @@
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/ace/ace.js"></script>
     <script>
-      // var resetCode = function(){
-      //   document.getElementById('device_selector').value = "generic";
-      //   $.get( "/app", function( data ) {
-      //     editor.setValue(data, -1);
-      //     tryCode();
-      //   });
-      // };
-      // var editor = ace.edit("editor");
-      // editor.setTheme("ace/theme/monokai");
-      // editor.getSession().setMode("ace/mode/html");
-      // resetCode();
+      var resetCode = function(){
+        document.getElementById('device_selector').value = "generic";
+        $.get( "/app", function( data ) {
+          editor.setValue(data, -1);
+          tryCode();
+        });
+      };
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/monokai");
+      editor.getSession().setMode("ace/mode/html");
+      resetCode();
 
-      // var tryCode = function(){
-      //   var code = editor.getSession().getValue();
-      //   var re = new RegExp('href="stylesheets/', 'g');
-      //   code = code.replace(re, 'href="' + location.origin + '/app/assets/stylesheets/');
-      //   var re = new RegExp('src="js', 'g');
-      //   code = code.replace(re, 'src="' + location.origin + '/app/assets/js');
-      //   var blob = new Blob([code], {type : 'text/html'});
-      //   var url = URL.createObjectURL(blob);
-      //   document.getElementById('tako_frame').src = url;
-      // };
+      var tryCode = function(){
+        var code = editor.getSession().getValue();
+        var re = new RegExp('href="stylesheets/', 'g');
+        code = code.replace(re, 'href="' + location.origin + '/app/assets/stylesheets/');
+        var re = new RegExp('src="js', 'g');
+        code = code.replace(re, 'src="' + location.origin + '/app/assets/js');
+        var blob = new Blob([code], {type : 'text/html'});
+        var url = URL.createObjectURL(blob);
+        document.getElementById('tako_frame').src = url;
+      };
 
-      // var launchDevice = function(ev){
-      //   $(document.getElementById("tako_frame").contentDocument.body).attr("data-os", ev.target.value).attr("data-browser", null);
-      // };
+      var launchDevice = function(ev){
+        $(document.getElementById("tako_frame").contentDocument.body).attr("data-os", ev.target.value).attr("data-browser", null);
+      };
     </script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
