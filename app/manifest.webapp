@@ -1,0 +1,13 @@
+{
+  "name": "Tako",
+  "description": "Tako framework kitchen sink",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "http://www.takojs.com/assets/img/tako-logo.png"
+  },
+  "developer": {
+    "name": "haas85",
+    "url": "http://www.takojs.com"
+  },
+  "default_locale": "en"
+}

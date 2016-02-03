@@ -18,11 +18,11 @@
     <title>Tako - Create awesome apps in a simple way</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/tako/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/assets/css/main.css" rel="stylesheet">
-    <link href="/assets/css/demo.css" rel="stylesheet">
+    <link href="/tako/assets/css/main.css" rel="stylesheet">
+    <link href="/tako/assets/css/demo.css" rel="stylesheet">
 
     <!-- Fonts from Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
@@ -85,12 +85,12 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/ace/ace.js"></script>
+    <script src="/tako/assets/js/bootstrap.min.js"></script>
+    <script src="/tako/assets/js/ace/ace.js"></script>
     <script>
       var resetCode = function(){
         document.getElementById('device_selector').value = "generic";
-        $.get( "/app", function( data ) {
+        $.get( "/tako/app", function( data ) {
           editor.setValue(data, -1);
           tryCode();
         });
