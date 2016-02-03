@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="Description" content="Tako is an opensource HTML5 framework designed to make easy creating awesome multiplatform mobile apps.">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Title" content="Tako - Create awesome apps in a simple way">
+    <meta name="author" content="Iñigo Gonzalez">
+    <meta name="keywords" content="tako, takojs, mobile, html5, javascript, library, framework, gestures, apple, iphone, ipad, android, firefox, firefoxos, tablet, apps, webapp, applications, jquery, zepto">
+    <meta name="language" content="english">
+    <!-- <meta name="robots" content="INDEX,FOLLOW"> -->
+    <!-- <meta name="googlebot" content="INDEX,FOLLOW"> -->
+    <meta name="robots" CONTENT="NOODP,FOLLOW">
+    <meta name="googlebot" CONTENT="NOODP,FOLLOW">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>Tako - Create awesome apps in a simple way</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="/assets/css/demo.css" rel="stylesheet">
+
+    <!-- Fonts from Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><b>TAKO</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/demo">Demo</a></li>
+            <li><a href="/download/tako.zip">Download</a></li>
+            <li><a href="https://twitter.com/takojs" target="_blank">Twitter</a></li>
+            <li><a href="https://groups.google.com/forum/#!forum/takojs" target="_blank">Community</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="mycontainer">
+      <div id="phone_container">
+        <iframe src="/app/" frameborder="0" id="tako_frame"></iframe>
+      </div>
+      <div id="editor_container">
+        <div id="editor"></div>
+        <div id="controls">
+          <button id="try_code" class="btn btn-success" onclick="tryCode()">&#60;&#60; Try it!</button>
+          <button id="reset_code" class="btn btn-danger" onclick="resetCode()">Reset</button>
+          <label for="device_selector">Select platform:</label>
+          <select name="device_selector" id="device_selector" onchange="launchDevice(event)">
+            <option value="generic">Generic</option>
+            <option value="android">Android</option>
+            <option value="ios">iOS</option>
+            <option value="wp">Windows Phone</option>
+            <option value="firefoxos">Firefox Os</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/ace/ace.js"></script>
+    <script>
+      // var resetCode = function(){
+      //   document.getElementById('device_selector').value = "generic";
+      //   $.get( "/app", function( data ) {
+      //     editor.setValue(data, -1);
+      //     tryCode();
+      //   });
+      // };
+      // var editor = ace.edit("editor");
+      // editor.setTheme("ace/theme/monokai");
+      // editor.getSession().setMode("ace/mode/html");
+      // resetCode();
+
+      // var tryCode = function(){
+      //   var code = editor.getSession().getValue();
+      //   var re = new RegExp('href="stylesheets/', 'g');
+      //   code = code.replace(re, 'href="' + location.origin + '/app/assets/stylesheets/');
+      //   var re = new RegExp('src="js', 'g');
+      //   code = code.replace(re, 'src="' + location.origin + '/app/assets/js');
+      //   var blob = new Blob([code], {type : 'text/html'});
+      //   var url = URL.createObjectURL(blob);
+      //   document.getElementById('tako_frame').src = url;
+      // };
+
+      // var launchDevice = function(ev){
+      //   $(document.getElementById("tako_frame").contentDocument.body).attr("data-os", ev.target.value).attr("data-browser", null);
+      // };
+    </script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-48912738-1', 'takojs.com');
+      ga('send', 'pageview');
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-48912738-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  </body>
+</html>

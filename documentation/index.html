@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Tako Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Description" content="TakoJs Documentation">
+        <meta name="Title" content="TakoJs Documentation">
+        <meta name="author" content="Inigo Gonzalez">
+
+        <!-- loading the css -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> -->
+        <link href="assets/css/main.css" rel="stylesheet">
+
+        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.ico">
+
+		<style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+
+        </style>
+
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Various Icons (Favicon, Touch Icon,... -->
+        <link rel="shortcut icon" href="assets/img/favicon.ico">
+        <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-touch-icon-114x114.png">
+
+    </head>
+
+
+
+    <body data-spy="scroll" data-target=".navbar" id="top">
+
+        <div id="sidebar-wrapper">
+            <div class="bs-docs-sidebar hidden-print affix" role="complementary">
+                <div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+                  <ul class="nav bs-docs-sidenav">
+                    <li class="">
+                      <a href="#html"><strong>HTML</strong></a>
+                      <ul class="nav">
+                        <li class=""><a href="#articles">Article</a></li>
+                        <li class=""><a href="#sections">Section</a></li>
+                        <li class=""><a href="#headers">Header</a></li>
+                        <li class=""><a href="#footers">Footer</a></li>
+                        <li class=""><a href="#asides">Aside</a></li>
+                        <li class=""><a href="#lists">List</a></li>
+                        <li class=""><a href="#buttons">Buttons</a></li>
+                        <li class=""><a href="#layouts">Layouts</a></li>
+                        <li class=""><a href="#forms">Forms</a></li>
+                        <li class=""><a href="#colors">Colors</a></li>
+                        <li class=""><a href="#modificators">Modificators</a></li>
+                        <li class=""><a href="#icons">Icons</a></li>
+                      </ul>
+                    </li>
+                    <li class="">
+                      <a href="#javascript"><strong>Javascript</strong></a>
+                      <ul class="nav">
+                        <li><a href="#init">.init()</a></li>
+                        <li><a href="#onready">.onReady()</a></li>
+                        <li><a href="#art_router">.Article()</a></li>
+                        <li><a href="#art_title">.Article.title()</a></li>
+                        <li><a href="#sect_router">.Section()</a></li>
+                        <li><a href="#aside_show">.Aside.show()</a></li>
+                        <li><a href="#aside_hide">.Aside.hide()</a></li>
+                        <li><a href="#aside_toggle">.Aside.toggle()</a></li>
+                        <li><a href="#isonline">.Connection.isOnline()</a></li>
+                        <li><a href="#onchange">.Connection.onChange()</a></li>
+                        <li><a href="#storage">.Storage & .Session</a></li>
+                        <li><a href="#set">.set()</a></li>
+                        <li><a href="#get">.get()</a></li>
+                        <li><a href="#remove">.remove()</a></li>
+                        <li><a href="#clear">.clear()</a></li>
+                        <li><a href="#progressbar">.ProgressBar()</a></li>
+                        <li><a href="#create_progressbar">Create</a></li>
+                        <li><a href="#percent_progressbar">Percent</a></li>
+                        <li><a href="#remove_progressbar">Remove</a></li>
+                        <li><a href="#notifications">Notifications</a></li>
+                        <li><a href="#success">.success()</a></li>
+                        <li><a href="#error">.error()</a></li>
+                        <li><a href="#confirm">.confirm()</a></li>
+                        <li><a href="#loading">.loading()</a></li>
+                        <li><a href="#progress">.progress()</a></li>
+                        <li><a href="#custom">.custom()</a></li>
+                        <li><a href="#notif_hide">.hide()</a></li>
+                        <li><a href="#pullrefresh">.Pull_Refresh()</a></li>
+                        <li><a href="#database">Database</a></li>
+                        <li><a href="#domajax">Dom & Ajax</a></li>
+                        <li><a href="#gestures">Gestures</a></li>
+                      </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================= NAVIGATION BAR >> START ========================= -->
+        <div class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><b>TAKO</b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="/demo">Demo</a></li>
+                <li><a href="/download/tako.zip">Download</a></li>
+                <li><a href="https://twitter.com/takojs" target="_blank">Twitter</a></li>
+                <li><a href="https://groups.google.com/forum/#!forum/takojs" target="_blank">Community</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+
+        <!-- ========================= NAVIGATION BAR >> END ========================= -->
+
+
+
+        <!-- ========================= MAIN CONTAINER >> START ========================= -->
+        <div class="container">
+
+            <!-- ========================= SECTION: OVERVIEW >> START ========================= -->
+            <section id="overview">
+
+                <div class="hero-unit">
+                    <h1>Tako Documentation</h1>
+                    <p>Welcome to the Tako documentation, here you will find what you need to create your web app.</p>
+                </div>
+
+            </section>
+            <!-- ========================= SECTION: OVERVIEW >> END ========================= -->
+
+
+
+            <!-- ========================= SECTION: MARKUP >> START ========================= -->
+            <section id="html">
+                <div class="page-header">
+                    <h1>HTML <small>What must be written in your HTML</small></h1>
+                </div>
+
+                <div class="row">
+                    <div class="span3" id="articles">
+                        <h3>Article</h3>
+                        <p> Article is the main container, it can contain <strong>header, footer, sections, and nav</strong>.</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;TaKo&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Tako framework for mobile webapps&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Inigo Gonzalez - @haas85&quot;&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+&lt;meta http-equiv=&quot;cleartype&quot; content=&quot;on&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.theme.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;article id=&quot;main&quot;&gt;
+        &lt;header&gt;&lt;/header&gt;
+        &lt;section id=&quot;section1&quot;&gt;&lt;/section&gt;
+        &lt;section id=&quot;section2&quot;&gt;&lt;/section&gt;
+        &lt;footer&gt;&lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span3" id="sections">
+                        <h3>Section</h3>
+                        <p>The sections are inside the articles, and contain the code the user will interact with</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;TaKo&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Tako framework for mobile webapps&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Inigo Gonzalez - @haas85&quot;&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+&lt;meta http-equiv=&quot;cleartype&quot; content=&quot;on&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.theme.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;article id=&quot;main&quot;&gt;
+        &lt;header&gt;&lt;/header&gt;
+        &lt;section id=&quot;section1&quot;&gt;
+            &lt;p&gt;This code will be shown to the user&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;footer&gt;&lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="headers">
+                        <h3>Header</h3>
+                        <p>The header is positioned at the top of the article. It contains a title, and can contain elementsthat ar positioned at the left and right of it</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;TaKo&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Tako framework for mobile webapps&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Inigo Gonzalez - @haas85&quot;&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+&lt;meta http-equiv=&quot;cleartype&quot; content=&quot;on&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.theme.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;article id=&quot;main&quot;&gt;
+        &lt;header&gt;
+            &lt;nav class=&quot;left&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+            &lt;h1&gt;Main&lt;/h1&gt;
+            &lt;nav class=&quot;right&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert button&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;section id=&quot;section1&quot;&gt;
+            &lt;p&gt;This code will be shown to the user&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;footer&gt;&lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span3" id="footers">
+                        <h3>Footer</h3>
+                        <p>The footer is positioned at the bottom of the article. It can contain anythin you want, but the best combination is to add buttons that are automatically resized to fit perfectly to the app</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;TaKo&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Tako framework for mobile webapps&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Inigo Gonzalez - @haas85&quot;&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+&lt;meta http-equiv=&quot;cleartype&quot; content=&quot;on&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.theme.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;article id=&quot;main&quot;&gt;
+        &lt;header&gt;
+            &lt;nav class=&quot;left&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+            &lt;h1&gt;Main&lt;/h1&gt;
+            &lt;nav class=&quot;right&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert button&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;section id=&quot;section1&quot;&gt;
+            &lt;p&gt;This code will be shown to the user&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;footer&gt;
+            &lt;nav&gt;
+                &lt;div&gt;&lt;button class=&quot;icon ok&quot;&gt;Button1&lt;/button&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;button&gt;Button2&lt;/button&gt;&lt;/div&gt;
+            &lt;/nav&gt;
+        &lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="asides">
+                        <h3>Aside</h3>
+                        <p>Your app can also contain an aside menu that can contain navigation links or anything you want</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;TaKo&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Tako framework for mobile webapps&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Inigo Gonzalez - @haas85&quot;&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+&lt;meta http-equiv=&quot;cleartype&quot; content=&quot;on&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.theme.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;aside&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Tako trial&lt;/h1&gt;
+        &lt;/header&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Forms&lt;/li&gt;
+            &lt;li class=&quot;icon box&quot; data-section=&quot;lists&quot;&gt;Lists&lt;/li&gt;
+            &lt;li data-section=&quot;buttons&quot;&gt;Buttons&lt;/li&gt;
+            &lt;li data-section=&quot;layouts&quot;&gt;Layouts&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+    &lt;article id=&quot;main&quot;&gt;
+        &lt;header&gt;
+            &lt;nav class=&quot;left&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+            &lt;h1&gt;Main&lt;/h1&gt;
+            &lt;nav class=&quot;right&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert button&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;section id=&quot;section1&quot;&gt;
+            &lt;p&gt;This code will be shown to the user&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;footer&gt;&lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3">
+                        <p>The aside can have the <strong>full</strong> class to make the aside fill the full height of the app</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">
+&lt;aside class=&quot;full&quot;&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Tako trial&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Forms&lt;/li&gt;
+        &lt;li class=&quot;icon box&quot; data-section=&quot;lists&quot;&gt;Lists&lt;/li&gt;
+        &lt;li data-section=&quot;buttons&quot;&gt;Buttons&lt;/li&gt;
+        &lt;li data-section=&quot;layouts&quot;&gt;Layouts&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="lists">
+                        <h3>List</h3>
+                        <p>Tako contains several list styles</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;TaKo&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Tako framework for mobile webapps&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Inigo Gonzalez - @haas85&quot;&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+&lt;meta http-equiv=&quot;cleartype&quot; content=&quot;on&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/tako.theme.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;article id=&quot;main&quot;&gt;
+        &lt;header&gt;
+            &lt;nav class=&quot;left&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+            &lt;h1&gt;Main&lt;/h1&gt;
+            &lt;nav class=&quot;right&quot;&gt;
+                &lt;button class=&quot;icon ellipsis-vert button&quot; data-action=&quot;aside&quot;&gt;Aside&lt;/button&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;section id=&quot;section1&quot;&gt;
+            &lt;ul&gt;
+                &lt;li class=&quot;icon box&quot;&gt;&lt;strong&gt;Elem 1&lt;/strong&gt;&lt;small&gt;small elem&lt;/small&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img class=&quot;small&quot; src=&quot;assets/img/tako-logo.png&quot; alt=&quot;&quot;&gt;&lt;strong&gt;Elem 1&lt;/strong&gt;&lt;small&gt;small elem&lt;/small&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;assets/img/tako-logo.png&quot; alt=&quot;&quot;&gt;&lt;strong&gt;Elem 1&lt;/strong&gt;&lt;small&gt;small elem&lt;/small&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img class=&quot;big&quot; src=&quot;assets/img/tako-logo.png&quot; alt=&quot;&quot;&gt;&lt;strong&gt;Elem 1&lt;/strong&gt;&lt;small&gt;small elem&lt;/small&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Elem 1&lt;/strong&gt;&lt;small&gt;small elem&lt;/small&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Elem 1&lt;/strong&gt;&lt;small&gt;small elem&lt;/small&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Elem 2&lt;/strong&gt;&lt;/li&gt;
+                &lt;li class=&quot;separator&quot;&gt;Elem3&lt;/li&gt;
+                &lt;li&gt;Elem 4&lt;/li&gt;
+                &lt;li&gt;Elem 5&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+        &lt;footer&gt;&lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="buttons">
+                        <h3>Buttons</h3>
+                        <p>There are many kind of buttons, colored, wide, with icon, animated, with image... The sizes (smalles, small, big, biggest o wide) can be applicated on any button</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">
+&lt;button&gt;Normal&lt;/button&gt;
+&lt;button class=&quot;wide&quot;&gt;Wide&lt;/button&gt;
+&lt;button class=&quot;wide accept&quot;&gt;Accept&lt;/button&gt;
+&lt;button class=&quot;wide cancel&quot;&gt;Cancel&lt;/button&gt;
+
+&lt;button class=&quot;smallest&quot;&gt;Smallest&lt;/button&gt;
+&lt;button class=&quot;small&quot;&gt;Small&lt;/button&gt;
+&lt;button &gt;Normal&lt;/button&gt;
+&lt;button class=&quot;big&quot;&gt;Big&lt;/button&gt;
+&lt;button class=&quot;biggest&quot;&gt;Biggest&lt;/button&gt;
+
+&lt;button class=&quot;&quot;&gt;&lt;span class=&quot;icon spin3 animated&quot;&gt;&lt;/span&gt;&lt;span&gt;Animated&lt;/span&gt;&lt;/button&gt;
+
+&lt;button class=&quot;icon ok&quot;&gt;Ok&lt;/button&gt;
+
+&lt;button class=&quot;icon ok&quot;&gt;&lt;/button&gt;
+
+&lt;button class=&quot;button smallest&quot;&gt;&lt;img src=&quot;assets/img/tako-logo.png&quot; alt=&quot;&quot;&gt;&lt;span&gt;Image&lt;/span&gt;&lt;/button&gt;
+
+&lt;button class=&quot;button&quot;&gt;&lt;img src=&quot;assets/img/tako-logo.png&quot; alt=&quot;&quot;&gt;&lt;/button&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="layouts">
+                        <h3>Layouts</h3>
+                        <p>Tako has 3 kind of layouts</p>
+                    </div>
+
+                    <div class="span3">
+                        <h3>Vertical grid</h3>
+                        <p>It uses flexbox. Add vertical grid to the container's class. An use the box_number in the elements to set the value (0 for free)</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">
+&lt;div style=&quot;height:300px;&quot;&gt;
+    &lt;div class=&quot;vertical grid&quot;&gt;
+        &lt;div class=&quot;box_2 &quot;&gt;box_2&lt;/div&gt;
+        &lt;div class=&quot;box_0 &quot;&gt;box_0&lt;/div&gt;
+        &lt;div&gt;none&lt;/div&gt;
+        &lt;div class=&quot;box_5&quot;&gt;box_5&lt;/div&gt;
+        &lt;div class=&quot;box_4&quot;&gt;box_4&lt;/div&gt;
+        &lt;div&gt;none&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3">
+                        <h3>Horizontal grid</h3>
+                        <p>It uses flexbox. Add horizontal grid to the container's class. An use the box_number in the elements to set the value (0 for free)</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">
+&lt;div&gt;
+    &lt;div class=&quot;horizontal grid&quot;&gt;
+        &lt;div class=&quot;box_2 &quot;&gt;box_2&lt;/div&gt;
+        &lt;div class=&quot;box_0 &quot;&gt;box_0&lt;/div&gt;
+        &lt;div&gt;none&lt;/div&gt;
+        &lt;div class=&quot;box_5&quot;&gt;box_5&lt;/div&gt;
+        &lt;div class=&quot;box_4&quot;&gt;box_4&lt;/div&gt;
+        &lt;div&gt;none&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3">
+                        <h3>Columns</h3>
+                        <p>Each line is represented with 10 columns, you can use them as you want using columns and gaps</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">
+&lt;div class=&quot;line&quot;&gt;
+    &lt;div class=&quot;two_column&quot;&gt;2&lt;/div&gt;
+    &lt;div class=&quot;one_column two_gap&quot;&gt;1+2&lt;/div&gt;
+    &lt;div class=&quot;one_column&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;four_column&quot;&gt;4&lt;/div&gt;
+&lt;/div&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="forms">
+                        <h3>Form elements</h3>
+                        <p>Tako has its own styled form elements. This elements can be inside form tag or element with class form. It also includes the fieldset as W3C specificates</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">
+&lt;form&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Text inputs&lt;/legend&gt;
+        &lt;label for=&quot;input&quot;&gt;Default&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;input&quot;&gt;
+        &lt;label for=&quot;line&quot;&gt;Line input&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;line&quot; class=&quot;line&quot;&gt;
+        &lt;label for=&quot;background&quot;&gt;No background input&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;background&quot; class=&quot;no_background&quot;&gt;
+        &lt;label for=&quot;border&quot;&gt;No border input&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;border&quot; class=&quot;no_border&quot;&gt;
+        &lt;label for=&quot;border&quot;&gt;Textarea&lt;/label&gt;
+        &lt;textarea placeholder=&quot;The textarea can have the input texts' styles&quot;&gt;&lt;/textarea&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Checkboxes & Radiobuttons&lt;/legend&gt;
+        &lt;label for=&quot;square&quot;&gt;Square shaped&lt;/label&gt;
+        &lt;input type=&quot;checkbox&quot; id=&quot;square&quot; class=&quot;square&quot;&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;square_r&quot; name=&quot;radio&quot; class=&quot;square&quot;&gt;
+        &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+        &lt;label for=&quot;circle&quot;&gt;Circle shaped&lt;/label&gt;
+        &lt;input type=&quot;checkbox&quot; id=&quot;circle&quot; class=&quot;circle&quot;&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;circle_r&quot; name=&quot;radio&quot; class=&quot;circle&quot;&gt;
+        &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+        &lt;label for=&quot;switch&quot;&gt;Squre Shaped Switch&lt;/label&gt;
+        &lt;input type=&quot;checkbox&quot; id=&quot;switch&quot; class=&quot;switch&quot;&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;switch_r&quot; name=&quot;radio&quot; class=&quot;switch&quot;&gt;
+        &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+        &lt;label for=&quot;switch_c&quot;&gt;Circle Shaped Switch&lt;/label&gt;
+        &lt;input type=&quot;checkbox&quot; id=&quot;switch_c&quot; class=&quot;switch circle&quot;&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;switch_c_r&quot; name=&quot;radio&quot; class=&quot;switch circle&quot;&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Others&lt;/legend&gt;
+        &lt;label for=&quot;select_box&quot;&gt;Select&lt;/label&gt;
+        &lt;label class=&quot;select&quot;&gt;
+            &lt;select name=&quot;&quot; id=&quot;select_box&quot;&gt;
+                &lt;option value=&quot;elem1&quot;&gt;Elem1&lt;/option&gt;
+                &lt;option value=&quot;elem2&quot;&gt;Elem2&lt;/option&gt;
+                &lt;option value=&quot;elem3&quot;&gt;Elem3&lt;/option&gt;
+                &lt;option value=&quot;elem4&quot;&gt;Elem4&lt;/option&gt;
+                &lt;option value=&quot;elem5&quot;&gt;Elem5&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/label&gt;
+        &lt;label for=&quot;range&quot;&gt;Range&lt;/label&gt;
+        &lt;input type=&quot;range&quot; id=&quot;range&quot;&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="colors">
+                        <h3>Colors</h3>
+                        <p>Tako has in its theme a default color and accept and cancel one, but you can also use other colours</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">
+&lt;p class=&quot;blue&quot;&gt;blue&lt;/p&gt;
+&lt;p class=&quot;red&quot;&gt;red&lt;/p&gt;
+&lt;p class=&quot;yellow&quot;&gt;yellow&lt;/p&gt;
+&lt;p class=&quot;black&quot;&gt;black&lt;/p&gt;
+&lt;p class=&quot;white&quot;&gt;white&lt;/p&gt;
+&lt;p class=&quot;grey&quot;&gt;grey&lt;/p&gt;
+&lt;p class=&quot;green&quot;&gt;green&lt;/p&gt;
+&lt;p class=&quot;pink&quot;&gt;pink&lt;/p&gt;
+&lt;p class=&quot;purple&quot;&gt;purple&lt;/p&gt;
+&lt;p class=&quot;brown&quot;&gt;brown&lt;/p&gt;
+&lt;p class=&quot;orange&quot;&gt;orange&lt;/p&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="modificators">
+                        <h3>Modificators</h3>
+                        <p>Tako has several modificators, these modificators allows to change the interface or add some functionality</p>
+                    </div>
+
+                    <div class="span9">
+                        <h4>data-article=article_"id"</h4>
+                        <p>Add data-article with the article id to listen to the tap event and navigate to the article</p>
+                        <pre class="prettyprint linenums">&lt;button data-article=&quot;article2&quot;&gt;Go to article2&lt;/button&gt;</pre>
+                    </div>
+                    <div class="span9">
+                        <h4>data-section="section_id"</h4>
+                        <p>Add data-section with the section id to listen to the tap event and navigate to the section</p>
+                        <pre class="prettyprint linenums">&lt;button data-section=&quot;section2&quot;&gt;Go to section2&lt;/button&gt;</pre>
+                    </div>
+                    <div class="span9">
+                        <h4>data-action="aside"</h4>
+                        <p>Add data-action="aside" to listen to the tap event and toggle the aside</p>
+                        <pre class="prettyprint linenums">&lt;button data-action=&quot;aside&quot;&gt;Toggle aside&lt;/button&gt;</pre>
+                    </div>
+                    <div class="span9">
+                        <h4>data-visible="section_id"</h4>
+                        <p>Add data-visible with the section id to make an element only visible when a particular section is active</p>
+                        <pre class="prettyprint linenums">&lt;span data-visible=&quot;section4&quot;&gt;This will only be shown when section4 is active&lt;/span&gt;</pre>
+                    </div>
+                    <div class="span9">
+                        <h4>data-device="phone/tablet"</h4>
+                        <p>Add data-device="phone" to make something visible only in phones (phone view) and data-device="tablet" to make visible for tablet and desktop view</p>
+                        <pre class="prettyprint linenums">
+&lt;p data-device=&quot;phone&quot;&gt;This is only seen in phone mode&lt;/p&gt;
+&lt;p data-device=&quot;tablet&quot;&gt;This is only seen in tablet mode&lt;/p&gt;</pre>
+                    </div>
+                    <div class="span9">
+                        <h4>Counters</h4>
+                        <p>This is not really a modificator is an element that you can add inside header and footer buttons or aside li elements</p>
+                        <pre class="prettyprint linenums">&lt;header&gt;
+    &lt;nav class=&quot;left&quot;&gt;
+        &lt;button&gt;Unread&lt;span class=&quot;counter&quot;&gt;5&lt;/span&gt;&lt;/button&gt;
+    &lt;/nav&gt;
+    &lt;h1&gt;TaKo&lt;/h1&gt;
+&lt;/header&gt;
+&lt;footer&gt;
+    &lt;nav&gt;
+        &lt;div&gt;&lt;button&gt;Messages&lt;span class=&quot;counter&quot;&gt;84&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;
+&lt;aside&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Friends &lt;span class=&quot;counter&quot;&gt;125&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</pre>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="icons">
+                        <h3>Icons</h3>
+                        <p>Tako has an icon library, you can see all the icons <a href="/icons" target="_blank">here</a></p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;button class=&quot;icon ok&quot;&gt;Success&lt;/button&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                    <div class="span3">
+                        <p>The icons can also be animated by adding the animated class, spin named icons will spin while the others will blink</p>
+                    </div>
+
+                    <div class="span9">
+
+<!-- Code Block >> Start -->
+<pre class="prettyprint linenums">&lt;button&gt;&lt;span class=&quot;icon spin1 animated&quot;&gt;&lt;/span&gt;&lt;span&gt;Spin&lt;/span&gt;&lt;/button&gt;
+&lt;button&gt;&lt;span class=&quot;icon ok animated&quot;&gt;&lt;/span&gt;&lt;span&gt;Blink&lt;/span&gt;&lt;/button&gt;</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+            </section>
+            <section id="javascript">
+                <div class="page-header">
+                    <h1>Javascript <small>Tako javascript API</small></h1>
+                </div>
+
+                <div class="row">
+                    <div class="span3" id="init">
+                        <h3>.init()</h3>
+                        <p>Tako initializer function</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Object(Optional)</td>
+                                    <td>An object with the init options: articles property contains the list of articles to load asynchronously.</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.init({"articles": ["article2.html"]});</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="onready">
+                        <h3>.onReady()</h3>
+                        <p>This function receives function that will be loaded when Tako has finished loading.</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Function</td>
+                                    <td>A callback function to launch when Tako has finished loading.</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.onReady(function(){
+    console.log("LOADED");
+});</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="art_router">
+                        <h3>.Article()</h3>
+                        <p>Method to handle articles.</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>The id of the article to load, if there is no string it returns the current article node.</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Article("main");
+console.log(Tako.Article()); //prints the current article node</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="art_title">
+                        <h3>.Article.title()</h3>
+                        <p>Changes the title of an article</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The html code that will go inside the article title's <strong>h1</strong> tag.</td>
+                                </tr>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>The article id, if is not provided it will change the current one.</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Article.title("Hello Tako", "main");
+Tako.Article.title("Hello Tako");</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="sect_router">
+                        <h3>.Section()</h3>
+                        <p>Method to handle sections</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>The id of the section to load, if there is no string it returns the current section node.</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Section("buttons");
+console.log(Tako.Section()); //prints the current section node</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="aside_show">
+                        <h3>.Aside.show()</h3>
+                        <p>Shows the aside</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Aside.show());</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+                <div class="row">
+                    <div class="span3" id="aside_hide">
+                        <h3>.Aside.hide()</h3>
+                        <p>Hides the aside</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Aside.hide());</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+                <div class="row">
+                    <div class="span3" id="aside_toggle">
+                        <h3>.Aside.toggle()</h3>
+                        <p>Toggles the aside</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Aside.toggle());</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="isonline">
+                        <h3>.Connection.isOnline()</h3>
+                        <p>Returns if there is connection to internet or not</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <strong>Return</strong> Boolean object, true if there is connection and false if there is not
+<pre class="prettyprint linenums">console.log(Tako.Connection.isOnline()); //Connection state</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="onchange">
+                        <h3>.Connection.onChange()</h3>
+                        <p>Listener to connection change</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Function</td>
+                                    <td>Callback function that will receive a boolean parameter representing if current state is online or not.</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">
+var connectionChange = function(online){
+    if(online){
+        alert("App now is online");
+    }else{
+        allert("App now is offline");
+    }
+};
+Tako.Connection.onChange(connectionChange);</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="storage">
+                        <h3>.Storage & .Session</h3>
+                        <p>LocalStorage and SessionStorage engine for key/value storage</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <div class="span3" id="set">
+                            <h4>.set()</h4>
+                            <p>Store data in the storage</p>
+                        </div>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String</td>
+                                    <td>A string representing the key of the object</td>
+                                </tr>
+                                <tr>
+                                    <td>Data</td>
+                                    <td>The data to store, it can be number, string, object...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Storage.set("name", "Inigo Gonzalez");
+Tako.Session.set("name", "Inigo Gonzalez");</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span9">
+
+                        <div class="span3" id="get">
+                            <h4>.get()</h4>
+                            <p>Retrieve data from storage</p>
+                        </div>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String</td>
+                                    <td>A string representing the stored key</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <strong>Return</strong> An object or String of the data stored
+<pre class="prettyprint linenums">Tako.Storage.get("name");
+Tako.Session.get("name");</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span9">
+
+                        <div class="span3" id="remove">
+                            <h4>.remove()</h4>
+                            <p>Delete data from storage</p>
+                        </div>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String</td>
+                                    <td>A string representing the stored key</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Storage.remove("name");
+Tako.Session.remove("name");</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span9">
+
+                        <div class="span3" id="clear">
+                            <h4>.clear()</h4>
+                            <p>Clear all the storage</p>
+                        </div>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Storage.clear();
+Tako.Session.clear();</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="progressbar">
+                        <h3>.ProgressBar()</h3>
+                        <p>Add a progressbar wherever you want</p>
+                    </div>
+
+                    <div class="span3" id="create_progressbar">
+                        <h4>Create</h4>
+                        <p>Create the progressbar</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The id of the container you want to contain the progressbar.</td>
+                                </tr>
+                                <tr>
+                                    <td>Number(Optional)</td>
+                                    <td>The initial percent, 0 by default.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">var progress = new Tako.ProgressBar("progress", 10);</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="percent_progressbar">
+                        <h4>Percent</h4>
+                        <p>Set the progressbar's percent, usng the created object</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Number</td>
+                                    <td>The percent value to set.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">progress.percent(50);</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="remove_progressbar">
+                        <h4>Remove</h4>
+                        <p>Remove the progressbar</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">progress.remove();</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="notifications">
+                        <h3>Notifications</h3>
+                        <p>You can show diferent kind of notifications</p>
+                    </div>
+
+                    <div class="span3" id="success">
+                        <h3>.success()</h3>
+                        <p>A success notification</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>A string specifying the icon to use, if null it uses <strong>ok</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The title for the notification</td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The message to display</td>
+                                </tr>
+                                <tr>
+                                    <td>Number(Optional)</td>
+                                    <td>The number of seconds to show the notification, if null it will be shown until the user hits it</td>
+                                </tr>
+                                <tr>
+                                    <td>Function(Optional)</td>
+                                    <td>A callback function to load after hiding the notification</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Notification.success("ok", "Success!!","Everything worked fine", null, function(){console.log("SUCCESS CB");});</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="error">
+                        <h3>.error()</h3>
+                        <p>An error notification</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>A string specifying the icon to use, if null it uses <strong>cancel</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The title for the notification</td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The message to display</td>
+                                </tr>
+                                <tr>
+                                    <td>Number(Optional)</td>
+                                    <td>The number of seconds to show the notification, if null it will be shown until the user hits it</td>
+                                </tr>
+                                <tr>
+                                    <td>Function(Optional)</td>
+                                    <td>A callback function to load after hiding the notification</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Notification.error(null, "Error!!","Something went wrong", 3, function(){console.log("ERROR CB");})</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="confirm">
+                        <h3>.confirm()</h3>
+                        <p>A notification that asks user to confirm or deny</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>A string specifying the icon to use, if null it uses <strong>help-circled</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The title for the notification</td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The message to display</td>
+                                </tr>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>The text to show in the accept button, null value will show <strong>Accept</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>The text to show in the cancel button, null value will show <strong>Cancel</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Function</td>
+                                    <td>A callback function to load after clicking a choice, it will receive a boolean result with true if the user hits accept and false if he doesn't</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">var callback = function(result){
+    if(result){
+        alert("I know you like them!!");
+        console.log("I know you like them!!");
+    }else{
+        alert("Well, I hope at least you like our TaKo");
+        console.log("Well, I hope at least you like our TaKo");
+    }
+};
+Tako.Notification.confirm(null, "Question", "Do you like TaKos", "Of course", "Not much", callback);</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="loading">
+                        <h3>.loading()</h3>
+                        <p>A loading notification</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>A string specifying the text to show, if title is specified the notification show everything in a box, if not only shows a spinner</td>
+                                </tr>
+                                <tr>
+                                    <td>Number(Optional)</td>
+                                    <td>The number of seconds to show the notification, if null it will be shown until hide function is called</td>
+                                </tr>
+                                <tr>
+                                    <td>Function(Optional)</td>
+                                    <td>A callback function to load after hiding the notification</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Notification.loading("Loading", 5, function(){console.log("LOADING CB");})</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="progress">
+                        <h3>.progress()</h3>
+                        <p>A notification with a progressbar</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String(Optional)</td>
+                                    <td>A string specifying the icon to use</td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The title for the notification</td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The message to display</td>
+                                </tr>
+                                <tr>
+                                    <td>Number(Optional)</td>
+                                    <td>The number of seconds to show the notification, if null it will be shown until the user hits it</td>
+                                </tr>
+                                <tr>
+                                    <td>Function(Optional)</td>
+                                    <td>A callback function to load after hiding the notification</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <strong>Return</strong> An instance of ProgresBar to set the percent, if the percent is 100 the notification will be hidden
+<pre class="prettyprint linenums">var progress = Tako.Notification.progress("spin1 animated", "Downloading", "Please wait until your download is completed");
+progress.percent(20);
+progress.percent(60);
+progress.percent(100);</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="custom">
+                        <h3>.custom()</h3>
+                        <p>A customizable notification notification</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The title for the notification</td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The message to display</td>
+                                </tr>
+                                <tr>
+                                    <td>Boolean</td>
+                                    <td>If true it will show a close button, alse the way to hide it is with the hide function, true by default</td>
+                                </tr>
+                                <tr>
+                                    <td>String</td>
+                                    <td>A list of classes to add to the notification</td>
+                                </tr>
+                                <tr>
+                                    <td>Number(Optional)</td>
+                                    <td>The number of seconds to show the notification, if null it will be shown until the user hits it</td>
+                                </tr>
+                                <tr>
+                                    <td>Function(Optional)</td>
+                                    <td>A callback function to load after hiding the notification</td>
+                                </tr>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">var title = "Custom";
+var content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus auctor convallis. Aliquam eget ipsum a velit pulvinar elementum vitae non dolor. Nullam dui metus, tincidunt non dolor eu, laoreet auctor tellus. Suspendisse vestibulum scelerisque nibh non scelerisque. Cras eget lobortis orci. Vestibulum ultrices enim mattis fermentum tristique. Nunc ultricies feugiat tellus, ut facilisis est dignissim nec. Vivamus molestie sem vel euismod vestibulum.";
+
+var callback = function(){
+    console.log("Custom is closed")});
+};
+
+Tako.Notification.custom(title, content, true, "", null, callback);</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+
+                    <div class="span3" id="notif_hide">
+                        <h3>.hide()</h3>
+                        <p>Hide the current notification</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+<pre class="prettyprint linenums">Tako.Notification.hide();</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="pullrefresh">
+                        <h3>.Pull_Refresh()</h3>
+                        <p>Add Pull & Refresh to an element</p>
+                    </div>
+
+                    <div class="span9">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>String</td>
+                                    <td>The id of the container.</td>
+                                </tr>
+                                <tr>
+                                    <td>Object</td>
+                                    <td>An object with the options for the pull & refresh:
+                                        <p>pullLabel: String to show when pulling down, "Pull to refresh" by default</p>
+                                        <p>releaseLabel: String to show when the user can release to refresh, "Release to refresh" by default</p>
+                                        <p>refreshLabel: String to show when refreshing, "Loading..." by default</p>
+                                        <p>onRefresh: Function to launch when refresh is launched</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <strong>Return</strong> An instance of the Pull & Refresh with the hide method (to hide it after refreshing)
+<pre class="prettyprint linenums"> var options = {
+    onRefresh:function(){
+        setTimeout(function(){
+            alert("Refresh finished");
+            puller.hide()}, 3000);
+    }
+};
+var puller = Tako.Pull_Refresh("main", options);</pre>
+<!-- Code Block >> End -->
+
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" id="database">
+                        <h3>Database</h3>
+                        <p>To handle the databases, Tako uses <a href="https://github.com/haas85/webdb" target="_blank">webdb</a></p>
+                        <p>But instead of creating a new instance, you can find all the methods (create, select, insert, update, delete, drop...) under Tako.DB namespace</p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" style="padding-top:0" id="domajax">
+                        <h3>Dom & Ajax</h3>
+                        <p>To handle Dom & Ajax Tako uses <a href="http://zeptojs.com/" target="_blank">zepto.js</a></p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="span3" style="padding-top:0" id="gestures">
+                        <h3>Gestures</h3>
+                        <p>To handle gestures Tako uses <a href="http://eightmedia.github.io/hammer.js/" target="_blank">hammer.js</a></p>
+                    </div>
+                </div>
+
+                <hr />
+
+            </section>
+            <!-- ========================= SECTION: MARKUP >> END ========================= -->
+
+
+        <!-- CREDITS >> END -->
+
+        <!-- loading javascripts -->
+		<script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+        <!-- init javascripts -->
+        <script src="assets/js/init.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-48912738-1', 'takojs.com');
+          ga('send', 'pageview');
+
+        </script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-48912738-1']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+    </body>
+
+</html>

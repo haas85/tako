@@ -1,0 +1,132 @@
+body {
+    background-color: #f2f2f2;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 60px;
+}
+
+.page-header{
+    margin: 0!important;
+    padding: 0!important;
+}
+
+div.span3{
+    padding-top: 30px;
+}
+
+.navbar-default {
+  background-color: #3bd78f;
+  border-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+  color: black;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: black;
+}
+
+.navbar-default .navbar-toggle{
+    border-color: #1c1919;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: #1c1919;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+    border-color: #1c1919;
+}
+
+.container{
+    margin-left: 255px;
+    width:auto!important;
+}
+
+/*SIDEBAR*/
+
+#wrapper {
+  padding-left: 250px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  top:51px;
+  bottom: 0;
+  padding-bottom: 55px;
+  width: 250px;
+  background: #000;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+  border-right: 1px solid #8b868a;
+  overflow-y: scroll;
+}
+
+#sidebar-wrapper .affix {
+  width: 250px;
+  position: static;
+}
+
+#sidebar-wrapper ul {
+  width: 250px;
+}
+
+#sidebar-wrapper li a {
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar-wrapper li a:hover {
+  color: black;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.inset {
+  padding: 20px;
+}
+
+@media (max-width:767px) {
+
+#wrapper {
+  padding-left: 0;
+}
+
+#sidebar-wrapper {
+  left: 0;
+}
+
+#wrapper.active {
+  position: relative;
+  left: 250px;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 250px;
+  width: 250px;
+  transition: all 0.4s ease 0s;
+}
+
+#menu-toggle {
+  display: inline-block;
+}
+
+.inset {
+  padding: 15px;
+}
+
+}
